@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Models 图谱 · 本地部署量化模型对比</title>
+  <meta name="description" content="本地部署量化模型索引：7 个系列、91 个量化仓、699 个量化档位。按显存选档、横向对比量化者，每个数字都标注来源。不跑 benchmark，不托管权重。" />
+  <link rel="canonical" href="https://models.specul.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Models 图谱 · 本地部署量化模型对比" />
+  <meta property="og:url" content="https://models.specul.com/" />
+  <meta property="og:title" content="Models 图谱 · 本地部署量化模型对比" />
+  <meta property="og:description" content="本地部署量化模型索引：7 个系列、91 个量化仓、699 个量化档位。按显存选档、横向对比量化者，每个数字都标注来源。不跑 benchmark，不托管权重。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="brand.css" />
+  <link rel="stylesheet" href="site.css" />
+  <style>:root { --accent: #22d3c5; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Models 图谱 · 本地部署量化模型对比","url":"https://models.specul.com/","description":"只回答一个问题：这个基础模型，我该下载哪个量化版、为什么。"}</script>
+</head>
+<body class="brand-ambient" style="--accent:#22d3c5">
+  <a class="t-skip" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name">投机取巧</span>
+          <span class="brand-sub" id="markSub" data-zh-sub="投机取巧" data-en-sub="Speculation · Craft">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <a href="https://keel.specul.com/"><span data-zh>规划中</span><span data-en>Plan</span></a>
+        <a href="https://ide.specul.com/"><span data-zh>IDE 图谱</span><span data-en>IDE</span></a>
+        <a href="https://cli.specul.com/"><span data-zh>CLI 图谱</span><span data-en>CLI</span></a>
+        <a href="https://mcp.specul.com/"><span data-zh>MCP 图谱</span><span data-en>MCP</span></a>
+        <a href="https://models.specul.com/" aria-current="page"><span data-zh>Models 图谱</span><span data-en>Models</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+  <div class="container">
+    <header class="page-head home-head">
+      <p class="eyebrow">模型层 · 本地部署</p>
+      <h1>Models 图谱<span class="sub">量化版对比</span></h1>
+      <p class="lede">你决定用哪个模型之后，真正要面对的问题是：<b>同一模型有几十个量化版，我该下哪一个？</b><br>本站只回答这一个问题——不评模型强弱，只帮你选对量化版。</p>
+      <div class="home-stats">
+        <div><b>7</b><span>个系列</span></div>
+        <div><b>11</b><span>个规格</span></div>
+        <div><b>91</b><span>个量化仓</span></div>
+        <div><b>699</b><span>个量化档位</span></div>
+        <div><b>41</b><span>位量化者</span></div>
+      </div>
+    </header>
+
+    <section class="trust">
+      <h2>先说清楚：这个站的数据怎么来的</h2>
+      <div class="trust-grid">
+        <div class="trust-item t-a">
+          <span class="trust-tag">✅ 实测字段</span>
+          <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
+        </div>
+        <div class="trust-item t-b">
+          <span class="trust-tag">✅ 推导</span>
+          <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
+        </div>
+        <div class="trust-item t-c">
+          <span class="trust-tag">❌ 我们不说的</span>
+          <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
+        </div>
+      </div>
+      <p class="trust-foot">
+        本站<b>不下载、不托管任何模型权重文件</b>。所有数字都来自公开元数据，点击即可回到发布页核对。
+        采集时间：<code>2026-09-30</code>（数据快照，非实时）
+      </p>
+    </section>
+
+    <section class="howto">
+      <h2>怎么用这个站</h2>
+      <ol class="steps">
+        <li><b>先看你有多少显存。</b>这是唯一的硬约束，8GB 和 24GB 能跑的档位完全不同。</li>
+        <li><b>在 B 区块查速查表。</b>直接给出「这个显存档位该用哪个量化档」，体积是实测值。</li>
+        <li><b>在 C 区块横向对比量化者。</b>看谁档位全、谁带 imatrix、谁在跟进更新。</li>
+        <li><b>在 D 区块看单档详解。</b>七个字段说清每个变体是什么、差在哪、什么时候该选它。</li>
+        <li><b>下载前先读许可。</b>非宽松许可的，页面会标出来，原文链接就在旁边。</li>
+      </ol>
+    </section>
+
+    <section class="series-list">
+      <h2>已收录系列 <small>按 GGUF 量化实际下载量排序</small></h2>
+      <div class="scards">
+        <a class="scard scard-loose" href="series/deepseek-v4/">
+          <div class="scard-h">
+            <h3>DeepSeek V4</h3>
+            <span class="scard-vendor">DeepSeek</span>
+          </div>
+          <p class="scard-sum">MIT 许可，量化生态活跃，antirez（llama.cpp 作者）亲自维护量化版。</p>
+          <ul class="scard-pos"><li>通用对话</li><li>MIT 许可</li><li>推理</li></ul>
+          <div class="scard-stats">
+            <span><b>1</b> 规格</span>
+            <span><b>7</b> 量化源</span>
+            <span><b>36</b> 档位</span>
+            <span><b>7</b> 量化者</span>
+          </div>
+          <div class="scard-lic"><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a></div>
+          <p class="scard-go">看该选哪一档 →</p>
+        </a>
+        <a class="scard scard-loose" href="series/gemma-4/">
+          <div class="scard-h">
+            <h3>Gemma 4</h3>
+            <span class="scard-vendor">Google</span>
+          </div>
+          <p class="scard-sum">Google 开放权重最新一代，三种规格各自都有量化覆盖。</p>
+          <ul class="scard-pos"><li>通用对话</li><li>MoE 稀疏</li><li>小尺寸可跑</li></ul>
+          <div class="scard-stats">
+            <span><b>3</b> 规格</span>
+            <span><b>26</b> 量化源</span>
+            <span><b>260</b> 档位</span>
+            <span><b>11</b> 量化者</span>
+          </div>
+          <div class="scard-lic"><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a></div>
+          <p class="scard-go">看该选哪一档 →</p>
+        </a>
+        <a class="scard" href="series/glm-5/">
+          <div class="scard-h">
+            <h3>GLM 5</h3>
+            <span class="scard-vendor">智谱 AI</span>
+          </div>
+          <p class="scard-sum">智谱当前最新一代，MIT 许可的 Flash 版对本地部署最友好。</p>
+          <ul class="scard-pos"><li>通用对话</li><li>工具调用</li><li>MIT 许可</li></ul>
+          <div class="scard-stats">
+            <span><b>2</b> 规格</span>
+            <span><b>17</b> 量化源</span>
+            <span><b>97</b> 档位</span>
+            <span><b>15</b> 量化者</span>
+          </div>
+          <div class="scard-lic"><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a> <a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a></div>
+          <p class="scard-go">看该选哪一档 →</p>
+        </a>
+        <a class="scard scard-loose" href="series/gpt-oss/">
+          <div class="scard-h">
+            <h3>gpt-oss</h3>
+            <span class="scard-vendor">OpenAI</span>
+          </div>
+          <p class="scard-sum">OpenAI 唯一开放权重系列，20B 版是单卡本地部署的甜点。</p>
+          <ul class="scard-pos"><li>推理</li><li>MoE 稀疏</li><li>apache-2.0</li></ul>
+          <div class="scard-stats">
+            <span><b>1</b> 规格</span>
+            <span><b>4</b> 量化源</span>
+            <span><b>35</b> 档位</span>
+            <span><b>4</b> 量化者</span>
+          </div>
+          <div class="scard-lic"><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a></div>
+          <p class="scard-go">看该选哪一档 →</p>
+        </a>
+        <a class="scard" href="series/kimi-k3/">
+          <div class="scard-h">
+            <h3>Kimi K3</h3>
+            <span class="scard-vendor">月之暗面</span>
+          </div>
+          <p class="scard-sum">月之暗面当前最新一代，41 家量化仓但整体热度中等。</p>
+          <ul class="scard-pos"><li>通用对话</li><li>长上下文</li></ul>
+          <div class="scard-stats">
+            <span><b>1</b> 规格</span>
+            <span><b>10</b> 量化源</span>
+            <span><b>31</b> 档位</span>
+            <span><b>10</b> 量化者</span>
+          </div>
+          <div class="scard-lic"><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a></div>
+          <p class="scard-go">看该选哪一档 →</p>
+        </a>
+        <a class="scard scard-loose" href="series/minicpm5/">
+          <div class="scard-h">
+            <h3>MiniCPM 5</h3>
+            <span class="scard-vendor">面壁智能 · OpenBMB</span>
+          </div>
+          <p class="scard-sum">国产小尺寸代表，2B 规模适合低显存与端侧。</p>
+          <ul class="scard-pos"><li>端侧</li><li>小尺寸</li><li>中文强项</li></ul>
+          <div class="scard-stats">
+            <span><b>1</b> 规格</span>
+            <span><b>10</b> 量化源</span>
+            <span><b>114</b> 档位</span>
+            <span><b>10</b> 量化者</span>
+          </div>
+          <div class="scard-lic"><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a></div>
+          <p class="scard-go">看该选哪一档 →</p>
+        </a>
+        <a class="scard" href="series/qwen3-8/">
+          <div class="scard-h">
+            <h3>千问 3.8</h3>
+            <span class="scard-vendor">阿里 · 通义千问</span>
+          </div>
+          <p class="scard-sum">阿里当前最新一代，27B 密集模型是本地部署圈热度最高的一个。</p>
+          <ul class="scard-pos"><li>通用对话</li><li>工具调用</li><li>长上下文</li><li>中文强项</li></ul>
+          <div class="scard-stats">
+            <span><b>2</b> 规格</span>
+            <span><b>17</b> 量化源</span>
+            <span><b>126</b> 档位</span>
+            <span><b>11</b> 量化者</span>
+          </div>
+          <div class="scard-lic"><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a></div>
+          <p class="scard-go">看该选哪一档 →</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="quantizer-index">
+      <h2>收录的量化者 <small>41 位</small></h2>
+      <div class="qchips">
+        <a class="qchip" href="series/qwen3-8/#e0"><code>0ppxnhximxr</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>6block</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>Abiray</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>AesSedai</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>Amynnnn</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>AtomicChat</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>Coder40-95</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>GrEarl</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>Kuberwastaken</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>L-Alchemyst</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>Mungert</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>NANI-Nithin</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>Preyazz</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>abenzerps</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>aj9o9</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>apetersson</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>aria220</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>backpack-run</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>bartowski</code><span>老牌量化者，档位命名规范、说明文档最完整</span></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>batiai</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>bullerwins</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>byteshape</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>ddh0</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>ggml-org</code><span>llama.cpp 所属组织的官方量化发布</span></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>giladgd</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>gooseyai</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>indiansatoshi</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>lausannequants</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>lmstudio-community</code><span>LM Studio 官方社区组织，为其 GUI 客户端供包</span></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>mradermacher</code><span>Mirostat 作者，长期做低比特实验性量化</span></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>muzzy</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>ngquocvinh</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>openbmb</code><span>模型方自己出的 GGUF（最可信的一档）</span></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>prithivMLmods</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>qtum</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>sokann</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>tarruda</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>teamblobfish</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>unsloth</code><span>量化覆盖面最广、下载量最高的第三方量化者</span></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>vcruz305</code></a>
+        <a class="qchip" href="series/qwen3-8/#e0"><code>zurichquants</code></a>
+      </div>
+    </section>
+
+    <section class="legal-note">
+      <h3>数据来源与法律立场</h3>
+      <p>数据来自 <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> 公开 API（模型元数据 + 文件体积），采集时间 <code>2026-09-30</code>，为快照数据而非实时。</p>
+      <p><b>本站不跑 benchmark，不给质量与速度结论。</b>凡涉及主观判断处均标注「我们的口径」。</p>
+      <p><b>不下载、不托管任何权重文件</b>；许可原样引自发布页，本站不解读许可、不构成法律意见，一切以<a href="https://specul.com/legal.html" target="_blank" rel="noopener">发布页原文</a>为准。</p>
+      <p>系列选择依据四维打分（量化热度 40 / 量化广度 25 / 规模可及性 20 / 新鲜度 15），方法与落选名单见 <a href="https://github.com/speculcom/ai-quantized-llm" target="_blank" rel="noopener">数据仓 METHODOLOGY.md ↗</a>。</p>
+    </section>
+  </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://keel.specul.com/">规划中</a>
+          <a href="https://ide.specul.com/">IDE 图谱</a>
+          <a href="https://cli.specul.com/">CLI 图谱</a>
+          <a href="https://mcp.specul.com/">MCP 图谱</a>
+          <a href="https://models.specul.com/">Models 图谱</a>
+          <a href="https://github.com/speculcom/ai-quantized-llm" target="_blank" rel="noopener">数据仓</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
