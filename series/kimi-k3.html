@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kimi K3 量化版对比 · Models 图谱</title>
+  <meta name="description" content="Kimi K3（月之暗面）的第三方 GGUF 量化版本对比：1 个规格、10 个量化来源，含实测文件体积、许可、上下文长度与选档建议。" />
+  <link rel="canonical" href="https://models.specul.com/series/kimi-k3/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kimi K3 量化版对比 · Models 图谱" />
+  <meta property="og:url" content="https://models.specul.com/series/kimi-k3/" />
+  <meta property="og:title" content="Kimi K3 量化版对比 · Models 图谱" />
+  <meta property="og:description" content="Kimi K3（月之暗面）的第三方 GGUF 量化版本对比：1 个规格、10 个量化来源，含实测文件体积、许可、上下文长度与选档建议。" />
+  <meta name="theme-color" content="#05080f" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cf8'/%3E%3Cstop offset='1' stop-color='%2322d3c5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='%2305080f'/%3E%3Cpath d='M14 32 L24 12 L34 32' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='2.4' fill='%2322d3c5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../../brand.css" />
+  <link rel="stylesheet" href="../../site.css" />
+  <style>:root { --accent: #22d3c5; }</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Kimi K3 GGUF 量化版本索引","description":"月之暗面当前最新一代，41 家量化仓但整体热度中等。","url":"https://models.specul.com/series/kimi-k3/","isAccessibleForFree":true,"license":"https://creativecommons.org/publicdomain/zero/1.0/","temporalCoverage":"2026-09-30"}</script>
+</head>
+<body class="brand-ambient" style="--accent:#22d3c5">
+  <a class="t-skip" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <div class="container site-bar">
+      <a class="brand" href="https://specul.com/" title="投机取巧">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name">投机取巧</span>
+          <span class="brand-sub" id="markSub" data-zh-sub="投机取巧" data-en-sub="Speculation · Craft">投机取巧</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="站点导航">
+        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+        <a href="https://keel.specul.com/"><span data-zh>规划中</span><span data-en>Plan</span></a>
+        <a href="https://ide.specul.com/"><span data-zh>IDE 图谱</span><span data-en>IDE</span></a>
+        <a href="https://cli.specul.com/"><span data-zh>CLI 图谱</span><span data-en>CLI</span></a>
+        <a href="https://mcp.specul.com/"><span data-zh>MCP 图谱</span><span data-en>MCP</span></a>
+        <a href="https://models.specul.com/" aria-current="page"><span data-zh>Models 图谱</span><span data-en>Models</span></a>
+        <span class="nav-tools">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
+          <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
+        </span>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+  <div class="container">
+    <nav class="crumbs"><a href="https://models.specul.com/">← 全部系列</a></nav>
+    <header class="page-head">
+      <p class="eyebrow"><span data-zh>月之暗面</span><span data-en>Moonshot AI</span>　·　发布于 2026-06-13</p>
+      <h1><span data-zh>Kimi K3</span><span data-en>Kimi K3</span></h1>
+      <p class="lede">月之暗面当前最新一代，41 家量化仓但整体热度中等。</p>
+      <ul class="pos"><li>通用对话</li><li>长上下文</li></ul>
+      <nav class="member-nav"><a href="#m0">Kimi K3</a></nav>
+    </header>
+    <section class="trust">
+      <h2>先说清楚：这个站的数据怎么来的</h2>
+      <div class="trust-grid">
+        <div class="trust-item t-a">
+          <span class="trust-tag">✅ 实测字段</span>
+          <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
+        </div>
+        <div class="trust-item t-b">
+          <span class="trust-tag">✅ 推导</span>
+          <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
+        </div>
+        <div class="trust-item t-c">
+          <span class="trust-tag">❌ 我们不说的</span>
+          <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
+        </div>
+      </div>
+      <p class="trust-foot">
+        本站<b>不下载、不托管任何模型权重文件</b>。所有数字都来自公开元数据，点击即可回到发布页核对。
+        采集时间：<code>2026-09-30</code>（数据快照，非实时）
+      </p>
+    </section>
+      <section class="member" id="m0">
+        <h3><span class="member-idx">成员 1</span>Kimi K3</h3>
+        <p class="member-meta">2669B 总参（MoE，激活数未公开）　·　通用　·　10 个量化来源</p>
+        <div class="block" id="a0">
+          <h4><span class="blk">A</span>基础模型卡 <small>这一档位是什么</small></h4>
+      <table class="kv">
+        <tr><th>官方发布页</th><td><a href="https://huggingface.co/moonshotai/Kimi-K3" target="_blank" rel="noopener">moonshotai/Kimi-K3 ↗</a></td></tr>
+        <tr><th>许可</th><td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><p class="warn-inline">⚠ 非宽松许可，<b>以发布页原文为准</b>。本站不解读许可条款，也不给法律意见。</p></td></tr>
+        <tr><th>规模</th><td>2669B 总参（MoE，激活数未公开）</td></tr>
+        <tr><th>架构</th><td><code>kimi-k3</code></td></tr>
+        <tr><th>上下文长度</th><td><code>1,048,576</code> tokens</td></tr>
+        <tr><th>定位</th><td>通用</td></tr>
+        <tr><th>官方下载量</th><td><b>1.4M</b>　<span class="muted">点赞 12k</span></td></tr>
+        <tr><th>最近更新</th><td>2026-09-02</td></tr>
+      </table>
+            <p class="member-note">许可为 other，须读发布页原文。</p>
+        </div>
+        <div class="block" id="b0">
+          <h4><span class="blk">B</span>该选哪个 <small>按你的显存倒推</small></h4>
+      <p class="block-lead">按「你实际有多少显存能装」选档位，而不是按参数猜。下面每档的体积都是<b>实测值</b>（来自发布页文件列表），<b>加权 15% 余量</b>给运行时与 KV cache。</p>
+      <table class="budget">
+        <caption>显存 → 档位速查（体积最小的可行档，质量最高的那一档）</caption>
+        <tbody>
+        <tr><th>8 GB 显存</th><td class="no-fit">这一档没有能装下的版本（最小是 —）<br><span class="muted">消费级入门卡、共享显卡</span></td></tr>
+        <tr><th>12 GB 显存</th><td class="no-fit">这一档没有能装下的版本（最小是 —）<br><span class="muted">RTX 3060 12G / 4060Ti 16G 降配使用</span></td></tr>
+        <tr><th>16 GB 显存</th><td class="no-fit">这一档没有能装下的版本（最小是 —）<br><span class="muted">RTX 4060Ti 16G / 4070S 超配</span></td></tr>
+        <tr><th>24 GB 显存</th><td class="no-fit">这一档没有能装下的版本（最小是 —）<br><span class="muted">RTX 3090 / 4090</span></td></tr>
+        <tr><th>48 GB+ 显存</th><td class="no-fit">这一档没有能装下的版本（最小是 —）<br><span class="muted">A6000 / L40S / Mac 统一内存</span></td></tr>
+        </tbody>
+      </table>
+      <details class="all-quants">
+        <summary>展开：本系列所有档位的实测体积（0 档）</summary>
+        <table class="quant-list">
+          <thead><tr><th>量化档</th><th>体积</th><th>每权重比特</th><th>档位</th><th>最小体积来源</th></tr></thead>
+          <tbody>
+
+          </tbody>
+        </table>
+        <p class="muted small">「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是 <b>B 级推导</b>，不是实测值。</p>
+      </details>
+        </div>
+        <div class="block" id="c0">
+          <h4><span class="blk">C</span>量化版本总表 <small>横向对比</small></h4>
+      <table class="variants">
+        <thead>
+          <tr>
+            <th>量化者</th><th>许可</th><th class="num">档数</th><th class="num">总体积</th>
+            <th class="num">上下文</th><th>建议档</th><th class="num">下载量</th><th>更新</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/unsloth/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>unsloth</code></a>
+              <span class="badge badge-im" title="带重要性矩阵，量化质量通常更稳">imatrix</span>
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">9</td>
+            <td class="num">6903 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>UD-Q8_K_XL</code><br><span class="muted small">1561 GB</span></td>
+            <td class="num">409k</td>
+            <td class="muted small">2026-08-07</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/AtomicChat/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>AtomicChat</code></a>
+              <span class="badge badge-im" title="带重要性矩阵，量化质量通常更稳">imatrix</span>
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">5</td>
+            <td class="num">5775 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>Q8_0</code><br><span class="muted small">2955 GB</span></td>
+            <td class="num">2k</td>
+            <td class="muted small">2026-07-31</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/Kuberwastaken/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>Kuberwastaken</code></a>
+              
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">0</td>
+            <td class="num">0.0 GB</td>
+            <td class="num">1,048,576</td>
+            <td>—</td>
+            <td class="num">626</td>
+            <td class="muted small">2026-07-27</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/vcruz305/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>vcruz305</code></a>
+              
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">1</td>
+            <td class="num">606 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>UD-IQ1_S</code><br><span class="muted small">330 GB</span></td>
+            <td class="num">547</td>
+            <td class="muted small">2026-09-26</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/6block/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>6block</code></a>
+              <span class="badge badge-im" title="带重要性矩阵，量化质量通常更稳">imatrix</span>
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">1</td>
+            <td class="num">1043 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>IQ1_S</code><br><span class="muted small">580 GB</span></td>
+            <td class="num">213</td>
+            <td class="muted small">2026-08-03</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/GrEarl/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>GrEarl</code></a>
+              
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">1</td>
+            <td class="num">865 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>Q2_K</code><br><span class="muted small">929 GB</span></td>
+            <td class="num">194</td>
+            <td class="muted small">2026-08-02</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/qtum/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>qtum</code></a>
+              <span class="badge badge-im" title="带重要性矩阵，量化质量通常更稳">imatrix</span>
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">1</td>
+            <td class="num">1043 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>IQ1_S</code><br><span class="muted small">580 GB</span></td>
+            <td class="num">137</td>
+            <td class="muted small">2026-08-17</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/bullerwins/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>bullerwins</code></a>
+              
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><span class="lic lic-unknown">许可缺失</span></td>
+            <td class="num">1</td>
+            <td class="num">1454 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>MXFP4</code><br><span class="muted small">1561 GB</span></td>
+            <td class="num">115</td>
+            <td class="muted small">2026-07-28</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/aria220/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>aria220</code></a>
+              <span class="badge badge-im" title="带重要性矩阵，量化质量通常更稳">imatrix</span>
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">6</td>
+            <td class="num">5481 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>UD-Q8_K_XL</code><br><span class="muted small">1561 GB</span></td>
+            <td class="num">97</td>
+            <td class="muted small">2026-07-29</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://huggingface.co/Amynnnn/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>Amynnnn</code></a>
+              <span class="badge badge-im" title="带重要性矩阵，量化质量通常更稳">imatrix</span>
+              <br><span class="muted small"><code>kimi-k3</code></span>
+            </td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td class="num">6</td>
+            <td class="num">5481 GB</td>
+            <td class="num">1,048,576</td>
+            <td><code>UD-Q8_K_XL</code><br><span class="muted small">1561 GB</span></td>
+            <td class="num">92</td>
+            <td class="muted small">2026-08-02</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="muted small">「建议档」是本站按<b>体积最小且落在平衡档</b>的规则自动选出的，不是质量排名。官方量化排在最前；带 <span class="badge badge-im">imatrix</span> 标记的仓库带重要性矩阵数据。</p>
+        </div>
+        <div class="block" id="d0">
+          <h4><span class="blk">D</span>每个变体详解 <small>七字段</small></h4>
+      <p class="block-lead">每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></p>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>unsloth</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">9 档 · 6903 GB · 409k 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/unsloth/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>unsloth/Kimi-K3-GGUF</code> ↗</a>，提供 <b>9</b> 个 GGUF 量化档，合计 6903 GB。由 <code>unsloth</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>Kimi-K3-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 7411.8 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>AtomicChat</code> 5 档、<code>Kuberwastaken</code> 0 档、<code>vcruz305</code> 1 档、<code>6block</code> 1 档 等）。 本仓 9 档，覆盖最全。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（UD-Q8_K_XL 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>UD-Q8_K_XL</code>（1561 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>UD-Q8_K_XL</code>（1561 GB，近似无损）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 6903 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>AtomicChat</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">5 档 · 5775 GB · 2k 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>AtomicChat/Kimi-K3-GGUF</code> ↗</a>，提供 <b>5</b> 个 GGUF 量化档，合计 5775 GB。由 <code>AtomicChat</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/data/imatrix_v2.dat</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 6200.5 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>Kuberwastaken</code> 0 档、<code>vcruz305</code> 1 档、<code>6block</code> 1 档 等）。 本仓 5 档，覆盖中等。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q8_0 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q8_0</code>（2955 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q8_0</code>（2955 GB，近似无损）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 5775 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>Kuberwastaken</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">0 档 · 0.0 GB · 626 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/Kuberwastaken/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>Kuberwastaken/Kimi-K3-GGUF</code> ↗</a>，提供 <b>0</b> 个 GGUF 量化档，合计 0.0 GB。由 <code>Kuberwastaken</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>AtomicChat</code> 5 档、<code>vcruz305</code> 1 档、<code>6block</code> 1 档 等）。 本仓 0 档，覆盖最少。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（— 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 体量较小，适合只想快速验证能不能跑的场景</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">该仓无可用档位。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>vcruz305</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">1 档 · 606 GB · 547 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/vcruz305/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>vcruz305/Kimi-K3-GGUF</code> ↗</a>，提供 <b>1</b> 个 GGUF 量化档，合计 606 GB。由 <code>vcruz305</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 650.5 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>AtomicChat</code> 5 档、<code>Kuberwastaken</code> 0 档、<code>6block</code> 1 档 等）。 本仓 1 档，覆盖中等。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（UD-IQ1_S 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>UD-IQ1_S</code>（330 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>UD-IQ1_S</code>（330 GB，极限压缩）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 606 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>6block</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">1 档 · 1043 GB · 213 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/6block/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>6block/Kimi-K3-GGUF</code> ↗</a>，提供 <b>1</b> 个 GGUF 量化档，合计 1043 GB。由 <code>6block</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>imatrix_k3.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 1119.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>AtomicChat</code> 5 档、<code>Kuberwastaken</code> 0 档、<code>vcruz305</code> 1 档 等）。 本仓 1 档，覆盖中等。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（IQ1_S 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>IQ1_S</code>（580 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>IQ1_S</code>（580 GB，极限压缩）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 全仓 1043 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>GrEarl</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">1 档 · 865 GB · 194 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/GrEarl/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>GrEarl/Kimi-K3-GGUF</code> ↗</a>，提供 <b>1</b> 个 GGUF 量化档，合计 865 GB。由 <code>GrEarl</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 928.6 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>AtomicChat</code> 5 档、<code>Kuberwastaken</code> 0 档、<code>vcruz305</code> 1 档 等）。 本仓 1 档，覆盖中等。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q2_K 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q2_K</code>（929 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q2_K</code>（929 GB，极限压缩）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 865 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>qtum</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">1 档 · 1043 GB · 137 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/qtum/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>qtum/Kimi-K3-GGUF</code> ↗</a>，提供 <b>1</b> 个 GGUF 量化档，合计 1043 GB。由 <code>qtum</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>imatrix_k3.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 1119.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>AtomicChat</code> 5 档、<code>Kuberwastaken</code> 0 档、<code>vcruz305</code> 1 档 等）。 本仓 1 档，覆盖中等。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（IQ1_S 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>IQ1_S</code>（580 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>IQ1_S</code>（580 GB，极限压缩）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 全仓 1043 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>bullerwins</code></h4>
+            <div class="vcard-meta">
+              <span class="lic lic-unknown">许可缺失</span>
+              <span class="muted small">1 档 · 1454 GB · 115 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/bullerwins/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>bullerwins/Kimi-K3-GGUF</code> ↗</a>，提供 <b>1</b> 个 GGUF 量化档，合计 1454 GB。由 <code>bullerwins</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 1561.2 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>AtomicChat</code> 5 档、<code>Kuberwastaken</code> 0 档、<code>vcruz305</code> 1 档 等）。 本仓 1 档，覆盖中等。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>MXFP4</code>（1561 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（1561 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 1454 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>aria220</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">6 档 · 5481 GB · 97 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/aria220/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>aria220/Kimi-K3-GGUF</code> ↗</a>，提供 <b>6</b> 个 GGUF 量化档，合计 5481 GB。由 <code>aria220</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>Kimi-K3-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 5885.0 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>AtomicChat</code> 5 档、<code>Kuberwastaken</code> 0 档、<code>vcruz305</code> 1 档 等）。 本仓 6 档，覆盖中等。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（UD-Q8_K_XL 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>UD-Q8_K_XL</code>（1561 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>UD-Q8_K_XL</code>（1561 GB，近似无损）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 5481 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        <article class="vcard">
+          <header class="vcard-h">
+            <h4><code>Amynnnn</code></h4>
+            <div class="vcard-meta">
+              <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
+              <span class="muted small">6 档 · 5481 GB · 92 下载</span>
+            </div>
+          </header>
+        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/Amynnnn/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>Amynnnn/Kimi-K3-GGUF</code> ↗</a>，提供 <b>6</b> 个 GGUF 量化档，合计 5481 GB。由 <code>Amynnnn</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>Kimi-K3-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>kimi-k3</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>moonshotai/Kimi-K3</code>；权重总字节 5885.0 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
+        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 9 档、<code>AtomicChat</code> 5 档、<code>Kuberwastaken</code> 0 档、<code>vcruz305</code> 1 档 等）。 本仓 6 档，覆盖中等。</span></div>
+        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（UD-Q8_K_XL 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
+        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>UD-Q8_K_XL</code>（1561 GB），是大多数人的起点</span></div>
+        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>UD-Q8_K_XL</code>（1561 GB，近似无损）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 5481 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        </article>
+        </div>
+        <div class="block" id="e0">
+          <h4><span class="blk">E</span>量化者档案 <small>选量化者意味着什么</small></h4>
+      <p class="block-lead">量化者决定了这个包的<b>档位覆盖、命名规范、是否带 imatrix、什么时候跟进新模型</b>。这一区块说明「选这个量化者的量化意味着什么」。</p>
+        <article class="qcard">
+          <h4><code>unsloth</code> <span class="muted small">量化覆盖面最广、下载量最高的第三方量化者</span></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 409k 下载</p>
+          <div class="qcard-body"><p><b>定位</b>：量化覆盖面最广、下载量最高的第三方量化者。</p>
+<p><b>擅长什么</b>：几乎每个主流基础模型都第一时间跟 GGUF，且档位最全——从极限压缩到近似无损一应俱全。提供静态（static）与动态（dynamic，用 <code>UD-</code> 前缀）两套量化。</p>
+<ul>
+  <li><b>为什么要认 unsloth 版</b>：</li>
+  <li>覆盖率高 → 你想要的档位通常都有</li>
+  <li>命名规范 → <code>Q4_K_M</code> 就是 <code>Q4_K_M</code>，不会同档不同名</li>
+  <li>带 importance matrix（imatrix）→ 量化质量比纯 RTN 更稳</li>
+  <li>官方教程与 LM Studio / llama.cpp 集成路径最顺</li>
+</ul>
+<p><b>注意</b>：unsloth 的动态量化（<code>UD-Q4_K_XL</code> 等）在同档位下体积略大、速度略慢，换来的是质量通常更好。是否值得取决于你的瓶颈是显存还是速度——<b>这是我们的口径，不是实测结论</b>。</p>
+<p><b>官方发布页</b>：https://huggingface.co/unsloth</p></div>
+          <a class="qcard-link" href="https://huggingface.co/unsloth" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>AtomicChat</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 2k 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/AtomicChat" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>Kuberwastaken</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 626 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/Kuberwastaken" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>vcruz305</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 547 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/vcruz305" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>6block</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 213 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/6block" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>GrEarl</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 194 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/GrEarl" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>qtum</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 137 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/qtum" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>bullerwins</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 115 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/bullerwins" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>aria220</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 97 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/aria220" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        <article class="qcard">
+          <h4><code>Amynnnn</code></h4>
+          <p class="qcard-scope">在本系列：1 个仓 · 92 下载</p>
+          <div class="qcard-body"><p><b>代表</b>：<code>openbmb</code>（面壁智能）、<code>google</code>、<code>Qwen</code>、<code>unsloth</code> 转发的 <code>Qwen/Qwen3-30B-A3B-GGUF</code>。</p>
+<ul>
+  <li><b>为什么优先级最高</b>：</li>
+  <li>只有模型作者完全知道哪几层权重对质量最敏感</li>
+  <li>官方量化档位数量通常很少（往往只有 Q4_K_M / Q8_0 两三档），因为官方只覆盖「安全」的选择</li>
+  <li>出错时责任明确，不会因为第三方的错误 imatrix 导致质量异常</li>
+</ul>
+<p><b>如果官方出了量化版，优先用它。</b> 除非你需要官方没提供的极低比特档位。</p>
+<ul>
+  <li><b>例外情况</b>：</li>
+  <li>官方可能只出 1~2 档，你实际需要 Q3 或 IQ4_XS 之类，还是得找第三方</li>
+  <li>官方 GGUF 的更新频率依赖官方团队节奏，可能比第三方慢</li>
+</ul>
+<p><b>核验方式</b>：在本站系列页里，标有「官方」的条目会排在第三方之前。每条的许可都从 HF 发布页的 <code>cardData.license</code> 字段读取，以发布页原文为准。</p></div>
+          <a class="qcard-link" href="https://huggingface.co/Amynnnn" target="_blank" rel="noopener">发布页 ↗</a>
+        </article>
+        </div>
+        <div class="block" id="f0">
+          <h4><span class="blk">F</span>更新记录 <small>谁在跟进</small></h4>
+      <p class="block-lead">按更新时间倒序。更新频繁说明该量化者在跟进新版本；长期不更新则基础模型升版后可能不同步。</p>
+      <ul class="log">
+        <li>
+          <span class="log-date">2026-09-26</span>
+          <a href="https://huggingface.co/vcruz305/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>vcruz305</code></a>
+          <span class="muted">更新了 1 个档位</span>
+        </li>
+        <li>
+          <span class="log-date">2026-08-17</span>
+          <a href="https://huggingface.co/qtum/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>qtum</code></a>
+          <span class="muted">更新了 1 个档位 · 含 imatrix</span>
+        </li>
+        <li>
+          <span class="log-date">2026-08-07</span>
+          <a href="https://huggingface.co/unsloth/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>unsloth</code></a>
+          <span class="muted">更新了 9 个档位 · 含 imatrix</span>
+        </li>
+        <li>
+          <span class="log-date">2026-08-03</span>
+          <a href="https://huggingface.co/6block/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>6block</code></a>
+          <span class="muted">更新了 1 个档位 · 含 imatrix</span>
+        </li>
+        <li>
+          <span class="log-date">2026-08-02</span>
+          <a href="https://huggingface.co/GrEarl/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>GrEarl</code></a>
+          <span class="muted">更新了 1 个档位</span>
+        </li>
+        <li>
+          <span class="log-date">2026-08-02</span>
+          <a href="https://huggingface.co/Amynnnn/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>Amynnnn</code></a>
+          <span class="muted">更新了 6 个档位 · 含 imatrix</span>
+        </li>
+        <li>
+          <span class="log-date">2026-07-31</span>
+          <a href="https://huggingface.co/AtomicChat/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>AtomicChat</code></a>
+          <span class="muted">更新了 5 个档位 · 含 imatrix</span>
+        </li>
+        <li>
+          <span class="log-date">2026-07-29</span>
+          <a href="https://huggingface.co/aria220/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>aria220</code></a>
+          <span class="muted">更新了 6 个档位 · 含 imatrix</span>
+        </li>
+        <li>
+          <span class="log-date">2026-07-28</span>
+          <a href="https://huggingface.co/bullerwins/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>bullerwins</code></a>
+          <span class="muted">更新了 1 个档位</span>
+        </li>
+        <li>
+          <span class="log-date">2026-07-27</span>
+          <a href="https://huggingface.co/Kuberwastaken/Kimi-K3-GGUF" target="_blank" rel="noopener"><code>Kuberwastaken</code></a>
+          <span class="muted">更新了 0 个档位</span>
+        </li>
+      </ul>
+      <p class="muted small">基础模型 <code>moonshotai/Kimi-K3</code> 最近更新：2026-09-02　·　本站采集时间：2026-09-30</p>
+        </div>
+      </section>
+    <section class="legal-note">
+      <h3>关于数据与许可</h3>
+      <p>本站数据全部来自 <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> 公开 API，采集时间 <code>2026-09-30</code>，为快照数据。</p>
+      <p>本站<b>不下载、不托管任何模型权重文件</b>，只提供发布页链接。许可字段原样引自发布页，<b>本站不解读许可条款、不构成法律意见</b>，一切以<a href="https://specul.com/legal.html" target="_blank" rel="noopener">发布页原文</a>为准。</p>
+      <p>模型名称均为各自权利人的商标，此处仅作描述性使用。本站与上述厂商无隶属或合作关系。</p>
+    </section>
+  </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="foot-copy">© 2026 投机取巧 · <span data-zh>Specul</span><span data-en>Specul</span></span>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+          <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
+          <a href="https://keel.specul.com/">规划中</a>
+          <a href="https://ide.specul.com/">IDE 图谱</a>
+          <a href="https://cli.specul.com/">CLI 图谱</a>
+          <a href="https://mcp.specul.com/">MCP 图谱</a>
+          <a href="https://models.specul.com/">Models 图谱</a>
+          <a href="https://github.com/speculcom/ai-quantized-llm" target="_blank" rel="noopener">数据仓</a>
+      </nav>
+      <nav class="foot-legal-links" aria-label="法律">
+        <a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a>
+        <a href="https://specul.com/legal.html#s6"><span data-zh>免责声明</span><span data-en>Disclaimer</span></a>
+        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私与本地存储</span><span data-en>Privacy</span></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="../../brand.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function sync() { root.setAttribute('data-lang', root.lang === 'en' ? 'en' : 'zh'); }
+      new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['lang'] });
+      sync();
+    })();
+  </script>
+</body>
+</html>
