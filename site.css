@@ -7,6 +7,7 @@
 .lede{color:var(--text-dim);font-size:1.02rem;line-height:1.75;max-width:70ch}
 .home-head{margin-bottom:2em}
 .home-head .lede b{color:var(--text)}
+.lede-sub{margin-top:.9em;padding:.7em .9em;border-left:3px solid var(--cyan);background:var(--bg-soft);border-radius:0 6px 6px 0;font-size:.93rem}
 
 .home-stats{display:flex;flex-wrap:wrap;gap:1.6rem;margin:1.5em 0 0;padding:1.1em 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .home-stats>div{display:flex;flex-direction:column}
@@ -70,17 +71,47 @@ caption{caption-side:top;text-align:left;font-size:.8rem;color:var(--muted);padd
 .no-fit{color:var(--gold)}
 .muted{color:var(--muted)}
 .small{font-size:.8em}
+/* HF model_type / hfArch 这类标识符（Qwen3_5ForConditionalGeneration）本身是
+   一个不可分的词，但窄屏必须能换行，否则整页横向溢出 */
+.muted{overflow-wrap:anywhere}
 code{font-family:var(--mono);font-size:.9em;background:var(--bg-soft);padding:.1em .38em;border-radius:4px;overflow-wrap:anywhere}
 
 .budget th{width:9em}
+/* 超大MoE 的前置提醒：最小档超过单卡上限时，必须在选档表之前就说清「不是不能跑，是要换运行方式」 */
+.warn-note{margin:0 0 1.4em;padding:.85em 1em;border-left:3px solid var(--gold);background:var(--bg-soft);border-radius:0 6px 6px 0;font-size:.85rem;line-height:1.8;color:var(--text-dim)}
+.warn-note b{color:var(--text)}
+.budget-h{margin:1.6em 0 .5em;font-size:.9rem;color:var(--text);font-weight:600}
+.nowrap{white-space:nowrap}
 .budget td b{color:var(--cyan)}
+
+/* ── A 区扩展：参数量三来源 / 精度构成 / 标签 ── */
+.kv-nested{margin:.1em 0 .4em;border-left:2px solid var(--line);padding-left:.8em}
+.kv-nested th{width:8em;font-size:.74rem;padding:.25em .5em .25em 0}
+.kv-nested td{padding:.25em 0;font-size:.9rem}
+.param-ok{font-size:.8rem;color:var(--cyan);margin:.2em 0 0}
+.prec{width:100%;font-size:.82rem}
+.prec td{padding:.2em .4em .2em 0;border:none;white-space:nowrap}
+.prec td:first-child{width:5.5em}
+.prec-bar{width:34%;min-width:60px}
+.prec-bar span{display:block;height:.55em;border-radius:3px;background:linear-gradient(90deg,var(--vio),var(--cyan));opacity:.75}
+.prec td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+/* white-space 不能用 nowrap —— tag 里装的是 org/repo 这类长串（如
+   zai-org/GLM-5.3、Qwen/Qwen3.8-Flash-Next），320~390px 下 nowrap 会直接把
+   容器撑破（实测 kimi-k3 页在 320px 溢出到 603px）。改用 overflow-wrap 让长串
+   在必要时断行，短标签仍然看起来是完整的。 */
+.tag{display:inline-block;font-size:.72rem;padding:.14em .5em;margin:.1em .2em .1em 0;border-radius:4px;border:1px solid var(--line);color:var(--muted);background:var(--bg-soft);text-decoration:none;overflow-wrap:anywhere;word-break:break-word;max-width:100%}
+a.tag:hover{border-color:var(--vio);color:var(--vio)}
+.tag-lic{color:var(--gold);border-color:rgba(245,197,66,.3);background:rgba(245,197,66,.07)}
+.tag-paper{color:var(--vio);border-color:rgba(139,124,248,.3);background:rgba(139,124,248,.07)}
+.tag-rt{color:var(--cyan);border-color:rgba(34,211,197,.3);background:rgba(34,211,197,.07)}
 
 details.all-quants{margin-top:1em;border:1px solid var(--line);border-radius:8px;padding:.7em 1em;background:var(--panel)}
 details.all-quants summary{cursor:pointer;font-size:.86rem;color:var(--cyan)}
 .quant-list{margin-top:.8em}
 
 /* ── 徽章 ── */
-.lic{display:inline-block;font-size:.7rem;padding:.12em .5em;border-radius:4px;text-decoration:none;border:1px solid;white-space:nowrap}
+/* 同 .tag：许可徽章里会出现 license:apache-2.0 这类长串，nowrap 会撑破窄屏 */
+.lic{display:inline-block;font-size:.7rem;padding:.12em .5em;border-radius:4px;text-decoration:none;border:1px solid;overflow-wrap:anywhere;word-break:break-word;max-width:100%}
 .lic-loose{color:var(--cyan);border-color:rgba(34,211,197,.35);background:rgba(34,211,197,.08)}
 .lic-tight{color:var(--gold);border-color:rgba(245,197,66,.35);background:rgba(245,197,66,.08)}
 .lic-unknown{color:var(--gold);border-color:rgba(245,197,66,.35)}
@@ -123,8 +154,10 @@ details.all-quants summary{cursor:pointer;font-size:.86rem;color:var(--cyan)}
 .qcard-link{display:inline-block;margin-top:.7em;font-size:.78rem;color:var(--cyan);text-decoration:none}
 
 /* ── 系列卡 ── */
-.scards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1em}
-.scard{display:block;padding:1.15em 1.25em;border:1px solid var(--line);border-radius:10px;background:var(--panel);text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.scards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(290px,100%),1fr));gap:1em}
+/* min-width:0 —— grid item 默认 min-width:auto，长内容（许可串、repo 名）会把
+   整列撑到内容宽度，突破 auto-fill 的 minmax(...,1fr) 约束 */
+.scard{display:block;padding:1.15em 1.25em;border:1px solid var(--line);border-radius:10px;background:var(--panel);text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;min-width:0}
 .scard:hover{border-color:var(--cyan);transform:translateY(-2px)}
 .scard-h{display:flex;justify-content:space-between;align-items:baseline;gap:.6em;flex-wrap:wrap}
 .scard-h h3{margin:0;font-size:1.12rem;color:var(--text)}
@@ -134,11 +167,12 @@ details.all-quants summary{cursor:pointer;font-size:.86rem;color:var(--cyan)}
 .scard-pos li{font-size:.7rem;padding:.18em .5em;border-radius:4px;background:var(--bg-soft);color:var(--muted)}
 .scard-stats{display:flex;gap:1em;flex-wrap:wrap;padding:.7em 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.76rem;color:var(--muted)}
 .scard-stats b{color:var(--cyan);font-variant-numeric:tabular-nums}
-.scard-lic{margin:.7em 0 .6em;display:flex;gap:.35em;flex-wrap:wrap}
+.scard-lic{margin:.7em 0 .6em;display:flex;gap:.35em;flex-wrap:wrap;min-width:0}
+.scard-lic>*{min-width:0}
 .scard-go{margin:0;font-size:.78rem;color:var(--cyan)}
 
 /* ── 量化者 chips ── */
-.qchips{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.6em}
+.qchips{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:.6em}
 .qchip{display:block;padding:.7em .85em;border:1px solid var(--line);border-radius:7px;text-decoration:none;background:var(--panel)}
 .qchip:hover{border-color:var(--vio)}
 .qchip code{background:none;padding:0;color:var(--vio);font-weight:600;font-size:.85em}
@@ -166,14 +200,30 @@ details.all-quants summary{cursor:pointer;font-size:.86rem;color:var(--cyan)}
   .vcard-h{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:560px){
-  table.variants,table.budget,table.quant-list,table.kv{display:block}
+  table.variants,table.budget,table.quant-list,table.kv:not(.kv-nested){display:block}
   table.variants thead,table.budget thead,table.quant-list thead{display:none}
-  table.variants tbody,table.budget tbody,table.quant-list tbody,table.kv tbody{display:block}
-  table.variants tr,table.budget tr,table.quant-list tr,table.kv tr{display:block;margin-bottom:1em;padding:.6em .8em;border:1px solid var(--line);border-radius:7px;background:var(--panel)}
-  table.variants td,table.budget td,table.quant-list td,table.kv td{display:flex;justify-content:space-between;gap:1em;border:none;padding:.3em 0;text-align:left}
-  table.variants td::before,table.budget td::before,table.quant-list td::before,table.kv td::before{content:attr(data-label);color:var(--muted);font-size:.76em;flex:0 0 auto}
-  table.kv td::before{content:none}
-  table.kv th{display:block;width:auto;padding:.4em 0 .1em;border:none}
-  table.kv tr{display:block;background:none;border:none;margin-bottom:.4em}
+  table.variants tbody,table.budget tbody,table.quant-list tbody,table.kv:not(.kv-nested) tbody{display:block}
+  table.variants tr,table.budget tr,table.quant-list tr,table.kv:not(.kv-nested) tr{display:block;margin-bottom:1em;padding:.6em .8em;border:1px solid var(--line);border-radius:7px;background:var(--panel)}
+  table.variants td,table.budget td,table.quant-list td,table.kv:not(.kv-nested) td{display:flex;justify-content:space-between;gap:1em;border:none;padding:.3em 0;text-align:left}
+  table.variants td::before,table.budget td::before,table.quant-list td::before,table.kv:not(.kv-nested) td::before{content:attr(data-label);color:var(--muted);font-size:.76em;flex:0 0 auto}
+  table.kv:not(.kv-nested) td::before{content:none}
+  table.kv:not(.kv-nested) th{display:block;width:auto;padding:.4em 0 .1em;border:none}
+  table.kv:not(.kv-nested) tr{display:block;background:none;border:none;margin-bottom:.4em}
+  /* budget 表只有「档位 / 推荐」两列，且推荐格里塞了多个 <br> 分隔的说明块。
+     上面的通用规则把 td 变成 flex，导致每个 <br> 与 <span> 都成了独立 flex item
+     —— 整块文字被压成一条窄带（实测 320px 下溢出到 348px）。这里改回普通块级流。 */
+  table.budget td{display:block}
+  /* model_type / hfArch（Qwen3_5ForConditionalGeneration 这类）本身不该断在
+     字符中间，但窄屏必须允许换行 —— 统一给窄屏表格里的行内 code 加 anywhere。 */
+  table.variants td code,table.budget td code,table.quant-list td code,table.kv:not(.kv-nested) td code{overflow-wrap:anywhere;word-break:break-word}
+  table.variants td>*,table.quant-list td>*{min-width:0}
+  /* A 区嵌套表在窄屏不能跟着 kv 一起卡片化，否则套娃很难读：保持表格形态但压缩留白 */
+  .kv-nested{border-left:0;padding-left:0;margin-left:0}
+  .kv-nested th{width:6.5em;font-size:.72rem;padding:.25em .4em .25em 0}
+  .kv-nested td{font-size:.84rem}
+  .prec-bar{width:auto;min-width:40px}
+  .prec{font-size:.78rem}
+  .prec td{padding:.18em .3em .18em 0}
+  .prec td:last-child{text-align:left}
   td.num{text-align:right}
 }
