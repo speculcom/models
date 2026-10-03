@@ -88,6 +88,27 @@
   --ease: cubic-bezier(.4, 0, .2, 1);
   --shadow: 0 20px 50px -28px rgba(0, 0, 0, .85);
 
+  /* ── 排版尺度（2026-10-03 新增）─────────────────────────────────────
+     为什么加：实测六站的「气势」差得离谱 ——
+       www     h1 60px · 区块上边距 108px   （最大气）
+       agent   h1 60px · 区块上边距  80px
+       nav     h1 54px · 区块上边距  48px
+       learn   h1 34px · 区块上边距  54px
+       models  h1 40px · 区块上边距21.7px   （最局促）
+       agent详情 h1 30px · 区块上边距  0     （最挤）
+     models 的 h1 只有 www 的 2/3、区块间距只有 1/5，详情页 h1 与区块之间
+     几乎不留白 —— 这就是「不像一套站」的根源。
+     各站内容层以后引用这几个变量，尺度就自动统一了。 */
+  --display: clamp(34px, 5.2vw, 60px);   /* 首页主标 */
+  --display-sub: clamp(26px, 3.4vw, 40px);/* 详情页主标 */
+  --h2: clamp(22px, 2.6vw, 30px);
+  --lede: 17px;
+  --lede-lh: 1.72;
+  /* 区块纵向留白 —— 「大气」主要靠这个，不是靠字号 */
+  --section-pad: clamp(52px, 6vw, 88px);
+  --section-pad-sm: clamp(32px, 3.6vw, 52px);
+  --block-gap: var(--sp-5);
+
   /* 兼容别名：v1 页面仍在引用，迁移完成后删除。
      --vio → --brand；--grad-text → 品牌紫实色（v2 不再用渐变文字） */
   --vio: var(--brand);
