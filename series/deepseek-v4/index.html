@@ -509,12 +509,20 @@
           </tr>
         </tbody>
       </table>
+      <p class="tier-legend" role="list" aria-label="量化档色阶图例">
+        <span class="tier-legend-h">卡片左侧色条 = 推荐档位</span>
+        <span class="tier-legend-i tier-0">近似无损</span>
+        <span class="tier-legend-i tier-1">保守</span>
+        <span class="tier-legend-i tier-2">平衡</span>
+        <span class="tier-legend-i tier-3">长上下文</span>
+        <span class="tier-legend-i tier-4">极限压缩</span>
+      </p>
       <p class="muted small">「建议档」是本站按<b>体积最小且落在平衡档</b>的规则自动选出的，不是质量排名。官方量化排在最前；带 <span class="badge badge-im">imatrix</span> 标记的仓库带重要性矩阵数据。</p>
         </div>
         <div class="block" id="d0">
           <h4><span class="blk">D</span>每个变体详解 <small>七字段</small></h4>
       <p class="block-lead">每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></p>
-        <article class="vcard">
+        <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>unsloth</code></h4>
             <div class="vcard-meta">
@@ -531,7 +539,7 @@
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>UD-IQ4_NL</code>（138 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
         <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 1416 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
         </article>
-        <article class="vcard">
+        <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>Preyazz</code></h4>
             <div class="vcard-meta">
@@ -548,7 +556,7 @@
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（172 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
         <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 383 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
         </article>
-        <article class="vcard">
+        <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>ggml-org</code></h4>
             <div class="vcard-meta">
@@ -565,7 +573,7 @@
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（155 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
         <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 346 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
         </article>
-        <article class="vcard">
+        <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>teamblobfish</code></h4>
             <div class="vcard-meta">
@@ -582,7 +590,7 @@
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（175 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
         <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 879 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
         </article>
-        <article class="vcard">
+        <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>tarruda</code></h4>
             <div class="vcard-meta">
@@ -599,7 +607,7 @@
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（156 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
         <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 457 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
         </article>
-        <article class="vcard">
+        <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>bullerwins</code></h4>
             <div class="vcard-meta">
@@ -616,7 +624,7 @@
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>IQ4_XS</code>（155 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
         <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 839 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 量化仓<b>自己没写许可字段</b>，这里的 <code>mit</code> 是继承基座 <code>deepseek-ai/DeepSeek-V4-Flash</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认</span></div>
         </article>
-        <article class="vcard">
+        <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>ddh0</code></h4>
             <div class="vcard-meta">
