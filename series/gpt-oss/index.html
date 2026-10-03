@@ -30,13 +30,10 @@
       </a>
       <nav class="nav-links" aria-label="站点导航">
         <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
+        <a href="https://agent.specul.com/"><span data-zh>Agent</span><span data-en>Agent</span></a>
+        <a href="https://models.specul.com/" aria-current="page"><span data-zh>本地模型</span><span data-en>Models</span></a>
         <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-        <a href="https://keel.specul.com/"><span data-zh>规划中</span><span data-en>Plan</span></a>
-        <a href="https://ide.specul.com/"><span data-zh>IDE 图谱</span><span data-en>IDE</span></a>
-        <a href="https://cli.specul.com/"><span data-zh>CLI 图谱</span><span data-en>CLI</span></a>
-        <a href="https://mcp.specul.com/"><span data-zh>MCP 图谱</span><span data-en>MCP</span></a>
-        <a href="https://harness.specul.com/"><span data-zh>Harness 图谱</span><span data-en>Harness</span></a>
-        <a href="https://models.specul.com/" aria-current="page"><span data-zh>Models 图谱</span><span data-en>Models</span></a>
         <span class="nav-tools">
           <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
           <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
@@ -534,7 +531,7 @@
         <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_S 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
         <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_S</code>（12 GB），是大多数人的起点</span></div>
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_S</code>（12 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 已 287 天未更新，基础模型若有新版可能已不同步</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 已 288 天未更新，基础模型若有新版可能已不同步</span></div>
         </article>
         <article class="vcard">
           <header class="vcard-h">
@@ -568,7 +565,7 @@
         <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
         <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>MXFP4</code>（12 GB），是大多数人的起点</span></div>
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（12 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 已 422 天未更新，基础模型若有新版可能已不同步</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 已 424 天未更新，基础模型若有新版可能已不同步</span></div>
         </article>
         <article class="vcard">
           <header class="vcard-h">
@@ -585,7 +582,7 @@
         <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
         <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（27 档），从极限压缩到近似无损都能选<br>· 平衡档落在 <code>MXFP4</code>（12 GB），是大多数人的起点</span></div>
         <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（12 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 307 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 量化仓<b>自己没写许可字段</b>，这里的 <code>apache-2.0</code> 是继承基座 <code>openai/gpt-oss-20b</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认<br>· 已 416 天未更新，基础模型若有新版可能已不同步</span></div>
+        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 307 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 量化仓<b>自己没写许可字段</b>，这里的 <code>apache-2.0</code> 是继承基座 <code>openai/gpt-oss-20b</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认<br>· 已 418 天未更新，基础模型若有新版可能已不同步</span></div>
         </article>
         </div>
         <div class="block" id="e0">
@@ -697,13 +694,10 @@
       </div>
       <nav class="foot-links" aria-label="页脚导航">
           <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
+          <a href="https://learn.specul.com/">学 AI</a>
+          <a href="https://agent.specul.com/">Agent</a>
+          <a href="https://models.specul.com/">本地模型</a>
           <a href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-          <a href="https://keel.specul.com/">规划中</a>
-          <a href="https://ide.specul.com/">IDE 图谱</a>
-          <a href="https://cli.specul.com/">CLI 图谱</a>
-          <a href="https://mcp.specul.com/">MCP 图谱</a>
-          <a href="https://harness.specul.com/">Harness 图谱</a>
-          <a href="https://models.specul.com/">Models 图谱</a>
           <a href="https://github.com/speculcom/ai-quantized-llm" target="_blank" rel="noopener">数据仓</a>
       </nav>
       <nav class="foot-legal-links" aria-label="法律">
