@@ -1,4 +1,28 @@
 /* Models 图谱 · 站点样式（品牌 token 来自 brand.css） */
+
+/* ─────────────────────────────────────────────────────────────
+   站点强调色 · models 本地模型 — 金（算力、量化）
+   暗色金配深色前景 9.7:1；亮色金配白字 3.8:1
+   暗色主题下强调色很亮，配白字只有 1.6~1.7:1（按钮会糊），
+   所以 --brand-on 用深色前景；亮色主题用深强调色 + 白字。
+   ⚠ 只改这四个变量。中性色与间距必须继承 brand.css ——
+     各站 site.css 的头注释就是这么约定的，改中性色会让六站脱钩。
+   ───────────────────────────────────────────────────────────── */
+
+html:not([data-theme="light"]) {
+  --brand: #f5c542;
+  --brand-on: #241a02;
+  --brand-soft: rgba(245, 197, 66, .14);
+  --brand-line: rgba(245, 197, 66, .34);
+}
+
+html[data-theme="light"] {
+  --brand: #a97a08;
+  --brand-on: #ffffff;
+  --brand-soft: rgba(169, 122, 8, .10);
+  --brand-line: rgba(169, 122, 8, .30);
+}
+
 .container{max-width:1180px;margin:0 auto;padding:0 20px}
 
 .eyebrow{color:var(--cyan);font-size:.82rem;letter-spacing:.08em;margin:0 0 .4em}
