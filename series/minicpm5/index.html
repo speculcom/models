@@ -43,19 +43,19 @@
   </header>
   <main id="main">
   <div class="container">
-    <nav class="crumbs"><a href="https://models.specul.com/">← 全部系列</a></nav>
+    <nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh>全部系列</span><span data-en>All series</span></a></nav>
     <header class="page-head">
       <p class="eyebrow"><span data-zh>面壁智能 · OpenBMB</span><span data-en>OpenBMB</span>　·　发布于 2026-08-27</p>
       <h1><span data-zh>MiniCPM 5</span><span data-en>MiniCPM 5</span></h1>
       <p class="lede">国产小尺寸代表，2B 规模适合低显存与端侧。</p>
-      <ul class="pos"><li>端侧</li><li>小尺寸</li><li>中文强项</li></ul>
+      <ul class="pos"><li><span data-zh>端侧</span><span data-en>端侧</span></li><li><span data-zh>小尺寸</span><span data-en>小尺寸</span></li><li><span data-zh>中文强项</span><span data-en>Strong Chinese</span></li></ul>
       <nav class="member-nav"><a href="#m0">MiniCPM5 2B</a></nav>
     </header>
     <section class="trust">
-      <h2>先说清楚：这个站的数据怎么来的</h2>
+      <h2><span data-zh>先说清楚：这个站的数据怎么来的</span><span data-en>First, where this site's data comes from</span></h2>
       <div class="trust-grid">
         <div class="trust-item t-a">
-          <span class="trust-tag">✅ 实测字段</span>
+          <span class="trust-tag">✅ <span data-zh>实测字段</span><span data-en>Measured fields</span></span>
           <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
         </div>
         <div class="trust-item t-b">
@@ -63,7 +63,7 @@
           <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
         </div>
         <div class="trust-item t-c">
-          <span class="trust-tag">❌ 我们不说的</span>
+          <span class="trust-tag">❌ <span data-zh>我们不说的</span><span data-en>What we do not claim</span></span>
           <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
         </div>
       </div>
@@ -73,32 +73,32 @@
       </p>
     </section>
       <section class="member" id="m0">
-        <h3><span class="member-idx">成员 1</span>MiniCPM5 2B</h3>
+        <h3><span class="member-idx"><span data-zh>成员</span><span data-en>Member</span> 1</span>MiniCPM5 2B</h3>
         <p class="member-meta">2.5B 密集　·　端侧首选　·　10 个量化来源</p>
         <div class="block" id="a0">
           <h4><span class="blk">A</span>基础模型卡 <small>规格 · 许可 · 访问门槛 · 参数量三来源交叉核对</small></h4>
       <table class="kv">
-        <tr><th>官方发布页</th><td><a href="https://huggingface.co/openbmb/MiniCPM5-2B" target="_blank" rel="noopener">openbmb/MiniCPM5-2B ↗</a><br><span class="muted small">HF model_type：llama　·　LlamaForCausalLM</span></td></tr>
-        <tr><th>许可</th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">许可原文 ↗</a></td></tr>
-        <tr><th>访问门槛</th><td>✅ 公开下载　<span class="muted">无需申请</span></td></tr>
-        <tr><th>规模</th><td><table class="kv kv-nested">
+        <tr><th><span data-zh>官方发布页</span><span data-en>Official release page</span></th><td><a href="https://huggingface.co/openbmb/MiniCPM5-2B" target="_blank" rel="noopener">openbmb/MiniCPM5-2B ↗</a><br><span class="muted small">HF model_type：llama　·　LlamaForCausalLM</span></td></tr>
+        <tr><th><span data-zh>许可</span><span data-en>Licence</span></th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener"><span data-zh>许可原文 ↗</span><span data-en>licence text ↗</span></a></td></tr>
+        <tr><th><span data-zh>访问门槛</span><span data-en>Access</span></th><td><span data-zh>✅ 公开下载　<span class="muted">无需申请</span></span><span data-en>✅ Public download　<span class="muted">no application needed</span></span></td></tr>
+        <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
-          <tr><th>官网标注</th><td><b>2.5B 密集</b></td></tr>
-          <tr><th>官方 API 申报</th><td>2.5B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th>本站实测反推</th><td>2.7B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>2.5B 密集</b></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>2.5B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>2.7B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
         </tbody>
       </table><p class="warn-inline">⚠ 实测反推与官方申报差 6%（反推偏大）。原因是 bpw 表为标称值、且部分张量（嵌入层、视觉塔）不按主档位量化。<b>以官方申报为准</b>。</p></td></tr>
-        <tr><th>权重精度构成</th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>2.5B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
-        <tr><th>架构</th><td><code>llama</code></td></tr>
-        <tr><th>上下文长度</th><td><code>131,072</code> tokens</td></tr>
-        <tr><th>基座</th><td><span class="muted">本仓即基座（不是微调版）</span></td></tr>
-        <tr><th>任务类型</th><td><code>text-generation</code></td></tr>
+        <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>2.5B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
+        <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>llama</code></td></tr>
+        <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>131,072</code> tokens</td></tr>
+        <tr><th>基座</th><td><span data-zh><span class="muted">本仓即基座（不是微调版）</span></span><span data-en><span class="muted">this repo is the base model, not a fine-tune</span></span></td></tr>
+        <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>text-generation</code></td></tr>
         <tr><th>定位</th><td>端侧首选</td></tr>
         <tr><th>标签</th><td><span class="tag">text-generation</span> <span class="tag">conversational</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2506.07900" target="_blank" rel="noopener">arXiv:2506.07900</a> <a class="tag tag-paper" href="https://arxiv.org/abs/2602.09003" target="_blank" rel="noopener">arXiv:2602.09003</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a> <span class="tag">text-generation-inference</span></td></tr>
-        <tr><th>官方下载量</th><td><b>854k</b>　<span class="muted">点赞 2k</span></td></tr>
+        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>854k</b>　<span class="muted">点赞 2k</span></td></tr>
         <tr><th>发布日</th><td>2026-09-06</td></tr>
         <tr><th>最近更新</th><td>2026-09-29</td></tr>
-        <tr><th>发布页体积</th><td><b>5.0 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></td></tr>
+        <tr><th>发布页体积</th><td><span data-zh><b>5.0 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></span><span data-en><b>5.0 GB</b>　<span class="muted small">all files in the repo combined, including original weights at every precision</span></span></td></tr>
       </table>
             <p class="member-note">官方自己也出 GGUF（openbmb 249k 下载）。</p>
         </div>
@@ -203,9 +203,9 @@
       <p class="muted small">本系列档位体积跨度 0.7 GB → 10 GB。
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
-        <summary>展开：本系列所有档位的实测体积（36 档）</summary>
+        <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（36 <span data-zh>档</span><span data-en>tiers</span>）</summary>
         <table class="quant-list">
-          <thead><tr><th>量化档</th><th>最小体积</th><th>每权重比特</th><th>档位</th><th>该档文件数 / 体积跨度</th><th>最小体积来源</th></tr></thead>
+          <thead><tr><th><span data-zh>量化档</span><span data-en>Quant</span></th><th><span data-zh>最小体积</span><span data-en>Min size</span></th><th><span data-zh>每权重比特</span><span data-en>bpw</span></th><th><span data-zh>档位</span><span data-en>Tier</span></th><th><span data-zh>该档文件数 / 体积跨度</span><span data-en>Files in tier / size range</span></th><th>最小体积来源</th></tr></thead>
           <tbody>
             <tr>
               <td><code>IQ1_S</code></td>
@@ -506,18 +506,18 @@
       </details>
         </div>
         <div class="block" id="c0">
-          <h4><span class="blk">C</span>量化版本总表 <small>横向对比</small></h4>
+          <h4><span class="blk">C</span><span data-zh>量化版本总表</span><span data-en>Quantisation versions</span> <small><span data-zh>横向对比</span><span data-en>side by side</span></small></h4>
       <table class="variants">
         <thead>
           <tr>
-            <th>量化者</th><th>许可</th><th class="num">档数</th><th class="num">总体积</th>
-            <th class="num">上下文</th><th>建议档</th><th class="num">下载量</th><th>更新</th>
+            <th><span data-zh>量化者</span><span data-en>Quantiser</span></th><th><span data-zh>许可</span><span data-en>Licence</span></th><th class="num"><span data-zh>档数</span><span data-en>Tiers</span></th><th class="num"><span data-zh>总体积</span><span data-en>Total size</span></th>
+            <th class="num"><span data-zh>上下文</span><span data-en>Context</span></th><th><span data-zh>建议档</span><span data-en>Recommended</span></th><th class="num"><span data-zh>下载量</span><span data-en>Downloads</span></th><th><span data-zh>更新</span><span data-en>Updated</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <span class="badge badge-off">官方</span> <a href="https://huggingface.co/openbmb/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>openbmb</code></a>
+              <span data-zh><span class="badge badge-off">官方</span> </span><span data-en><span class="badge badge-off">official</span> </span><a href="https://huggingface.co/openbmb/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>openbmb</code></a>
               
               <br><span class="muted small"><code>llama</code></span>
             </td>
@@ -669,23 +669,23 @@
         </div>
         <div class="block" id="d0">
           <h4><span class="blk">D</span>每个变体详解 <small>七字段</small></h4>
-      <p class="block-lead">每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></p>
+      <p class="block-lead"><span data-zh>每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></span><span data-en>Each variant expands along seven fields: what it is → what the quantiser did → how it differs from other variants in this series → why it exists → strengths → why you would pick it → known trade-offs.<b>The last field is the only place this site offers a subjective judgement, and every item is marked as our own reading.</b></span></p>
         <article class="vcard vcard-off" data-tier="2">
           <header class="vcard-h">
             <h4><span class="badge badge-off">官方</span> <code>openbmb</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">3 档 · 8.6 GB · 242k 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 8.6 GB · <span data-zh>242k 下载</span><span data-en>242k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/openbmb/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>openbmb/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 8.6 GB。<b>这是模型方自己发布的</b>，不是第三方。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">模型作者自行量化，只有覆盖不到的档位才需要考虑第三方；未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；权重总字节 9.3 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>bartowski</code> 20 档、<code>NANI-Nithin</code> 30 档、<code>abenzerps</code> 11 档、<code>Abiray</code> 6 档 等）。 本仓 3 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">模型作者最清楚哪几层权重对质量敏感，官方量化通常是最保守、最不会出错的选择——<b>官方出了就优先用它</b>。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 官方出品，出错时责任明确<br>· 平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/openbmb/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>openbmb/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 8.6 GB。<b>这是模型方自己发布的</b>，不是第三方。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>模型作者自行量化，只有覆盖不到的档位才需要考虑第三方</span><span data-en>Quantised by the model author; third parties are only worth considering for tiers this does not cover</span>；<span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；<span data-zh>权重总字节 9.3 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 9.3 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span>、<code>Abiray</code> 6 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>bartowski</code> 20 tiers, <code>NANI-Nithin</code> 30 tiers, <code>abenzerps</code> 11 tiers, <code>Abiray</code> 6 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖最少。</span><span data-en> This repo has 3 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>模型作者最清楚哪几层权重对质量敏感，官方量化通常是最保守、最不会出错的选择——<b>官方出了就优先用它</b>。</span><span data-en>The model author knows best which layers are quality-sensitive, and official quantisation is usually the most conservative, least likely to break — <b>reach for the official build first</b>.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>官方出品，出错时责任明确</span><span data-en>Made by the model author, so there is someone accountable when it goes wrong</span><br>· <span data-zh>平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (1.6 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (1.6 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -693,16 +693,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">20 档 · 34 GB · 23k 下载</span>
+              <span class="muted small"><span data-zh>20 档</span><span data-en>20 tiers</span> · 34 GB · <span data-zh>23k 下载</span><span data-en>23k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/bartowski/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>bartowski/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>20</b> 个 GGUF 量化档，合计 34 GB。由 <code>bartowski</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；权重总字节 36.3 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>NANI-Nithin</code> 30 档、<code>abenzerps</code> 11 档、<code>Abiray</code> 6 档 等）。 本仓 20 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（20 档），从极限压缩到近似无损都能选<br>· 平衡档落在 <code>Q4_K_L</code>（1.7 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（1.7 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/bartowski/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>bartowski/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>20</b> 个 GGUF 量化档，合计 34 GB。由 <code>bartowski</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；<span data-zh>权重总字节 36.3 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 36.3 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span>、<code>Abiray</code> 6 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>NANI-Nithin</code> 30 tiers, <code>abenzerps</code> 11 tiers, <code>Abiray</code> 6 tiers, among others).</span><span data-zh> 本仓 20 档，覆盖中等。</span><span data-en> This repo has 20 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_L), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（20 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (20 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>平衡档落在 <code>Q4_K_L</code>（1.7 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_L</code> (1.7 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（1.7 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_L</code> directly (1.7 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -710,16 +710,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">30 档 · 40 GB · 16k 下载</span>
+              <span class="muted small"><span data-zh>30 档</span><span data-en>30 tiers</span> · 40 GB · <span data-zh>16k 下载</span><span data-en>16k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/NANI-Nithin/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>NANI-Nithin/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>30</b> 个 GGUF 量化档，合计 40 GB。由 <code>NANI-Nithin</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；权重总字节 43.1 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>bartowski</code> 20 档、<code>abenzerps</code> 11 档、<code>Abiray</code> 6 档 等）。 本仓 30 档，覆盖最全。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_1 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（30 档），从极限压缩到近似无损都能选<br>· 平衡档落在 <code>Q4_1</code>（1.6 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_1</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/NANI-Nithin/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>NANI-Nithin/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>30</b> 个 GGUF 量化档，合计 40 GB。由 <code>NANI-Nithin</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；<span data-zh>权重总字节 43.1 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 43.1 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span>、<code>Abiray</code> 6 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>bartowski</code> 20 tiers, <code>abenzerps</code> 11 tiers, <code>Abiray</code> 6 tiers, among others).</span><span data-zh> 本仓 30 档，覆盖最全。</span><span data-en> This repo has 30 tiers — the broadest coverage coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_1 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_1), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（30 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (30 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>平衡档落在 <code>Q4_1</code>（1.6 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_1</code> (1.6 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_1</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_1</code> directly (1.6 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -727,16 +727,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">11 档 · 16 GB · 8k 下载</span>
+              <span class="muted small"><span data-zh>11 档</span><span data-en>11 tiers</span> · 16 GB · <span data-zh>8k 下载</span><span data-en>8k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/abenzerps/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>abenzerps/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>11</b> 个 GGUF 量化档，合计 16 GB。由 <code>abenzerps</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；权重总字节 17.1 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>bartowski</code> 20 档、<code>NANI-Nithin</code> 30 档、<code>Abiray</code> 6 档 等）。 本仓 11 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/abenzerps/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>abenzerps/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>11</b> 个 GGUF 量化档，合计 16 GB。由 <code>abenzerps</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；<span data-zh>权重总字节 17.1 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 17.1 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>Abiray</code> 6 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>bartowski</code> 20 tiers, <code>NANI-Nithin</code> 30 tiers, <code>Abiray</code> 6 tiers, among others).</span><span data-zh> 本仓 11 档，覆盖中等。</span><span data-en> This repo has 11 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (1.6 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (1.6 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -744,16 +744,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">6 档 · 10 GB · 7k 下载</span>
+              <span class="muted small"><span data-zh>6 档</span><span data-en>6 tiers</span> · 10 GB · <span data-zh>7k 下载</span><span data-en>7k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/Abiray/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>Abiray/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>6</b> 个 GGUF 量化档，合计 10 GB。由 <code>Abiray</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；权重总字节 10.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>bartowski</code> 20 档、<code>NANI-Nithin</code> 30 档、<code>abenzerps</code> 11 档 等）。 本仓 6 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/Abiray/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>Abiray/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>6</b> 个 GGUF 量化档，合计 10 GB。由 <code>Abiray</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；<span data-zh>权重总字节 10.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 10.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>bartowski</code> 20 tiers, <code>NANI-Nithin</code> 30 tiers, <code>abenzerps</code> 11 tiers, among others).</span><span data-zh> 本仓 6 档，覆盖中等。</span><span data-en> This repo has 6 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (1.6 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (1.6 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -761,16 +761,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">16 档 · 22 GB · 4k 下载</span>
+              <span class="muted small"><span data-zh>16 档</span><span data-en>16 tiers</span> · 22 GB · <span data-zh>4k 下载</span><span data-en>4k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/ngquocvinh/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>ngquocvinh/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>16</b> 个 GGUF 量化档，合计 22 GB。由 <code>ngquocvinh</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/root/workspace/HF/calibration/minicpm5-2b/minicpm5_2b_combined_gpu0.imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；权重总字节 23.2 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>bartowski</code> 20 档、<code>NANI-Nithin</code> 30 档、<code>abenzerps</code> 11 档 等）。 本仓 16 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 暂未发现明显取舍（不代表没有，建议先下一档实测）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/ngquocvinh/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>ngquocvinh/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>16</b> 个 GGUF 量化档，合计 22 GB。由 <code>ngquocvinh</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/root/workspace/HF/calibration/minicpm5-2b/minicpm5_2b_combined_gpu0.imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；<span data-zh>权重总字节 23.2 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 23.2 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>bartowski</code> 20 tiers, <code>NANI-Nithin</code> 30 tiers, <code>abenzerps</code> 11 tiers, among others).</span><span data-zh> 本仓 16 档，覆盖中等。</span><span data-en> This repo has 16 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (1.6 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (1.6 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>暂未发现明显取舍（不代表没有，建议先下一档实测）</span><span data-en>No obvious trade-off found (which is not the same as none — download one tier and measure before committing)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -778,16 +778,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=cc0-1.0" target="_blank" rel="noopener">cc0-1.0</a>
               
-              <span class="muted small">7 档 · 19 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>7 档</span><span data-en>7 tiers</span> · 19 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/gooseyai/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>gooseyai/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>7</b> 个 GGUF 量化档，合计 19 GB。由 <code>gooseyai</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；权重总字节 20.6 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>bartowski</code> 20 档、<code>NANI-Nithin</code> 30 档、<code>abenzerps</code> 11 档 等）。 本仓 7 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（1.8 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.8 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/gooseyai/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>gooseyai/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>7</b> 个 GGUF 量化档，合计 19 GB。由 <code>gooseyai</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；<span data-zh>权重总字节 20.6 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 20.6 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>bartowski</code> 20 tiers, <code>NANI-Nithin</code> 30 tiers, <code>abenzerps</code> 11 tiers, among others).</span><span data-zh> 本仓 7 档，覆盖中等。</span><span data-en> This repo has 7 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（1.8 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (1.8 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.8 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (1.8 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -795,16 +795,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">13 档 · 36 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>13 档</span><span data-en>13 tiers</span> · 36 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/prithivMLmods/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>prithivMLmods/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 36 GB。由 <code>prithivMLmods</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；权重总字节 38.7 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>bartowski</code> 20 档、<code>NANI-Nithin</code> 30 档、<code>abenzerps</code> 11 档 等）。 本仓 13 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/prithivMLmods/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>prithivMLmods/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 36 GB。由 <code>prithivMLmods</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；<span data-zh>权重总字节 38.7 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 38.7 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>bartowski</code> 20 tiers, <code>NANI-Nithin</code> 30 tiers, <code>abenzerps</code> 11 tiers, among others).</span><span data-zh> 本仓 13 档，覆盖中等。</span><span data-en> This repo has 13 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (1.6 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (1.6 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -812,16 +812,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">25 档 · 58 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>25 档</span><span data-en>25 tiers</span> · 58 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/Mungert/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>Mungert/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>25</b> 个 GGUF 量化档，合计 58 GB。由 <code>Mungert</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；权重总字节 61.8 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>bartowski</code> 20 档、<code>NANI-Nithin</code> 30 档、<code>abenzerps</code> 11 档 等）。 本仓 25 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_1_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（25 档），从极限压缩到近似无损都能选<br>· 平衡档落在 <code>Q4_1_L</code>（1.8 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_1_L</code>（1.8 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/Mungert/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>Mungert/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>25</b> 个 GGUF 量化档，合计 58 GB。由 <code>Mungert</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；<span data-zh>权重总字节 61.8 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 61.8 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>bartowski</code> 20 tiers, <code>NANI-Nithin</code> 30 tiers, <code>abenzerps</code> 11 tiers, among others).</span><span data-zh> 本仓 25 档，覆盖中等。</span><span data-en> This repo has 25 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_1_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_1_L), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（25 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (25 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>平衡档落在 <code>Q4_1_L</code>（1.8 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_1_L</code> (1.8 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_1_L</code>（1.8 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_1_L</code> directly (1.8 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -829,16 +829,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">12 档 · 21 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>12 档</span><span data-en>12 tiers</span> · 21 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/mradermacher/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>mradermacher/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 21 GB。由 <code>mradermacher</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>llama</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；权重总字节 22.8 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>openbmb</code> 3 档、<code>bartowski</code> 20 档、<code>NANI-Nithin</code> 30 档、<code>abenzerps</code> 11 档 等）。 本仓 12 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/mradermacher/MiniCPM5-2B-GGUF" target="_blank" rel="noopener"><code>mradermacher/MiniCPM5-2B-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 21 GB。由 <code>mradermacher</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>llama</code> 架构优化</span><span data-en>Optimised for the <code>llama</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>openbmb/MiniCPM5-2B</code>；<span data-zh>权重总字节 22.8 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 22.8 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>openbmb</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>NANI-Nithin</code> 30 <span data-zh>档</span><span data-en>tiers</span>、<code>abenzerps</code> 11 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>openbmb</code> 3 tiers, <code>bartowski</code> 20 tiers, <code>NANI-Nithin</code> 30 tiers, <code>abenzerps</code> 11 tiers, among others).</span><span data-zh> 本仓 12 档，覆盖中等。</span><span data-en> This repo has 12 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（1.6 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (1.6 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（1.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (1.6 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         </div>
         <div class="block" id="e0">
