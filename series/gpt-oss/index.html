@@ -45,7 +45,7 @@
   <div class="container">
     <nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh>全部系列</span><span data-en>All series</span></a></nav>
     <header class="page-head">
-      <p class="eyebrow"><span data-zh>OpenAI</span><span data-en>OpenAI</span>　·　发布于 2025-08-04</p>
+      <p class="eyebrow"><span data-zh>OpenAI</span><span data-en>OpenAI</span>　·　<span data-zh>发布于</span><span data-en>released</span> 2025-08-04</p>
       <h1><span data-zh>gpt-oss</span><span data-en>gpt-oss</span></h1>
       <p class="lede">OpenAI 唯一开放权重系列，20B 版是单卡本地部署的甜点。</p>
       <ul class="pos"><li><span data-zh>推理</span><span data-en>推理</span></li><li><span data-zh>MoE 稀疏</span><span data-en>MoE 稀疏</span></li><li><span data-zh>apache-2.0</span><span data-en>apache-2.0</span></li></ul>
@@ -69,12 +69,12 @@
       </div>
       <p class="trust-foot">
         本站<b>不下载、不托管任何模型权重文件</b>。所有数字都来自公开元数据，点击即可回到发布页核对。
-        采集时间：<code>2026-09-30</code>（数据快照，非实时）
+        <span data-zh>采集时间</span><span data-en>Collected</span>: <code>2026-09-30</code><span data-zh>（数据快照，非实时）</span><span data-en> (a snapshot, not live)</span>
       </p>
     </section>
       <section class="member" id="m0">
         <h3><span class="member-idx"><span data-zh>成员</span><span data-en>Member</span> 1</span>gpt-oss 20B</h3>
-        <p class="member-meta">20B（MoE，约 3.6B 激活）　·　单卡甜点　·　4 个量化来源</p>
+        <p class="member-meta">20B（MoE，约 3.6B 激活）　·　单卡甜点　·　<span data-zh>4 个量化来源</span><span data-en>4 quant sources</span></p>
         <div class="block" id="a0">
           <h4><span class="blk">A</span>基础模型卡 <small>规格 · 许可 · 访问门槛 · 参数量三来源交叉核对</small></h4>
       <table class="kv">
@@ -87,7 +87,7 @@
           <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>20.9B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
           <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>19.2B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
         </tbody>
-      </table><p class="warn-inline">⚠ 实测反推与官方申报差 8%（反推偏小）。原因是 bpw 表为标称值、且部分张量（嵌入层、视觉塔）不按主档位量化。<b>以官方申报为准</b>。</p></td></tr>
+      </table><span data-zh><p class="warn-inline">⚠ 实测反推与官方申报差 8%（反推偏小）。原因是 bpw 表为标称值、且部分张量（嵌入层、视觉塔）不按主档位量化。<b>以官方申报为准</b>。</p></span><span data-en><p class="warn-inline">⚠ Our reverse-derived figure differs from the vendor figure by 8% (ours runs low). Reason: the bpw table is nominal, and some tensors (embeddings, vision towers) are not quantised at the main tier. <b>The vendor figure is authoritative.</b></p></span></td></tr>
         <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>U8</code></td><td class="prec-bar"><span style="width:91.4%"></span></td><td>19.1B　<span class="muted small">91.4%</span></td></tr><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:8.6%"></span></td><td>1.8B　<span class="muted small">8.6%</span></td></tr></tbody></table></td></tr>
         <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>gpt-oss</code></td></tr>
         <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>131,072</code> tokens</td></tr>
@@ -95,7 +95,7 @@
         <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>text-generation</code></td></tr>
         <tr><th>定位</th><td>单卡甜点</td></tr>
         <tr><th>标签</th><td><span class="tag">text-generation</span> <span class="tag tag-rt">vllm</span> <span class="tag">conversational</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2508.10925" target="_blank" rel="noopener">arXiv:2508.10925</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a></td></tr>
-        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>6.7M</b>　<span class="muted">点赞 5k</span></td></tr>
+        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>6.7M</b>　<span class="muted"><span data-zh>点赞</span><span data-en>likes</span> 5k</span></td></tr>
         <tr><th>发布日</th><td>2025-08-04</td></tr>
         <tr><th>最近更新</th><td>2025-08-26</td></tr>
         <tr><th>发布页体积</th><td><span data-zh><b>41 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></span><span data-en><b>41 GB</b>　<span class="muted small">all files in the repo combined, including original weights at every precision</span></span></td></tr>
@@ -110,38 +110,38 @@
       <table class="budget">
         <caption>显存 → 档位速查（权重全部放显存，推理最快）</caption>
         <tbody>
-        <tr><th>8 GB 显存</th><td class="no-fit">显存装不下最小档（最小 11.5 GB）<br><span class="muted">共享显卡 / 老卡，够跑小MoE 与 2B 级</span></td></tr>
-        <tr><th>12 GB 显存</th><td class="no-fit">显存装不下最小档（最小 11.5 GB）<br><span class="muted">RTX 3060 12G / 4050 12G</span></td></tr>
+        <tr><th><span data-zh>8 GB 显存</span><span data-en>8 GB VRAM</span></th><td class="no-fit"><span data-zh>显存装不下最小档</span><span data-en>VRAM cannot hold even the smallest tier</span><span data-zh>（最小 11.5 GB）</span><span data-en> (smallest tier 11.5 GB)</span><br><span class="muted"><span data-zh>共享显卡 / 老卡，够跑小MoE 与 2B 级</span><span data-en>shared or older cards; enough for small MoE and 2B-class models</span></span></td></tr>
+        <tr><th><span data-zh>12 GB 显存</span><span data-en>12 GB VRAM</span></th><td class="no-fit"><span data-zh>显存装不下最小档</span><span data-en>VRAM cannot hold even the smallest tier</span><span data-zh>（最小 11.5 GB）</span><span data-en> (smallest tier 11.5 GB)</span><br><span class="muted"><span data-zh>RTX 3060 12G / 4050 12G</span><span data-en>RTX 3060 12G / 4050 12G</span></span></td></tr>
         <tr>
-          <th>16 GB 显存</th>
+          <th><span data-zh>16 GB 显存</span><span data-en>16 GB VRAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · 近似无损）
-            <br><span class="muted">更省：UD-Q6_K 12 GB / Q6_K 12 GB</span>
-            <br><span class="muted">RTX 4060 Ti 16G / 5060 Ti 16G</span>
+            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <br><span class="muted"><span data-zh>RTX 4060 Ti 16G / 5060 Ti 16G</span><span data-en>RTX 4060 Ti 16G / 5060 Ti 16G</span></span>
           </td>
         </tr>
         <tr>
-          <th>24 GB 显存</th>
+          <th><span data-zh>24 GB 显存</span><span data-en>24 GB VRAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · 近似无损）
-            <br><span class="muted">更省：UD-Q6_K 12 GB / Q6_K 12 GB</span>
-            <br><span class="muted">RTX 3090 / 4090 / 5090</span>
+            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <br><span class="muted"><span data-zh>RTX 3090 / 4090 / 5090</span><span data-en>RTX 3090 / 4090 / 5090</span></span>
           </td>
         </tr>
         <tr>
-          <th>48 GB 显存</th>
+          <th><span data-zh>48 GB 显存</span><span data-en>48 GB VRAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · 近似无损）
-            <br><span class="muted">更省：UD-Q6_K 12 GB / Q6_K 12 GB</span>
-            <br><span class="muted">RTX A6000 / L40S / A100 40G×2</span>
+            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <br><span class="muted"><span data-zh>RTX A6000 / L40S / A100 40G×2</span><span data-en>RTX A6000 / L40S / A100 40G×2</span></span>
           </td>
         </tr>
         <tr>
-          <th>80 GB 显存</th>
+          <th><span data-zh>80 GB 显存</span><span data-en>80 GB VRAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · 近似无损）
-            <br><span class="muted">更省：UD-Q6_K 12 GB / Q6_K 12 GB</span>
-            <br><span class="muted">A100 80G / H100 80G / Mac Studio 大统一内存</span>
+            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <br><span class="muted"><span data-zh>A100 80G / H100 80G / Mac Studio 大统一内存</span><span data-en>A100 80G / H100 80G / Mac Studio large unified memory</span></span>
           </td>
         </tr>
         </tbody>
@@ -153,35 +153,35 @@
         <caption>系统内存 / 多卡 → 档位速查</caption>
         <tbody>
         <tr>
-          <th>64 GB 系统内存</th>
+          <th><span data-zh>64 GB 系统内存</span><span data-en>64 GB system RAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · 近似无损）
-            <br><span class="muted">更省：UD-Q6_K 12 GB / Q6_K 12 GB</span>
-            <br><span class="muted">纯 CPU 推理，速度慢但可跑；建议开swap 兜底</span><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span>
+            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <br><span class="muted"><span data-zh>纯 CPU 推理，速度慢但可跑；建议开swap 兜底</span><span data-en>CPU-only inference — slow but it runs; enable swap as a safety net</span></span><span data-zh><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span></span><span data-en><br><span class="muted small">CPU-only is markedly slower than GPU — if you have the VRAM, prefer the single-card tiers above</span></span>
           </td>
         </tr>
         <tr>
-          <th>128 GB 系统内存</th>
+          <th><span data-zh>128 GB 系统内存</span><span data-en>128 GB system RAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · 近似无损）
-            <br><span class="muted">更省：UD-Q6_K 12 GB / Q6_K 12 GB</span>
-            <br><span class="muted">工作站标准配置，纯 CPU 可跑中等规模 MoE</span><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span>
+            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <br><span class="muted"><span data-zh>工作站标准配置，纯 CPU 可跑中等规模 MoE</span><span data-en>the standard workstation config; CPU-only handles mid-size MoE</span></span><span data-zh><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span></span><span data-en><br><span class="muted small">CPU-only is markedly slower than GPU — if you have the VRAM, prefer the single-card tiers above</span></span>
           </td>
         </tr>
         <tr>
-          <th>256 GB 统一内存 / 多卡</th>
+          <th><span data-zh>256 GB 统一内存 / 多卡</span><span data-en>256 GB unified memory / multi-GPU</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · 近似无损）
-            <br><span class="muted">更省：UD-Q6_K 12 GB / Q6_K 12 GB</span>
-            <br><span class="muted">Mac Studio / 服务器内存，或 2~4 张 80G 卡张量并行</span><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span>
+            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <br><span class="muted"><span data-zh>Mac Studio / 服务器内存，或 2~4 张 80G 卡张量并行</span><span data-en>Mac Studio / server memory, or 2–4 × 80G cards under tensor parallel</span></span><span data-zh><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span></span><span data-en><br><span class="muted small">CPU-only is markedly slower than GPU — if you have the VRAM, prefer the single-card tiers above</span></span>
           </td>
         </tr>
         <tr>
-          <th>640 GB+ 内存 / 8×80G</th>
+          <th><span data-zh>640 GB+ 内存 / 8×80G</span><span data-en>640 GB+ memory / 8×80G</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · 近似无损）
-            <br><span class="muted">更省：UD-Q6_K 12 GB / Q6_K 12 GB</span>
-            <br><span class="muted">超大 MoE 的门槛，需要多卡切分或大内存服务器</span><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span>
+            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <br><span class="muted"><span data-zh>超大 MoE 的门槛，需要多卡切分或大内存服务器</span><span data-en>the threshold for very large MoE — needs multi-GPU splitting or a big-memory server</span></span><span data-zh><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span></span><span data-en><br><span class="muted small">CPU-only is markedly slower than GPU — if you have the VRAM, prefer the single-card tiers above</span></span>
           </td>
         </tr>
         </tbody>
@@ -197,7 +197,7 @@
               <td><code>IQ2_XXS</code></td>
               <td><b>12 GB</b></td>
               <td>2.13<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-4">极限压缩</span></td>
+              <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -205,7 +205,7 @@
               <td><code>IQ2_XS</code></td>
               <td><b>12 GB</b></td>
               <td>2.31<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-4">极限压缩</span></td>
+              <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -213,7 +213,7 @@
               <td><code>IQ2_M</code></td>
               <td><b>12 GB</b></td>
               <td>2.39<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-4">极限压缩</span></td>
+              <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -221,7 +221,7 @@
               <td><code>IQ2_S</code></td>
               <td><b>12 GB</b></td>
               <td>2.46<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-4">极限压缩</span></td>
+              <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -229,7 +229,7 @@
               <td><code>Q2_K</code></td>
               <td><b>11 GB</b></td>
               <td>2.80<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-4">极限压缩</span></td>
+              <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -237,7 +237,7 @@
               <td><code>Q2_K_L</code></td>
               <td><b>12 GB</b></td>
               <td>2.89<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-4">极限压缩</span></td>
+              <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -245,7 +245,7 @@
               <td><code>IQ3_XXS</code></td>
               <td><b>12 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-3">长上下文优先</span></td>
+              <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -253,7 +253,7 @@
               <td><code>IQ3_XS</code></td>
               <td><b>12 GB</b></td>
               <td>3.36<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-3">长上下文优先</span></td>
+              <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -261,7 +261,7 @@
               <td><code>Q3_K_S</code></td>
               <td><b>11 GB</b></td>
               <td>3.50<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-3">长上下文优先</span></td>
+              <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -269,7 +269,7 @@
               <td><code>Q3_K_M</code></td>
               <td><b>12 GB</b></td>
               <td>3.55<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-3">长上下文优先</span></td>
+              <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -277,7 +277,7 @@
               <td><code>Q3_K_L</code></td>
               <td><b>11 GB</b></td>
               <td>3.60<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-3">长上下文优先</span></td>
+              <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -285,7 +285,7 @@
               <td><code>IQ3_M</code></td>
               <td><b>12 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-3">长上下文优先</span></td>
+              <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -293,7 +293,7 @@
               <td><code>Q3_K_XL</code></td>
               <td><b>12 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-3">长上下文优先</span></td>
+              <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -301,7 +301,7 @@
               <td><code>IQ4_NL</code></td>
               <td><b>12 GB</b></td>
               <td>4.05<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-2">平衡档</span></td>
+              <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -309,7 +309,7 @@
               <td><code>MXFP4</code></td>
               <td><b>12 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-2">平衡档</span></td>
+              <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
               <td class="muted small">3 个</td>
               <td class="muted"><a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener">ggml-org</a></td>
             </tr>
@@ -317,7 +317,7 @@
               <td><code>IQ4_XS</code></td>
               <td><b>12 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-2">平衡档</span></td>
+              <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -325,7 +325,7 @@
               <td><code>Q4_0</code></td>
               <td><b>12 GB</b></td>
               <td>4.55<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-2">平衡档</span></td>
+              <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -333,7 +333,7 @@
               <td><code>Q4_K_S</code></td>
               <td><b>12 GB</b></td>
               <td>4.75<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-2">平衡档</span></td>
+              <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -341,7 +341,7 @@
               <td><code>Q4_1</code></td>
               <td><b>12 GB</b></td>
               <td>4.83<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-2">平衡档</span></td>
+              <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -349,7 +349,7 @@
               <td><code>Q4_K_M</code></td>
               <td><b>12 GB</b></td>
               <td>4.85<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-2">平衡档</span></td>
+              <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -357,7 +357,7 @@
               <td><code>Q4_K_L</code></td>
               <td><b>12 GB</b></td>
               <td>4.95<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-2">平衡档</span></td>
+              <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -365,7 +365,7 @@
               <td><code>Q5_K_S</code></td>
               <td><b>12 GB</b></td>
               <td>5.54<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-1">保守档</span></td>
+              <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -373,7 +373,7 @@
               <td><code>UD-Q4_K_XL</code></td>
               <td><b>12 GB</b></td>
               <td>5.62<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-1">保守档</span></td>
+              <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -381,7 +381,7 @@
               <td><code>Q5_K_M</code></td>
               <td><b>12 GB</b></td>
               <td>5.69<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-1">保守档</span></td>
+              <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -389,7 +389,7 @@
               <td><code>Q5_K_L</code></td>
               <td><b>12 GB</b></td>
               <td>5.84<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-1">保守档</span></td>
+              <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -397,7 +397,7 @@
               <td><code>UD-Q6_K</code></td>
               <td><b>12 GB</b></td>
               <td>6.54<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-1">保守档</span></td>
+              <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -405,7 +405,7 @@
               <td><code>Q6_K</code></td>
               <td><b>12 GB</b></td>
               <td>6.59<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-1">保守档</span></td>
+              <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
               <td class="muted small">3 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -413,7 +413,7 @@
               <td><code>Q8_0</code></td>
               <td><b>12 GB</b></td>
               <td>8.50<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-0">近似无损</span></td>
+              <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -421,7 +421,7 @@
               <td><code>UD-Q8_K_XL</code></td>
               <td><b>13 GB</b></td>
               <td>8.72<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-0">近似无损</span></td>
+              <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
               <td class="muted small">1 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -429,7 +429,7 @@
               <td><code>BF16</code></td>
               <td><b>14 GB</b></td>
               <td>16.00<span class="muted"> bpw</span></td>
-              <td><span class="tier tier-0">近似无损</span></td>
+              <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
               <td class="muted small">2 个</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
@@ -595,11 +595,11 @@
         </div>
         <div class="block" id="e0">
           <h4><span class="blk">E</span>量化者档案 <small>选量化者意味着什么</small></h4>
-      <p class="block-lead">量化者决定了这个包的<b>档位覆盖、命名规范、是否带 imatrix、什么时候跟进新模型</b>。这一区块说明「选这个量化者的量化意味着什么」。</p>
+      <p class="block-lead"><span data-zh>量化者决定了这个包的<b>档位覆盖、命名规范、是否带 imatrix、什么时候跟进新模型</b>。这一区块说明「选这个量化者的量化意味着什么」。</span><span data-en>The quantiser decides this build's <b>tier coverage, naming convention, whether it ships imatrix, and how fast it follows new models</b>. This section spells out what choosing that quantiser means.</span></p>
         <article class="qcard">
-          <h4><code>unsloth</code> <span class="muted small">量化覆盖面最广、下载量最高的第三方量化者</span></h4>
-          <p class="qcard-scope">在本系列：1 个仓 · 498k 下载</p>
-          <div class="qcard-body"><p><b>定位</b>：量化覆盖面最广、下载量最高的第三方量化者。</p>
+          <h4><code>unsloth</code> <span class="muted small"><span data-zh>量化覆盖面最广、下载量最高的第三方量化者</span><span data-en>Broadest coverage, highest downloads</span></span></h4>
+          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 498k 下载</span><span data-en>In this series: 1 repos · 498k downloads</span></p>
+          <div class="qcard-body"><span data-zh><p><b>定位</b>：量化覆盖面最广、下载量最高的第三方量化者。</p>
 <p><b>擅长什么</b>：几乎每个主流基础模型都第一时间跟 GGUF，且档位最全——从极限压缩到近似无损一应俱全。提供静态（static）与动态（dynamic，用 <code>UD-</code> 前缀）两套量化。</p>
 <ul>
   <li><b>为什么要认 unsloth 版</b>：</li>
@@ -609,13 +609,23 @@
   <li>官方教程与 LM Studio / llama.cpp 集成路径最顺</li>
 </ul>
 <p><b>注意</b>：unsloth 的动态量化（<code>UD-Q4_K_XL</code> 等）在同档位下体积略大、速度略慢，换来的是质量通常更好。是否值得取决于你的瓶颈是显存还是速度——<b>这是我们的口径，不是实测结论</b>。</p>
-<p><b>官方发布页</b>：https://huggingface.co/unsloth</p></div>
-          <a class="qcard-link" href="https://huggingface.co/unsloth" target="_blank" rel="noopener">发布页 ↗</a>
+<p><b>官方发布页</b>：https://huggingface.co/unsloth</p></span><span data-en><p><b>Position</b>: The broadest quantisation coverage and the highest downloads among third-party quantisers.</p>
+<p><b>What it is good at</b>: publishes GGUF for almost every mainstream base model first, with the most complete tier range — from extreme compression to near lossless. Offers both static and dynamic (the <code>UD-</code> prefix) quantisation.</p>
+<ul>
+  <li><b>Why choose the unsloth build</b>:</li>
+  <li>Broad coverage → the tier you want is usually there</li>
+  <li>Naming discipline → <code>Q4_K_M</code> means <code>Q4_K_M</code>, with no different name for the same tier</li>
+  <li>Ships an importance matrix (imatrix) → quality is steadier than plain RTN</li>
+  <li>The smoothest path to official tutorials and LM Studio / llama.cpp integration</li>
+</ul>
+<p><b>Note</b>: unsloth&#39;s dynamic quantisation (<code>UD-Q4_K_XL</code> and similar) is slightly larger and slightly slower at the same tier, in exchange for usually better quality. Whether that trade is worth it depends on whether your bottleneck is VRAM or speed — <b>this is our reading, not a measurement</b>.</p>
+<p><b>Release page</b>: https://huggingface.co/unsloth</p></span></div>
+          <a class="qcard-link" href="https://huggingface.co/unsloth" target="_blank" rel="noopener"><span data-zh>发布页 ↗</span><span data-en>release page ↗</span></a>
         </article>
         <article class="qcard">
-          <h4><code>ggml-org</code> <span class="muted small">llama.cpp 所属组织的官方量化发布</span></h4>
-          <p class="qcard-scope">在本系列：1 个仓 · 135k 下载</p>
-          <div class="qcard-body"><p><b>定位</b>：llama.cpp 自己的官方量化发布渠道。</p>
+          <h4><code>ggml-org</code> <span class="muted small"><span data-zh>llama.cpp 所属组织的官方量化发布</span><span data-en>Official quant builds from the llama.cpp org</span></span></h4>
+          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 135k 下载</span><span data-en>In this series: 1 repos · 135k downloads</span></p>
+          <div class="qcard-body"><span data-zh><p><b>定位</b>：llama.cpp 自己的官方量化发布渠道。</p>
 <p><b>为什么重要</b>：ggml 是 llama.cpp 的底层张量库，ggml-org 发的 GGUF 由项目核心作者把关。遇到新架构（比如新出的 MoE 稀疏模型），<b>ggml-org 通常是第一个支持并发布可用 GGUF 的</b>。</p>
 <ul>
   <li><b>特点</b>：</li>
@@ -624,13 +634,22 @@
   <li>适合作为「该架构能不能在 llama.cpp 上跑」的权威参考</li>
 </ul>
 <p><b>适合谁</b>：想第一时间在新架构上尝鲜、或者需要确认某个模型是否已被 llama.cpp 支持。</p>
-<p><b>发布页</b>：https://huggingface.co/ggml-org</p></div>
-          <a class="qcard-link" href="https://huggingface.co/ggml-org" target="_blank" rel="noopener">发布页 ↗</a>
+<p><b>发布页</b>：https://huggingface.co/ggml-org</p></span><span data-en><p><b>Position</b>: The official quantisation release channel of llama.cpp itself.</p>
+<p><b>Why it matters</b>: ggml is llama.cpp&#39;s underlying tensor library, and ggml-org&#39;s GGUFs are vetted by the project&#39;s core authors. When a new architecture appears (a new sparse MoE, say), <b>ggml-org is usually the first to support it and publish a usable GGUF</b>.</p>
+<ul>
+  <li><b>Characteristics</b>:</li>
+  <li>Tiers lean conservative, prioritising correct loading and inference that does not break</li>
+  <li>Coverage is not necessarily complete (limited authorial bandwidth — they track only models they care about)</li>
+  <li>Serves as the authoritative reference for &quot;can this architecture run on llama.cpp at all&quot;</li>
+</ul>
+<p><b>Who it suits</b>: people who want to try a new architecture first-hand, or need to confirm whether llama.cpp supports a given model.</p>
+<p><b>Release page</b>: https://huggingface.co/ggml-org</p></span></div>
+          <a class="qcard-link" href="https://huggingface.co/ggml-org" target="_blank" rel="noopener"><span data-zh>发布页 ↗</span><span data-en>release page ↗</span></a>
         </article>
         <article class="qcard">
-          <h4><code>lmstudio-community</code> <span class="muted small">LM Studio 官方社区组织，为其 GUI 客户端供包</span></h4>
-          <p class="qcard-scope">在本系列：1 个仓 · 106k 下载</p>
-          <div class="qcard-body"><p><b>定位</b>：LM Studio 桌面客户端的官方社区组织，为其 GUI 供包。</p>
+          <h4><code>lmstudio-community</code> <span class="muted small"><span data-zh>LM Studio 官方社区组织，为其 GUI 客户端供包</span><span data-en>Powers the LM Studio GUI</span></span></h4>
+          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 106k 下载</span><span data-en>In this series: 1 repos · 106k downloads</span></p>
+          <div class="qcard-body"><span data-zh><p><b>定位</b>：LM Studio 桌面客户端的官方社区组织，为其 GUI 供包。</p>
 <ul>
   <li><b>特点</b>：</li>
   <li>档位偏保守务实，以「在 LM Studio 里能顺畅跑起来」为目标筛选</li>
@@ -639,13 +658,22 @@
 </ul>
 <p><b>适合谁</b>：如果你用 LM Studio 而不是自己敲 llama-server 命令行，这个组织的包省心程度最高。</p>
 <p><b>不适合谁</b>：如果你要精细控制加载参数（tensor split、n_gpu_layers、上下文分配），社区包往往不针对你的硬件调优，仍要自己调。</p>
-<p><b>发布页</b>：https://huggingface.co/lmstudio-community</p></div>
-          <a class="qcard-link" href="https://huggingface.co/lmstudio-community" target="_blank" rel="noopener">发布页 ↗</a>
+<p><b>发布页</b>：https://huggingface.co/lmstudio-community</p></span><span data-en><p><b>Position</b>: The official community organisation behind the LM Studio desktop client, supplying packages for its GUI.</p>
+<ul>
+  <li><b>Characteristics</b>:</li>
+  <li>Tiers lean conservative and pragmatic, selected for &quot;runs smoothly inside LM Studio&quot;</li>
+  <li>File naming lines up with LM Studio&#39;s model library index, so downloads are recognised by the client directly</li>
+  <li>Also ships special builds related to MTP / speculative sampling</li>
+</ul>
+<p><b>Who it suits</b>: if you use LM Studio rather than driving llama-server yourself, packages from this organisation save the most fuss.</p>
+<p><b>Who it does not suit</b>: if you need fine control over load parameters (tensor split, n_gpu_layers, context allocation) — community packages are usually not tuned to your hardware, so you still tune them yourself.</p>
+<p><b>Release page</b>: https://huggingface.co/lmstudio-community</p></span></div>
+          <a class="qcard-link" href="https://huggingface.co/lmstudio-community" target="_blank" rel="noopener"><span data-zh>发布页 ↗</span><span data-en>release page ↗</span></a>
         </article>
         <article class="qcard">
-          <h4><code>bartowski</code> <span class="muted small">老牌量化者，档位命名规范、说明文档最完整</span></h4>
-          <p class="qcard-scope">在本系列：1 个仓 · 20k 下载</p>
-          <div class="qcard-body"><p><b>定位</b>：老牌量化者，档位命名规范、说明文档最完整。</p>
+          <h4><code>bartowski</code> <span class="muted small"><span data-zh>老牌量化者，档位命名规范、说明文档最完整</span><span data-en>Veteran quantizer, best-documented naming</span></span></h4>
+          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 20k 下载</span><span data-en>In this series: 1 repos · 20k downloads</span></p>
+          <div class="qcard-body"><span data-zh><p><b>定位</b>：老牌量化者，档位命名规范、说明文档最完整。</p>
 <ul>
   <li><b>特点</b>：</li>
   <li>每档位都写清「这个档适合什么场景」，不是只丢一堆文件</li>
@@ -654,8 +682,17 @@
 </ul>
 <p><b>怎么选他的包</b>：看仓库里的 README 分档说明，那是少数把「为什么这档质量损失小、那档损失大」写清楚的地方。</p>
 <p><b>注意</b>：他的仓库名常带 <code>Qwen_</code> <code>Meta-Llama_</code> 这类前缀（因为 HF 仓库名不允许重复，量化者要加模型组织名消歧），搜仓时别漏掉前缀。</p>
-<p><b>发布页</b>：https://huggingface.co/bartowski</p></div>
-          <a class="qcard-link" href="https://huggingface.co/bartowski" target="_blank" rel="noopener">发布页 ↗</a>
+<p><b>发布页</b>：https://huggingface.co/bartowski</p></span><span data-en><p><b>Position</b>: A long-standing quantiser with the most complete tier naming and documentation.</p>
+<ul>
+  <li><b>Characteristics</b>:</li>
+  <li>Every tier states what scenario it suits, rather than just dumping files</li>
+  <li>Naming follows the llama.cpp convention — <code>Q4_K_M</code> is the community&#39;s <code>Q4_K_M</code></li>
+  <li>The same model often ships both static and imatrix directories</li>
+</ul>
+<p><b>How to choose their builds</b>: read the tier-by-tier README in the repo — it is one of the few places that actually explains *why* one tier loses little quality and another loses more.</p>
+<p><b>Note</b>: repo names often carry a <code>Qwen_</code> or <code>Meta-Llama_</code> prefix (Hugging Face repo names must be unique, so quantisers prefix the organisation name to disambiguate) — do not miss the prefix when searching.</p>
+<p><b>Release page</b>: https://huggingface.co/bartowski</p></span></div>
+          <a class="qcard-link" href="https://huggingface.co/bartowski" target="_blank" rel="noopener"><span data-zh>发布页 ↗</span><span data-en>release page ↗</span></a>
         </article>
         </div>
         <div class="block" id="f0">
@@ -665,22 +702,22 @@
         <li>
           <span class="log-date">2026-07-28</span>
           <a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>ggml-org</code></a>
-          <span class="muted">更新了 1 个档位</span>
+          <span class="muted"><span data-zh>更新了 1 个档位</span><span data-en>updated 1 tiers</span></span>
         </li>
         <li>
           <span class="log-date">2025-12-19</span>
           <a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>unsloth</code></a>
-          <span class="muted">更新了 16 个档位</span>
+          <span class="muted"><span data-zh>更新了 16 个档位</span><span data-en>updated 16 tiers</span></span>
         </li>
         <li>
           <span class="log-date">2025-08-11</span>
           <a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>bartowski</code></a>
-          <span class="muted">更新了 27 个档位</span>
+          <span class="muted"><span data-zh>更新了 27 个档位</span><span data-en>updated 27 tiers</span></span>
         </li>
         <li>
           <span class="log-date">2025-08-05</span>
           <a href="https://huggingface.co/lmstudio-community/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>lmstudio-community</code></a>
-          <span class="muted">更新了 1 个档位</span>
+          <span class="muted"><span data-zh>更新了 1 个档位</span><span data-en>updated 1 tiers</span></span>
         </li>
       </ul>
       <p class="muted small">基础模型 <code>openai/gpt-oss-20b</code> 最近更新：2025-08-26　·　本站采集时间：2026-09-30</p>
