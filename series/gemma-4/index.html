@@ -56,15 +56,15 @@
       <div class="trust-grid">
         <div class="trust-item t-a">
           <span class="trust-tag">✅ <span data-zh>实测字段</span><span data-en>Measured fields</span></span>
-          <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
+          <p><span data-zh>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</span><span data-en>Objective data read straight from the Hugging Face public API: file sizes in bytes, context length, architecture, licence, downloads, last updated.</span></p>
         </div>
         <div class="trust-item t-b">
-          <span class="trust-tag">✅ 推导</span>
-          <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
+          <span class="trust-tag">✅ <span data-zh>推导</span><span data-en>Derived</span></span>
+          <p><span data-zh>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在</span><span data-en>Computed from the measured fields by published rules: bits per weight (per the llama.cpp naming convention), tier assignment, VRAM requirement range. The rules are fully published in</span> <code>METHODOLOGY.md</code><span data-zh> 完整公开，任何人可复算。</span><span data-en> — anyone can recompute them.</span></p>
         </div>
         <div class="trust-item t-c">
           <span class="trust-tag">❌ <span data-zh>我们不说的</span><span data-en>What we do not claim</span></span>
-          <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
+          <p><span data-zh><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</span><span data-en><b>Which quantisation is higher quality, which is faster, which model is stronger</b> — these need measurement. This site does not run benchmarks, so it does not pretend to know. Every subjective judgement we do offer is explicitly marked as our own reading.</span></p>
         </div>
       </div>
       <p class="trust-foot">
@@ -84,14 +84,14 @@
         <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
           <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>25.8B 总参 / 4B 激活</b></td></tr>
-          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>25.8B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>27.2B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>25.8B <span data-zh><span class="muted small">（按 safetensors 张量逐个计数）</span></span><span data-en><span class="muted small"> (counted per safetensors tensor)</span></span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>27.2B <span data-zh><span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></span><span data-en><span class="muted small"> (GGUF bytes ÷ tier bpw, median of the densest cluster)</span></span></td></tr>
         </tbody>
       </table><span data-zh><p class="warn-inline">⚠ 实测反推与官方申报差 5%（反推偏大）。原因是 bpw 表为标称值、且部分张量（嵌入层、视觉塔）不按主档位量化。<b>以官方申报为准</b>。</p></span><span data-en><p class="warn-inline">⚠ Our reverse-derived figure differs from the vendor figure by 5% (ours runs high). Reason: the bpw table is nominal, and some tensors (embeddings, vision towers) are not quantised at the main tier. <b>The vendor figure is authoritative.</b></p></span></td></tr>
         <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>25.8B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
         <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>gemma4</code></td></tr>
         <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>262,144</code> tokens</td></tr>
-        <tr><th>基座</th><td><code>gemma-4-26B-A4B</code></td></tr>
+        <tr><th><span data-zh>基座</span><span data-en>Base model</span></th><td><code>gemma-4-26B-A4B</code></td></tr>
         <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>image-text-to-text</code></td></tr>
         <tr><th>定位</th><td>低延迟 MoE</td></tr>
         <tr><th>标签</th><td><span class="tag">image-text-to-text</span> <span class="tag">conversational</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2607.02770" target="_blank" rel="noopener">arXiv:2607.02770</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a></td></tr>
@@ -106,9 +106,9 @@
           <h4><span class="blk">B</span>该选哪个 <small>按你的显存倒推</small></h4>
       <p class="block-lead">按「你实际能腾出多少显存或内存」选档位，而不是按参数猜。下面每档的体积都是<b>实测值</b>（来自发布页文件列表），<b>加权 15% 余量</b>给运行时与 KV cache。</p>
       
-      <h3 class="budget-h">单卡全量装得下（最快）</h3>
+      <h3 class="budget-h"><span data-zh>单卡全量装得下（最快）</span><span data-en>Fits entirely on one card (fastest)</span></h3>
       <table class="budget">
-        <caption>显存 → 档位速查（权重全部放显存，推理最快）</caption>
+        <caption><span data-zh>显存 → 档位速查（权重全部放显存，推理最快）</span><span data-en>VRAM → tier cheat sheet (all weights on the GPU, fastest inference)</span></caption>
         <tbody>
         <tr><th><span data-zh>8 GB 显存</span><span data-en>8 GB VRAM</span></th><td class="no-fit"><span data-zh>显存装不下最小档</span><span data-en>VRAM cannot hold even the smallest tier</span><span data-zh>（最小 9.9 GB）</span><span data-en> (smallest tier 9.9 GB)</span><br><span class="muted"><span data-zh>共享显卡 / 老卡，够跑小MoE 与 2B 级</span><span data-en>shared or older cards; enough for small MoE and 2B-class models</span></span></td></tr>
         <tr>
@@ -153,11 +153,11 @@
         </tr>
         </tbody>
       </table>
-      <h3 class="budget-h">显存不够时的替代路径</h3>
-      <p class="muted small">llama.cpp 的 <code>-ngl</code> 可以只把部分层放显存、其余落系统内存；多卡则自动切分。
+      <h3 class="budget-h"><span data-zh>显存不够时的替代路径</span><span data-en>When VRAM is not enough</span></h3>
+      <p class="muted small"><span data-zh>llama.cpp 的</span><span data-en>llama.cpp’s</span> <code>-ngl</code> <span data-zh>可以只把部分层放显存、其余落系统内存；多卡则自动切分。</span><span data-en>can keep only some layers on the GPU and spill the rest to system memory; with multiple cards it splits automatically.</span>
         代价是速度：纯 CPU 推理通常比同规模 GPU 慢数倍，但同样能出结果。</p>
       <table class="budget">
-        <caption>系统内存 / 多卡 → 档位速查</caption>
+        <caption><span data-zh>系统内存 / 多卡 → 档位速查</span><span data-en>System memory / multi-GPU → tier cheat sheet</span></caption>
         <tbody>
         <tr>
           <th><span data-zh>64 GB 系统内存</span><span data-en>64 GB system RAM</span></th>
@@ -193,7 +193,7 @@
         </tr>
         </tbody>
       </table>
-      <p class="muted small">本系列档位体积跨度 9.9 GB → 51 GB。
+      <span data-zh><p class="muted small">本系列档位体积跨度 9.9 GB → 51 GB。</span><span data-en><p class="muted small">Tier sizes in this series span 9.9 GB → 51 GB.</span>
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
         <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（41 <span data-zh>档</span><span data-en>tiers</span>）</summary>
@@ -205,7 +205,7 @@
               <td><b>9.9 GB</b></td>
               <td>2.13<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -213,7 +213,7 @@
               <td><b>9.7 GB</b></td>
               <td>2.13<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -221,7 +221,7 @@
               <td><b>10 GB</b></td>
               <td>2.31<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -229,7 +229,7 @@
               <td><b>10 GB</b></td>
               <td>2.39<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -237,7 +237,7 @@
               <td><b>11 GB</b></td>
               <td>2.39<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -245,7 +245,7 @@
               <td><b>10 GB</b></td>
               <td>2.46<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -253,7 +253,7 @@
               <td><b>11 GB</b></td>
               <td>2.80<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">5 个</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -261,7 +261,7 @@
               <td><b>11 GB</b></td>
               <td>2.89<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -269,7 +269,7 @@
               <td><b>11 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -277,7 +277,7 @@
               <td><b>12 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -285,7 +285,7 @@
               <td><b>11 GB</b></td>
               <td>3.35<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -293,7 +293,7 @@
               <td><b>11 GB</b></td>
               <td>3.35<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -301,7 +301,7 @@
               <td><b>12 GB</b></td>
               <td>3.36<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -309,7 +309,7 @@
               <td><b>12 GB</b></td>
               <td>3.50<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">4 个</td>
+              <td class="muted small">4 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/giladgd/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">giladgd</a></td>
             </tr>
             <tr>
@@ -317,7 +317,7 @@
               <td><b>13 GB</b></td>
               <td>3.55<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">5 个</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -325,7 +325,7 @@
               <td><b>13 GB</b></td>
               <td>3.60<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">5 个</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -333,7 +333,7 @@
               <td><b>12 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">3 个 · 12 GB~13 GB</td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span> · 12 GB~13 GB</td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -341,7 +341,7 @@
               <td><b>13 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -349,7 +349,7 @@
               <td><b>14 GB</b></td>
               <td>4.05<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -357,7 +357,7 @@
               <td><b>15 GB</b></td>
               <td>4.05<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -365,7 +365,7 @@
               <td><b>13 GB</b></td>
               <td>4.15<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -373,7 +373,7 @@
               <td><b>17 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -381,7 +381,7 @@
               <td><b>14 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -389,7 +389,7 @@
               <td><b>14 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">4 个</td>
+              <td class="muted small">4 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -397,7 +397,7 @@
               <td><b>13 GB</b></td>
               <td>4.42<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -405,7 +405,7 @@
               <td><b>14 GB</b></td>
               <td>4.55<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">4 个</td>
+              <td class="muted small">4 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/giladgd/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">giladgd</a></td>
             </tr>
             <tr>
@@ -413,7 +413,7 @@
               <td><b>15 GB</b></td>
               <td>4.75<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">6 个 · 15 GB~16 GB</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span> · 15 GB~16 GB</td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -421,7 +421,7 @@
               <td><b>16 GB</b></td>
               <td>4.83<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -429,7 +429,7 @@
               <td><b>17 GB</b></td>
               <td>4.85<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">7 个</td>
+              <td class="muted small">7 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/lmstudio-community/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">lmstudio-community</a></td>
             </tr>
             <tr>
@@ -437,7 +437,7 @@
               <td><b>17 GB</b></td>
               <td>4.95<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -445,7 +445,7 @@
               <td><b>18 GB</b></td>
               <td>5.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">6 个</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -453,7 +453,7 @@
               <td><b>18 GB</b></td>
               <td>5.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/giladgd/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">giladgd</a></td>
             </tr>
             <tr>
@@ -461,7 +461,7 @@
               <td><b>17 GB</b></td>
               <td>5.62<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -469,7 +469,7 @@
               <td><b>19 GB</b></td>
               <td>5.69<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">6 个 · 19 GB~21 GB</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span> · 19 GB~21 GB</td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -477,7 +477,7 @@
               <td><b>21 GB</b></td>
               <td>5.84<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -485,7 +485,7 @@
               <td><b>20 GB</b></td>
               <td>5.84<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -493,7 +493,7 @@
               <td><b>23 GB</b></td>
               <td>6.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -501,7 +501,7 @@
               <td><b>23 GB</b></td>
               <td>6.59<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">8 个</td>
+              <td class="muted small">8 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/lmstudio-community/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">lmstudio-community</a></td>
             </tr>
             <tr>
@@ -509,7 +509,7 @@
               <td><b>27 GB</b></td>
               <td>8.50<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">8 个</td>
+              <td class="muted small">8 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -517,7 +517,7 @@
               <td><b>28 GB</b></td>
               <td>8.72<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -525,13 +525,13 @@
               <td><b>51 GB</b></td>
               <td>16.00<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">5 个</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
           </tbody>
         </table>
-        <p class="muted small">「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是 <b>B 级推导</b>，不是实测值。</p>
-        <p class="muted small"><b>关于「最小体积」与「变体」：</b>同名档位下可能有多个不同文件
+        <p class="muted small"><span data-zh>「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是</span><span data-en>Bits per weight is derived from the filename by llama.cpp’s published naming convention; the real value varies slightly between models at the same tier. This is</span> <b><span data-zh>B 级推导</span><span data-en>grade-B derived</span></b><span data-zh>，不是实测值。</span><span data-en> — not a measured value.</span></p>
+        <p class="muted small"><span data-zh><b>关于「最小体积」与「变体」：</b></span><span data-en><b>On "smallest size" and "variants":</b></span>同名档位下可能有多个不同文件
           （不同量化者的实现差异，或带 <code>-AD-</code> 混合精度、<code>-PLEQ4_0</code> 上下文扩展、
           <code>-DENSE</code> 等后缀的特殊变体）。上表取的是该档<b>最省的可行体积</b>，
           「体积跨度」列给出该档实际的体积范围——跨度大说明该档内部差异明显，
@@ -662,13 +662,13 @@
           </tr>
         </tbody>
       </table>
-      <p class="tier-legend" role="list" aria-label="量化档色阶图例">
-        <span class="tier-legend-h">卡片左侧色条 = 推荐档位</span>
-        <span class="tier-legend-i tier-0">近似无损</span>
-        <span class="tier-legend-i tier-1">保守</span>
-        <span class="tier-legend-i tier-2">平衡</span>
-        <span class="tier-legend-i tier-3">长上下文</span>
-        <span class="tier-legend-i tier-4">极限压缩</span>
+      <p class="tier-legend" role="list" <span data-zh>aria-label="量化档色阶图例"</span><span data-en>aria-label="Quantisation tier colour scale"</span>>
+        <span class="tier-legend-h"><span data-zh>卡片左侧色条 = 推荐档位</span><span data-en>Colour bar on the left = recommended tier</span></span>
+        <span class="tier-legend-i tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span>
+        <span class="tier-legend-i tier-1"><span data-zh>保守</span><span data-en>Conservative</span></span>
+        <span class="tier-legend-i tier-2"><span data-zh>平衡</span><span data-en>Balanced</span></span>
+        <span class="tier-legend-i tier-3"><span data-zh>长上下文</span><span data-en>Long context</span></span>
+        <span class="tier-legend-i tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span>
       </p>
       <p class="muted small">「建议档」是本站按<b>体积最小且落在平衡档</b>的规则自动选出的，不是质量排名。官方量化排在最前；带 <span class="badge badge-im">imatrix</span> 标记的仓库带重要性矩阵数据。</p>
         </div>
@@ -1058,7 +1058,7 @@
           <span class="muted"><span data-zh>更新了 11 个档位</span><span data-en>updated 11 tiers</span></span>
         </li>
       </ul>
-      <p class="muted small">基础模型 <code>google/gemma-4-26B-A4B-it</code> 最近更新：2026-07-20　·　本站采集时间：2026-09-30</p>
+      <p class="muted small"><span data-zh>基础模型</span><span data-en>Base model</span> <code>google/gemma-4-26B-A4B-it</code> <span data-zh>最近更新：</span><span data-en>last updated:</span> 2026-07-20　·　<span data-zh>本站采集时间：</span><span data-en>collected:</span> 2026-09-30</p>
         </div>
       </section>
       <section class="member" id="m1">
@@ -1073,14 +1073,14 @@
         <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
           <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>31.3B 密集</b></td></tr>
-          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>31.3B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>31.6B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>31.3B <span data-zh><span class="muted small">（按 safetensors 张量逐个计数）</span></span><span data-en><span class="muted small"> (counted per safetensors tensor)</span></span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>31.6B <span data-zh><span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></span><span data-en><span class="muted small"> (GGUF bytes ÷ tier bpw, median of the densest cluster)</span></span></td></tr>
         </tbody>
       </table><span data-zh><p class="param-ok">✓ 官方申报与实测反推一致（偏差 1.2%），参数量可信。</p></span><span data-en><p class="param-ok">✓ Vendor figure and our reverse-derived figure agree (1.2% apart) — the parameter count is trustworthy.</p></span></td></tr>
         <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>31.3B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
         <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>gemma4</code></td></tr>
         <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>262,144</code> tokens</td></tr>
-        <tr><th>基座</th><td><code>gemma-4-31B</code></td></tr>
+        <tr><th><span data-zh>基座</span><span data-en>Base model</span></th><td><code>gemma-4-31B</code></td></tr>
         <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>image-text-to-text</code></td></tr>
         <tr><th>定位</th><td>质量优先</td></tr>
         <tr><th>标签</th><td><span class="tag">image-text-to-text</span> <span class="tag">conversational</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2607.02770" target="_blank" rel="noopener">arXiv:2607.02770</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a></td></tr>
@@ -1095,9 +1095,9 @@
           <h4><span class="blk">B</span>该选哪个 <small>按你的显存倒推</small></h4>
       <p class="block-lead">按「你实际能腾出多少显存或内存」选档位，而不是按参数猜。下面每档的体积都是<b>实测值</b>（来自发布页文件列表），<b>加权 15% 余量</b>给运行时与 KV cache。</p>
       
-      <h3 class="budget-h">单卡全量装得下（最快）</h3>
+      <h3 class="budget-h"><span data-zh>单卡全量装得下（最快）</span><span data-en>Fits entirely on one card (fastest)</span></h3>
       <table class="budget">
-        <caption>显存 → 档位速查（权重全部放显存，推理最快）</caption>
+        <caption><span data-zh>显存 → 档位速查（权重全部放显存，推理最快）</span><span data-en>VRAM → tier cheat sheet (all weights on the GPU, fastest inference)</span></caption>
         <tbody>
         <tr><th><span data-zh>8 GB 显存</span><span data-en>8 GB VRAM</span></th><td class="no-fit"><span data-zh>显存装不下最小档</span><span data-en>VRAM cannot hold even the smallest tier</span><span data-zh>（最小 7.9 GB）</span><span data-en> (smallest tier 7.9 GB)</span><br><span class="muted"><span data-zh>共享显卡 / 老卡，够跑小MoE 与 2B 级</span><span data-en>shared or older cards; enough for small MoE and 2B-class models</span></span></td></tr>
         <tr>
@@ -1142,11 +1142,11 @@
         </tr>
         </tbody>
       </table>
-      <h3 class="budget-h">显存不够时的替代路径</h3>
-      <p class="muted small">llama.cpp 的 <code>-ngl</code> 可以只把部分层放显存、其余落系统内存；多卡则自动切分。
+      <h3 class="budget-h"><span data-zh>显存不够时的替代路径</span><span data-en>When VRAM is not enough</span></h3>
+      <p class="muted small"><span data-zh>llama.cpp 的</span><span data-en>llama.cpp’s</span> <code>-ngl</code> <span data-zh>可以只把部分层放显存、其余落系统内存；多卡则自动切分。</span><span data-en>can keep only some layers on the GPU and spill the rest to system memory; with multiple cards it splits automatically.</span>
         代价是速度：纯 CPU 推理通常比同规模 GPU 慢数倍，但同样能出结果。</p>
       <table class="budget">
-        <caption>系统内存 / 多卡 → 档位速查</caption>
+        <caption><span data-zh>系统内存 / 多卡 → 档位速查</span><span data-en>System memory / multi-GPU → tier cheat sheet</span></caption>
         <tbody>
         <tr>
           <th><span data-zh>64 GB 系统内存</span><span data-en>64 GB system RAM</span></th>
@@ -1182,7 +1182,7 @@
         </tr>
         </tbody>
       </table>
-      <p class="muted small">本系列档位体积跨度 7.9 GB → 61 GB。
+      <span data-zh><p class="muted small">本系列档位体积跨度 7.9 GB → 61 GB。</span><span data-en><p class="muted small">Tier sizes in this series span 7.9 GB → 61 GB.</span>
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
         <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（39 <span data-zh>档</span><span data-en>tiers</span>）</summary>
@@ -1194,7 +1194,7 @@
               <td><b>7.9 GB</b></td>
               <td>1.62<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -1202,7 +1202,7 @@
               <td><b>9.1 GB</b></td>
               <td>1.90<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个 · 9.1 GB~10 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 9.1 GB~10 GB</td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -1210,7 +1210,7 @@
               <td><b>8.5 GB</b></td>
               <td>2.13<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1218,7 +1218,7 @@
               <td><b>9.1 GB</b></td>
               <td>2.13<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个 · 9.1 GB~11 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 9.1 GB~11 GB</td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -1226,7 +1226,7 @@
               <td><b>10 GB</b></td>
               <td>2.31<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个 · 10 GB~12 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 10 GB~12 GB</td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -1234,7 +1234,7 @@
               <td><b>11 GB</b></td>
               <td>2.39<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1242,7 +1242,7 @@
               <td><b>11 GB</b></td>
               <td>2.39<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个 · 11 GB~13 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 11 GB~13 GB</td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -1250,7 +1250,7 @@
               <td><b>11 GB</b></td>
               <td>2.46<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个 · 11 GB~12 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 11 GB~12 GB</td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -1258,7 +1258,7 @@
               <td><b>12 GB</b></td>
               <td>2.71<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -1266,7 +1266,7 @@
               <td><b>12 GB</b></td>
               <td>2.80<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">4 个 · 12 GB~13 GB</td>
+              <td class="muted small">4 <span data-zh>个</span><span data-en></span> · 12 GB~13 GB</td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -1274,7 +1274,7 @@
               <td><b>13 GB</b></td>
               <td>2.89<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-31B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -1282,7 +1282,7 @@
               <td><b>12 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1290,7 +1290,7 @@
               <td><b>13 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-31B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -1298,7 +1298,7 @@
               <td><b>12 GB</b></td>
               <td>3.35<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1306,7 +1306,7 @@
               <td><b>13 GB</b></td>
               <td>3.36<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -1314,7 +1314,7 @@
               <td><b>13 GB</b></td>
               <td>3.50<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">5 个 · 13 GB~15 GB</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span> · 13 GB~15 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1322,7 +1322,7 @@
               <td><b>15 GB</b></td>
               <td>3.55<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">6 个 · 15 GB~16 GB</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span> · 15 GB~16 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1330,7 +1330,7 @@
               <td><b>17 GB</b></td>
               <td>3.60<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">4 个</td>
+              <td class="muted small">4 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -1338,7 +1338,7 @@
               <td><b>14 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">3 个 · 14 GB~16 GB</td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span> · 14 GB~16 GB</td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -1346,7 +1346,7 @@
               <td><b>17 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-31B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -1354,7 +1354,7 @@
               <td><b>17 GB</b></td>
               <td>4.05<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1362,7 +1362,7 @@
               <td><b>16 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">4 个</td>
+              <td class="muted small">4 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1370,7 +1370,7 @@
               <td><b>15 GB</b></td>
               <td>4.42<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1378,7 +1378,7 @@
               <td><b>17 GB</b></td>
               <td>4.55<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">5 个</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1386,7 +1386,7 @@
               <td><b>17 GB</b></td>
               <td>4.75<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">6 个 · 17 GB~18 GB</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span> · 17 GB~18 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1394,7 +1394,7 @@
               <td><b>19 GB</b></td>
               <td>4.83<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">3 个</td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1402,7 +1402,7 @@
               <td><b>18 GB</b></td>
               <td>4.85<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">7 个 · 18 GB~20 GB</td>
+              <td class="muted small">7 <span data-zh>个</span><span data-en></span> · 18 GB~20 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1410,7 +1410,7 @@
               <td><b>20 GB</b></td>
               <td>4.95<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-31B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -1418,7 +1418,7 @@
               <td><b>21 GB</b></td>
               <td>5.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">5 个</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1426,7 +1426,7 @@
               <td><b>21 GB</b></td>
               <td>5.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/giladgd/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">giladgd</a></td>
             </tr>
             <tr>
@@ -1434,7 +1434,7 @@
               <td><b>19 GB</b></td>
               <td>5.62<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1442,7 +1442,7 @@
               <td><b>22 GB</b></td>
               <td>5.69<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">6 个</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1450,7 +1450,7 @@
               <td><b>22 GB</b></td>
               <td>5.84<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1458,7 +1458,7 @@
               <td><b>23 GB</b></td>
               <td>5.84<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-31B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -1466,7 +1466,7 @@
               <td><b>28 GB</b></td>
               <td>6.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1474,7 +1474,7 @@
               <td><b>25 GB</b></td>
               <td>6.59<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">8 个 · 25 GB~27 GB</td>
+              <td class="muted small">8 <span data-zh>个</span><span data-en></span> · 25 GB~27 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1482,7 +1482,7 @@
               <td><b>33 GB</b></td>
               <td>8.50<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">10 个 · 33 GB~48 GB</td>
+              <td class="muted small">10 <span data-zh>个</span><span data-en></span> · 33 GB~48 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1490,7 +1490,7 @@
               <td><b>35 GB</b></td>
               <td>8.72<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -1498,13 +1498,13 @@
               <td><b>61 GB</b></td>
               <td>16.00<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">4 个</td>
+              <td class="muted small">4 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
           </tbody>
         </table>
-        <p class="muted small">「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是 <b>B 级推导</b>，不是实测值。</p>
-        <p class="muted small"><b>关于「最小体积」与「变体」：</b>同名档位下可能有多个不同文件
+        <p class="muted small"><span data-zh>「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是</span><span data-en>Bits per weight is derived from the filename by llama.cpp’s published naming convention; the real value varies slightly between models at the same tier. This is</span> <b><span data-zh>B 级推导</span><span data-en>grade-B derived</span></b><span data-zh>，不是实测值。</span><span data-en> — not a measured value.</span></p>
+        <p class="muted small"><span data-zh><b>关于「最小体积」与「变体」：</b></span><span data-en><b>On "smallest size" and "variants":</b></span>同名档位下可能有多个不同文件
           （不同量化者的实现差异，或带 <code>-AD-</code> 混合精度、<code>-PLEQ4_0</code> 上下文扩展、
           <code>-DENSE</code> 等后缀的特殊变体）。上表取的是该档<b>最省的可行体积</b>，
           「体积跨度」列给出该档实际的体积范围——跨度大说明该档内部差异明显，
@@ -1635,13 +1635,13 @@
           </tr>
         </tbody>
       </table>
-      <p class="tier-legend" role="list" aria-label="量化档色阶图例">
-        <span class="tier-legend-h">卡片左侧色条 = 推荐档位</span>
-        <span class="tier-legend-i tier-0">近似无损</span>
-        <span class="tier-legend-i tier-1">保守</span>
-        <span class="tier-legend-i tier-2">平衡</span>
-        <span class="tier-legend-i tier-3">长上下文</span>
-        <span class="tier-legend-i tier-4">极限压缩</span>
+      <p class="tier-legend" role="list" <span data-zh>aria-label="量化档色阶图例"</span><span data-en>aria-label="Quantisation tier colour scale"</span>>
+        <span class="tier-legend-h"><span data-zh>卡片左侧色条 = 推荐档位</span><span data-en>Colour bar on the left = recommended tier</span></span>
+        <span class="tier-legend-i tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span>
+        <span class="tier-legend-i tier-1"><span data-zh>保守</span><span data-en>Conservative</span></span>
+        <span class="tier-legend-i tier-2"><span data-zh>平衡</span><span data-en>Balanced</span></span>
+        <span class="tier-legend-i tier-3"><span data-zh>长上下文</span><span data-en>Long context</span></span>
+        <span class="tier-legend-i tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span>
       </p>
       <p class="muted small">「建议档」是本站按<b>体积最小且落在平衡档</b>的规则自动选出的，不是质量排名。官方量化排在最前；带 <span class="badge badge-im">imatrix</span> 标记的仓库带重要性矩阵数据。</p>
         </div>
@@ -2031,7 +2031,7 @@
           <span class="muted"><span data-zh>更新了 11 个档位</span><span data-en>updated 11 tiers</span></span>
         </li>
       </ul>
-      <p class="muted small">基础模型 <code>google/gemma-4-31B-it</code> 最近更新：2026-07-20　·　本站采集时间：2026-09-30</p>
+      <p class="muted small"><span data-zh>基础模型</span><span data-en>Base model</span> <code>google/gemma-4-31B-it</code> <span data-zh>最近更新：</span><span data-en>last updated:</span> 2026-07-20　·　<span data-zh>本站采集时间：</span><span data-en>collected:</span> 2026-09-30</p>
         </div>
       </section>
       <section class="member" id="m2">
@@ -2046,14 +2046,14 @@
         <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
           <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>8B 总参 / 4B 激活（E4B = 激活 4B）</b></td></tr>
-          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>8.0B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>8.7B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>8.0B <span data-zh><span class="muted small">（按 safetensors 张量逐个计数）</span></span><span data-en><span class="muted small"> (counted per safetensors tensor)</span></span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>8.7B <span data-zh><span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></span><span data-en><span class="muted small"> (GGUF bytes ÷ tier bpw, median of the densest cluster)</span></span></td></tr>
         </tbody>
       </table><span data-zh><p class="warn-inline">⚠ 实测反推与官方申报差 9%（反推偏大）。原因是 bpw 表为标称值、且部分张量（嵌入层、视觉塔）不按主档位量化。<b>以官方申报为准</b>。</p></span><span data-en><p class="warn-inline">⚠ Our reverse-derived figure differs from the vendor figure by 9% (ours runs high). Reason: the bpw table is nominal, and some tensors (embeddings, vision towers) are not quantised at the main tier. <b>The vendor figure is authoritative.</b></p></span></td></tr>
         <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>8.0B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
         <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>gemma4</code></td></tr>
         <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>131,072</code> tokens</td></tr>
-        <tr><th>基座</th><td><code>gemma-4-E4B</code></td></tr>
+        <tr><th><span data-zh>基座</span><span data-en>Base model</span></th><td><code>gemma-4-E4B</code></td></tr>
         <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>any-to-any</code></td></tr>
         <tr><th>定位</th><td>小显存首选</td></tr>
         <tr><th>标签</th><td><span class="tag">image-text-to-text</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2607.02770" target="_blank" rel="noopener">arXiv:2607.02770</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a></td></tr>
@@ -2068,9 +2068,9 @@
           <h4><span class="blk">B</span>该选哪个 <small>按你的显存倒推</small></h4>
       <p class="block-lead">按「你实际能腾出多少显存或内存」选档位，而不是按参数猜。下面每档的体积都是<b>实测值</b>（来自发布页文件列表），<b>加权 15% 余量</b>给运行时与 KV cache。</p>
       
-      <h3 class="budget-h">单卡全量装得下（最快）</h3>
+      <h3 class="budget-h"><span data-zh>单卡全量装得下（最快）</span><span data-en>Fits entirely on one card (fastest)</span></h3>
       <table class="budget">
-        <caption>显存 → 档位速查（权重全部放显存，推理最快）</caption>
+        <caption><span data-zh>显存 → 档位速查（权重全部放显存，推理最快）</span><span data-en>VRAM → tier cheat sheet (all weights on the GPU, fastest inference)</span></caption>
         <tbody>
         <tr>
           <th><span data-zh>8 GB 显存</span><span data-en>8 GB VRAM</span></th>
@@ -2122,11 +2122,11 @@
         </tr>
         </tbody>
       </table>
-      <h3 class="budget-h">显存不够时的替代路径</h3>
-      <p class="muted small">llama.cpp 的 <code>-ngl</code> 可以只把部分层放显存、其余落系统内存；多卡则自动切分。
+      <h3 class="budget-h"><span data-zh>显存不够时的替代路径</span><span data-en>When VRAM is not enough</span></h3>
+      <p class="muted small"><span data-zh>llama.cpp 的</span><span data-en>llama.cpp’s</span> <code>-ngl</code> <span data-zh>可以只把部分层放显存、其余落系统内存；多卡则自动切分。</span><span data-en>can keep only some layers on the GPU and spill the rest to system memory; with multiple cards it splits automatically.</span>
         代价是速度：纯 CPU 推理通常比同规模 GPU 慢数倍，但同样能出结果。</p>
       <table class="budget">
-        <caption>系统内存 / 多卡 → 档位速查</caption>
+        <caption><span data-zh>系统内存 / 多卡 → 档位速查</span><span data-en>System memory / multi-GPU → tier cheat sheet</span></caption>
         <tbody>
         <tr>
           <th><span data-zh>64 GB 系统内存</span><span data-en>64 GB system RAM</span></th>
@@ -2162,7 +2162,7 @@
         </tr>
         </tbody>
       </table>
-      <p class="muted small">本系列档位体积跨度 3.5 GB → 15 GB。
+      <span data-zh><p class="muted small">本系列档位体积跨度 3.5 GB → 15 GB。</span><span data-en><p class="muted small">Tier sizes in this series span 3.5 GB → 15 GB.</span>
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
         <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（34 <span data-zh>档</span><span data-en>tiers</span>）</summary>
@@ -2174,7 +2174,7 @@
               <td><b>3.5 GB</b></td>
               <td>2.39<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2182,7 +2182,7 @@
               <td><b>4.0 GB</b></td>
               <td>2.39<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -2190,7 +2190,7 @@
               <td><b>4.4 GB</b></td>
               <td>2.80<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">5 个</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -2198,7 +2198,7 @@
               <td><b>4.0 GB</b></td>
               <td>2.80<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -2206,7 +2206,7 @@
               <td><b>5.3 GB</b></td>
               <td>2.89<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -2214,7 +2214,7 @@
               <td><b>3.7 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2222,7 +2222,7 @@
               <td><b>4.6 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -2230,7 +2230,7 @@
               <td><b>3.8 GB</b></td>
               <td>3.35<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2238,7 +2238,7 @@
               <td><b>4.6 GB</b></td>
               <td>3.36<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -2246,7 +2246,7 @@
               <td><b>3.9 GB</b></td>
               <td>3.50<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">6 个 · 3.9 GB~4.7 GB</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span> · 3.9 GB~4.7 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2254,7 +2254,7 @@
               <td><b>4.1 GB</b></td>
               <td>3.55<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">7 个 · 4.1 GB~5.0 GB</td>
+              <td class="muted small">7 <span data-zh>个</span><span data-en></span> · 4.1 GB~5.0 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2262,7 +2262,7 @@
               <td><b>5.0 GB</b></td>
               <td>3.60<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">5 个</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -2270,7 +2270,7 @@
               <td><b>4.7 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">3 个</td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/AtomicChat/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">AtomicChat</a></td>
             </tr>
             <tr>
@@ -2278,7 +2278,7 @@
               <td><b>5.9 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -2286,7 +2286,7 @@
               <td><b>4.3 GB</b></td>
               <td>4.05<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">3 个 · 4.3 GB~5.2 GB</td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span> · 4.3 GB~5.2 GB</td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -2294,7 +2294,7 @@
               <td><b>4.7 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">5 个 · 4.7 GB~5.1 GB</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span> · 4.7 GB~5.1 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2302,7 +2302,7 @@
               <td><b>4.6 GB</b></td>
               <td>4.42<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2310,7 +2310,7 @@
               <td><b>4.6 GB</b></td>
               <td>4.55<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">6 个 · 4.6 GB~6.0 GB</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span> · 4.6 GB~6.0 GB</td>
               <td class="muted"><a href="https://huggingface.co/ggml-org/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">ggml-org</a></td>
             </tr>
             <tr>
@@ -2318,7 +2318,7 @@
               <td><b>4.8 GB</b></td>
               <td>4.75<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">7 个 · 4.8 GB~5.3 GB</td>
+              <td class="muted small">7 <span data-zh>个</span><span data-en></span> · 4.8 GB~5.3 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2326,7 +2326,7 @@
               <td><b>5.0 GB</b></td>
               <td>4.83<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">3 个 · 5.0 GB~5.5 GB</td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span> · 5.0 GB~5.5 GB</td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -2334,7 +2334,7 @@
               <td><b>5.0 GB</b></td>
               <td>4.85<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">9 个 · 5.0 GB~6.2 GB</td>
+              <td class="muted small">9 <span data-zh>个</span><span data-en></span> · 5.0 GB~6.2 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2342,7 +2342,7 @@
               <td><b>6.3 GB</b></td>
               <td>4.95<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -2350,7 +2350,7 @@
               <td><b>5.4 GB</b></td>
               <td>5.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">6 个 · 5.4 GB~5.7 GB</td>
+              <td class="muted small">6 <span data-zh>个</span><span data-en></span> · 5.4 GB~5.7 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2358,7 +2358,7 @@
               <td><b>5.7 GB</b></td>
               <td>5.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">3 个 · 5.7 GB~6.5 GB</td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span> · 5.7 GB~6.5 GB</td>
               <td class="muted"><a href="https://huggingface.co/prithivMLmods/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">prithivMLmods</a></td>
             </tr>
             <tr>
@@ -2366,7 +2366,7 @@
               <td><b>5.1 GB</b></td>
               <td>5.62<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">2 个 · 5.1 GB~6.2 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 5.1 GB~6.2 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2374,7 +2374,7 @@
               <td><b>5.5 GB</b></td>
               <td>5.69<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">7 个 · 5.5 GB~6.7 GB</td>
+              <td class="muted small">7 <span data-zh>个</span><span data-en></span> · 5.5 GB~6.7 GB</td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2382,7 +2382,7 @@
               <td><b>6.8 GB</b></td>
               <td>5.69<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Mungert/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">Mungert</a></td>
             </tr>
             <tr>
@@ -2390,7 +2390,7 @@
               <td><b>6.7 GB</b></td>
               <td>5.84<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2398,7 +2398,7 @@
               <td><b>6.7 GB</b></td>
               <td>5.84<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/google_gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
             <tr>
@@ -2406,7 +2406,7 @@
               <td><b>7.5 GB</b></td>
               <td>6.54<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2414,7 +2414,7 @@
               <td><b>6.2 GB</b></td>
               <td>6.59<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">10 个 · 6.2 GB~7.2 GB</td>
+              <td class="muted small">10 <span data-zh>个</span><span data-en></span> · 6.2 GB~7.2 GB</td>
               <td class="muted"><a href="https://huggingface.co/lmstudio-community/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">lmstudio-community</a></td>
             </tr>
             <tr>
@@ -2422,7 +2422,7 @@
               <td><b>8.0 GB</b></td>
               <td>8.50<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">11 个 · 8.0 GB~13 GB</td>
+              <td class="muted small">11 <span data-zh>个</span><span data-en></span> · 8.0 GB~13 GB</td>
               <td class="muted"><a href="https://huggingface.co/prithivMLmods/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">prithivMLmods</a></td>
             </tr>
             <tr>
@@ -2430,7 +2430,7 @@
               <td><b>8.7 GB</b></td>
               <td>8.72<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -2438,13 +2438,13 @@
               <td><b>15 GB</b></td>
               <td>16.00<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">8 个</td>
+              <td class="muted small">8 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/ggml-org/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener">ggml-org</a></td>
             </tr>
           </tbody>
         </table>
-        <p class="muted small">「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是 <b>B 级推导</b>，不是实测值。</p>
-        <p class="muted small"><b>关于「最小体积」与「变体」：</b>同名档位下可能有多个不同文件
+        <p class="muted small"><span data-zh>「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是</span><span data-en>Bits per weight is derived from the filename by llama.cpp’s published naming convention; the real value varies slightly between models at the same tier. This is</span> <b><span data-zh>B 级推导</span><span data-en>grade-B derived</span></b><span data-zh>，不是实测值。</span><span data-en> — not a measured value.</span></p>
+        <p class="muted small"><span data-zh><b>关于「最小体积」与「变体」：</b></span><span data-en><b>On "smallest size" and "variants":</b></span>同名档位下可能有多个不同文件
           （不同量化者的实现差异，或带 <code>-AD-</code> 混合精度、<code>-PLEQ4_0</code> 上下文扩展、
           <code>-DENSE</code> 等后缀的特殊变体）。上表取的是该档<b>最省的可行体积</b>，
           「体积跨度」列给出该档实际的体积范围——跨度大说明该档内部差异明显，
@@ -2603,13 +2603,13 @@
           </tr>
         </tbody>
       </table>
-      <p class="tier-legend" role="list" aria-label="量化档色阶图例">
-        <span class="tier-legend-h">卡片左侧色条 = 推荐档位</span>
-        <span class="tier-legend-i tier-0">近似无损</span>
-        <span class="tier-legend-i tier-1">保守</span>
-        <span class="tier-legend-i tier-2">平衡</span>
-        <span class="tier-legend-i tier-3">长上下文</span>
-        <span class="tier-legend-i tier-4">极限压缩</span>
+      <p class="tier-legend" role="list" <span data-zh>aria-label="量化档色阶图例"</span><span data-en>aria-label="Quantisation tier colour scale"</span>>
+        <span class="tier-legend-h"><span data-zh>卡片左侧色条 = 推荐档位</span><span data-en>Colour bar on the left = recommended tier</span></span>
+        <span class="tier-legend-i tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span>
+        <span class="tier-legend-i tier-1"><span data-zh>保守</span><span data-en>Conservative</span></span>
+        <span class="tier-legend-i tier-2"><span data-zh>平衡</span><span data-en>Balanced</span></span>
+        <span class="tier-legend-i tier-3"><span data-zh>长上下文</span><span data-en>Long context</span></span>
+        <span class="tier-legend-i tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span>
       </p>
       <p class="muted small">「建议档」是本站按<b>体积最小且落在平衡档</b>的规则自动选出的，不是质量排名。官方量化排在最前；带 <span class="badge badge-im">imatrix</span> 标记的仓库带重要性矩阵数据。</p>
         </div>
@@ -3093,12 +3093,12 @@
           <span class="muted"><span data-zh>更新了 12 个档位</span><span data-en>updated 12 tiers</span></span>
         </li>
       </ul>
-      <p class="muted small">基础模型 <code>google/gemma-4-E4B-it</code> 最近更新：2026-07-20　·　本站采集时间：2026-09-30</p>
+      <p class="muted small"><span data-zh>基础模型</span><span data-en>Base model</span> <code>google/gemma-4-E4B-it</code> <span data-zh>最近更新：</span><span data-en>last updated:</span> 2026-07-20　·　<span data-zh>本站采集时间：</span><span data-en>collected:</span> 2026-09-30</p>
         </div>
       </section>
     <section class="legal-note">
       <h3>关于数据与许可</h3>
-      <p>本站数据全部来自 <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> 公开 API，采集时间 <code>2026-09-30</code>，为快照数据。</p>
+      <p><span data-zh>本站数据全部来自</span><span data-en>All data here comes from the</span> <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> <span data-zh>公开 API，采集时间</span><span data-en>public API, collected</span> <code>2026-09-30</code>，为快照数据。</p>
       <p>本站<b>不下载、不托管任何模型权重文件</b>，只提供发布页链接。许可字段原样引自发布页，<b>本站不解读许可条款、不构成法律意见</b>，一切以<a href="https://specul.com/legal.html" target="_blank" rel="noopener">发布页原文</a>为准。</p>
       <p>模型名称均为各自权利人的商标，此处仅作描述性使用。本站与上述厂商无隶属或合作关系。</p>
     </section>
