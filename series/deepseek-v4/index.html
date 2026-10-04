@@ -56,15 +56,15 @@
       <div class="trust-grid">
         <div class="trust-item t-a">
           <span class="trust-tag">✅ <span data-zh>实测字段</span><span data-en>Measured fields</span></span>
-          <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
+          <p><span data-zh>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</span><span data-en>Objective data read straight from the Hugging Face public API: file sizes in bytes, context length, architecture, licence, downloads, last updated.</span></p>
         </div>
         <div class="trust-item t-b">
-          <span class="trust-tag">✅ 推导</span>
-          <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
+          <span class="trust-tag">✅ <span data-zh>推导</span><span data-en>Derived</span></span>
+          <p><span data-zh>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在</span><span data-en>Computed from the measured fields by published rules: bits per weight (per the llama.cpp naming convention), tier assignment, VRAM requirement range. The rules are fully published in</span> <code>METHODOLOGY.md</code><span data-zh> 完整公开，任何人可复算。</span><span data-en> — anyone can recompute them.</span></p>
         </div>
         <div class="trust-item t-c">
           <span class="trust-tag">❌ <span data-zh>我们不说的</span><span data-en>What we do not claim</span></span>
-          <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
+          <p><span data-zh><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</span><span data-en><b>Which quantisation is higher quality, which is faster, which model is stronger</b> — these need measurement. This site does not run benchmarks, so it does not pretend to know. Every subjective judgement we do offer is explicitly marked as our own reading.</span></p>
         </div>
       </div>
       <p class="trust-foot">
@@ -84,14 +84,14 @@
         <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
           <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>292B 总参（MoE，激活数未公开）</b></td></tr>
-          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>290.9B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>291.7B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>290.9B <span data-zh><span class="muted small">（按 safetensors 张量逐个计数）</span></span><span data-en><span class="muted small"> (counted per safetensors tensor)</span></span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>291.7B <span data-zh><span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></span><span data-en><span class="muted small"> (GGUF bytes ÷ tier bpw, median of the densest cluster)</span></span></td></tr>
         </tbody>
       </table><span data-zh><p class="param-ok">✓ 官方申报与实测反推一致（偏差 0.3%），参数量可信。</p></span><span data-en><p class="param-ok">✓ Vendor figure and our reverse-derived figure agree (0.3% apart) — the parameter count is trustworthy.</p></span></td></tr>
         <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>I8</code></td><td class="prec-bar"><span style="width:97.4%"></span></td><td>283.5B　<span class="muted small">97.4%</span></td></tr><tr><td><code>F8_E4M3</code></td><td class="prec-bar"><span style="width:2.1%"></span></td><td>6.0B　<span class="muted small">2.1%</span></td></tr><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>1.4B　<span class="muted small">0.5%</span></td></tr><tr><td><code>F32</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>36M　<span class="muted small">0.0%</span></td></tr><tr><td><code>I64</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>2M　<span class="muted small">0.0%</span></td></tr></tbody></table></td></tr>
         <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>deepseek4</code></td></tr>
         <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>1,048,576</code> tokens</td></tr>
-        <tr><th>基座</th><td><span data-zh><span class="muted">本仓即基座（不是微调版）</span></span><span data-en><span class="muted">this repo is the base model, not a fine-tune</span></span></td></tr>
+        <tr><th><span data-zh>基座</span><span data-en>Base model</span></th><td><span data-zh><span class="muted">本仓即基座（不是微调版）</span></span><span data-en><span class="muted">this repo is the base model, not a fine-tune</span></span></td></tr>
         <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>text-generation</code></td></tr>
         <tr><th>定位</th><td>通用主力</td></tr>
         <tr><th>标签</th><td><span class="tag">text-generation</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2606.19348" target="_blank" rel="noopener">arXiv:2606.19348</a> <a class="tag tag-lic" href="https://opensource.org/license/mit" target="_blank" rel="noopener">license:mit</a></td></tr>
@@ -106,9 +106,9 @@
           <h4><span class="blk">B</span>该选哪个 <small>按你的显存倒推</small></h4>
       <p class="block-lead">按「你实际能腾出多少显存或内存」选档位，而不是按参数猜。下面每档的体积都是<b>实测值</b>（来自发布页文件列表），<b>加权 15% 余量</b>给运行时与 KV cache。</p>
       
-      <h3 class="budget-h">单卡全量装得下（最快）</h3>
+      <h3 class="budget-h"><span data-zh>单卡全量装得下（最快）</span><span data-en>Fits entirely on one card (fastest)</span></h3>
       <table class="budget">
-        <caption>显存 → 档位速查（权重全部放显存，推理最快）</caption>
+        <caption><span data-zh>显存 → 档位速查（权重全部放显存，推理最快）</span><span data-en>VRAM → tier cheat sheet (all weights on the GPU, fastest inference)</span></caption>
         <tbody>
         <tr><th><span data-zh>8 GB 显存</span><span data-en>8 GB VRAM</span></th><td class="no-fit"><span data-zh>显存装不下最小档</span><span data-en>VRAM cannot hold even the smallest tier</span><span data-zh>（最小 61.5 GB）</span><span data-en> (smallest tier 61.5 GB)</span><br><span class="muted"><span data-zh>共享显卡 / 老卡，够跑小MoE 与 2B 级</span><span data-en>shared or older cards; enough for small MoE and 2B-class models</span></span></td></tr>
         <tr><th><span data-zh>12 GB 显存</span><span data-en>12 GB VRAM</span></th><td class="no-fit"><span data-zh>显存装不下最小档</span><span data-en>VRAM cannot hold even the smallest tier</span><span data-zh>（最小 61.5 GB）</span><span data-en> (smallest tier 61.5 GB)</span><br><span class="muted"><span data-zh>RTX 3060 12G / 4050 12G</span><span data-en>RTX 3060 12G / 4050 12G</span></span></td></tr>
@@ -125,11 +125,11 @@
         </tr>
         </tbody>
       </table>
-      <h3 class="budget-h">显存不够时的替代路径</h3>
-      <p class="muted small">llama.cpp 的 <code>-ngl</code> 可以只把部分层放显存、其余落系统内存；多卡则自动切分。
+      <h3 class="budget-h"><span data-zh>显存不够时的替代路径</span><span data-en>When VRAM is not enough</span></h3>
+      <p class="muted small"><span data-zh>llama.cpp 的</span><span data-en>llama.cpp’s</span> <code>-ngl</code> <span data-zh>可以只把部分层放显存、其余落系统内存；多卡则自动切分。</span><span data-en>can keep only some layers on the GPU and spill the rest to system memory; with multiple cards it splits automatically.</span>
         代价是速度：纯 CPU 推理通常比同规模 GPU 慢数倍，但同样能出结果。</p>
       <table class="budget">
-        <caption>系统内存 / 多卡 → 档位速查</caption>
+        <caption><span data-zh>系统内存 / 多卡 → 档位速查</span><span data-en>System memory / multi-GPU → tier cheat sheet</span></caption>
         <tbody>
         <tr><th><span data-zh>64 GB 系统内存</span><span data-en>64 GB system RAM</span></th><td class="no-fit"><span data-zh>内存装不下最小档</span><span data-en>memory cannot hold even the smallest tier</span><span data-zh>（最小 61.5 GB）</span><span data-en> (smallest tier 61.5 GB)</span><br><span class="muted"><span data-zh>纯 CPU 推理，速度慢但可跑；建议开swap 兜底</span><span data-en>CPU-only inference — slow but it runs; enable swap as a safety net</span></span></td></tr>
         <tr>
@@ -158,7 +158,7 @@
         </tr>
         </tbody>
       </table>
-      <p class="muted small">本系列档位体积跨度 62 GB → 162 GB。
+      <span data-zh><p class="muted small">本系列档位体积跨度 62 GB → 162 GB。</span><span data-en><p class="muted small">Tier sizes in this series span 62 GB → 162 GB.</span>
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
         <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（28 <span data-zh>档</span><span data-en>tiers</span>）</summary>
@@ -170,7 +170,7 @@
               <td><b>62 GB</b></td>
               <td>1.62<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/teamblobfish/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">teamblobfish</a></td>
             </tr>
             <tr>
@@ -178,7 +178,7 @@
               <td><b>83 GB</b></td>
               <td>1.70<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -186,7 +186,7 @@
               <td><b>65 GB</b></td>
               <td>1.90<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">2 个 · 65 GB~68 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 65 GB~68 GB</td>
               <td class="muted"><a href="https://huggingface.co/teamblobfish/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">teamblobfish</a></td>
             </tr>
             <tr>
@@ -194,7 +194,7 @@
               <td><b>87 GB</b></td>
               <td>1.96<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -202,7 +202,7 @@
               <td><b>91 GB</b></td>
               <td>2.13<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -210,7 +210,7 @@
               <td><b>79 GB</b></td>
               <td>2.13<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/teamblobfish/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">teamblobfish</a></td>
             </tr>
             <tr>
@@ -218,7 +218,7 @@
               <td><b>87 GB</b></td>
               <td>2.31<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/teamblobfish/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">teamblobfish</a></td>
             </tr>
             <tr>
@@ -226,7 +226,7 @@
               <td><b>91 GB</b></td>
               <td>2.39<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -234,7 +234,7 @@
               <td><b>88 GB</b></td>
               <td>2.46<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bullerwins/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">bullerwins</a></td>
             </tr>
             <tr>
@@ -242,7 +242,7 @@
               <td><b>99 GB</b></td>
               <td>2.71<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/ggml-org/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">ggml-org</a></td>
             </tr>
             <tr>
@@ -250,7 +250,7 @@
               <td><b>97 GB</b></td>
               <td>2.80<span class="muted"> bpw</span></td>
               <td><span class="tier tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span></td>
-              <td class="muted small">4 个 · 97 GB~117 GB</td>
+              <td class="muted small">4 <span data-zh>个</span><span data-en></span> · 97 GB~117 GB</td>
               <td class="muted"><a href="https://huggingface.co/tarruda/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">tarruda</a></td>
             </tr>
             <tr>
@@ -258,7 +258,7 @@
               <td><b>103 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -266,7 +266,7 @@
               <td><b>102 GB</b></td>
               <td>3.06<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">5 个 · 102 GB~151 GB</td>
+              <td class="muted small">5 <span data-zh>个</span><span data-en></span> · 102 GB~151 GB</td>
               <td class="muted"><a href="https://huggingface.co/bullerwins/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">bullerwins</a></td>
             </tr>
             <tr>
@@ -274,7 +274,7 @@
               <td><b>117 GB</b></td>
               <td>3.35<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -282,7 +282,7 @@
               <td><b>97 GB</b></td>
               <td>3.35<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -290,7 +290,7 @@
               <td><b>137 GB</b></td>
               <td>3.35<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/ddh0/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">ddh0</a></td>
             </tr>
             <tr>
@@ -298,7 +298,7 @@
               <td><b>136 GB</b></td>
               <td>3.55<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Preyazz/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">Preyazz</a></td>
             </tr>
             <tr>
@@ -306,7 +306,7 @@
               <td><b>125 GB</b></td>
               <td>3.55<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small">2 个 · 125 GB~137 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 125 GB~137 GB</td>
               <td class="muted"><a href="https://huggingface.co/tarruda/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">tarruda</a></td>
             </tr>
             <tr>
@@ -314,7 +314,7 @@
               <td><b>138 GB</b></td>
               <td>4.05<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -322,7 +322,7 @@
               <td><b>129 GB</b></td>
               <td>4.15<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -330,7 +330,7 @@
               <td><b>138 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -338,7 +338,7 @@
               <td><b>155 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">3 个</td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/ggml-org/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">ggml-org</a></td>
             </tr>
             <tr>
@@ -346,7 +346,7 @@
               <td><b>155 GB</b></td>
               <td>4.25<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bullerwins/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">bullerwins</a></td>
             </tr>
             <tr>
@@ -354,7 +354,7 @@
               <td><b>129 GB</b></td>
               <td>4.42<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -362,7 +362,7 @@
               <td><b>172 GB</b></td>
               <td>4.85<span class="muted"> bpw</span></td>
               <td><span class="tier tier-2"><span data-zh>平衡档</span><span data-en>Balanced</span></span></td>
-              <td class="muted small">2 个</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/Preyazz/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">Preyazz</a></td>
             </tr>
             <tr>
@@ -370,7 +370,7 @@
               <td><b>155 GB</b></td>
               <td>5.62<span class="muted"> bpw</span></td>
               <td><span class="tier tier-1"><span data-zh>保守档</span><span data-en>Conservative</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
             <tr>
@@ -378,7 +378,7 @@
               <td><b>156 GB</b></td>
               <td>8.50<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">2 个 · 156 GB~302 GB</td>
+              <td class="muted small">2 <span data-zh>个</span><span data-en></span> · 156 GB~302 GB</td>
               <td class="muted"><a href="https://huggingface.co/bullerwins/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">bullerwins</a></td>
             </tr>
             <tr>
@@ -386,13 +386,13 @@
               <td><b>162 GB</b></td>
               <td>8.72<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
-              <td class="muted small">1 个</td>
+              <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener">unsloth</a></td>
             </tr>
           </tbody>
         </table>
-        <p class="muted small">「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是 <b>B 级推导</b>，不是实测值。</p>
-        <p class="muted small"><b>关于「最小体积」与「变体」：</b>同名档位下可能有多个不同文件
+        <p class="muted small"><span data-zh>「每权重比特」是按 llama.cpp 公开命名标准从文件名推导的，同一档位在不同模型上的真实值会略有差异。这是</span><span data-en>Bits per weight is derived from the filename by llama.cpp’s published naming convention; the real value varies slightly between models at the same tier. This is</span> <b><span data-zh>B 级推导</span><span data-en>grade-B derived</span></b><span data-zh>，不是实测值。</span><span data-en> — not a measured value.</span></p>
+        <p class="muted small"><span data-zh><b>关于「最小体积」与「变体」：</b></span><span data-en><b>On "smallest size" and "variants":</b></span>同名档位下可能有多个不同文件
           （不同量化者的实现差异，或带 <code>-AD-</code> 混合精度、<code>-PLEQ4_0</code> 上下文扩展、
           <code>-DENSE</code> 等后缀的特殊变体）。上表取的是该档<b>最省的可行体积</b>，
           「体积跨度」列给出该档实际的体积范围——跨度大说明该档内部差异明显，
@@ -509,13 +509,13 @@
           </tr>
         </tbody>
       </table>
-      <p class="tier-legend" role="list" aria-label="量化档色阶图例">
-        <span class="tier-legend-h">卡片左侧色条 = 推荐档位</span>
-        <span class="tier-legend-i tier-0">近似无损</span>
-        <span class="tier-legend-i tier-1">保守</span>
-        <span class="tier-legend-i tier-2">平衡</span>
-        <span class="tier-legend-i tier-3">长上下文</span>
-        <span class="tier-legend-i tier-4">极限压缩</span>
+      <p class="tier-legend" role="list" <span data-zh>aria-label="量化档色阶图例"</span><span data-en>aria-label="Quantisation tier colour scale"</span>>
+        <span class="tier-legend-h"><span data-zh>卡片左侧色条 = 推荐档位</span><span data-en>Colour bar on the left = recommended tier</span></span>
+        <span class="tier-legend-i tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span>
+        <span class="tier-legend-i tier-1"><span data-zh>保守</span><span data-en>Conservative</span></span>
+        <span class="tier-legend-i tier-2"><span data-zh>平衡</span><span data-en>Balanced</span></span>
+        <span class="tier-legend-i tier-3"><span data-zh>长上下文</span><span data-en>Long context</span></span>
+        <span class="tier-legend-i tier-4"><span data-zh>极限压缩</span><span data-en>Extreme compression</span></span>
       </p>
       <p class="muted small">「建议档」是本站按<b>体积最小且落在平衡档</b>的规则自动选出的，不是质量排名。官方量化排在最前；带 <span class="badge badge-im">imatrix</span> 标记的仓库带重要性矩阵数据。</p>
         </div>
@@ -861,12 +861,12 @@
           <span class="muted"><span data-zh>更新了 3 个档位</span><span data-en>updated 3 tiers</span></span>
         </li>
       </ul>
-      <p class="muted small">基础模型 <code>deepseek-ai/DeepSeek-V4-Flash</code> 最近更新：2026-06-22　·　本站采集时间：2026-09-30</p>
+      <p class="muted small"><span data-zh>基础模型</span><span data-en>Base model</span> <code>deepseek-ai/DeepSeek-V4-Flash</code> <span data-zh>最近更新：</span><span data-en>last updated:</span> 2026-06-22　·　<span data-zh>本站采集时间：</span><span data-en>collected:</span> 2026-09-30</p>
         </div>
       </section>
     <section class="legal-note">
       <h3>关于数据与许可</h3>
-      <p>本站数据全部来自 <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> 公开 API，采集时间 <code>2026-09-30</code>，为快照数据。</p>
+      <p><span data-zh>本站数据全部来自</span><span data-en>All data here comes from the</span> <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> <span data-zh>公开 API，采集时间</span><span data-en>public API, collected</span> <code>2026-09-30</code>，为快照数据。</p>
       <p>本站<b>不下载、不托管任何模型权重文件</b>，只提供发布页链接。许可字段原样引自发布页，<b>本站不解读许可条款、不构成法律意见</b>，一切以<a href="https://specul.com/legal.html" target="_blank" rel="noopener">发布页原文</a>为准。</p>
       <p>模型名称均为各自权利人的商标，此处仅作描述性使用。本站与上述厂商无隶属或合作关系。</p>
     </section>
