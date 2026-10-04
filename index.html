@@ -52,8 +52,8 @@
         <div><b>7</b><span><span data-zh>个系列</span><span data-en>series</span></span></div>
         <div><b>11</b><span><span data-zh>个规格</span><span data-en>sizes</span></span></div>
         <div><b>91</b><span><span data-zh>个量化仓</span><span data-en>quant repos</span></span></div>
-        <div><b>846</b><span>个量化档位</span></div>
-        <div><b>41</b><span>位量化者</span></div>
+        <div><b>846</b><span><span data-zh>个量化档位</span><span data-en>quant tiers</span></span></div>
+        <div><b>41</b><span><span data-zh>位量化者</span><span data-en>quantisers</span></span></div>
       </div>
     </header>
 
@@ -62,15 +62,15 @@
       <div class="trust-grid">
         <div class="trust-item t-a">
           <span class="trust-tag">✅ <span data-zh>实测字段</span><span data-en>Measured fields</span></span>
-          <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
+          <p><span data-zh>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</span><span data-en>Objective data read straight from the Hugging Face public API: file sizes in bytes, context length, architecture, licence, downloads, last updated.</span></p>
         </div>
         <div class="trust-item t-b">
-          <span class="trust-tag">✅ 推导</span>
-          <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
+          <span class="trust-tag">✅ <span data-zh>推导</span><span data-en>Derived</span></span>
+          <p><span data-zh>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在</span><span data-en>Computed from the measured fields by published rules: bits per weight (per the llama.cpp naming convention), tier assignment, VRAM requirement range. The rules are fully published in</span> <code>METHODOLOGY.md</code><span data-zh> 完整公开，任何人可复算。</span><span data-en> — anyone can recompute them.</span></p>
         </div>
         <div class="trust-item t-c">
           <span class="trust-tag">❌ <span data-zh>我们不说的</span><span data-en>What we do not claim</span></span>
-          <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
+          <p><span data-zh><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</span><span data-en><b>Which quantisation is higher quality, which is faster, which model is stronger</b> — these need measurement. This site does not run benchmarks, so it does not pretend to know. Every subjective judgement we do offer is explicitly marked as our own reading.</span></p>
         </div>
       </div>
       <p class="trust-foot">
@@ -102,9 +102,9 @@
           <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>MIT 许可</span><span data-en>MIT 许可</span></li><li><span data-zh>推理</span><span data-en>推理</span></li></ul>
           <div class="scard-stats">
             <span><b>1</b> <span data-zh>规格</span><span data-en>sizes</span></span>
-            <span><b>7</b> 量化源</span>
-            <span><b>37</b> 档位</span>
-            <span><b>7</b> 量化者</span>
+            <span><b>7</b> <span data-zh>量化源</span><span data-en>quant repos</span></span>
+            <span><b>37</b> <span data-zh>档位</span><span data-en>tiers</span></span>
+            <span><b>7</b> <span data-zh>量化者</span><span data-en>quantisers</span></span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">mit</span></div>
           <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
@@ -118,9 +118,9 @@
           <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>MoE 稀疏</span><span data-en>MoE 稀疏</span></li><li><span data-zh>小尺寸可跑</span><span data-en>小尺寸可跑</span></li></ul>
           <div class="scard-stats">
             <span><b>3</b> <span data-zh>规格</span><span data-en>sizes</span></span>
-            <span><b>26</b> 量化源</span>
-            <span><b>344</b> 档位</span>
-            <span><b>11</b> 量化者</span>
+            <span><b>26</b> <span data-zh>量化源</span><span data-en>quant repos</span></span>
+            <span><b>344</b> <span data-zh>档位</span><span data-en>tiers</span></span>
+            <span><b>11</b> <span data-zh>量化者</span><span data-en>quantisers</span></span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="lic lic-loose">apache-2.0</span> <span class="lic lic-loose">apache-2.0</span></div>
           <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
@@ -134,9 +134,9 @@
           <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>工具调用</span><span data-en>Tool use</span></li><li><span data-zh>MIT 许可</span><span data-en>MIT 许可</span></li></ul>
           <div class="scard-stats">
             <span><b>2</b> <span data-zh>规格</span><span data-en>sizes</span></span>
-            <span><b>17</b> 量化源</span>
-            <span><b>97</b> 档位</span>
-            <span><b>15</b> 量化者</span>
+            <span><b>17</b> <span data-zh>量化源</span><span data-en>quant repos</span></span>
+            <span><b>97</b> <span data-zh>档位</span><span data-en>tiers</span></span>
+            <span><b>15</b> <span data-zh>量化者</span><span data-en>quantisers</span></span>
           </div>
           <div class="scard-lic"><span class="lic lic-tight">other</span> <span class="lic lic-loose">mit</span></div>
           <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
@@ -150,9 +150,9 @@
           <ul class="scard-pos"><li><span data-zh>推理</span><span data-en>推理</span></li><li><span data-zh>MoE 稀疏</span><span data-en>MoE 稀疏</span></li><li><span data-zh>apache-2.0</span><span data-en>apache-2.0</span></li></ul>
           <div class="scard-stats">
             <span><b>1</b> <span data-zh>规格</span><span data-en>sizes</span></span>
-            <span><b>4</b> 量化源</span>
-            <span><b>45</b> 档位</span>
-            <span><b>4</b> 量化者</span>
+            <span><b>4</b> <span data-zh>量化源</span><span data-en>quant repos</span></span>
+            <span><b>45</b> <span data-zh>档位</span><span data-en>tiers</span></span>
+            <span><b>4</b> <span data-zh>量化者</span><span data-en>quantisers</span></span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">apache-2.0</span></div>
           <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
@@ -166,9 +166,9 @@
           <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>长上下文</span><span data-en>Long context</span></li></ul>
           <div class="scard-stats">
             <span><b>1</b> <span data-zh>规格</span><span data-en>sizes</span></span>
-            <span><b>10</b> 量化源</span>
-            <span><b>31</b> 档位</span>
-            <span><b>10</b> 量化者</span>
+            <span><b>10</b> <span data-zh>量化源</span><span data-en>quant repos</span></span>
+            <span><b>31</b> <span data-zh>档位</span><span data-en>tiers</span></span>
+            <span><b>10</b> <span data-zh>量化者</span><span data-en>quantisers</span></span>
           </div>
           <div class="scard-lic"><span class="lic lic-tight">other</span></div>
           <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
@@ -182,9 +182,9 @@
           <ul class="scard-pos"><li><span data-zh>端侧</span><span data-en>端侧</span></li><li><span data-zh>小尺寸</span><span data-en>小尺寸</span></li><li><span data-zh>中文强项</span><span data-en>Strong Chinese</span></li></ul>
           <div class="scard-stats">
             <span><b>1</b> <span data-zh>规格</span><span data-en>sizes</span></span>
-            <span><b>10</b> 量化源</span>
-            <span><b>143</b> 档位</span>
-            <span><b>10</b> 量化者</span>
+            <span><b>10</b> <span data-zh>量化源</span><span data-en>quant repos</span></span>
+            <span><b>143</b> <span data-zh>档位</span><span data-en>tiers</span></span>
+            <span><b>10</b> <span data-zh>量化者</span><span data-en>quantisers</span></span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">apache-2.0</span></div>
           <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
@@ -198,9 +198,9 @@
           <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>工具调用</span><span data-en>Tool use</span></li><li><span data-zh>长上下文</span><span data-en>Long context</span></li><li><span data-zh>中文强项</span><span data-en>Strong Chinese</span></li></ul>
           <div class="scard-stats">
             <span><b>2</b> <span data-zh>规格</span><span data-en>sizes</span></span>
-            <span><b>17</b> 量化源</span>
-            <span><b>149</b> 档位</span>
-            <span><b>11</b> 量化者</span>
+            <span><b>17</b> <span data-zh>量化源</span><span data-en>quant repos</span></span>
+            <span><b>149</b> <span data-zh>档位</span><span data-en>tiers</span></span>
+            <span><b>11</b> <span data-zh>量化者</span><span data-en>quantisers</span></span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="lic lic-tight">other</span></div>
           <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
@@ -257,7 +257,7 @@
 
     <section class="legal-note">
       <h3><span data-zh>数据来源与法律立场</span><span data-en>Sources and legal position</span></h3>
-      <p>数据来自 <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> 公开 API（模型元数据 + 文件体积），采集时间 <code>2026-09-30</code>，为快照数据而非实时。</p>
+      <p><span data-zh>数据来自</span><span data-en>Data comes from the</span> <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> <span data-zh>公开 API（模型元数据 + 文件体积），采集</span><span data-en>public API (model metadata + file sizes), collected</span>时间 <code>2026-09-30</code>，为快照数据而非实时。</p>
       <p><b>本站不跑 benchmark，不给质量与速度结论。</b>凡涉及主观判断处均标注「我们的口径」。</p>
       <p><b>不下载、不托管任何权重文件</b>；许可原样引自发布页，本站不解读许可、不构成法律意见，一切以<a href="https://specul.com/legal.html" target="_blank" rel="noopener">发布页原文</a>为准。</p>
       <p>系列选择依据四维打分（量化热度 40 / 量化广度 25 / 规模可及性 20 / 新鲜度 15），方法与落选名单见 <a href="https://github.com/speculcom/ai-quantized-llm" target="_blank" rel="noopener">数据仓 METHODOLOGY.md ↗</a>。</p>
