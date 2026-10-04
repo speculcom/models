@@ -49,19 +49,19 @@
       <p class="lede">你决定用哪个模型之后，真正要面对的问题是：<b>同一模型有几十个量化版，我该下哪一个？</b><br>本站只回答这一个问题——不评模型强弱，只帮你选对量化版。</p>
       <p class="lede lede-sub"><b>收录范围：只收开放权重、可本地部署的开源模型</b>（HF 上有公开权重的 MoE 与 dense模型）。闭源 / API-only 模型不在收录范围内——它们没有量化产物，下载和选型的问题不存在。</p>
       <div class="home-stats">
-        <div><b>7</b><span>个系列</span></div>
-        <div><b>11</b><span>个规格</span></div>
-        <div><b>91</b><span>个量化仓</span></div>
+        <div><b>7</b><span><span data-zh>个系列</span><span data-en>series</span></span></div>
+        <div><b>11</b><span><span data-zh>个规格</span><span data-en>sizes</span></span></div>
+        <div><b>91</b><span><span data-zh>个量化仓</span><span data-en>quant repos</span></span></div>
         <div><b>846</b><span>个量化档位</span></div>
         <div><b>41</b><span>位量化者</span></div>
       </div>
     </header>
 
     <section class="trust">
-      <h2>先说清楚：这个站的数据怎么来的</h2>
+      <h2><span data-zh>先说清楚：这个站的数据怎么来的</span><span data-en>First, where this site's data comes from</span></h2>
       <div class="trust-grid">
         <div class="trust-item t-a">
-          <span class="trust-tag">✅ 实测字段</span>
+          <span class="trust-tag">✅ <span data-zh>实测字段</span><span data-en>Measured fields</span></span>
           <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
         </div>
         <div class="trust-item t-b">
@@ -69,7 +69,7 @@
           <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
         </div>
         <div class="trust-item t-c">
-          <span class="trust-tag">❌ 我们不说的</span>
+          <span class="trust-tag">❌ <span data-zh>我们不说的</span><span data-en>What we do not claim</span></span>
           <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
         </div>
       </div>
@@ -80,18 +80,18 @@
     </section>
 
     <section class="howto">
-      <h2>怎么用这个站</h2>
+      <h2><span data-zh>怎么用这个站</span><span data-en>How to use this site</span></h2>
       <ol class="steps">
-        <li><b>先看你有多少显存。</b>这是唯一的硬约束，8GB 和 24GB 能跑的档位完全不同。显存撑不下时看同一张表的「系统内存 / 多卡」两栏——纯 CPU 或多卡张量并行也是可行路线。</li>
-        <li><b>在 B 区块查速查表。</b>直接给出「这个显存 / 内存档位该用哪个量化档」，体积是实测值。</li>
-        <li><b>在 C 区块横向对比量化者。</b>看谁档位全、谁带 imatrix、谁在跟进更新。</li>
-        <li><b>在 D 区块看单档详解。</b>七个字段说清每个变体是什么、差在哪、什么时候该选它。</li>
-        <li><b>下载前先读许可。</b>非宽松许可的，页面会标出来；量化仓没单独声明许可的，页面会写明「继承自基座」，原文链接就在旁边。</li>
+        <li><span data-zh><b>先看你有多少显存。</b>这是唯一的硬约束，8GB 和 24GB 能跑的档位完全不同。显存撑不下时看同一张表的「系统内存 / 多卡」两栏——纯 CPU 或多卡张量并行也是可行路线。</span><span data-en><b>Start with how much VRAM you have.</b> It is the only hard constraint — the tiers that fit in 8GB and 24GB are entirely different. If VRAM is the limit, look at the "system memory / multi-GPU" columns in the same table — CPU-only or multi-GPU tensor parallel are viable routes.</span></li>
+        <li><span data-zh><b>在 B 区块查速查表。</b>直接给出「这个显存 / 内存档位该用哪个量化档」，体积是实测值。</span><span data-en><b>Use the cheat sheet in block B.</b> It maps a given VRAM / memory budget to the tier to use, with measured sizes.</span></li>
+        <li><span data-zh><b>在 C 区块横向对比量化者。</b>看谁档位全、谁带 imatrix、谁在跟进更新。</span><span data-en><b>Compare quantisers side by side in block C.</b> See who covers the most tiers, who ships imatrix, and who is keeping up with releases.</span></li>
+        <li><span data-zh><b>在 D 区块看单档详解。</b>七个字段说清每个变体是什么、差在哪、什么时候该选它。</span><span data-en><b>Read the per-tier detail in block D.</b> Seven fields spell out what each variant is, how it differs, and when to pick it.</span></li>
+        <li><span data-zh><b>下载前先读许可。</b>非宽松许可的，页面会标出来；量化仓没单独声明许可的，页面会写明「继承自基座」，原文链接就在旁边。</span><span data-en><b>Read the licence before downloading.</b> Non-permissive licences are flagged; where a quant repo declares none, the page says "inherited from base" with the original link right beside it.</span></li>
       </ol>
     </section>
 
     <section class="series-list">
-      <h2>已收录系列 <small>按 GGUF 量化实际下载量排序</small></h2>
+      <h2><span data-zh>已收录系列</span><span data-en>Series covered</span> <small><span data-zh>按 GGUF 量化实际下载量排序</span><span data-en>ranked by measured GGUF download volume</span></small></h2>
       <div class="scards">
         <a class="scard scard-loose" href="series/deepseek-v4/">
           <div class="scard-h">
@@ -99,7 +99,7 @@
             <span class="scard-vendor">DeepSeek</span>
           </div>
           <p class="scard-sum">MIT 许可，量化生态活跃，antirez（llama.cpp 作者）亲自维护量化版。</p>
-          <ul class="scard-pos"><li>通用对话</li><li>MIT 许可</li><li>推理</li></ul>
+          <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>MIT 许可</span><span data-en>MIT 许可</span></li><li><span data-zh>推理</span><span data-en>推理</span></li></ul>
           <div class="scard-stats">
             <span><b>1</b> 规格</span>
             <span><b>7</b> 量化源</span>
@@ -107,7 +107,7 @@
             <span><b>7</b> 量化者</span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">mit</span></div>
-          <p class="scard-go">看该选哪一档 →</p>
+          <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
         </a>
         <a class="scard scard-loose" href="series/gemma-4/">
           <div class="scard-h">
@@ -115,7 +115,7 @@
             <span class="scard-vendor">Google</span>
           </div>
           <p class="scard-sum">Google 开放权重最新一代，三种规格各自都有量化覆盖。</p>
-          <ul class="scard-pos"><li>通用对话</li><li>MoE 稀疏</li><li>小尺寸可跑</li></ul>
+          <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>MoE 稀疏</span><span data-en>MoE 稀疏</span></li><li><span data-zh>小尺寸可跑</span><span data-en>小尺寸可跑</span></li></ul>
           <div class="scard-stats">
             <span><b>3</b> 规格</span>
             <span><b>26</b> 量化源</span>
@@ -123,7 +123,7 @@
             <span><b>11</b> 量化者</span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="lic lic-loose">apache-2.0</span> <span class="lic lic-loose">apache-2.0</span></div>
-          <p class="scard-go">看该选哪一档 →</p>
+          <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
         </a>
         <a class="scard" href="series/glm-5/">
           <div class="scard-h">
@@ -131,7 +131,7 @@
             <span class="scard-vendor">智谱 AI</span>
           </div>
           <p class="scard-sum">智谱当前最新一代，MIT 许可的 Flash 版对本地部署最友好。</p>
-          <ul class="scard-pos"><li>通用对话</li><li>工具调用</li><li>MIT 许可</li></ul>
+          <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>工具调用</span><span data-en>Tool use</span></li><li><span data-zh>MIT 许可</span><span data-en>MIT 许可</span></li></ul>
           <div class="scard-stats">
             <span><b>2</b> 规格</span>
             <span><b>17</b> 量化源</span>
@@ -139,7 +139,7 @@
             <span><b>15</b> 量化者</span>
           </div>
           <div class="scard-lic"><span class="lic lic-tight">other</span> <span class="lic lic-loose">mit</span></div>
-          <p class="scard-go">看该选哪一档 →</p>
+          <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
         </a>
         <a class="scard scard-loose" href="series/gpt-oss/">
           <div class="scard-h">
@@ -147,7 +147,7 @@
             <span class="scard-vendor">OpenAI</span>
           </div>
           <p class="scard-sum">OpenAI 唯一开放权重系列，20B 版是单卡本地部署的甜点。</p>
-          <ul class="scard-pos"><li>推理</li><li>MoE 稀疏</li><li>apache-2.0</li></ul>
+          <ul class="scard-pos"><li><span data-zh>推理</span><span data-en>推理</span></li><li><span data-zh>MoE 稀疏</span><span data-en>MoE 稀疏</span></li><li><span data-zh>apache-2.0</span><span data-en>apache-2.0</span></li></ul>
           <div class="scard-stats">
             <span><b>1</b> 规格</span>
             <span><b>4</b> 量化源</span>
@@ -155,7 +155,7 @@
             <span><b>4</b> 量化者</span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">apache-2.0</span></div>
-          <p class="scard-go">看该选哪一档 →</p>
+          <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
         </a>
         <a class="scard" href="series/kimi-k3/">
           <div class="scard-h">
@@ -163,7 +163,7 @@
             <span class="scard-vendor">月之暗面</span>
           </div>
           <p class="scard-sum">月之暗面当前最新一代，41 家量化仓但整体热度中等。</p>
-          <ul class="scard-pos"><li>通用对话</li><li>长上下文</li></ul>
+          <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>长上下文</span><span data-en>Long context</span></li></ul>
           <div class="scard-stats">
             <span><b>1</b> 规格</span>
             <span><b>10</b> 量化源</span>
@@ -171,7 +171,7 @@
             <span><b>10</b> 量化者</span>
           </div>
           <div class="scard-lic"><span class="lic lic-tight">other</span></div>
-          <p class="scard-go">看该选哪一档 →</p>
+          <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
         </a>
         <a class="scard scard-loose" href="series/minicpm5/">
           <div class="scard-h">
@@ -179,7 +179,7 @@
             <span class="scard-vendor">面壁智能 · OpenBMB</span>
           </div>
           <p class="scard-sum">国产小尺寸代表，2B 规模适合低显存与端侧。</p>
-          <ul class="scard-pos"><li>端侧</li><li>小尺寸</li><li>中文强项</li></ul>
+          <ul class="scard-pos"><li><span data-zh>端侧</span><span data-en>端侧</span></li><li><span data-zh>小尺寸</span><span data-en>小尺寸</span></li><li><span data-zh>中文强项</span><span data-en>Strong Chinese</span></li></ul>
           <div class="scard-stats">
             <span><b>1</b> 规格</span>
             <span><b>10</b> 量化源</span>
@@ -187,7 +187,7 @@
             <span><b>10</b> 量化者</span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">apache-2.0</span></div>
-          <p class="scard-go">看该选哪一档 →</p>
+          <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
         </a>
         <a class="scard" href="series/qwen3-8/">
           <div class="scard-h">
@@ -195,7 +195,7 @@
             <span class="scard-vendor">阿里 · 通义千问</span>
           </div>
           <p class="scard-sum">阿里当前最新一代，27B 密集模型是本地部署圈热度最高的一个。</p>
-          <ul class="scard-pos"><li>通用对话</li><li>工具调用</li><li>长上下文</li><li>中文强项</li></ul>
+          <ul class="scard-pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>工具调用</span><span data-en>Tool use</span></li><li><span data-zh>长上下文</span><span data-en>Long context</span></li><li><span data-zh>中文强项</span><span data-en>Strong Chinese</span></li></ul>
           <div class="scard-stats">
             <span><b>2</b> 规格</span>
             <span><b>17</b> 量化源</span>
@@ -203,7 +203,7 @@
             <span><b>11</b> 量化者</span>
           </div>
           <div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="lic lic-tight">other</span></div>
-          <p class="scard-go">看该选哪一档 →</p>
+          <p class="scard-go"><span data-zh>看该选哪一档 →</span><span data-en>Which tier to pick →</span></p>
         </a>
       </div>
     </section>
@@ -256,7 +256,7 @@
     </section>
 
     <section class="legal-note">
-      <h3>数据来源与法律立场</h3>
+      <h3><span data-zh>数据来源与法律立场</span><span data-en>Sources and legal position</span></h3>
       <p>数据来自 <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> 公开 API（模型元数据 + 文件体积），采集时间 <code>2026-09-30</code>，为快照数据而非实时。</p>
       <p><b>本站不跑 benchmark，不给质量与速度结论。</b>凡涉及主观判断处均标注「我们的口径」。</p>
       <p><b>不下载、不托管任何权重文件</b>；许可原样引自发布页，本站不解读许可、不构成法律意见，一切以<a href="https://specul.com/legal.html" target="_blank" rel="noopener">发布页原文</a>为准。</p>
