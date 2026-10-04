@@ -43,19 +43,19 @@
   </header>
   <main id="main">
   <div class="container">
-    <nav class="crumbs"><a href="https://models.specul.com/">← 全部系列</a></nav>
+    <nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh>全部系列</span><span data-en>All series</span></a></nav>
     <header class="page-head">
       <p class="eyebrow"><span data-zh>DeepSeek</span><span data-en>DeepSeek</span>　·　发布于 2026-07-31</p>
       <h1><span data-zh>DeepSeek V4</span><span data-en>DeepSeek V4</span></h1>
       <p class="lede">MIT 许可，量化生态活跃，antirez（llama.cpp 作者）亲自维护量化版。</p>
-      <ul class="pos"><li>通用对话</li><li>MIT 许可</li><li>推理</li></ul>
+      <ul class="pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>MIT 许可</span><span data-en>MIT 许可</span></li><li><span data-zh>推理</span><span data-en>推理</span></li></ul>
       <nav class="member-nav"><a href="#m0">DeepSeek V4 Flash</a></nav>
     </header>
     <section class="trust">
-      <h2>先说清楚：这个站的数据怎么来的</h2>
+      <h2><span data-zh>先说清楚：这个站的数据怎么来的</span><span data-en>First, where this site's data comes from</span></h2>
       <div class="trust-grid">
         <div class="trust-item t-a">
-          <span class="trust-tag">✅ 实测字段</span>
+          <span class="trust-tag">✅ <span data-zh>实测字段</span><span data-en>Measured fields</span></span>
           <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
         </div>
         <div class="trust-item t-b">
@@ -63,7 +63,7 @@
           <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
         </div>
         <div class="trust-item t-c">
-          <span class="trust-tag">❌ 我们不说的</span>
+          <span class="trust-tag">❌ <span data-zh>我们不说的</span><span data-en>What we do not claim</span></span>
           <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
         </div>
       </div>
@@ -73,32 +73,32 @@
       </p>
     </section>
       <section class="member" id="m0">
-        <h3><span class="member-idx">成员 1</span>DeepSeek V4 Flash</h3>
+        <h3><span class="member-idx"><span data-zh>成员</span><span data-en>Member</span> 1</span>DeepSeek V4 Flash</h3>
         <p class="member-meta">292B 总参（MoE，激活数未公开）　·　通用主力　·　7 个量化来源</p>
         <div class="block" id="a0">
           <h4><span class="blk">A</span>基础模型卡 <small>规格 · 许可 · 访问门槛 · 参数量三来源交叉核对</small></h4>
       <table class="kv">
-        <tr><th>官方发布页</th><td><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash" target="_blank" rel="noopener">deepseek-ai/DeepSeek-V4-Flash ↗</a><br><span class="muted small">HF model_type：deepseek_v4　·　DeepseekV4ForCausalLM</span></td></tr>
-        <tr><th>许可</th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a> <a class="lic-src" href="https://opensource.org/license/mit" target="_blank" rel="noopener">许可原文 ↗</a></td></tr>
-        <tr><th>访问门槛</th><td>✅ 公开下载　<span class="muted">无需申请</span></td></tr>
-        <tr><th>规模</th><td><table class="kv kv-nested">
+        <tr><th><span data-zh>官方发布页</span><span data-en>Official release page</span></th><td><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash" target="_blank" rel="noopener">deepseek-ai/DeepSeek-V4-Flash ↗</a><br><span class="muted small">HF model_type：deepseek_v4　·　DeepseekV4ForCausalLM</span></td></tr>
+        <tr><th><span data-zh>许可</span><span data-en>Licence</span></th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a> <a class="lic-src" href="https://opensource.org/license/mit" target="_blank" rel="noopener"><span data-zh>许可原文 ↗</span><span data-en>licence text ↗</span></a></td></tr>
+        <tr><th><span data-zh>访问门槛</span><span data-en>Access</span></th><td><span data-zh>✅ 公开下载　<span class="muted">无需申请</span></span><span data-en>✅ Public download　<span class="muted">no application needed</span></span></td></tr>
+        <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
-          <tr><th>官网标注</th><td><b>292B 总参（MoE，激活数未公开）</b></td></tr>
-          <tr><th>官方 API 申报</th><td>290.9B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th>本站实测反推</th><td>291.7B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>292B 总参（MoE，激活数未公开）</b></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>290.9B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>291.7B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
         </tbody>
       </table><p class="param-ok">✓ 官方申报与实测反推一致（偏差 0.3%），参数量可信。</p></td></tr>
-        <tr><th>权重精度构成</th><td><table class="prec"><tbody><tr><td><code>I8</code></td><td class="prec-bar"><span style="width:97.4%"></span></td><td>283.5B　<span class="muted small">97.4%</span></td></tr><tr><td><code>F8_E4M3</code></td><td class="prec-bar"><span style="width:2.1%"></span></td><td>6.0B　<span class="muted small">2.1%</span></td></tr><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>1.4B　<span class="muted small">0.5%</span></td></tr><tr><td><code>F32</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>36M　<span class="muted small">0.0%</span></td></tr><tr><td><code>I64</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>2M　<span class="muted small">0.0%</span></td></tr></tbody></table></td></tr>
-        <tr><th>架构</th><td><code>deepseek4</code></td></tr>
-        <tr><th>上下文长度</th><td><code>1,048,576</code> tokens</td></tr>
-        <tr><th>基座</th><td><span class="muted">本仓即基座（不是微调版）</span></td></tr>
-        <tr><th>任务类型</th><td><code>text-generation</code></td></tr>
+        <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>I8</code></td><td class="prec-bar"><span style="width:97.4%"></span></td><td>283.5B　<span class="muted small">97.4%</span></td></tr><tr><td><code>F8_E4M3</code></td><td class="prec-bar"><span style="width:2.1%"></span></td><td>6.0B　<span class="muted small">2.1%</span></td></tr><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>1.4B　<span class="muted small">0.5%</span></td></tr><tr><td><code>F32</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>36M　<span class="muted small">0.0%</span></td></tr><tr><td><code>I64</code></td><td class="prec-bar"><span style="width:0.6%"></span></td><td>2M　<span class="muted small">0.0%</span></td></tr></tbody></table></td></tr>
+        <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>deepseek4</code></td></tr>
+        <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>1,048,576</code> tokens</td></tr>
+        <tr><th>基座</th><td><span data-zh><span class="muted">本仓即基座（不是微调版）</span></span><span data-en><span class="muted">this repo is the base model, not a fine-tune</span></span></td></tr>
+        <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>text-generation</code></td></tr>
         <tr><th>定位</th><td>通用主力</td></tr>
         <tr><th>标签</th><td><span class="tag">text-generation</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2606.19348" target="_blank" rel="noopener">arXiv:2606.19348</a> <a class="tag tag-lic" href="https://opensource.org/license/mit" target="_blank" rel="noopener">license:mit</a></td></tr>
-        <tr><th>官方下载量</th><td><b>1.2M</b>　<span class="muted">点赞 2k</span></td></tr>
+        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>1.2M</b>　<span class="muted">点赞 2k</span></td></tr>
         <tr><th>发布日</th><td>2026-04-22</td></tr>
         <tr><th>最近更新</th><td>2026-06-22</td></tr>
-        <tr><th>发布页体积</th><td><b>160 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></td></tr>
+        <tr><th>发布页体积</th><td><span data-zh><b>160 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></span><span data-en><b>160 GB</b>　<span class="muted small">all files in the repo combined, including original weights at every precision</span></span></td></tr>
       </table>
             <p class="member-note">MIT 许可，47 家量化仓。</p>
         </div>
@@ -161,9 +161,9 @@
       <p class="muted small">本系列档位体积跨度 62 GB → 162 GB。
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
-        <summary>展开：本系列所有档位的实测体积（28 档）</summary>
+        <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（28 <span data-zh>档</span><span data-en>tiers</span>）</summary>
         <table class="quant-list">
-          <thead><tr><th>量化档</th><th>最小体积</th><th>每权重比特</th><th>档位</th><th>该档文件数 / 体积跨度</th><th>最小体积来源</th></tr></thead>
+          <thead><tr><th><span data-zh>量化档</span><span data-en>Quant</span></th><th><span data-zh>最小体积</span><span data-en>Min size</span></th><th><span data-zh>每权重比特</span><span data-en>bpw</span></th><th><span data-zh>档位</span><span data-en>Tier</span></th><th><span data-zh>该档文件数 / 体积跨度</span><span data-en>Files in tier / size range</span></th><th>最小体积来源</th></tr></thead>
           <tbody>
             <tr>
               <td><code>IQ1_S</code></td>
@@ -400,12 +400,12 @@
       </details>
         </div>
         <div class="block" id="c0">
-          <h4><span class="blk">C</span>量化版本总表 <small>横向对比</small></h4>
+          <h4><span class="blk">C</span><span data-zh>量化版本总表</span><span data-en>Quantisation versions</span> <small><span data-zh>横向对比</span><span data-en>side by side</span></small></h4>
       <table class="variants">
         <thead>
           <tr>
-            <th>量化者</th><th>许可</th><th class="num">档数</th><th class="num">总体积</th>
-            <th class="num">上下文</th><th>建议档</th><th class="num">下载量</th><th>更新</th>
+            <th><span data-zh>量化者</span><span data-en>Quantiser</span></th><th><span data-zh>许可</span><span data-en>Licence</span></th><th class="num"><span data-zh>档数</span><span data-en>Tiers</span></th><th class="num"><span data-zh>总体积</span><span data-en>Total size</span></th>
+            <th class="num"><span data-zh>上下文</span><span data-en>Context</span></th><th><span data-zh>建议档</span><span data-en>Recommended</span></th><th class="num"><span data-zh>下载量</span><span data-en>Downloads</span></th><th><span data-zh>更新</span><span data-en>Updated</span></th>
           </tr>
         </thead>
         <tbody>
@@ -485,7 +485,7 @@
               <span class="badge badge-im" title="带重要性矩阵，量化质量通常更稳">imatrix</span>
               <br><span class="muted small"><code>deepseek4</code></span>
             </td>
-            <td><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a><br><span class="warn-inline small">继承自基座 <code>deepseek-ai/DeepSeek-V4-Flash</code>　·　量化仓未单独声明许可</span></td>
+            <td><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a><br><span class="warn-inline small"><span data-zh>继承自基座</span><span data-en>Inherited from base</span> <code>deepseek-ai/DeepSeek-V4-Flash</code><span data-zh>　·　量化仓未单独声明许可</span><span data-en> · the quant repo declares no licence of its own</span></span></td>
             <td class="num">4</td>
             <td class="num">839 GB</td>
             <td class="num">1,048,576</td>
@@ -499,7 +499,7 @@
               <span class="badge badge-im" title="带重要性矩阵，量化质量通常更稳">imatrix</span>
               <br><span class="muted small"><code>deepseek4</code></span>
             </td>
-            <td><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a><br><span class="warn-inline small">继承自基座 <code>deepseek-ai/DeepSeek-V4-Flash</code>　·　量化仓未单独声明许可</span></td>
+            <td><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a><br><span class="warn-inline small"><span data-zh>继承自基座</span><span data-en>Inherited from base</span> <code>deepseek-ai/DeepSeek-V4-Flash</code><span data-zh>　·　量化仓未单独声明许可</span><span data-en> · the quant repo declares no licence of its own</span></span></td>
             <td class="num">3</td>
             <td class="num">401 GB</td>
             <td class="num">1,048,576</td>
@@ -521,23 +521,23 @@
         </div>
         <div class="block" id="d0">
           <h4><span class="blk">D</span>每个变体详解 <small>七字段</small></h4>
-      <p class="block-lead">每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></p>
+      <p class="block-lead"><span data-zh>每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></span><span data-en>Each variant expands along seven fields: what it is → what the quantiser did → how it differs from other variants in this series → why it exists → strengths → why you would pick it → known trade-offs.<b>The last field is the only place this site offers a subjective judgement, and every item is marked as our own reading.</b></span></p>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>unsloth</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a>
               
-              <span class="muted small">13 档 · 1416 GB · 23k 下载</span>
+              <span class="muted small"><span data-zh>13 档</span><span data-en>13 tiers</span> · 1416 GB · <span data-zh>23k 下载</span><span data-en>23k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>unsloth/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 1416 GB。由 <code>unsloth</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>DeepSeek-V4-Flash-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>deepseek4</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；权重总字节 1519.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 6 个量化来源（<code>Preyazz</code> 3 档、<code>ggml-org</code> 3 档、<code>teamblobfish</code> 7 档、<code>tarruda</code> 4 档 等）。 本仓 13 档，覆盖最全。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（UD-IQ4_NL 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>UD-IQ4_NL</code>（138 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>UD-IQ4_NL</code>（138 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 1416 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>unsloth/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 1416 GB。由 <code>unsloth</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>DeepSeek-V4-Flash-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>deepseek4</code> 架构优化</span><span data-en>Optimised for the <code>deepseek4</code> architecture</span>；<span data-zh>声明上下文 1,048,576 tokens</span><span data-en>Declared context 1,048,576 tokens</span>；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；<span data-zh>权重总字节 1519.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 1519.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 6 个量化来源（<code>Preyazz</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>teamblobfish</code> 7 <span data-zh>档</span><span data-en>tiers</span>、<code>tarruda</code> 4 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 6 other quantisation sources (<code>Preyazz</code> 3 tiers, <code>ggml-org</code> 3 tiers, <code>teamblobfish</code> 7 tiers, <code>tarruda</code> 4 tiers, among others).</span><span data-zh> 本仓 13 档，覆盖最全。</span><span data-en> This repo has 13 tiers — the broadest coverage coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（UD-IQ4_NL 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as UD-IQ4_NL), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>UD-IQ4_NL</code>（138 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>UD-IQ4_NL</code> (138 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>UD-IQ4_NL</code>（138 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>UD-IQ4_NL</code> directly (138 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 1416 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>1416 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -545,16 +545,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a>
               
-              <span class="muted small">3 档 · 383 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 383 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/Preyazz/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>Preyazz/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 383 GB。由 <code>Preyazz</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>deepseek4</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>Preyazz/DeepSeek-V4-Flash-Q8_0-GGUF</code>；权重总字节 410.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 6 个量化来源（<code>unsloth</code> 13 档、<code>ggml-org</code> 3 档、<code>teamblobfish</code> 7 档、<code>tarruda</code> 4 档 等）。 本仓 3 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（172 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（172 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 383 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/Preyazz/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>Preyazz/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 383 GB。由 <code>Preyazz</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>deepseek4</code> 架构优化</span><span data-en>Optimised for the <code>deepseek4</code> architecture</span>；<span data-zh>声明上下文 1,048,576 tokens</span><span data-en>Declared context 1,048,576 tokens</span>；发布页声明溯源到 <code>Preyazz/DeepSeek-V4-Flash-Q8_0-GGUF</code>；<span data-zh>权重总字节 410.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 410.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 6 个量化来源（<code>unsloth</code> 13 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>teamblobfish</code> 7 <span data-zh>档</span><span data-en>tiers</span>、<code>tarruda</code> 4 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 6 other quantisation sources (<code>unsloth</code> 13 tiers, <code>ggml-org</code> 3 tiers, <code>teamblobfish</code> 7 tiers, <code>tarruda</code> 4 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖最少。</span><span data-en> This repo has 3 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（172 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (172 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（172 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (172 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>全仓 383 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>383 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -562,16 +562,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a>
               
-              <span class="muted small">3 档 · 346 GB · 1k 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 346 GB · <span data-zh>1k 下载</span><span data-en>1k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/ggml-org/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>ggml-org/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 346 GB。由 <code>ggml-org</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>deepseek4</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；权重总字节 370.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 6 个量化来源（<code>unsloth</code> 13 档、<code>Preyazz</code> 3 档、<code>teamblobfish</code> 7 档、<code>tarruda</code> 4 档 等）。 本仓 3 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>MXFP4</code>（155 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（155 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 346 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/ggml-org/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>ggml-org/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 346 GB。由 <code>ggml-org</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>deepseek4</code> 架构优化</span><span data-en>Optimised for the <code>deepseek4</code> architecture</span>；<span data-zh>声明上下文 1,048,576 tokens</span><span data-en>Declared context 1,048,576 tokens</span>；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；<span data-zh>权重总字节 370.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 370.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 6 个量化来源（<code>unsloth</code> 13 <span data-zh>档</span><span data-en>tiers</span>、<code>Preyazz</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>teamblobfish</code> 7 <span data-zh>档</span><span data-en>tiers</span>、<code>tarruda</code> 4 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 6 other quantisation sources (<code>unsloth</code> 13 tiers, <code>Preyazz</code> 3 tiers, <code>teamblobfish</code> 7 tiers, <code>tarruda</code> 4 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖最少。</span><span data-en> This repo has 3 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as MXFP4), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>MXFP4</code>（155 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>MXFP4</code> (155 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（155 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>MXFP4</code> directly (155 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>全仓 346 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>346 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -579,16 +579,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a>
               
-              <span class="muted small">7 档 · 879 GB · 1k 下载</span>
+              <span class="muted small"><span data-zh>7 档</span><span data-en>7 tiers</span> · 879 GB · <span data-zh>1k 下载</span><span data-en>1k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/teamblobfish/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>teamblobfish/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>7</b> 个 GGUF 量化档，合计 879 GB。由 <code>teamblobfish</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>tests/v4-port/calibration/imatrix-v4-flash.dat</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>deepseek4</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；权重总字节 943.7 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 6 个量化来源（<code>unsloth</code> 13 档、<code>Preyazz</code> 3 档、<code>ggml-org</code> 3 档、<code>tarruda</code> 4 档 等）。 本仓 7 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_M</code>（175 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（175 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 879 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/teamblobfish/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>teamblobfish/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>7</b> 个 GGUF 量化档，合计 879 GB。由 <code>teamblobfish</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>tests/v4-port/calibration/imatrix-v4-flash.dat</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>deepseek4</code> 架构优化</span><span data-en>Optimised for the <code>deepseek4</code> architecture</span>；<span data-zh>声明上下文 1,048,576 tokens</span><span data-en>Declared context 1,048,576 tokens</span>；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；<span data-zh>权重总字节 943.7 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 943.7 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 6 个量化来源（<code>unsloth</code> 13 <span data-zh>档</span><span data-en>tiers</span>、<code>Preyazz</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>tarruda</code> 4 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 6 other quantisation sources (<code>unsloth</code> 13 tiers, <code>Preyazz</code> 3 tiers, <code>ggml-org</code> 3 tiers, <code>tarruda</code> 4 tiers, among others).</span><span data-zh> 本仓 7 档，覆盖中等。</span><span data-en> This repo has 7 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_M</code>（175 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (175 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（175 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (175 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 879 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>879 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -596,16 +596,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a>
               
-              <span class="muted small">4 档 · 457 GB · 864 下载</span>
+              <span class="muted small"><span data-zh>4 档</span><span data-en>4 tiers</span> · 457 GB · <span data-zh>864 下载</span><span data-en>864 downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/tarruda/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>tarruda/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>4</b> 个 GGUF 量化档，合计 457 GB。由 <code>tarruda</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/Users/thiago/ml-models/huggingface/tarruda/DeepSeek-V4-Flash-GGUF/imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>deepseek4</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；权重总字节 490.6 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 6 个量化来源（<code>unsloth</code> 13 档、<code>Preyazz</code> 3 档、<code>ggml-org</code> 3 档、<code>teamblobfish</code> 7 档 等）。 本仓 4 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>MXFP4</code>（156 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（156 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 457 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/tarruda/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>tarruda/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>4</b> 个 GGUF 量化档，合计 457 GB。由 <code>tarruda</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/Users/thiago/ml-models/huggingface/tarruda/DeepSeek-V4-Flash-GGUF/imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>deepseek4</code> 架构优化</span><span data-en>Optimised for the <code>deepseek4</code> architecture</span>；<span data-zh>声明上下文 1,048,576 tokens</span><span data-en>Declared context 1,048,576 tokens</span>；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；<span data-zh>权重总字节 490.6 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 490.6 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 6 个量化来源（<code>unsloth</code> 13 <span data-zh>档</span><span data-en>tiers</span>、<code>Preyazz</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>teamblobfish</code> 7 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 6 other quantisation sources (<code>unsloth</code> 13 tiers, <code>Preyazz</code> 3 tiers, <code>ggml-org</code> 3 tiers, <code>teamblobfish</code> 7 tiers, among others).</span><span data-zh> 本仓 4 档，覆盖中等。</span><span data-en> This repo has 4 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as MXFP4), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>MXFP4</code>（156 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>MXFP4</code> (156 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（156 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>MXFP4</code> directly (156 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 457 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>457 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -613,16 +613,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a>
               <br><span class="warn-inline small">继承自基座 <code>deepseek-ai/DeepSeek-V4-Flash</code>，量化仓未单独声明</span>
-              <span class="muted small">4 档 · 839 GB · 752 下载</span>
+              <span class="muted small"><span data-zh>4 档</span><span data-en>4 tiers</span> · 839 GB · <span data-zh>752 下载</span><span data-en>752 downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/bullerwins/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>bullerwins/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>4</b> 个 GGUF 量化档，合计 839 GB。由 <code>bullerwins</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/mnt/llms/work/dsv4-flash/imatrix.dat</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>deepseek4</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；权重总字节 901.2 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 6 个量化来源（<code>unsloth</code> 13 档、<code>Preyazz</code> 3 档、<code>ggml-org</code> 3 档、<code>teamblobfish</code> 7 档 等）。 本仓 4 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（IQ4_XS 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>IQ4_XS</code>（155 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>IQ4_XS</code>（155 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 839 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 量化仓<b>自己没写许可字段</b>，这里的 <code>mit</code> 是继承基座 <code>deepseek-ai/DeepSeek-V4-Flash</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/bullerwins/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>bullerwins/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>4</b> 个 GGUF 量化档，合计 839 GB。由 <code>bullerwins</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/mnt/llms/work/dsv4-flash/imatrix.dat</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>deepseek4</code> 架构优化</span><span data-en>Optimised for the <code>deepseek4</code> architecture</span>；<span data-zh>声明上下文 1,048,576 tokens</span><span data-en>Declared context 1,048,576 tokens</span>；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；<span data-zh>权重总字节 901.2 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 901.2 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 6 个量化来源（<code>unsloth</code> 13 <span data-zh>档</span><span data-en>tiers</span>、<code>Preyazz</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>teamblobfish</code> 7 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 6 other quantisation sources (<code>unsloth</code> 13 tiers, <code>Preyazz</code> 3 tiers, <code>ggml-org</code> 3 tiers, <code>teamblobfish</code> 7 tiers, among others).</span><span data-zh> 本仓 4 档，覆盖中等。</span><span data-en> This repo has 4 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（IQ4_XS 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as IQ4_XS), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>IQ4_XS</code>（155 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>IQ4_XS</code> (155 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>IQ4_XS</code>（155 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>IQ4_XS</code> directly (155 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 839 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>839 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span><br>· 量化仓<b>自己没写许可字段</b>，这里的 <code>mit</code> 是继承基座 <code>deepseek-ai/DeepSeek-V4-Flash</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认</span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -630,16 +630,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=mit" target="_blank" rel="noopener">mit</a>
               <br><span class="warn-inline small">继承自基座 <code>deepseek-ai/DeepSeek-V4-Flash</code>，量化仓未单独声明</span>
-              <span class="muted small">3 档 · 401 GB · 464 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 401 GB · <span data-zh>464 下载</span><span data-en>464 downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/ddh0/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>ddh0/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 401 GB。由 <code>ddh0</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/home/dylan/imatrices/deepseek-v4-flash.imat.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>deepseek4</code> 架构优化；声明上下文 1,048,576 tokens；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；权重总字节 430.5 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 6 个量化来源（<code>unsloth</code> 13 档、<code>Preyazz</code> 3 档、<code>ggml-org</code> 3 档、<code>teamblobfish</code> 7 档 等）。 本仓 3 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>MXFP4</code>（156 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（156 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 全仓 401 GB，硬盘紧张的话建议只下需要的 1~2 个档位<br>· 量化仓<b>自己没写许可字段</b>，这里的 <code>mit</code> 是继承基座 <code>deepseek-ai/DeepSeek-V4-Flash</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/ddh0/DeepSeek-V4-Flash-GGUF" target="_blank" rel="noopener"><code>ddh0/DeepSeek-V4-Flash-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 401 GB。由 <code>ddh0</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/home/dylan/imatrices/deepseek-v4-flash.imat.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>deepseek4</code> 架构优化</span><span data-en>Optimised for the <code>deepseek4</code> architecture</span>；<span data-zh>声明上下文 1,048,576 tokens</span><span data-en>Declared context 1,048,576 tokens</span>；发布页声明溯源到 <code>deepseek-ai/DeepSeek-V4-Flash</code>；<span data-zh>权重总字节 430.5 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 430.5 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 6 个量化来源（<code>unsloth</code> 13 <span data-zh>档</span><span data-en>tiers</span>、<code>Preyazz</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>teamblobfish</code> 7 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 6 other quantisation sources (<code>unsloth</code> 13 tiers, <code>Preyazz</code> 3 tiers, <code>ggml-org</code> 3 tiers, <code>teamblobfish</code> 7 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖最少。</span><span data-en> This repo has 3 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as MXFP4), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>MXFP4</code>（156 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>MXFP4</code> (156 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（156 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>MXFP4</code> directly (156 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>全仓 401 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>401 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span><br>· 量化仓<b>自己没写许可字段</b>，这里的 <code>mit</code> 是继承基座 <code>deepseek-ai/DeepSeek-V4-Flash</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认</span></div>
         </article>
         </div>
         <div class="block" id="e0">
