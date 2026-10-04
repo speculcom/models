@@ -43,19 +43,19 @@
   </header>
   <main id="main">
   <div class="container">
-    <nav class="crumbs"><a href="https://models.specul.com/">← 全部系列</a></nav>
+    <nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh>全部系列</span><span data-en>All series</span></a></nav>
     <header class="page-head">
       <p class="eyebrow"><span data-zh>Google</span><span data-en>Google</span>　·　发布于 2026-06</p>
       <h1><span data-zh>Gemma 4</span><span data-en>Gemma 4</span></h1>
       <p class="lede">Google 开放权重最新一代，三种规格各自都有量化覆盖。</p>
-      <ul class="pos"><li>通用对话</li><li>MoE 稀疏</li><li>小尺寸可跑</li></ul>
+      <ul class="pos"><li><span data-zh>通用对话</span><span data-en>General chat</span></li><li><span data-zh>MoE 稀疏</span><span data-en>MoE 稀疏</span></li><li><span data-zh>小尺寸可跑</span><span data-en>小尺寸可跑</span></li></ul>
       <nav class="member-nav"><a href="#m0">Gemma 4 26B-A4B（MoE）</a><a href="#m1">Gemma 4 31B（密集）</a><a href="#m2">Gemma 4 E4B（高效）</a></nav>
     </header>
     <section class="trust">
-      <h2>先说清楚：这个站的数据怎么来的</h2>
+      <h2><span data-zh>先说清楚：这个站的数据怎么来的</span><span data-en>First, where this site's data comes from</span></h2>
       <div class="trust-grid">
         <div class="trust-item t-a">
-          <span class="trust-tag">✅ 实测字段</span>
+          <span class="trust-tag">✅ <span data-zh>实测字段</span><span data-en>Measured fields</span></span>
           <p>直接从 Hugging Face 公开 API 读取的客观数据：文件体积（字节）、上下文长度、架构、许可、下载量、更新时间。</p>
         </div>
         <div class="trust-item t-b">
@@ -63,7 +63,7 @@
           <p>由实测字段按公开规则算出：每权重比特数（依 llama.cpp 命名标准）、档位归属、显存需求区间。推导规则在 <code>METHODOLOGY.md</code> 完整公开，任何人可复算。</p>
         </div>
         <div class="trust-item t-c">
-          <span class="trust-tag">❌ 我们不说的</span>
+          <span class="trust-tag">❌ <span data-zh>我们不说的</span><span data-en>What we do not claim</span></span>
           <p><b>哪个量化质量更高、哪个更快、哪个模型更强</b>——这些需要实测，本站不跑 benchmark，所以不装作知道。凡我们给出的主观判断，一律显式标注「我们的口径」。</p>
         </div>
       </div>
@@ -73,32 +73,32 @@
       </p>
     </section>
       <section class="member" id="m0">
-        <h3><span class="member-idx">成员 1</span>Gemma 4 26B-A4B（MoE）</h3>
+        <h3><span class="member-idx"><span data-zh>成员</span><span data-en>Member</span> 1</span>Gemma 4 26B-A4B（MoE）</h3>
         <p class="member-meta">25.8B 总参 / 4B 激活　·　低延迟 MoE　·　8 个量化来源</p>
         <div class="block" id="a0">
           <h4><span class="blk">A</span>基础模型卡 <small>规格 · 许可 · 访问门槛 · 参数量三来源交叉核对</small></h4>
       <table class="kv">
-        <tr><th>官方发布页</th><td><a href="https://huggingface.co/google/gemma-4-26B-A4B-it" target="_blank" rel="noopener">google/gemma-4-26B-A4B-it ↗</a><br><span class="muted small">HF model_type：gemma4　·　Gemma4ForConditionalGeneration</span></td></tr>
-        <tr><th>许可</th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://ai.google.dev/gemma/docs/gemma_4_license" target="_blank" rel="noopener">许可原文 ↗</a></td></tr>
-        <tr><th>访问门槛</th><td>✅ 公开下载　<span class="muted">无需申请</span></td></tr>
-        <tr><th>规模</th><td><table class="kv kv-nested">
+        <tr><th><span data-zh>官方发布页</span><span data-en>Official release page</span></th><td><a href="https://huggingface.co/google/gemma-4-26B-A4B-it" target="_blank" rel="noopener">google/gemma-4-26B-A4B-it ↗</a><br><span class="muted small">HF model_type：gemma4　·　Gemma4ForConditionalGeneration</span></td></tr>
+        <tr><th><span data-zh>许可</span><span data-en>Licence</span></th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://ai.google.dev/gemma/docs/gemma_4_license" target="_blank" rel="noopener"><span data-zh>许可原文 ↗</span><span data-en>licence text ↗</span></a></td></tr>
+        <tr><th><span data-zh>访问门槛</span><span data-en>Access</span></th><td><span data-zh>✅ 公开下载　<span class="muted">无需申请</span></span><span data-en>✅ Public download　<span class="muted">no application needed</span></span></td></tr>
+        <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
-          <tr><th>官网标注</th><td><b>25.8B 总参 / 4B 激活</b></td></tr>
-          <tr><th>官方 API 申报</th><td>25.8B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th>本站实测反推</th><td>27.2B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>25.8B 总参 / 4B 激活</b></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>25.8B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>27.2B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
         </tbody>
       </table><p class="warn-inline">⚠ 实测反推与官方申报差 5%（反推偏大）。原因是 bpw 表为标称值、且部分张量（嵌入层、视觉塔）不按主档位量化。<b>以官方申报为准</b>。</p></td></tr>
-        <tr><th>权重精度构成</th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>25.8B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
-        <tr><th>架构</th><td><code>gemma4</code></td></tr>
-        <tr><th>上下文长度</th><td><code>262,144</code> tokens</td></tr>
+        <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>25.8B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
+        <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>gemma4</code></td></tr>
+        <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>262,144</code> tokens</td></tr>
         <tr><th>基座</th><td><code>gemma-4-26B-A4B</code></td></tr>
-        <tr><th>任务类型</th><td><code>image-text-to-text</code></td></tr>
+        <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>image-text-to-text</code></td></tr>
         <tr><th>定位</th><td>低延迟 MoE</td></tr>
         <tr><th>标签</th><td><span class="tag">image-text-to-text</span> <span class="tag">conversational</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2607.02770" target="_blank" rel="noopener">arXiv:2607.02770</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a></td></tr>
-        <tr><th>官方下载量</th><td><b>12.5M</b>　<span class="muted">点赞 2k</span></td></tr>
+        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>12.5M</b>　<span class="muted">点赞 2k</span></td></tr>
         <tr><th>发布日</th><td>2026-03-11</td></tr>
         <tr><th>最近更新</th><td>2026-07-20</td></tr>
-        <tr><th>发布页体积</th><td><b>205 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></td></tr>
+        <tr><th>发布页体积</th><td><span data-zh><b>205 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></span><span data-en><b>205 GB</b>　<span class="muted small">all files in the repo combined, including original weights at every precision</span></span></td></tr>
       </table>
             <p class="member-note">MoE：总参 26B 但每 token 只激活约 4B，速度接近 4B 稠密。</p>
         </div>
@@ -196,9 +196,9 @@
       <p class="muted small">本系列档位体积跨度 9.9 GB → 51 GB。
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
-        <summary>展开：本系列所有档位的实测体积（41 档）</summary>
+        <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（41 <span data-zh>档</span><span data-en>tiers</span>）</summary>
         <table class="quant-list">
-          <thead><tr><th>量化档</th><th>最小体积</th><th>每权重比特</th><th>档位</th><th>该档文件数 / 体积跨度</th><th>最小体积来源</th></tr></thead>
+          <thead><tr><th><span data-zh>量化档</span><span data-en>Quant</span></th><th><span data-zh>最小体积</span><span data-en>Min size</span></th><th><span data-zh>每权重比特</span><span data-en>bpw</span></th><th><span data-zh>档位</span><span data-en>Tier</span></th><th><span data-zh>该档文件数 / 体积跨度</span><span data-en>Files in tier / size range</span></th><th>最小体积来源</th></tr></thead>
           <tbody>
             <tr>
               <td><code>UD-IQ2_XXS</code></td>
@@ -539,12 +539,12 @@
       </details>
         </div>
         <div class="block" id="c0">
-          <h4><span class="blk">C</span>量化版本总表 <small>横向对比</small></h4>
+          <h4><span class="blk">C</span><span data-zh>量化版本总表</span><span data-en>Quantisation versions</span> <small><span data-zh>横向对比</span><span data-en>side by side</span></small></h4>
       <table class="variants">
         <thead>
           <tr>
-            <th>量化者</th><th>许可</th><th class="num">档数</th><th class="num">总体积</th>
-            <th class="num">上下文</th><th>建议档</th><th class="num">下载量</th><th>更新</th>
+            <th><span data-zh>量化者</span><span data-en>Quantiser</span></th><th><span data-zh>许可</span><span data-en>Licence</span></th><th class="num"><span data-zh>档数</span><span data-en>Tiers</span></th><th class="num"><span data-zh>总体积</span><span data-en>Total size</span></th>
+            <th class="num"><span data-zh>上下文</span><span data-en>Context</span></th><th><span data-zh>建议档</span><span data-en>Recommended</span></th><th class="num"><span data-zh>下载量</span><span data-en>Downloads</span></th><th><span data-zh>更新</span><span data-en>Updated</span></th>
           </tr>
         </thead>
         <tbody>
@@ -674,23 +674,23 @@
         </div>
         <div class="block" id="d0">
           <h4><span class="blk">D</span>每个变体详解 <small>七字段</small></h4>
-      <p class="block-lead">每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></p>
+      <p class="block-lead"><span data-zh>每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></span><span data-en>Each variant expands along seven fields: what it is → what the quantiser did → how it differs from other variants in this series → why it exists → strengths → why you would pick it → known trade-offs.<b>The last field is the only place this site offers a subjective judgement, and every item is marked as our own reading.</b></span></p>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>unsloth</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">20 档 · 359 GB · 544k 下载</span>
+              <span class="muted small"><span data-zh>20 档</span><span data-en>20 tiers</span> · 359 GB · <span data-zh>544k 下载</span><span data-en>544k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>unsloth/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>20</b> 个 GGUF 量化档，合计 359 GB。由 <code>unsloth</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>gemma-4-26B-A4B-it-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；权重总字节 385.7 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>ggml-org</code> 3 档、<code>bartowski</code> 26 档、<code>lmstudio-community</code> 3 档、<code>AtomicChat</code> 12 档 等）。 本仓 20 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（20 档），从极限压缩到近似无损都能选<br>· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 359 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>unsloth/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>20</b> 个 GGUF 量化档，合计 359 GB。由 <code>unsloth</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>gemma-4-26B-A4B-it-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；<span data-zh>权重总字节 385.7 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 385.7 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 26 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>AtomicChat</code> 12 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>bartowski</code> 26 tiers, <code>lmstudio-community</code> 3 tiers, <code>AtomicChat</code> 12 tiers, among others).</span><span data-zh> 本仓 20 档，覆盖中等。</span><span data-en> This repo has 20 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（20 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (20 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (17 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (17 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 359 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>359 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -698,16 +698,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">3 档 · 86 GB · 397k 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 86 GB · <span data-zh>397k 下载</span><span data-en>397k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/ggml-org/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>ggml-org/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 86 GB。由 <code>ggml-org</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；权重总字节 92.0 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 20 档、<code>bartowski</code> 26 档、<code>lmstudio-community</code> 3 档、<code>AtomicChat</code> 12 档 等）。 本仓 3 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_0 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_0</code>（15 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_0</code>（15 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/ggml-org/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>ggml-org/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 86 GB。由 <code>ggml-org</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；<span data-zh>权重总字节 92.0 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 92.0 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 26 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>AtomicChat</code> 12 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 20 tiers, <code>bartowski</code> 26 tiers, <code>lmstudio-community</code> 3 tiers, <code>AtomicChat</code> 12 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖最少。</span><span data-en> This repo has 3 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_0 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_0), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_0</code>（15 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_0</code> (15 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_0</code>（15 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_0</code> directly (15 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -715,16 +715,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">26 档 · 413 GB · 57k 下载</span>
+              <span class="muted small"><span data-zh>26 档</span><span data-en>26 tiers</span> · 413 GB · <span data-zh>57k 下载</span><span data-en>57k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>bartowski/google_gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>26</b> 个 GGUF 量化档，合计 413 GB。由 <code>bartowski</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/models_out/gemma-4-26B-A4B-it-GGUF/google_gemma-4-26B-A4B-it-imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；权重总字节 442.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 20 档、<code>ggml-org</code> 3 档、<code>lmstudio-community</code> 3 档、<code>AtomicChat</code> 12 档 等）。 本仓 26 档，覆盖最全。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（26 档），从极限压缩到近似无损都能选<br>· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_L</code>（17 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 413 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/bartowski/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>bartowski/google_gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>26</b> 个 GGUF 量化档，合计 413 GB。由 <code>bartowski</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/models_out/gemma-4-26B-A4B-it-GGUF/google_gemma-4-26B-A4B-it-imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；<span data-zh>权重总字节 442.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 442.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>AtomicChat</code> 12 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 20 tiers, <code>ggml-org</code> 3 tiers, <code>lmstudio-community</code> 3 tiers, <code>AtomicChat</code> 12 tiers, among others).</span><span data-zh> 本仓 26 档，覆盖最全。</span><span data-en> This repo has 26 tiers — the broadest coverage coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_L), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（26 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (26 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_L</code>（17 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_L</code> (17 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_L</code> directly (17 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 413 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>413 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -732,16 +732,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">3 档 · 62 GB · 41k 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 62 GB · <span data-zh>41k 下载</span><span data-en>41k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/lmstudio-community/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>lmstudio-community/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 62 GB。由 <code>lmstudio-community</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；权重总字节 66.3 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 20 档、<code>ggml-org</code> 3 档、<code>bartowski</code> 26 档、<code>AtomicChat</code> 12 档 等）。 本仓 3 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/lmstudio-community/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>lmstudio-community/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 62 GB。由 <code>lmstudio-community</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；<span data-zh>权重总字节 66.3 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 66.3 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 26 <span data-zh>档</span><span data-en>tiers</span>、<code>AtomicChat</code> 12 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 20 tiers, <code>ggml-org</code> 3 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 12 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖最少。</span><span data-en> This repo has 3 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (17 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (17 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -749,16 +749,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">12 档 · 186 GB · 5k 下载</span>
+              <span class="muted small"><span data-zh>12 档</span><span data-en>12 tiers</span> · 186 GB · <span data-zh>5k 下载</span><span data-en>5k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>AtomicChat/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 186 GB。由 <code>AtomicChat</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/root/work/gemma-4-26B-A4B-it/imatrix-coding.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；权重总字节 199.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 20 档、<code>ggml-org</code> 3 档、<code>bartowski</code> 26 档、<code>lmstudio-community</code> 3 档 等）。 本仓 12 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 暂未发现明显取舍（不代表没有，建议先下一档实测）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>AtomicChat/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 186 GB。由 <code>AtomicChat</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/root/work/gemma-4-26B-A4B-it/imatrix-coding.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；<span data-zh>权重总字节 199.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 199.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 26 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 20 tiers, <code>ggml-org</code> 3 tiers, <code>bartowski</code> 26 tiers, <code>lmstudio-community</code> 3 tiers, among others).</span><span data-zh> 本仓 12 档，覆盖中等。</span><span data-en> This repo has 12 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (17 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (17 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>暂未发现明显取舍（不代表没有，建议先下一档实测）</span><span data-en>No obvious trade-off found (which is not the same as none — download one tier and measure before committing)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -766,16 +766,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">13 档 · 234 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>13 档</span><span data-en>13 tiers</span> · 234 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/giladgd/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>giladgd/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 234 GB。由 <code>giladgd</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；权重总字节 251.2 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 20 档、<code>ggml-org</code> 3 档、<code>bartowski</code> 26 档、<code>lmstudio-community</code> 3 档 等）。 本仓 13 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 234 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/giladgd/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>giladgd/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 234 GB。由 <code>giladgd</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；<span data-zh>权重总字节 251.2 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 251.2 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 26 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 20 tiers, <code>ggml-org</code> 3 tiers, <code>bartowski</code> 26 tiers, <code>lmstudio-community</code> 3 tiers, among others).</span><span data-zh> 本仓 13 档，覆盖中等。</span><span data-en> This repo has 13 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (17 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (17 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>全仓 234 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>234 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -783,16 +783,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">11 档 · 170 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>11 档</span><span data-en>11 tiers</span> · 170 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/mradermacher/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>mradermacher/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>11</b> 个 GGUF 量化档，合计 170 GB。由 <code>mradermacher</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；权重总字节 182.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 20 档、<code>ggml-org</code> 3 档、<code>bartowski</code> 26 档、<code>lmstudio-community</code> 3 档 等）。 本仓 11 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 已 180 天未更新，基础模型若有新版可能已不同步</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/mradermacher/gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>mradermacher/gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>11</b> 个 GGUF 量化档，合计 170 GB。由 <code>mradermacher</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；<span data-zh>权重总字节 182.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 182.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 26 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 20 tiers, <code>ggml-org</code> 3 tiers, <code>bartowski</code> 26 tiers, <code>lmstudio-community</code> 3 tiers, among others).</span><span data-zh> 本仓 11 档，覆盖中等。</span><span data-en> This repo has 11 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（17 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (17 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (17 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· 已 181 天未更新，基础模型若有新版可能已不同步</span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -800,16 +800,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">26 档 · 413 GB · 1k 下载</span>
+              <span class="muted small"><span data-zh>26 档</span><span data-en>26 tiers</span> · 413 GB · <span data-zh>1k 下载</span><span data-en>1k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/indiansatoshi/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>indiansatoshi/google_gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>26</b> 个 GGUF 量化档，合计 413 GB。由 <code>indiansatoshi</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/models_out/gemma-4-26B-A4B-it-GGUF/google_gemma-4-26B-A4B-it-imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；权重总字节 442.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 20 档、<code>ggml-org</code> 3 档、<code>bartowski</code> 26 档、<code>lmstudio-community</code> 3 档 等）。 本仓 26 档，覆盖最全。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（26 档），从极限压缩到近似无损都能选<br>· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_L</code>（17 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 413 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/indiansatoshi/google_gemma-4-26B-A4B-it-GGUF" target="_blank" rel="noopener"><code>indiansatoshi/google_gemma-4-26B-A4B-it-GGUF</code> ↗</a>，提供 <b>26</b> 个 GGUF 量化档，合计 413 GB。由 <code>indiansatoshi</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/models_out/gemma-4-26B-A4B-it-GGUF/google_gemma-4-26B-A4B-it-imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-26B-A4B-it</code>；<span data-zh>权重总字节 442.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 442.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 20 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 26 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 20 tiers, <code>ggml-org</code> 3 tiers, <code>bartowski</code> 26 tiers, <code>lmstudio-community</code> 3 tiers, among others).</span><span data-zh> 本仓 26 档，覆盖最全。</span><span data-en> This repo has 26 tiers — the broadest coverage coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_L), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（26 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (26 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_L</code>（17 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_L</code> (17 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（17 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_L</code> directly (17 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 413 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>413 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         </div>
         <div class="block" id="e0">
@@ -998,32 +998,32 @@
         </div>
       </section>
       <section class="member" id="m1">
-        <h3><span class="member-idx">成员 2</span>Gemma 4 31B（密集）</h3>
+        <h3><span class="member-idx"><span data-zh>成员</span><span data-en>Member</span> 2</span>Gemma 4 31B（密集）</h3>
         <p class="member-meta">31.3B 密集　·　质量优先　·　8 个量化来源</p>
         <div class="block" id="a1">
           <h4><span class="blk">A</span>基础模型卡 <small>规格 · 许可 · 访问门槛 · 参数量三来源交叉核对</small></h4>
       <table class="kv">
-        <tr><th>官方发布页</th><td><a href="https://huggingface.co/google/gemma-4-31B-it" target="_blank" rel="noopener">google/gemma-4-31B-it ↗</a><br><span class="muted small">HF model_type：gemma4　·　Gemma4ForConditionalGeneration</span></td></tr>
-        <tr><th>许可</th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://ai.google.dev/gemma/docs/gemma_4_license" target="_blank" rel="noopener">许可原文 ↗</a></td></tr>
-        <tr><th>访问门槛</th><td>✅ 公开下载　<span class="muted">无需申请</span></td></tr>
-        <tr><th>规模</th><td><table class="kv kv-nested">
+        <tr><th><span data-zh>官方发布页</span><span data-en>Official release page</span></th><td><a href="https://huggingface.co/google/gemma-4-31B-it" target="_blank" rel="noopener">google/gemma-4-31B-it ↗</a><br><span class="muted small">HF model_type：gemma4　·　Gemma4ForConditionalGeneration</span></td></tr>
+        <tr><th><span data-zh>许可</span><span data-en>Licence</span></th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://ai.google.dev/gemma/docs/gemma_4_license" target="_blank" rel="noopener"><span data-zh>许可原文 ↗</span><span data-en>licence text ↗</span></a></td></tr>
+        <tr><th><span data-zh>访问门槛</span><span data-en>Access</span></th><td><span data-zh>✅ 公开下载　<span class="muted">无需申请</span></span><span data-en>✅ Public download　<span class="muted">no application needed</span></span></td></tr>
+        <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
-          <tr><th>官网标注</th><td><b>31.3B 密集</b></td></tr>
-          <tr><th>官方 API 申报</th><td>31.3B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th>本站实测反推</th><td>31.6B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>31.3B 密集</b></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>31.3B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>31.6B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
         </tbody>
       </table><p class="param-ok">✓ 官方申报与实测反推一致（偏差 1.2%），参数量可信。</p></td></tr>
-        <tr><th>权重精度构成</th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>31.3B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
-        <tr><th>架构</th><td><code>gemma4</code></td></tr>
-        <tr><th>上下文长度</th><td><code>262,144</code> tokens</td></tr>
+        <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>31.3B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
+        <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>gemma4</code></td></tr>
+        <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>262,144</code> tokens</td></tr>
         <tr><th>基座</th><td><code>gemma-4-31B</code></td></tr>
-        <tr><th>任务类型</th><td><code>image-text-to-text</code></td></tr>
+        <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>image-text-to-text</code></td></tr>
         <tr><th>定位</th><td>质量优先</td></tr>
         <tr><th>标签</th><td><span class="tag">image-text-to-text</span> <span class="tag">conversational</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2607.02770" target="_blank" rel="noopener">arXiv:2607.02770</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a></td></tr>
-        <tr><th>官方下载量</th><td><b>9.7M</b>　<span class="muted">点赞 4k</span></td></tr>
+        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>9.7M</b>　<span class="muted">点赞 4k</span></td></tr>
         <tr><th>发布日</th><td>2026-03-11</td></tr>
         <tr><th>最近更新</th><td>2026-07-20</td></tr>
-        <tr><th>发布页体积</th><td><b>176 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></td></tr>
+        <tr><th>发布页体积</th><td><span data-zh><b>176 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></span><span data-en><b>176 GB</b>　<span class="muted small">all files in the repo combined, including original weights at every precision</span></span></td></tr>
       </table>
             <p class="member-note">同系列里最重的规格。</p>
         </div>
@@ -1121,9 +1121,9 @@
       <p class="muted small">本系列档位体积跨度 7.9 GB → 61 GB。
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
-        <summary>展开：本系列所有档位的实测体积（39 档）</summary>
+        <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（39 <span data-zh>档</span><span data-en>tiers</span>）</summary>
         <table class="quant-list">
-          <thead><tr><th>量化档</th><th>最小体积</th><th>每权重比特</th><th>档位</th><th>该档文件数 / 体积跨度</th><th>最小体积来源</th></tr></thead>
+          <thead><tr><th><span data-zh>量化档</span><span data-en>Quant</span></th><th><span data-zh>最小体积</span><span data-en>Min size</span></th><th><span data-zh>每权重比特</span><span data-en>bpw</span></th><th><span data-zh>档位</span><span data-en>Tier</span></th><th><span data-zh>该档文件数 / 体积跨度</span><span data-en>Files in tier / size range</span></th><th>最小体积来源</th></tr></thead>
           <tbody>
             <tr>
               <td><code>IQ1_S</code></td>
@@ -1448,12 +1448,12 @@
       </details>
         </div>
         <div class="block" id="c1">
-          <h4><span class="blk">C</span>量化版本总表 <small>横向对比</small></h4>
+          <h4><span class="blk">C</span><span data-zh>量化版本总表</span><span data-en>Quantisation versions</span> <small><span data-zh>横向对比</span><span data-en>side by side</span></small></h4>
       <table class="variants">
         <thead>
           <tr>
-            <th>量化者</th><th>许可</th><th class="num">档数</th><th class="num">总体积</th>
-            <th class="num">上下文</th><th>建议档</th><th class="num">下载量</th><th>更新</th>
+            <th><span data-zh>量化者</span><span data-en>Quantiser</span></th><th><span data-zh>许可</span><span data-en>Licence</span></th><th class="num"><span data-zh>档数</span><span data-en>Tiers</span></th><th class="num"><span data-zh>总体积</span><span data-en>Total size</span></th>
+            <th class="num"><span data-zh>上下文</span><span data-en>Context</span></th><th><span data-zh>建议档</span><span data-en>Recommended</span></th><th class="num"><span data-zh>下载量</span><span data-en>Downloads</span></th><th><span data-zh>更新</span><span data-en>Updated</span></th>
           </tr>
         </thead>
         <tbody>
@@ -1583,23 +1583,23 @@
         </div>
         <div class="block" id="d1">
           <h4><span class="blk">D</span>每个变体详解 <small>七字段</small></h4>
-      <p class="block-lead">每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></p>
+      <p class="block-lead"><span data-zh>每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></span><span data-en>Each variant expands along seven fields: what it is → what the quantiser did → how it differs from other variants in this series → why it exists → strengths → why you would pick it → known trade-offs.<b>The last field is the only place this site offers a subjective judgement, and every item is marked as our own reading.</b></span></p>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>unsloth</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">22 档 · 426 GB · 343k 下载</span>
+              <span class="muted small"><span data-zh>22 档</span><span data-en>22 tiers</span> · 426 GB · <span data-zh>343k 下载</span><span data-en>343k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>unsloth/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>22</b> 个 GGUF 量化档，合计 426 GB。由 <code>unsloth</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>gemma-4-31B-it-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；权重总字节 457.4 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>bartowski</code> 27 档、<code>lmstudio-community</code> 3 档、<code>ggml-org</code> 3 档、<code>AtomicChat</code> 12 档 等）。 本仓 22 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_1 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（22 档），从极限压缩到近似无损都能选<br>· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_1</code>（19 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_1</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 426 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/unsloth/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>unsloth/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>22</b> 个 GGUF 量化档，合计 426 GB。由 <code>unsloth</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>gemma-4-31B-it-GGUF/imatrix_unsloth.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；<span data-zh>权重总字节 457.4 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 457.4 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>AtomicChat</code> 12 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>bartowski</code> 27 tiers, <code>lmstudio-community</code> 3 tiers, <code>ggml-org</code> 3 tiers, <code>AtomicChat</code> 12 tiers, among others).</span><span data-zh> 本仓 22 档，覆盖中等。</span><span data-en> This repo has 22 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_1 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_1), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（22 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (22 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_1</code>（19 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_1</code> (19 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_1</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_1</code> directly (19 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 426 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>426 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -1607,16 +1607,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">27 档 · 498 GB · 39k 下载</span>
+              <span class="muted small"><span data-zh>27 档</span><span data-en>27 tiers</span> · 498 GB · <span data-zh>39k 下载</span><span data-en>39k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/bartowski/google_gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>bartowski/google_gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>27</b> 个 GGUF 量化档，合计 498 GB。由 <code>bartowski</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/models_out/gemma-4-31B-it-GGUF/google_gemma-4-31B-it-imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；权重总字节 534.6 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 22 档、<code>lmstudio-community</code> 3 档、<code>ggml-org</code> 3 档、<code>AtomicChat</code> 12 档 等）。 本仓 27 档，覆盖最全。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（27 档），从极限压缩到近似无损都能选<br>· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_L</code>（20 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（20 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 498 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/bartowski/google_gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>bartowski/google_gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>27</b> 个 GGUF 量化档，合计 498 GB。由 <code>bartowski</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/models_out/gemma-4-31B-it-GGUF/google_gemma-4-31B-it-imatrix.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；<span data-zh>权重总字节 534.6 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 534.6 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>AtomicChat</code> 12 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 22 tiers, <code>lmstudio-community</code> 3 tiers, <code>ggml-org</code> 3 tiers, <code>AtomicChat</code> 12 tiers, among others).</span><span data-zh> 本仓 27 档，覆盖最全。</span><span data-en> This repo has 27 tiers — the broadest coverage coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_L), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（27 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (27 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_L</code>（20 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_L</code> (20 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（20 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_L</code> directly (20 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 498 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>498 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -1624,16 +1624,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">3 档 · 71 GB · 37k 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 71 GB · <span data-zh>37k 下载</span><span data-en>37k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/lmstudio-community/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>lmstudio-community/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 71 GB。由 <code>lmstudio-community</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；权重总字节 76.5 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 22 档、<code>bartowski</code> 27 档、<code>ggml-org</code> 3 档、<code>AtomicChat</code> 12 档 等）。 本仓 3 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/lmstudio-community/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>lmstudio-community/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 71 GB。由 <code>lmstudio-community</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；<span data-zh>权重总字节 76.5 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 76.5 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>AtomicChat</code> 12 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 22 tiers, <code>bartowski</code> 27 tiers, <code>ggml-org</code> 3 tiers, <code>AtomicChat</code> 12 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖最少。</span><span data-en> This repo has 3 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (19 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (19 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -1641,16 +1641,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">3 档 · 104 GB · 29k 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 104 GB · <span data-zh>29k 下载</span><span data-en>29k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/ggml-org/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>ggml-org/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 104 GB。由 <code>ggml-org</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；权重总字节 112.0 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 22 档、<code>bartowski</code> 27 档、<code>lmstudio-community</code> 3 档、<code>AtomicChat</code> 12 档 等）。 本仓 3 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_0 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_0</code>（18 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_0</code>（18 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/ggml-org/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>ggml-org/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 104 GB。由 <code>ggml-org</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；<span data-zh>权重总字节 112.0 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 112.0 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>AtomicChat</code> 12 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 22 tiers, <code>bartowski</code> 27 tiers, <code>lmstudio-community</code> 3 tiers, <code>AtomicChat</code> 12 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖最少。</span><span data-en> This repo has 3 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_0 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_0), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_0</code>（18 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_0</code> (18 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_0</code>（18 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_0</code> directly (18 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -1658,16 +1658,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">12 档 · 216 GB · 4k 下载</span>
+              <span class="muted small"><span data-zh>12 档</span><span data-en>12 tiers</span> · 216 GB · <span data-zh>4k 下载</span><span data-en>4k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>AtomicChat/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 216 GB。由 <code>AtomicChat</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/root/work/gemma-4-31B-it/imatrix-coding.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；权重总字节 231.5 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 22 档、<code>bartowski</code> 27 档、<code>lmstudio-community</code> 3 档、<code>ggml-org</code> 3 档 等）。 本仓 12 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 全仓 216 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>AtomicChat/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 216 GB。由 <code>AtomicChat</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/root/work/gemma-4-31B-it/imatrix-coding.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；<span data-zh>权重总字节 231.5 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 231.5 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 22 tiers, <code>bartowski</code> 27 tiers, <code>lmstudio-community</code> 3 tiers, <code>ggml-org</code> 3 tiers, among others).</span><span data-zh> 本仓 12 档，覆盖中等。</span><span data-en> This repo has 12 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (19 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (19 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>全仓 216 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>216 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -1675,16 +1675,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">13 档 · 275 GB · 3k 下载</span>
+              <span class="muted small"><span data-zh>13 档</span><span data-en>13 tiers</span> · 275 GB · <span data-zh>3k 下载</span><span data-en>3k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/giladgd/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>giladgd/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 275 GB。由 <code>giladgd</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；权重总字节 295.4 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 22 档、<code>bartowski</code> 27 档、<code>lmstudio-community</code> 3 档、<code>ggml-org</code> 3 档 等）。 本仓 13 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 275 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/giladgd/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>giladgd/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 275 GB。由 <code>giladgd</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；<span data-zh>权重总字节 295.4 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 295.4 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 22 tiers, <code>bartowski</code> 27 tiers, <code>lmstudio-community</code> 3 tiers, <code>ggml-org</code> 3 tiers, among others).</span><span data-zh> 本仓 13 档，覆盖中等。</span><span data-en> This repo has 13 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (19 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (19 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>全仓 275 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>275 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -1692,16 +1692,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">20 档 · 388 GB · 3k 下载</span>
+              <span class="muted small"><span data-zh>20 档</span><span data-en>20 tiers</span> · 388 GB · <span data-zh>3k 下载</span><span data-en>3k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>Mungert/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>20</b> 个 GGUF 量化档，合计 388 GB。由 <code>Mungert</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-31B</code>；权重总字节 416.6 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 22 档、<code>bartowski</code> 27 档、<code>lmstudio-community</code> 3 档、<code>ggml-org</code> 3 档 等）。 本仓 20 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（20 档），从极限压缩到近似无损都能选<br>· 平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 全仓 388 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/Mungert/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>Mungert/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>20</b> 个 GGUF 量化档，合计 388 GB。由 <code>Mungert</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-31B</code>；<span data-zh>权重总字节 416.6 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 416.6 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 22 tiers, <code>bartowski</code> 27 tiers, <code>lmstudio-community</code> 3 tiers, <code>ggml-org</code> 3 tiers, among others).</span><span data-zh> 本仓 20 档，覆盖中等。</span><span data-en> This repo has 20 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（20 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (20 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (19 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (19 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>全仓 388 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>388 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -1709,16 +1709,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">11 档 · 197 GB · 1k 下载</span>
+              <span class="muted small"><span data-zh>11 档</span><span data-en>11 tiers</span> · 197 GB · <span data-zh>1k 下载</span><span data-en>1k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/mradermacher/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>mradermacher/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>11</b> 个 GGUF 量化档，合计 197 GB。由 <code>mradermacher</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 262,144 tokens；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；权重总字节 211.9 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 7 个量化来源（<code>unsloth</code> 22 档、<code>bartowski</code> 27 档、<code>lmstudio-community</code> 3 档、<code>ggml-org</code> 3 档 等）。 本仓 11 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/mradermacher/gemma-4-31B-it-GGUF" target="_blank" rel="noopener"><code>mradermacher/gemma-4-31B-it-GGUF</code> ↗</a>，提供 <b>11</b> 个 GGUF 量化档，合计 197 GB。由 <code>mradermacher</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 262,144 tokens</span><span data-en>Declared context 262,144 tokens</span>；发布页声明溯源到 <code>google/gemma-4-31B-it</code>；<span data-zh>权重总字节 211.9 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 211.9 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 7 个量化来源（<code>unsloth</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 7 other quantisation sources (<code>unsloth</code> 22 tiers, <code>bartowski</code> 27 tiers, <code>lmstudio-community</code> 3 tiers, <code>ggml-org</code> 3 tiers, among others).</span><span data-zh> 本仓 11 档，覆盖中等。</span><span data-en> This repo has 11 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（19 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (19 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（19 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (19 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         </div>
         <div class="block" id="e1">
@@ -1907,32 +1907,32 @@
         </div>
       </section>
       <section class="member" id="m2">
-        <h3><span class="member-idx">成员 3</span>Gemma 4 E4B（高效）</h3>
+        <h3><span class="member-idx"><span data-zh>成员</span><span data-en>Member</span> 3</span>Gemma 4 E4B（高效）</h3>
         <p class="member-meta">8B 总参 / 4B 激活（E4B = 激活 4B）　·　小显存首选　·　10 个量化来源</p>
         <div class="block" id="a2">
           <h4><span class="blk">A</span>基础模型卡 <small>规格 · 许可 · 访问门槛 · 参数量三来源交叉核对</small></h4>
       <table class="kv">
-        <tr><th>官方发布页</th><td><a href="https://huggingface.co/google/gemma-4-E4B-it" target="_blank" rel="noopener">google/gemma-4-E4B-it ↗</a><br><span class="muted small">HF model_type：gemma4　·　Gemma4ForConditionalGeneration</span></td></tr>
-        <tr><th>许可</th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://ai.google.dev/gemma/docs/gemma_4_license" target="_blank" rel="noopener">许可原文 ↗</a></td></tr>
-        <tr><th>访问门槛</th><td>✅ 公开下载　<span class="muted">无需申请</span></td></tr>
-        <tr><th>规模</th><td><table class="kv kv-nested">
+        <tr><th><span data-zh>官方发布页</span><span data-en>Official release page</span></th><td><a href="https://huggingface.co/google/gemma-4-E4B-it" target="_blank" rel="noopener">google/gemma-4-E4B-it ↗</a><br><span class="muted small">HF model_type：gemma4　·　Gemma4ForConditionalGeneration</span></td></tr>
+        <tr><th><span data-zh>许可</span><span data-en>Licence</span></th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://ai.google.dev/gemma/docs/gemma_4_license" target="_blank" rel="noopener"><span data-zh>许可原文 ↗</span><span data-en>licence text ↗</span></a></td></tr>
+        <tr><th><span data-zh>访问门槛</span><span data-en>Access</span></th><td><span data-zh>✅ 公开下载　<span class="muted">无需申请</span></span><span data-en>✅ Public download　<span class="muted">no application needed</span></span></td></tr>
+        <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
-          <tr><th>官网标注</th><td><b>8B 总参 / 4B 激活（E4B = 激活 4B）</b></td></tr>
-          <tr><th>官方 API 申报</th><td>8.0B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
-          <tr><th>本站实测反推</th><td>8.7B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
+          <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b>8B 总参 / 4B 激活（E4B = 激活 4B）</b></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>8.0B <span class="muted small">（按 safetensors 张量逐个计数）</span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>8.7B <span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></td></tr>
         </tbody>
       </table><p class="warn-inline">⚠ 实测反推与官方申报差 9%（反推偏大）。原因是 bpw 表为标称值、且部分张量（嵌入层、视觉塔）不按主档位量化。<b>以官方申报为准</b>。</p></td></tr>
-        <tr><th>权重精度构成</th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>8.0B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
-        <tr><th>架构</th><td><code>gemma4</code></td></tr>
-        <tr><th>上下文长度</th><td><code>131,072</code> tokens</td></tr>
+        <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:100.0%"></span></td><td>8.0B　<span class="muted small">100.0%</span></td></tr></tbody></table></td></tr>
+        <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>gemma4</code></td></tr>
+        <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>131,072</code> tokens</td></tr>
         <tr><th>基座</th><td><code>gemma-4-E4B</code></td></tr>
-        <tr><th>任务类型</th><td><code>any-to-any</code></td></tr>
+        <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>any-to-any</code></td></tr>
         <tr><th>定位</th><td>小显存首选</td></tr>
         <tr><th>标签</th><td><span class="tag">image-text-to-text</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2607.02770" target="_blank" rel="noopener">arXiv:2607.02770</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a></td></tr>
-        <tr><th>官方下载量</th><td><b>4.4M</b>　<span class="muted">点赞 2k</span></td></tr>
+        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>4.4M</b>　<span class="muted">点赞 2k</span></td></tr>
         <tr><th>发布日</th><td>2026-03-02</td></tr>
         <tr><th>最近更新</th><td>2026-07-20</td></tr>
-        <tr><th>发布页体积</th><td><b>48 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></td></tr>
+        <tr><th>发布页体积</th><td><span data-zh><b>48 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></span><span data-en><b>48 GB</b>　<span class="muted small">all files in the repo combined, including original weights at every precision</span></span></td></tr>
       </table>
             <p class="member-note">小规格，量化覆盖 34 家，是入门本地部署最省资源的一档。</p>
         </div>
@@ -2037,9 +2037,9 @@
       <p class="muted small">本系列档位体积跨度 3.5 GB → 15 GB。
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
-        <summary>展开：本系列所有档位的实测体积（34 档）</summary>
+        <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（34 <span data-zh>档</span><span data-en>tiers</span>）</summary>
         <table class="quant-list">
-          <thead><tr><th>量化档</th><th>最小体积</th><th>每权重比特</th><th>档位</th><th>该档文件数 / 体积跨度</th><th>最小体积来源</th></tr></thead>
+          <thead><tr><th><span data-zh>量化档</span><span data-en>Quant</span></th><th><span data-zh>最小体积</span><span data-en>Min size</span></th><th><span data-zh>每权重比特</span><span data-en>bpw</span></th><th><span data-zh>档位</span><span data-en>Tier</span></th><th><span data-zh>该档文件数 / 体积跨度</span><span data-en>Files in tier / size range</span></th><th>最小体积来源</th></tr></thead>
           <tbody>
             <tr>
               <td><code>UD-IQ2_M</code></td>
@@ -2324,12 +2324,12 @@
       </details>
         </div>
         <div class="block" id="c2">
-          <h4><span class="blk">C</span>量化版本总表 <small>横向对比</small></h4>
+          <h4><span class="blk">C</span><span data-zh>量化版本总表</span><span data-en>Quantisation versions</span> <small><span data-zh>横向对比</span><span data-en>side by side</span></small></h4>
       <table class="variants">
         <thead>
           <tr>
-            <th>量化者</th><th>许可</th><th class="num">档数</th><th class="num">总体积</th>
-            <th class="num">上下文</th><th>建议档</th><th class="num">下载量</th><th>更新</th>
+            <th><span data-zh>量化者</span><span data-en>Quantiser</span></th><th><span data-zh>许可</span><span data-en>Licence</span></th><th class="num"><span data-zh>档数</span><span data-en>Tiers</span></th><th class="num"><span data-zh>总体积</span><span data-en>Total size</span></th>
+            <th class="num"><span data-zh>上下文</span><span data-en>Context</span></th><th><span data-zh>建议档</span><span data-en>Recommended</span></th><th class="num"><span data-zh>下载量</span><span data-en>Downloads</span></th><th><span data-zh>更新</span><span data-en>Updated</span></th>
           </tr>
         </thead>
         <tbody>
@@ -2395,7 +2395,7 @@
               
               <br><span class="muted small"><code>gemma4</code></span>
             </td>
-            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><br><span class="warn-inline small">须读原文</span></td>
+            <td><a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a><span data-zh><br><span class="warn-inline small">须读原文</span></span><span data-en><br><span class="warn-inline small">read the original</span></span></td>
             <td class="num">2</td>
             <td class="num">11 GB</td>
             <td class="num">131,072</td>
@@ -2487,23 +2487,23 @@
         </div>
         <div class="block" id="d2">
           <h4><span class="blk">D</span>每个变体详解 <small>七字段</small></h4>
-      <p class="block-lead">每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></p>
+      <p class="block-lead"><span data-zh>每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></span><span data-en>Each variant expands along seven fields: what it is → what the quantiser did → how it differs from other variants in this series → why it exists → strengths → why you would pick it → known trade-offs.<b>The last field is the only place this site offers a subjective judgement, and every item is marked as our own reading.</b></span></p>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
             <h4><code>ggml-org</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">3 档 · 26 GB · 1.4M 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 26 GB · <span data-zh>1.4M 下载</span><span data-en>1.4M downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/ggml-org/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>ggml-org/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 26 GB。由 <code>ggml-org</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 27.7 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>unsloth</code> 21 档、<code>lmstudio-community</code> 3 档、<code>bartowski</code> 22 档、<code>batiai</code> 2 档 等）。 本仓 3 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_0 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 社区验证充分（1.4M 次下载），踩坑的人少<br>· 平衡档落在 <code>Q4_0</code>（4.6 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_0</code>（4.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/ggml-org/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>ggml-org/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 26 GB。由 <code>ggml-org</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 27.7 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 27.7 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>batiai</code> 2 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>unsloth</code> 21 tiers, <code>lmstudio-community</code> 3 tiers, <code>bartowski</code> 22 tiers, <code>batiai</code> 2 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖中等。</span><span data-en> This repo has 3 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_0 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_0), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>社区验证充分（1.4M 次下载），踩坑的人少</span><span data-en>Well exercised by the community (1.4M downloads), so fewer people hit its rough edges</span><br>· <span data-zh>平衡档落在 <code>Q4_0</code>（4.6 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_0</code> (4.6 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_0</code>（4.6 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_0</code> directly (4.6 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2511,16 +2511,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">21 档 · 114 GB · 618k 下载</span>
+              <span class="muted small"><span data-zh>21 档</span><span data-en>21 tiers</span> · 114 GB · <span data-zh>618k 下载</span><span data-en>618k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>unsloth/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>21</b> 个 GGUF 量化档，合计 114 GB。由 <code>unsloth</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 122.0 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>lmstudio-community</code> 3 档、<code>bartowski</code> 22 档、<code>batiai</code> 2 档 等）。 本仓 21 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_1 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（21 档），从极限压缩到近似无损都能选<br>· 平衡档落在 <code>Q4_1</code>（5.1 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_1</code>（5.1 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>unsloth/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>21</b> 个 GGUF 量化档，合计 114 GB。由 <code>unsloth</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 122.0 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 122.0 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>batiai</code> 2 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>lmstudio-community</code> 3 tiers, <code>bartowski</code> 22 tiers, <code>batiai</code> 2 tiers, among others).</span><span data-zh> 本仓 21 档，覆盖中等。</span><span data-en> This repo has 21 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_1 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_1), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（21 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (21 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>平衡档落在 <code>Q4_1</code>（5.1 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_1</code> (5.1 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_1</code>（5.1 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_1</code> directly (5.1 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2528,16 +2528,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">3 档 · 18 GB · 470k 下载</span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 18 GB · <span data-zh>470k 下载</span><span data-en>470k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/lmstudio-community/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>lmstudio-community/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 18 GB。由 <code>lmstudio-community</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 19.6 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>unsloth</code> 21 档、<code>bartowski</code> 22 档、<code>batiai</code> 2 档 等）。 本仓 3 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/lmstudio-community/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>lmstudio-community/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 18 GB。由 <code>lmstudio-community</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 19.6 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 19.6 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span>、<code>batiai</code> 2 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>unsloth</code> 21 tiers, <code>bartowski</code> 22 tiers, <code>batiai</code> 2 tiers, among others).</span><span data-zh> 本仓 3 档，覆盖中等。</span><span data-en> This repo has 3 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (5.3 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (5.3 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2545,16 +2545,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">22 档 · 127 GB · 35k 下载</span>
+              <span class="muted small"><span data-zh>22 档</span><span data-en>22 tiers</span> · 127 GB · <span data-zh>35k 下载</span><span data-en>35k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/bartowski/google_gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>bartowski/google_gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>22</b> 个 GGUF 量化档，合计 127 GB。由 <code>bartowski</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 136.3 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>unsloth</code> 21 档、<code>lmstudio-community</code> 3 档、<code>batiai</code> 2 档 等）。 本仓 22 档，覆盖最全。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 档位覆盖最广的一档（22 档），从极限压缩到近似无损都能选<br>· 平衡档落在 <code>Q4_K_L</code>（6.3 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（6.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/bartowski/google_gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>bartowski/google_gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>22</b> 个 GGUF 量化档，合计 127 GB。由 <code>bartowski</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 136.3 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 136.3 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>batiai</code> 2 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>unsloth</code> 21 tiers, <code>lmstudio-community</code> 3 tiers, <code>batiai</code> 2 tiers, among others).</span><span data-zh> 本仓 22 档，覆盖最全。</span><span data-en> This repo has 22 tiers — the broadest coverage coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_L 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_L), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（22 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (22 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>平衡档落在 <code>Q4_K_L</code>（6.3 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_L</code> (6.3 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_L</code>（6.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_L</code> directly (6.3 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2562,16 +2562,16 @@
             <div class="vcard-meta">
               <a class="lic lic-tight" href="https://huggingface.co/search?license=other" target="_blank" rel="noopener">other</a>
               
-              <span class="muted small">2 档 · 11 GB · 7k 下载</span>
+              <span class="muted small"><span data-zh>2 档</span><span data-en>2 tiers</span> · 11 GB · <span data-zh>7k 下载</span><span data-en>7k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/batiai/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>batiai/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>2</b> 个 GGUF 量化档，合计 11 GB。由 <code>batiai</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 11.6 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>unsloth</code> 21 档、<code>lmstudio-community</code> 3 档、<code>bartowski</code> 22 档 等）。 本仓 2 档，覆盖最少。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 档位极少，没有升降空间，被显存卡住时无路可退<br>· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）<br>· 许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/batiai/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>batiai/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>2</b> 个 GGUF 量化档，合计 11 GB。由 <code>batiai</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 11.6 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 11.6 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>unsloth</code> 21 tiers, <code>lmstudio-community</code> 3 tiers, <code>bartowski</code> 22 tiers, among others).</span><span data-zh> 本仓 2 档，覆盖最少。</span><span data-en> This repo has 2 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (5.3 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (5.3 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>许可是 <code>other</code>，<b>必须自己读发布页原文</b>再决定能不能用</span><span data-en>The licence is <code>other</code> — <b>read the release page yourself</b> before deciding whether you may use it</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2579,16 +2579,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">12 档 · 62 GB · 4k 下载</span>
+              <span class="muted small"><span data-zh>12 档</span><span data-en>12 tiers</span> · 62 GB · <span data-zh>4k 下载</span><span data-en>4k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>AtomicChat/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 62 GB。由 <code>AtomicChat</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">带重要性矩阵（imatrix：<code>/root/work/gemma-4-E4B-it/imatrix-coding.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 66.5 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>unsloth</code> 21 档、<code>lmstudio-community</code> 3 档、<code>bartowski</code> 22 档 等）。 本仓 12 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 带 imatrix，同档位下质量通常更稳<br>· 平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 暂未发现明显取舍（不代表没有，建议先下一档实测）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>AtomicChat/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 62 GB。由 <code>AtomicChat</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v">带重要性矩阵（imatrix：<code>/root/work/gemma-4-E4B-it/imatrix-coding.gguf</code>），用激活数据统计各层重要性后再量化，通常比纯 RTN 稳；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 66.5 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 66.5 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>unsloth</code> 21 tiers, <code>lmstudio-community</code> 3 tiers, <code>bartowski</code> 22 tiers, among others).</span><span data-zh> 本仓 12 档，覆盖中等。</span><span data-en> This repo has 12 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>带 imatrix，同档位下质量通常更稳</span><span data-en>Ships imatrix, so quality at the same tier is usually steadier</span><br>· <span data-zh>平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (5.3 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (5.3 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>暂未发现明显取舍（不代表没有，建议先下一档实测）</span><span data-en>No obvious trade-off found (which is not the same as none — download one tier and measure before committing)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2596,16 +2596,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">18 档 · 126 GB · 3k 下载</span>
+              <span class="muted small"><span data-zh>18 档</span><span data-en>18 tiers</span> · 126 GB · <span data-zh>3k 下载</span><span data-en>3k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/Mungert/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>Mungert/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>18</b> 个 GGUF 量化档，合计 126 GB。由 <code>Mungert</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B</code>；权重总字节 135.3 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>unsloth</code> 21 档、<code>lmstudio-community</code> 3 档、<code>bartowski</code> 22 档 等）。 本仓 18 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（6.2 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（6.2 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/Mungert/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>Mungert/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>18</b> 个 GGUF 量化档，合计 126 GB。由 <code>Mungert</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B</code>；<span data-zh>权重总字节 135.3 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 135.3 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>unsloth</code> 21 tiers, <code>lmstudio-community</code> 3 tiers, <code>bartowski</code> 22 tiers, among others).</span><span data-zh> 本仓 18 档，覆盖中等。</span><span data-en> This repo has 18 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（6.2 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (6.2 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（6.2 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (6.2 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2613,16 +2613,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">12 档 · 70 GB · 3k 下载</span>
+              <span class="muted small"><span data-zh>12 档</span><span data-en>12 tiers</span> · 70 GB · <span data-zh>3k 下载</span><span data-en>3k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/mradermacher/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>mradermacher/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 70 GB。由 <code>mradermacher</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 75.3 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>unsloth</code> 21 档、<code>lmstudio-community</code> 3 档、<code>bartowski</code> 22 档 等）。 本仓 12 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/mradermacher/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>mradermacher/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>12</b> 个 GGUF 量化档，合计 70 GB。由 <code>mradermacher</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 75.3 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 75.3 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>unsloth</code> 21 tiers, <code>lmstudio-community</code> 3 tiers, <code>bartowski</code> 22 tiers, among others).</span><span data-zh> 本仓 12 档，覆盖中等。</span><span data-en> This repo has 12 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (5.3 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (5.3 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2630,16 +2630,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">13 档 · 90 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>13 档</span><span data-en>13 tiers</span> · 90 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/prithivMLmods/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>prithivMLmods/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 90 GB。由 <code>prithivMLmods</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 96.1 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>unsloth</code> 21 档、<code>lmstudio-community</code> 3 档、<code>bartowski</code> 22 档 等）。 本仓 13 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/prithivMLmods/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>prithivMLmods/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 90 GB。由 <code>prithivMLmods</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 96.1 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 96.1 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>unsloth</code> 21 tiers, <code>lmstudio-community</code> 3 tiers, <code>bartowski</code> 22 tiers, among others).</span><span data-zh> 本仓 13 档，覆盖中等。</span><span data-en> This repo has 13 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（5.3 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (5.3 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.3 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (5.3 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         <article class="vcard" data-tier="2">
           <header class="vcard-h">
@@ -2647,16 +2647,16 @@
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small">13 档 · 76 GB · 2k 下载</span>
+              <span class="muted small"><span data-zh>13 档</span><span data-en>13 tiers</span> · 76 GB · <span data-zh>2k 下载</span><span data-en>2k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k">它是什么</span><span class="vf-v"><a href="https://huggingface.co/giladgd/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>giladgd/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 76 GB。由 <code>giladgd</code> 发布。</span></div>
-        <div class="vf"><span class="vf-k">量化者做了什么</span><span class="vf-v">未提供重要性矩阵（imatrix），走的是纯权重量化路线；针对 <code>gemma4</code> 架构优化；声明上下文 131,072 tokens；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；权重总字节 81.7 GB（发布页 <code>gguf.total</code> 字段）。</span></div>
-        <div class="vf"><span class="vf-k">与同系列其他变体的区别</span><span class="vf-v">同系列另有 9 个量化来源（<code>ggml-org</code> 3 档、<code>unsloth</code> 21 档、<code>lmstudio-community</code> 3 档、<code>bartowski</code> 22 档 等）。 本仓 13 档，覆盖中等。</span></div>
-        <div class="vf"><span class="vf-k">存在的意义</span><span class="vf-v">补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span></div>
-        <div class="vf"><span class="vf-k">优势</span><span class="vf-v">· 平衡档落在 <code>Q4_K_M</code>（5.4 GB），是大多数人的起点</span></div>
-        <div class="vf"><span class="vf-k">为什么选它 / 目的</span><span class="vf-v">如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.4 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span></div>
-        <div class="vf"><span class="vf-k">已知取舍</span><span class="vf-v">· 无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><a href="https://huggingface.co/giladgd/gemma-4-E4B-it-GGUF" target="_blank" rel="noopener"><code>giladgd/gemma-4-E4B-it-GGUF</code> ↗</a>，提供 <b>13</b> 个 GGUF 量化档，合计 76 GB。由 <code>giladgd</code> 发布。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gemma4</code> 架构优化</span><span data-en>Optimised for the <code>gemma4</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；发布页声明溯源到 <code>google/gemma-4-E4B-it</code>；<span data-zh>权重总字节 81.7 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 81.7 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 9 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>unsloth</code> 21 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 22 <span data-zh>档</span><span data-en>tiers</span> 等）。</span><span data-en>The series has 9 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>unsloth</code> 21 tiers, <code>lmstudio-community</code> 3 tiers, <code>bartowski</code> 22 tiers, among others).</span><span data-zh> 本仓 13 档，覆盖中等。</span><span data-en> This repo has 13 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_M 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_M), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_M</code>（5.4 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_M</code> (5.4 GB), the starting point for most people</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_M</code>（5.4 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_M</code> directly (5.4 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
         </div>
         <div class="block" id="e2">
