@@ -16,9 +16,16 @@
   <link rel="stylesheet" href="../../brand.css" />
   <link rel="stylesheet" href="../../site.css" />
   <style>:root { --accent: #22d3c5; }</style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"gpt-oss GGUF 量化版本索引","description":"OpenAI 唯一开放权重系列，20B 版是单卡本地部署的甜点。","url":"https://models.specul.com/series/gpt-oss/","isAccessibleForFree":true,"license":"https://creativecommons.org/publicdomain/zero/1.0/","temporalCoverage":"2026-09-30"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"gpt-oss GGUF 量化版本索引","description":"OpenAI 唯一开放权重系列，20B 版是单卡本地部署的甜点。","url":"https://models.specul.com/series/gpt-oss/","isAccessibleForFree":true,"license":"https://creativecommons.org/publicdomain/zero/1.0/","temporalCoverage":"2026-10-09"}</script>
 </head>
-<body class="brand-ambient" style="--accent:#22d3c5">
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient">
   <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
   <header class="site-header">
     <div class="container site-bar">
@@ -40,8 +47,34 @@
           <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
         </span>
       </nav>
+      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、六站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+        <i></i><i></i><i></i>
+      </button>
     </div>
   </header>
+  <div class="nav-scrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
+    <div class="nav-drawer-h">
+      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
+      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
+    </div>
+    <nav class="nav-drawer-list">
+      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://agent.specul.com/"><span><span data-zh>Agent</span><span data-en>Agent</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://models.specul.com/" aria-current="page"><span><span data-zh>本地模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://vg.specul.com/"><span><span data-zh>AI 做游戏</span><span data-en>Vibe Gaming</span></span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="https://nav.specul.com/"><span><span data-zh>导航</span><span data-en>Directory</span></span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+    <div class="nav-drawer-foot">
+      <p><span data-zh>6 个站，各管一件事</span><span data-en>Six sites, one job each</span></p>
+      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
+    </div>
+  </aside>
   <main id="main">
   <div class="container">
     <nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh>全部系列</span><span data-en>All series</span></a></nav>
@@ -70,7 +103,7 @@
       </div>
       <p class="trust-foot">
         <span data-zh>本站</span><span data-en>This site does</span> <b><span data-zh>不下载、不托管任何模型权重文件</span><span data-en>not download or host any model weight files</span></b><span data-zh>。所有数字都来自公开元数据，点击即可回到发布页核对。</span><span data-en>. Every figure comes from public metadata, and clicking it takes you back to the release page to verify.</span>
-        <span data-zh>采集时间</span><span data-en>Collected</span>: <code>2026-09-30</code><span data-zh>（数据快照，非实时）</span><span data-en> (a snapshot, not live)</span>
+        <span data-zh>采集时间</span><span data-en>Collected</span>: <code>2026-10-09</code><span data-zh>（数据快照，非实时）</span><span data-en> (a snapshot, not live)</span>
       </p>
     </section>
       <section class="member" id="m0">
@@ -79,27 +112,27 @@
         <div class="block" id="a0">
           <h4><span class="blk">A</span><span data-zh>基础模型卡</span><span data-en>Base model card</span> <small><span data-zh>规格 · 许可 · 访问门槛 · 参数量三来源交叉核对</span><span data-en>specs · licence · access · parameter count cross-checked across three sources</span></small></h4>
       <table class="kv">
-        <tr><th><span data-zh>官方发布页</span><span data-en>Official release page</span></th><td><a href="https://huggingface.co/openai/gpt-oss-20b" target="_blank" rel="noopener">openai/gpt-oss-20b ↗</a><br><span class="muted small">HF model_type：gpt_oss　·　GptOssForCausalLM</span></td></tr>
-        <tr><th><span data-zh>许可</span><span data-en>Licence</span></th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a> <a class="lic-src" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener"><span data-zh>许可原文 ↗</span><span data-en>licence text ↗</span></a></td></tr>
+        <tr><th><span data-zh>官方发布页</span><span data-en>Official release page</span></th><td><a href="https://huggingface.co/openai/gpt-oss-20b" target="_blank" rel="noopener">openai/gpt-oss-20b ↗</a><br><span class="muted small"></span></td></tr>
+        <tr><th><span data-zh>许可</span><span data-en>Licence</span></th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a></td></tr>
         <tr><th><span data-zh>访问门槛</span><span data-en>Access</span></th><td><span data-zh>✅ 公开下载　<span class="muted">无需申请</span></span><span data-en>✅ Public download　<span class="muted">no application needed</span></span></td></tr>
         <tr><th><span data-zh>规模</span><span data-en>Scale</span></th><td><table class="kv kv-nested">
         <tbody>
           <tr><th><span data-zh>官网标注</span><span data-en>Vendor states</span></th><td><b><span data-zh>20B（MoE，约 3.6B 激活）</span><span data-en>20B（MoE，约 3.6B 激活）</span></b></td></tr>
-          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td>20.9B <span data-zh><span class="muted small">（按 safetensors 张量逐个计数）</span></span><span data-en><span class="muted small"> (counted per safetensors tensor)</span></span></td></tr>
-          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td>19.2B <span data-zh><span class="muted small">（GGUF 字节 ÷ 该档 bpw，取最密集簇中位）</span></span><span data-en><span class="muted small"> (GGUF bytes ÷ tier bpw, median of the densest cluster)</span></span></td></tr>
+          <tr><th><span data-zh>官方 API 申报</span><span data-en>Official API</span></th><td><span class="muted">—</span></td></tr>
+          <tr><th><span data-zh>本站实测反推</span><span data-en>This site, measured</span></th><td><span class="muted">—</span></td></tr>
         </tbody>
-      </table><span data-zh><p class="warn-inline">⚠ 实测反推与官方申报差 8%（反推偏小）。原因是 bpw 表为标称值、且部分张量（嵌入层、视觉塔）不按主档位量化。<b>以官方申报为准</b>。</p></span><span data-en><p class="warn-inline">⚠ Our reverse-derived figure differs from the vendor figure by 8% (ours runs low). Reason: the bpw table is nominal, and some tensors (embeddings, vision towers) are not quantised at the main tier. <b>The vendor figure is authoritative.</b></p></span></td></tr>
-        <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><table class="prec"><tbody><tr><td><code>U8</code></td><td class="prec-bar"><span style="width:91.4%"></span></td><td>19.1B　<span class="muted small">91.4%</span></td></tr><tr><td><code>BF16</code></td><td class="prec-bar"><span style="width:8.6%"></span></td><td>1.8B　<span class="muted small">8.6%</span></td></tr></tbody></table></td></tr>
+      </table></td></tr>
+        <tr><th><span data-zh>权重精度构成</span><span data-en>Precision breakdown</span></th><td><span class="muted">—</span></td></tr>
         <tr><th><span data-zh>架构</span><span data-en>Architecture</span></th><td><code>gpt-oss</code></td></tr>
         <tr><th><span data-zh>上下文长度</span><span data-en>Context length</span></th><td><code>131,072</code> tokens</td></tr>
         <tr><th><span data-zh>基座</span><span data-en>Base model</span></th><td><span data-zh><span class="muted">本仓即基座（不是微调版）</span></span><span data-en><span class="muted">this repo is the base model, not a fine-tune</span></span></td></tr>
-        <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><code>text-generation</code></td></tr>
+        <tr><th><span data-zh>任务类型</span><span data-en>Task type</span></th><td><span class="muted">—</span></td></tr>
         <tr><th><span data-zh>定位</span><span data-en>Role</span></th><td><span data-zh>单卡甜点</span><span data-en>Single-GPU sweet spot</span></td></tr>
-        <tr><th><span data-zh>标签</span><span data-en>Tags</span></th><td><span class="tag">text-generation</span> <span class="tag tag-rt">vllm</span> <span class="tag">conversational</span> <a class="tag tag-paper" href="https://arxiv.org/abs/2508.10925" target="_blank" rel="noopener">arXiv:2508.10925</a> <a class="tag tag-lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">license:apache-2.0</a></td></tr>
-        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>6.7M</b>　<span class="muted"><span data-zh>点赞</span><span data-en>likes</span> 5k</span></td></tr>
-        <tr><th><span data-zh>发布日</span><span data-en>Released</span></th><td>2025-08-04</td></tr>
+        <tr><th><span data-zh>标签</span><span data-en>Tags</span></th><td><span class="muted">—</span></td></tr>
+        <tr><th><span data-zh>官方下载量</span><span data-en>Downloads</span></th><td><b>6.1M</b>　<span class="muted"><span data-zh>点赞</span><span data-en>likes</span> 5k</span></td></tr>
+        <tr><th><span data-zh>发布日</span><span data-en>Released</span></th><td><span class="muted">—</span></td></tr>
         <tr><th><span data-zh>最近更新</span><span data-en>Last updated</span></th><td>2025-08-26</td></tr>
-        <tr><th><span data-zh>发布页体积</span><span data-en>Release-page size</span></th><td><span data-zh><b>41 GB</b>　<span class="muted small">该仓全部文件合计，含各精度原始权重</span></span><span data-en><b>41 GB</b>　<span class="muted small">all files in the repo combined, including original weights at every precision</span></span></td></tr>
+        <tr><th><span data-zh>发布页体积</span><span data-en>Release-page size</span></th><td><span class="muted">—</span></td></tr>
       </table>
             <p class="member-note"><span data-zh>apache-2.0，674 万下载。虽非最新代，但量化生态成熟且许可最干净。</span><span data-en>apache-2.0, 6.74M downloads. Not the newest generation, but a mature quantisation ecosystem and the cleanest licence.</span></p>
         </div>
@@ -107,41 +140,64 @@
           <h4><span class="blk">B</span><span data-zh>该选哪个</span><span data-en>Which one to pick</span> <small><span data-zh>按你的显存倒推</span><span data-en>work backwards from your VRAM</span></small></h4>
       <p class="block-lead"><span data-zh>按「你实际能腾出多少显存或内存」选档位，而不是按参数猜。下面每档的体积都是<b>实测值</b>（来自发布页文件列表），<b>加权 15% 余量</b>给运行时与 KV cache。</span><span data-en>Pick a tier by how much VRAM or memory you can actually free up, not by guessing from spec sheets. Every size below is <b>measured</b> (from the release page file listing) with <b>15% headroom</b> added for runtime and the KV cache.</span></p>
       
-      <h3 class="budget-h"><span data-zh>单卡全量装得下（最快）</span><span data-en>Fits entirely on one card (fastest)</span></h3>
+      <div class="vramtool">
+        <div class="vt-row">
+          <label class="vt-f"><span class="vt-h"><span data-zh>你的显存（GB）</span><span data-en>Your VRAM (GB)</span></span>
+            <input type="number" class="vt-in" min="1" max="1024" step="1" inputmode="numeric" placeholder="12"></label>
+          <span class="vt-quick"><button type="button" class="vt-preset" data-gb="4">4</button><button type="button" class="vt-preset" data-gb="8">8</button><button type="button" class="vt-preset" data-gb="12">12</button><button type="button" class="vt-preset" data-gb="16">16</button><button type="button" class="vt-preset" data-gb="24">24</button><button type="button" class="vt-preset" data-gb="48">48</button><button type="button" class="vt-preset" data-gb="80">80</button></span>
+        </div>
+        <div class="vt-out" aria-live="polite"></div>
+        <script type="application/json" class="vt-data">[{"q":"Q8_0","g":0.92,"t":"近似无损","u":"https://huggingface.co/ggml-org/gpt-oss-20b-GGUF","b":"ggml-org","rp":"ggml-org/gpt-oss-20b-GGUF"},{"q":"BF16","g":1.72,"t":"近似无损","u":"https://huggingface.co/ggml-org/gpt-oss-20b-GGUF","b":"ggml-org","rp":"ggml-org/gpt-oss-20b-GGUF"},{"q":"Q3_K_S","g":11.46,"t":"长上下文优先","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q2_K","g":11.47,"t":"极限压缩","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q3_K_L","g":11.49,"t":"长上下文优先","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"Q4_0","g":11.5,"t":"平衡档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q3_K_M","g":11.51,"t":"长上下文优先","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"IQ2_XXS","g":11.51,"t":"极限压缩","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"IQ2_XS","g":11.51,"t":"极限压缩","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"IQ2_M","g":11.55,"t":"极限压缩","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"IQ2_S","g":11.55,"t":"极限压缩","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"IQ3_XXS","g":11.56,"t":"长上下文优先","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"IQ3_XS","g":11.56,"t":"长上下文优先","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"IQ3_M","g":11.56,"t":"长上下文优先","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"IQ4_NL","g":11.56,"t":"平衡档","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"IQ4_XS","g":11.56,"t":"平衡档","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"Q4_1","g":11.58,"t":"平衡档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q4_K_S","g":11.62,"t":"平衡档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q4_K_M","g":11.62,"t":"平衡档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q5_K_S","g":11.71,"t":"保守档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q5_K_M","g":11.72,"t":"保守档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q2_K_L","g":11.76,"t":"极限压缩","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q3_K_XL","g":11.78,"t":"长上下文优先","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"UD-Q4_K_XL","g":11.87,"t":"保守档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q4_K_L","g":11.89,"t":"平衡档","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"Q5_K_L","g":11.91,"t":"保守档","u":"https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF","b":"bartowski","rp":"bartowski/openai_gpt-oss-20b-GGUF"},{"q":"UD-Q6_K","g":12.04,"t":"保守档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"Q6_K","g":12.04,"t":"保守档","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"},{"q":"MXFP4","g":12.11,"t":"平衡档","u":"https://huggingface.co/ggml-org/gpt-oss-20b-GGUF","b":"ggml-org","rp":"ggml-org/gpt-oss-20b-GGUF"},{"q":"UD-Q8_K_XL","g":13.2,"t":"近似无损","u":"https://huggingface.co/unsloth/gpt-oss-20b-GGUF","b":"unsloth","rp":"unsloth/gpt-oss-20b-GGUF"}]</script>
+      </div>
+      <h3 class="budget-h"><span data-zh>单卡全量装得下</span><span data-en>Fits entirely on one card</span></h3>
       <table class="budget">
-        <caption><span data-zh>显存 → 档位速查（权重全部放显存，推理最快）</span><span data-en>VRAM → tier cheat sheet (all weights on the GPU, fastest inference)</span></caption>
+        <caption><span data-zh>显存 → 档位速查（权重全部放显存，不卸载到系统内存）</span><span data-en>VRAM → tier cheat sheet (all weights on the GPU, no offload to system memory)</span></caption>
         <tbody>
-        <tr><th><span data-zh>8 GB 显存</span><span data-en>8 GB VRAM</span></th><td class="no-fit"><span data-zh>显存装不下最小档</span><span data-en>VRAM cannot hold even the smallest tier</span><span data-zh>（最小 11.5 GB）</span><span data-en> (smallest tier 11.5 GB)</span><br><span class="muted"><span data-zh>共享显卡 / 老卡，够跑小MoE 与 2B 级</span><span data-en>shared or older cards; enough for small MoE and 2B-class models</span></span></td></tr>
-        <tr><th><span data-zh>12 GB 显存</span><span data-en>12 GB VRAM</span></th><td class="no-fit"><span data-zh>显存装不下最小档</span><span data-en>VRAM cannot hold even the smallest tier</span><span data-zh>（最小 11.5 GB）</span><span data-en> (smallest tier 11.5 GB)</span><br><span class="muted"><span data-zh>RTX 3060 12G / 4050 12G</span><span data-en>RTX 3060 12G / 4050 12G</span></span></td></tr>
+        <tr>
+          <th><span data-zh>8 GB 显存</span><span data-en>8 GB VRAM</span></th>
+          <td>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
+            <br><span class="muted"><span data-zh>共享显卡 / 老卡，够跑小MoE 与 2B 级</span><span data-en>shared or older cards; enough for small MoE and 2B-class models</span></span>
+          </td>
+        </tr>
+        <tr>
+          <th><span data-zh>12 GB 显存</span><span data-en>12 GB VRAM</span></th>
+          <td>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
+            <br><span class="muted"><span data-zh>RTX 3060 12G / 4050 12G</span><span data-en>RTX 3060 12G / 4050 12G</span></span>
+          </td>
+        </tr>
         <tr>
           <th><span data-zh>16 GB 显存</span><span data-en>16 GB VRAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
-            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
             <br><span class="muted"><span data-zh>RTX 4060 Ti 16G / 5060 Ti 16G</span><span data-en>RTX 4060 Ti 16G / 5060 Ti 16G</span></span>
           </td>
         </tr>
         <tr>
           <th><span data-zh>24 GB 显存</span><span data-en>24 GB VRAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
-            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
             <br><span class="muted"><span data-zh>RTX 3090 / 4090 / 5090</span><span data-en>RTX 3090 / 4090 / 5090</span></span>
           </td>
         </tr>
         <tr>
           <th><span data-zh>48 GB 显存</span><span data-en>48 GB VRAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
-            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
             <br><span class="muted"><span data-zh>RTX A6000 / L40S / A100 40G×2</span><span data-en>RTX A6000 / L40S / A100 40G×2</span></span>
           </td>
         </tr>
         <tr>
           <th><span data-zh>80 GB 显存</span><span data-en>80 GB VRAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
-            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
             <br><span class="muted"><span data-zh>A100 80G / H100 80G / Mac Studio 大统一内存</span><span data-en>A100 80G / H100 80G / Mac Studio large unified memory</span></span>
           </td>
         </tr>
@@ -156,38 +212,38 @@
         <tr>
           <th><span data-zh>64 GB 系统内存</span><span data-en>64 GB system RAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
-            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
             <br><span class="muted"><span data-zh>纯 CPU 推理，速度慢但可跑；建议开swap 兜底</span><span data-en>CPU-only inference — slow but it runs; enable swap as a safety net</span></span><span data-zh><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span></span><span data-en><br><span class="muted small">CPU-only is markedly slower than GPU — if you have the VRAM, prefer the single-card tiers above</span></span>
           </td>
         </tr>
         <tr>
           <th><span data-zh>128 GB 系统内存</span><span data-en>128 GB system RAM</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
-            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
             <br><span class="muted"><span data-zh>工作站标准配置，纯 CPU 可跑中等规模 MoE</span><span data-en>the standard workstation config; CPU-only handles mid-size MoE</span></span><span data-zh><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span></span><span data-en><br><span class="muted small">CPU-only is markedly slower than GPU — if you have the VRAM, prefer the single-card tiers above</span></span>
           </td>
         </tr>
         <tr>
           <th><span data-zh>256 GB 统一内存 / 多卡</span><span data-en>256 GB unified memory / multi-GPU</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
-            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
             <br><span class="muted"><span data-zh>Mac Studio / 服务器内存，或 2~4 张 80G 卡张量并行</span><span data-en>Mac Studio / server memory, or 2–4 × 80G cards under tensor parallel</span></span><span data-zh><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span></span><span data-en><br><span class="muted small">CPU-only is markedly slower than GPU — if you have the VRAM, prefer the single-card tiers above</span></span>
           </td>
         </tr>
         <tr>
           <th><span data-zh>640 GB+ 内存 / 8×80G</span><span data-en>640 GB+ memory / 8×80G</span></th>
           <td>
-            <b>Q8_0</b>（12 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
-            <br><span class="muted"><span data-zh>更省：</span><span data-en>Smaller: </span>UD-Q6_K 12 GB / Q6_K 12 GB</span>
+            <b>Q8_0</b>（0.9 GB · <span data-zh>近似无损</span><span data-en>Near lossless</span>）
+            
             <br><span class="muted"><span data-zh>超大 MoE 的门槛，需要多卡切分或大内存服务器</span><span data-en>the threshold for very large MoE — needs multi-GPU splitting or a big-memory server</span></span><span data-zh><br><span class="muted small">纯 CPU 会明显慢于 GPU；若显存够，优先用上面的单卡档</span></span><span data-en><br><span class="muted small">CPU-only is markedly slower than GPU — if you have the VRAM, prefer the single-card tiers above</span></span>
           </td>
         </tr>
         </tbody>
       </table>
-      <span data-zh><p class="muted small">本系列档位体积跨度 12 GB → 14 GB。</span><span data-en><p class="muted small">Tier sizes in this series span 12 GB → 14 GB.</span>
+      <span data-zh><p class="muted small">本系列档位体积跨度 12 GB → 1.7 GB。</span><span data-en><p class="muted small">Tier sizes in this series span 12 GB → 1.7 GB.</span>
         跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。</p>
       <details class="all-quants">
         <summary><span data-zh>展开：本系列所有档位的实测体积</span><span data-en>Expand: measured sizes for every tier</span>（30 <span data-zh>档</span><span data-en>tiers</span>）</summary>
@@ -307,7 +363,7 @@
               <td><b>12 GB</b></td>
               <td>3.66<span class="muted"> bpw</span></td>
               <td><span class="tier tier-3"><span data-zh>长上下文优先</span><span data-en>Long context first</span></span></td>
-              <td class="muted small"><span data-zh>默认推荐，质量和体积的折中点</span><span data-en>The default recommendation — the compromise between quality and size</span></td>
+              <td class="muted small"><span data-zh>KV 缓存也吃紧时的选择</span><span data-en>The pick when the KV cache is also tight</span></td>
               <td class="muted small">1 <span data-zh>个</span><span data-en></span></td>
               <td class="muted"><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener">bartowski</a></td>
             </tr>
@@ -439,12 +495,12 @@
             </tr>
             <tr>
               <td><code>Q8_0</code></td>
-              <td><b>12 GB</b></td>
+              <td><b>0.9 GB</b></td>
               <td>8.50<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
               <td class="muted small"><span data-zh>体积接近原始精度</span><span data-en>Size close to the original precision</span></td>
-              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
-              <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span> · 0.9 GB~12 GB</td>
+              <td class="muted"><a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener">ggml-org</a></td>
             </tr>
             <tr>
               <td><code>UD-Q8_K_XL</code></td>
@@ -457,12 +513,12 @@
             </tr>
             <tr>
               <td><code>BF16</code></td>
-              <td><b>14 GB</b></td>
+              <td><b>1.7 GB</b></td>
               <td>16.00<span class="muted"> bpw</span></td>
               <td><span class="tier tier-0"><span data-zh>近似无损</span><span data-en>Near lossless</span></span></td>
               <td class="muted small"><span data-zh>体积接近原始精度</span><span data-en>Size close to the original precision</span></td>
-              <td class="muted small">2 <span data-zh>个</span><span data-en></span></td>
-              <td class="muted"><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener">unsloth</a></td>
+              <td class="muted small">3 <span data-zh>个</span><span data-en></span> · 1.7 GB~14 GB</td>
+              <td class="muted"><a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener">ggml-org</a></td>
             </tr>
           </tbody>
         </table>
@@ -495,7 +551,7 @@
             <td class="num">178 GB</td>
             <td class="num">131,072</td>
             <td><code>Q4_K_S</code><br><span class="muted small">12 GB</span></td>
-            <td class="num">498k</td>
+            <td class="num">491k</td>
             <td class="muted small">2025-12-19</td>
           </tr>
           <tr>
@@ -505,11 +561,11 @@
               <br><span class="muted small"><code>gpt-oss</code></span>
             </td>
             <td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a></td>
-            <td class="num">1</td>
-            <td class="num">11 GB</td>
+            <td class="num">3</td>
+            <td class="num">14 GB</td>
             <td class="num">131,072</td>
             <td><code>MXFP4</code><br><span class="muted small">12 GB</span></td>
-            <td class="num">135k</td>
+            <td class="num">158k</td>
             <td class="muted small">2026-07-28</td>
           </tr>
           <tr>
@@ -523,7 +579,7 @@
             <td class="num">11 GB</td>
             <td class="num">131,072</td>
             <td><code>MXFP4</code><br><span class="muted small">12 GB</span></td>
-            <td class="num">106k</td>
+            <td class="num">94k</td>
             <td class="muted small">2025-08-05</td>
           </tr>
           <tr>
@@ -537,7 +593,7 @@
             <td class="num">307 GB</td>
             <td class="num">131,072</td>
             <td><code>MXFP4</code><br><span class="muted small">12 GB</span></td>
-            <td class="num">20k</td>
+            <td class="num">14k</td>
             <td class="muted small">2025-08-11</td>
           </tr>
         </tbody>
@@ -555,81 +611,91 @@
         <div class="block" id="d0">
           <h4><span class="blk">D</span><span data-zh>每个变体详解</span><span data-en>Every variant in detail</span> <small><span data-zh>七字段</span><span data-en>seven fields</span></small></h4>
       <p class="block-lead"><span data-zh>每个变体按七个字段展开：它是什么 → 量化者做了什么 → 与同系列其他变体的区别 → 存在的意义 → 优势 → 为什么选它 → 已知取舍。<b>最后一项是本站唯一会写主观判断的地方，且都标注了「我们的口径」。</b></span><span data-en>Each variant expands along seven fields: what it is → what the quantiser did → how it differs from other variants in this series → why it exists → strengths → why you would pick it → known trade-offs.<b>The last field is the only place this site offers a subjective judgement, and every item is marked as our own reading.</b></span></p>
-        <article class="vcard" data-tier="2">
+      <div class="vwrap">
+      <div class="vfilter" role="search">
+        <label class="vf-f"><span class="vh"><span data-zh>筛选量化仓</span><span data-en>Filter quant repos</span></span>
+          <input type="search" class="vq" autocomplete="off" placeholder="unsloth · bartowski · ggml-org"></label>
+        <label class="vf-f"><span class="vh"><span data-zh>量化者</span><span data-en>Quantiser</span></span><select class="vsel" data-dim="q"><option value="">全部 / All</option><option value="bartowski">bartowski</option><option value="ggml-org">ggml-org</option><option value="lmstudio-community">lmstudio-community</option><option value="unsloth">unsloth</option></select></label>
+        <label class="vf-f"><span class="vh"><span data-zh>包含档位</span><span data-en>Includes tier</span></span><select class="vsel" data-dim="tier"><option value="">全部 / All</option><option value="保守档">保守档 / Conservative</option><option value="平衡档">平衡档 / Balanced</option><option value="极限压缩">极限压缩 / Extreme compression</option><option value="近似无损">近似无损 / Near lossless</option><option value="长上下文优先">长上下文优先 / Long context first</option></select></label>
+        <label class="vf-f"><span class="vh"><span data-zh>许可</span><span data-en>Licence</span></span><select class="vsel" data-dim="lic"><option value="">全部 / All</option><option value="apache-2.0">apache-2.0</option></select></label>
+        <span class="vcount" aria-live="polite"></span>
+      </div>
+        <article class="vcard" data-tier="2" data-q="unsloth" data-lic="apache-2.0" data-tiers="极限压缩 长上下文优先 平衡档 保守档 近似无损" data-blob="unsloth unsloth/gpt-oss-20b-gguf apache-2.0">
           <header class="vcard-h">
             <h4><code>unsloth</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small"><span data-zh>16 档</span><span data-en>16 tiers</span> · 178 GB · <span data-zh>498k 下载</span><span data-en>498k downloads</span></span>
+              <span class="muted small"><span data-zh>16 档</span><span data-en>16 tiers</span> · 178 GB · <span data-zh>491k 下载</span><span data-en>491k downloads</span></span>
             </div>
           </header>
         <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><span data-zh><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>unsloth/gpt-oss-20b-GGUF</code> ↗</a>，提供 <b>16</b> 个 GGUF 量化档，合计 178 GB。由 <code>unsloth</code> 发布。</span><span data-en><a href="https://huggingface.co/unsloth/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>unsloth/gpt-oss-20b-GGUF</code> ↗</a>, providing <b>16</b> GGUF tiers totalling 178 GB. Published by <code>unsloth</code>.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gpt-oss</code> 架构优化</span><span data-en>Optimised for the <code>gpt-oss</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；<span data-zh>发布页声明溯源到 <code>openai/gpt-oss-20b</code></span><span data-en>The release page traces this back to <code>openai/gpt-oss-20b</code></span>；<span data-zh>权重总字节 191.0 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 191.0 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 3 个量化来源（<code>ggml-org</code> 1 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 1 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>）。</span><span data-en>The series has 3 other quantisation sources (<code>ggml-org</code> 1 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 27 tiers).</span><span data-zh> 本仓 16 档，覆盖中等。</span><span data-en> This repo has 16 tiers — middling coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 3 个量化来源（<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 1 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>）。</span><span data-en>The series has 3 other quantisation sources (<code>ggml-org</code> 3 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 27 tiers).</span><span data-zh> 本仓 16 档，覆盖中等。</span><span data-en> This repo has 16 tiers — middling coverage in this series.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（Q4_K_S 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as Q4_K_S), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>Q4_K_S</code>（12 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>Q4_K_S</code> (12 GB), the starting point for most people</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>Q4_K_S</code>（12 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>Q4_K_S</code> directly (12 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>已 293 天未更新，基础模型若有新版可能已不同步</span><span data-en>Not updated for 293 days, so it may no longer track a newer base model</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>已 294 天未更新，基础模型若有新版可能已不同步</span><span data-en>Not updated for 294 days, so it may no longer track a newer base model</span></span></div>
         </article>
-        <article class="vcard" data-tier="2">
+        <article class="vcard" data-tier="2" data-q="ggml-org" data-lic="apache-2.0" data-tiers="平衡档 近似无损" data-blob="ggml-org ggml-org/gpt-oss-20b-gguf apache-2.0">
           <header class="vcard-h">
             <h4><code>ggml-org</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small"><span data-zh>1 档</span><span data-en>1 tiers</span> · 11 GB · <span data-zh>135k 下载</span><span data-en>135k downloads</span></span>
+              <span class="muted small"><span data-zh>3 档</span><span data-en>3 tiers</span> · 14 GB · <span data-zh>158k 下载</span><span data-en>158k downloads</span></span>
             </div>
           </header>
-        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><span data-zh><a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>ggml-org/gpt-oss-20b-GGUF</code> ↗</a>，提供 <b>1</b> 个 GGUF 量化档，合计 11 GB。由 <code>ggml-org</code> 发布。</span><span data-en><a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>ggml-org/gpt-oss-20b-GGUF</code> ↗</a>, providing <b>1</b> GGUF tiers totalling 11 GB. Published by <code>ggml-org</code>.</span></span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gpt-oss</code> 架构优化</span><span data-en>Optimised for the <code>gpt-oss</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；<span data-zh>发布页声明溯源到 <code>openai/gpt-oss-20b</code></span><span data-en>The release page traces this back to <code>openai/gpt-oss-20b</code></span>；<span data-zh>权重总字节 12.1 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 12.1 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 3 个量化来源（<code>unsloth</code> 16 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 1 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>）。</span><span data-en>The series has 3 other quantisation sources (<code>unsloth</code> 16 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 27 tiers).</span><span data-zh> 本仓 1 档，覆盖最少。</span><span data-en> This repo has 1 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><span data-zh><a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>ggml-org/gpt-oss-20b-GGUF</code> ↗</a>，提供 <b>3</b> 个 GGUF 量化档，合计 14 GB。由 <code>ggml-org</code> 发布。</span><span data-en><a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>ggml-org/gpt-oss-20b-GGUF</code> ↗</a>, providing <b>3</b> GGUF tiers totalling 14 GB. Published by <code>ggml-org</code>.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gpt-oss</code> 架构优化</span><span data-en>Optimised for the <code>gpt-oss</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；<span data-zh>发布页声明溯源到 <code>openai/gpt-oss-20b</code></span><span data-en>The release page traces this back to <code>openai/gpt-oss-20b</code></span>；<span data-zh>权重总字节 14.8 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 14.8 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 3 个量化来源（<code>unsloth</code> 16 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 1 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>）。</span><span data-en>The series has 3 other quantisation sources (<code>unsloth</code> 16 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 27 tiers).</span><span data-zh> 本仓 3 档，覆盖中等。</span><span data-en> This repo has 3 tiers — middling coverage in this series.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as MXFP4), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>MXFP4</code>（12 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>MXFP4</code> (12 GB), the starting point for most people</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（12 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>MXFP4</code> directly (12 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span></span></div>
         </article>
-        <article class="vcard" data-tier="2">
+        <article class="vcard" data-tier="2" data-q="lmstudio-community" data-lic="apache-2.0" data-tiers="平衡档" data-blob="lmstudio-community lmstudio-community/gpt-oss-20b-gguf apache-2.0">
           <header class="vcard-h">
             <h4><code>lmstudio-community</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               
-              <span class="muted small"><span data-zh>1 档</span><span data-en>1 tiers</span> · 11 GB · <span data-zh>106k 下载</span><span data-en>106k downloads</span></span>
+              <span class="muted small"><span data-zh>1 档</span><span data-en>1 tiers</span> · 11 GB · <span data-zh>94k 下载</span><span data-en>94k downloads</span></span>
             </div>
           </header>
         <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><span data-zh><a href="https://huggingface.co/lmstudio-community/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>lmstudio-community/gpt-oss-20b-GGUF</code> ↗</a>，提供 <b>1</b> 个 GGUF 量化档，合计 11 GB。由 <code>lmstudio-community</code> 发布。</span><span data-en><a href="https://huggingface.co/lmstudio-community/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>lmstudio-community/gpt-oss-20b-GGUF</code> ↗</a>, providing <b>1</b> GGUF tiers totalling 11 GB. Published by <code>lmstudio-community</code>.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gpt-oss</code> 架构优化</span><span data-en>Optimised for the <code>gpt-oss</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；<span data-zh>发布页声明溯源到 <code>openai/gpt-oss-20b</code></span><span data-en>The release page traces this back to <code>openai/gpt-oss-20b</code></span>；<span data-zh>权重总字节 12.1 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 12.1 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 3 个量化来源（<code>unsloth</code> 16 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 1 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>）。</span><span data-en>The series has 3 other quantisation sources (<code>unsloth</code> 16 tiers, <code>ggml-org</code> 1 tiers, <code>bartowski</code> 27 tiers).</span><span data-zh> 本仓 1 档，覆盖最少。</span><span data-en> This repo has 1 tiers — the narrowest coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 3 个量化来源（<code>unsloth</code> 16 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>bartowski</code> 27 <span data-zh>档</span><span data-en>tiers</span>）。</span><span data-en>The series has 3 other quantisation sources (<code>unsloth</code> 16 tiers, <code>ggml-org</code> 3 tiers, <code>bartowski</code> 27 tiers).</span><span data-zh> 本仓 1 档，覆盖最少。</span><span data-en> This repo has 1 tiers — the narrowest coverage in this series.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as MXFP4), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>平衡档落在 <code>MXFP4</code>（12 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>MXFP4</code> (12 GB), the starting point for most people</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（12 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>MXFP4</code> directly (12 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>已 428 天未更新，基础模型若有新版可能已不同步</span><span data-en>Not updated for 428 days, so it may no longer track a newer base model</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>档位极少，没有升降空间，被显存卡住时无路可退</span><span data-en>Very few tiers, so there is no room to move up or down when VRAM runs out</span><br>· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>已 429 天未更新，基础模型若有新版可能已不同步</span><span data-en>Not updated for 429 days, so it may no longer track a newer base model</span></span></div>
         </article>
-        <article class="vcard" data-tier="2">
+        <article class="vcard" data-tier="2" data-q="bartowski" data-lic="apache-2.0" data-tiers="极限压缩 长上下文优先 平衡档 保守档 近似无损" data-blob="bartowski bartowski/openai_gpt-oss-20b-gguf apache-2.0">
           <header class="vcard-h">
             <h4><code>bartowski</code></h4>
             <div class="vcard-meta">
               <a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" target="_blank" rel="noopener">apache-2.0</a>
               <span data-zh><br><span class="warn-inline small">继承自基座 <code>openai/gpt-oss-20b</code>，量化仓未单独声明</span></span><span data-en><br><span class="warn-inline small">Inherited from base <code>openai/gpt-oss-20b</code> — the quant repo declares none of its own</span></span>
-              <span class="muted small"><span data-zh>27 档</span><span data-en>27 tiers</span> · 307 GB · <span data-zh>20k 下载</span><span data-en>20k downloads</span></span>
+              <span class="muted small"><span data-zh>27 档</span><span data-en>27 tiers</span> · 307 GB · <span data-zh>14k 下载</span><span data-en>14k downloads</span></span>
             </div>
           </header>
         <div class="vf"><span class="vf-k"><span data-zh>它是什么</span><span data-en>What it is</span></span><span class="vf-v"><span data-zh><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>bartowski/openai_gpt-oss-20b-GGUF</code> ↗</a>，提供 <b>27</b> 个 GGUF 量化档，合计 307 GB。由 <code>bartowski</code> 发布。</span><span data-en><a href="https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>bartowski/openai_gpt-oss-20b-GGUF</code> ↗</a>, providing <b>27</b> GGUF tiers totalling 307 GB. Published by <code>bartowski</code>.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>量化者做了什么</span><span data-en>What the quantiser did</span></span><span class="vf-v"><span data-zh>未提供重要性矩阵（imatrix），走的是纯权重量化路线</span><span data-en>No importance matrix (imatrix); this is pure weight quantisation</span>；<span data-zh>针对 <code>gpt-oss</code> 架构优化</span><span data-en>Optimised for the <code>gpt-oss</code> architecture</span>；<span data-zh>声明上下文 131,072 tokens</span><span data-en>Declared context 131,072 tokens</span>；<span data-zh>发布页声明溯源到 <code>openai/gpt-oss-20b</code></span><span data-en>The release page traces this back to <code>openai/gpt-oss-20b</code></span>；<span data-zh>权重总字节 329.5 GB（发布页 <code>gguf.total</code> 字段）</span><span data-en>Total weight bytes 329.5 GB (the release page's <code>gguf.total</code> field)</span>。</span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 3 个量化来源（<code>unsloth</code> 16 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 1 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 1 <span data-zh>档</span><span data-en>tiers</span>）。</span><span data-en>The series has 3 other quantisation sources (<code>unsloth</code> 16 tiers, <code>ggml-org</code> 1 tiers, <code>lmstudio-community</code> 1 tiers).</span><span data-zh> 本仓 27 档，覆盖最全。</span><span data-en> This repo has 27 tiers — the broadest coverage coverage in this series.</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>与同系列其他变体的区别</span><span data-en>How it differs from other variants in this series</span></span><span class="vf-v"><span data-zh>同系列另有 3 个量化来源（<code>unsloth</code> 16 <span data-zh>档</span><span data-en>tiers</span>、<code>ggml-org</code> 3 <span data-zh>档</span><span data-en>tiers</span>、<code>lmstudio-community</code> 1 <span data-zh>档</span><span data-en>tiers</span>）。</span><span data-en>The series has 3 other quantisation sources (<code>unsloth</code> 16 tiers, <code>ggml-org</code> 3 tiers, <code>lmstudio-community</code> 1 tiers).</span><span data-zh> 本仓 27 档，覆盖最全。</span><span data-en> This repo has 27 tiers — the broadest coverage coverage in this series.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>补上官方没覆盖的档位（MXFP4 这类），让你能在有限显存里凑合跑起来，或者反过来用更高精度换质量。</span><span data-en>Fills tiers the official build does not cover (such as MXFP4), so you can get it running on limited VRAM — or trade the other way, for more precision and quality.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>档位覆盖最广的一档（27 档），从极限压缩到近似无损都能选</span><span data-en>The widest tier coverage here (27 tiers), from extreme compression up to near lossless</span><br>· <span data-zh>平衡档落在 <code>MXFP4</code>（12 GB），是大多数人的起点</span><span data-en>The balanced tier lands on <code>MXFP4</code> (12 GB), the starting point for most people</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>如果你的瓶颈是<b>显存</b>：直接下 <code>MXFP4</code>（12 GB，平衡档）。<br>如果你的瓶颈是<b>速度</b>：这个仓里没有更快的档位（GGUF 的速度主要由架构与后端决定，不由量化档决定），换量化者意义不大。<br>如果你的瓶颈是<b>质量</b>：往上走一档到保守档（Q5_K_M / Q6_K）。</span><span data-en>If <b>VRAM</b> is your constraint: take <code>MXFP4</code> directly (12 GB, Balanced).<br>If <b>speed</b> is your constraint: this repo has nothing faster — GGUF speed is decided by architecture and backend, not by quantisation tier — so switching quantiser will not help.<br>If <b>quality</b> is your constraint: step up one tier to conservative (Q5_K_M / Q6_K).</span></span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>全仓 307 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>307 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span><br>· <span data-zh>量化仓<b>自己没写许可字段</b>，这里的 <code>apache-2.0</code> 是继承基座 <code>openai/gpt-oss-20b</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认</span><span data-en>The quant repo <b>declares no licence of its own</b>; the <code>apache-2.0</code> shown here is inferred from the base model's <code>openai/gpt-oss-20b</code> — under copyright, a quantisation cannot escape the base licence. Whether the quantiser adds its own redistribution terms is for you to determine by reading the base licence.</span><br>· <span data-zh>已 422 天未更新，基础模型若有新版可能已不同步</span><span data-en>Not updated for 422 days, so it may no longer track a newer base model</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>无 imatrix，同档位下质量损失可能比带 imatrix 的版本更明显（<b>我们的口径，需实测验证</b>）</span><span data-en>No imatrix, so quality loss at the same tier may be more visible than in an imatrix build (<b>our reading, to be verified by measurement</b>)</span><br>· <span data-zh>全仓 307 GB，硬盘紧张的话建议只下需要的 1~2 个档位</span><span data-en>307 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span><br>· <span data-zh>量化仓<b>自己没写许可字段</b>，这里的 <code>apache-2.0</code> 是继承基座 <code>openai/gpt-oss-20b</code> 的推断值——著作权上量化不可能脱离基座许可，但量化者的 redistribution 条款是否另有约定，需自己去读基座许可原文确认</span><span data-en>The quant repo <b>declares no licence of its own</b>; the <code>apache-2.0</code> shown here is inferred from the base model's <code>openai/gpt-oss-20b</code> — under copyright, a quantisation cannot escape the base licence. Whether the quantiser adds its own redistribution terms is for you to determine by reading the base licence.</span><br>· <span data-zh>已 423 天未更新，基础模型若有新版可能已不同步</span><span data-en>Not updated for 423 days, so it may no longer track a newer base model</span></span></div>
         </article>
+      </div>
         </div>
         <div class="block" id="e0">
           <h4><span class="blk">E</span><span data-zh>量化者档案</span><span data-en>Quantiser profiles</span> <small><span data-zh>选量化者意味着什么</span><span data-en>what choosing a quantiser means</span></small></h4>
       <p class="block-lead"><span data-zh>量化者决定了这个包的<b>档位覆盖、命名规范、是否带 imatrix、什么时候跟进新模型</b>。这一区块说明「选这个量化者的量化意味着什么」。</span><span data-en>The quantiser decides this build's <b>tier coverage, naming convention, whether it ships imatrix, and how fast it follows new models</b>. This section spells out what choosing that quantiser means.</span></p>
         <article class="qcard">
           <h4><code>unsloth</code> <span class="muted small"><span data-zh>量化覆盖面最广、下载量最高的第三方量化者</span><span data-en>Broadest coverage, highest downloads</span></span></h4>
-          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 498k 下载</span><span data-en>In this series: 1 repos · 498k downloads</span></p>
+          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 491k 下载</span><span data-en>In this series: 1 repos · 491k downloads</span></p>
           <div class="qcard-body"><span data-zh><p><b>定位</b>：量化覆盖面最广、下载量最高的第三方量化者。</p>
 <p><b>擅长什么</b>：几乎每个主流基础模型都第一时间跟 GGUF，且档位最全——从极限压缩到近似无损一应俱全。提供静态（static）与动态（dynamic，用 <code>UD-</code> 前缀）两套量化。</p>
 <ul>
@@ -655,7 +721,7 @@
         </article>
         <article class="qcard">
           <h4><code>ggml-org</code> <span class="muted small"><span data-zh>llama.cpp 所属组织的官方量化发布</span><span data-en>Official quant builds from the llama.cpp org</span></span></h4>
-          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 135k 下载</span><span data-en>In this series: 1 repos · 135k downloads</span></p>
+          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 158k 下载</span><span data-en>In this series: 1 repos · 158k downloads</span></p>
           <div class="qcard-body"><span data-zh><p><b>定位</b>：llama.cpp 自己的官方量化发布渠道。</p>
 <p><b>为什么重要</b>：ggml 是 llama.cpp 的底层张量库，ggml-org 发的 GGUF 由项目核心作者把关。遇到新架构（比如新出的 MoE 稀疏模型），<b>ggml-org 通常是第一个支持并发布可用 GGUF 的</b>。</p>
 <ul>
@@ -679,7 +745,7 @@
         </article>
         <article class="qcard">
           <h4><code>lmstudio-community</code> <span class="muted small"><span data-zh>LM Studio 官方社区组织，为其 GUI 客户端供包</span><span data-en>Powers the LM Studio GUI</span></span></h4>
-          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 106k 下载</span><span data-en>In this series: 1 repos · 106k downloads</span></p>
+          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 94k 下载</span><span data-en>In this series: 1 repos · 94k downloads</span></p>
           <div class="qcard-body"><span data-zh><p><b>定位</b>：LM Studio 桌面客户端的官方社区组织，为其 GUI 供包。</p>
 <ul>
   <li><b>特点</b>：</li>
@@ -703,7 +769,7 @@
         </article>
         <article class="qcard">
           <h4><code>bartowski</code> <span class="muted small"><span data-zh>老牌量化者，档位命名规范、说明文档最完整</span><span data-en>Veteran quantizer, best-documented naming</span></span></h4>
-          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 20k 下载</span><span data-en>In this series: 1 repos · 20k downloads</span></p>
+          <p class="qcard-scope"><span data-zh>在本系列：1 个仓 · 14k 下载</span><span data-en>In this series: 1 repos · 14k downloads</span></p>
           <div class="qcard-body"><span data-zh><p><b>定位</b>：老牌量化者，档位命名规范、说明文档最完整。</p>
 <ul>
   <li><b>特点</b>：</li>
@@ -733,7 +799,7 @@
         <li>
           <span class="log-date">2026-07-28</span>
           <a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF" target="_blank" rel="noopener"><code>ggml-org</code></a>
-          <span class="muted"><span data-zh>更新了 1 个档位</span><span data-en>updated 1 tiers</span></span>
+          <span class="muted"><span data-zh>更新了 3 个档位</span><span data-en>updated 3 tiers</span></span>
         </li>
         <li>
           <span class="log-date">2025-12-19</span>
@@ -751,16 +817,256 @@
           <span class="muted"><span data-zh>更新了 1 个档位</span><span data-en>updated 1 tiers</span></span>
         </li>
       </ul>
-      <p class="muted small"><span data-zh>基础模型</span><span data-en>Base model</span> <code>openai/gpt-oss-20b</code> <span data-zh>最近更新：</span><span data-en>last updated:</span> 2025-08-26　·　<span data-zh>本站采集时间：</span><span data-en>collected:</span> 2026-09-30</p>
+      <p class="muted small"><span data-zh>基础模型</span><span data-en>Base model</span> <code>openai/gpt-oss-20b</code> <span data-zh>最近更新：</span><span data-en>last updated:</span> 2025-08-26　·　<span data-zh>本站采集时间：</span><span data-en>collected:</span> 2026-10-09</p>
         </div>
       </section>
+    <section class="companion">
+      <h2><span data-zh>下好之后用什么跑</span><span data-en>What runs it</span></h2>
+      <p class="block-lead"><span data-zh>本站只负责「该下哪一档」。跑起来是另一件事 —— 下面这几个工具**自己的文档里写明了支持本地模型**（Ollama / vLLM / llama.cpp / LM Studio），点进去看具体怎么接。</span><span data-en>This site only answers which tier to download. Running it is a different problem — the tools below <b>document local-model support in their own docs</b> (Ollama / vLLM / llama.cpp / LM Studio). Follow the link to see how.</span></p>
+      <div class="comp-grid">
+        <a class="comp-card" href="https://agent.specul.com/crush.html">
+          <b><span data-zh>Crush</span><span data-en>Crush</span></b>
+          <span><span data-zh>官方支持 llamacpp / lmstudio / ollama —— 直接吃掉本地 GGUF</span><span data-en>Officially supports llamacpp / lmstudio / ollama — it takes local GGUF directly</span></span>
+        </a>
+        <a class="comp-card" href="https://agent.specul.com/goose.html">
+          <b><span data-zh>Goose</span><span data-en>Goose</span></b>
+          <span><span data-zh>可完全走本地模型（Ollama / LM Studio / Ramalama），无 API 费用</span><span data-en>Can run entirely on local models (Ollama / LM Studio / Ramalama), no API bill</span></span>
+        </a>
+        <a class="comp-card" href="https://agent.specul.com/harness/pydantic-ai.html">
+          <b><span data-zh>Pydantic AI</span><span data-en>Pydantic AI</span></b>
+          <span><span data-zh>官方文档给了 Ollama / vLLM / LiteLLM 三种自托管接法</span><span data-en>Docs cover three self-hosted routes: Ollama / vLLM / LiteLLM</span></span>
+        </a>
+        <a class="comp-card" href="https://agent.specul.com/harness/smolagents.html">
+          <b><span data-zh>smolagents</span><span data-en>smolagents</span></b>
+          <span><span data-zh>本地推理支持 Transformers / mlx-lm / Ollama / vLLM</span><span data-en>Local inference via Transformers / mlx-lm / Ollama / vLLM</span></span>
+        </a>
+        <a class="comp-card" href="https://agent.specul.com/cline.html">
+          <b><span data-zh>Cline</span><span data-en>Cline</span></b>
+          <span><span data-zh>编辑器内直接接 Ollama 本地模型</span><span data-en>Hooks up to Ollama local models from inside the editor</span></span>
+        </a>
+        <a class="comp-card" href="https://agent.specul.com/aider-cli.html">
+          <b><span data-zh>Aider</span><span data-en>Aider</span></b>
+          <span><span data-zh>命令行里可切本地 LLM，不绑厂商</span><span data-en>Switches to a local LLM from the terminal, no vendor lock-in</span></span>
+        </a>
+      </div>
+      <p class="muted small"><span data-zh>这些条目的本地模型支持情况由它们自己的官方文档佐证；本站不实测。</span><span data-en>Local-model support for each entry is evidenced by that project official documentation. This site runs no measurements.</span></p>
+    </section>
+
+
     <section class="legal-note">
       <h3><span data-zh>关于数据与许可</span><span data-en>Data and licensing</span></h3>
-      <p><span data-zh>本站数据全部来自</span><span data-en>All data here comes from the</span> <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> <span data-zh>公开 API，采集时间</span><span data-en>public API, collected</span> <code>2026-09-30</code>，为快照数据。</p>
+      <p><span data-zh>本站数据全部来自</span><span data-en>All data here comes from the</span> <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> <span data-zh>公开 API，采集时间</span><span data-en>public API, collected</span> <code>2026-10-09</code>，为快照数据。</p>
       <p><span data-zh>本站</span><span data-en>This site does</span> <b><span data-zh>不下载、不托管任何模型权重文件</span><span data-en>not download or host any model weight files</span></b><span data-zh>，只提供发布页链接。许可字段原样引自发布页，</span><span data-en> — it only links to release pages. Licence fields are quoted verbatim from them,</span> <b><span data-zh>本站不解读许可条款、不构成法律意见</span><span data-en>this site does not interpret licence terms or give legal advice</span></b><span data-zh>，一切以</span><span data-en> and everything is governed by</span><a href="https://specul.com/legal.html" target="_blank" rel="noopener"><span data-zh>发布页原文</span><span data-en>the legal page</span></a><span data-zh>为准。</span><span data-en>.</span></p>
       <p><span data-zh>模型名称均为各自权利人的商标，此处仅作描述性使用。本站与上述厂商无隶属或合作关系。</span><span data-en>Model names are trademarks of their respective owners and are used here only descriptively. This site is not affiliated with or endorsed by any of the vendors above.</span></p>
     </section>
   </div>
+  <!-- B2：量化仓筛选（脚本在 site-filter.js，读 .vwrap 作用域） -->
+  <script>/* Models 图谱 · 客户端筛选（B2，2026-10-09）
+ *
+ * 为什么单独一个文件而不是塞进 build.mjs 的模板字符串：
+ *   build.mjs 生成页面用的是模板字符串，脚本里任何反引号或 ${} 都会**提前截断/插值**。
+ *   本会话已因「模板字符串里写反引号」踩过三次。独立 .js 文件从根上避开。
+ *
+ * 作用域（两处，各自独立）：
+ *   .vwrap  —— 系列页里每个成员一个「量化仓详解」区块：搜索 + 量化者 / 建议档位 / 许可
+ *   .sfilter —— 索引页的系列列表：搜索 + 许可
+ *
+ * URL 可还原（B2 验收「筛选后 URL 可复制还原状态」）：
+ *   参数写在地址栏（history.replaceState），打开带参 URL 即刻还原同一状态。
+ *
+ * 无依赖、无内联事件；两个作用域都不存在时本脚本什么都不做（所以可以全站注入）。
+ */
+(function () {
+  'use strict';
+
+  /* 与页面内联脚本同口径：语言由 <html lang> 决定（brand.js 只切属性，DOM 不重渲染）。
+   * 本文件里凡是要拼进 innerHTML 的动态文本，都必须在**当前语言**下重新生成一次。 */
+  function IS_EN() { return document.documentElement.lang === 'en'; }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function param(name) {
+    try { return new URLSearchParams(location.search).get(name) || ''; } catch (e) { return ''; }
+  }
+
+  function writeUrl(pairs) {
+    try {
+      var u = new URL(location.href);
+      Object.keys(pairs).forEach(function (k) {
+        if (pairs[k]) u.searchParams.set(k, pairs[k]);
+        else u.searchParams.delete(k);
+      });
+      history.replaceState(null, '', u.toString());
+    } catch (e) { /* file:// 等场景下静默降级：功能可用，只是地址栏不同步 */ }
+  }
+
+  /* ── 系列页：量化仓筛选 ── */
+  var wraps = Array.prototype.slice.call(document.querySelectorAll('.vwrap'));
+  wraps.forEach(function (wrap) {
+    var q = wrap.querySelector('.vq');
+    var sels = Array.prototype.slice.call(wrap.querySelectorAll('.vsel'));
+    var count = wrap.querySelector('.vcount');
+    var cards = Array.prototype.slice.call(wrap.querySelectorAll('.vcard'));
+    if (!q || !cards.length) return;
+
+    function apply() {
+      var term = (q.value || '').trim().toLowerCase();
+      var want = {};
+      sels.forEach(function (s) { want[s.getAttribute('data-dim')] = s.value; });
+      var shown = 0;
+      cards.forEach(function (c) {
+        /* 搜索用 data-blob（量化者 + 仓库名 + 许可）这个**窄口径**，
+         * 不是整张卡的文字 —— 卡里正文会提到别的量化者，用全文搜「unsloth」会命中每一张
+         * （实测 26/26，探针跑出来才发现）。 */
+        var okQ = !term || (c.getAttribute('data-blob') || '').indexOf(term) !== -1;
+        var okQuant = !want.q || c.getAttribute('data-q') === want.q;
+        /* 档位是「**该仓包含**这一档」而不是「推荐档等于它」：
+         * 推荐档实测 118/130 都是「平衡档」，拿它筛等于没筛。 */
+        var okTier = !want.tier || (c.getAttribute('data-tiers') || '').split(' ').indexOf(want.tier) !== -1;
+        var okLic = !want.lic || c.getAttribute('data-lic') === want.lic;
+        var on = okQ && okQuant && okTier && okLic;
+        c.hidden = !on;
+        if (on) shown++;
+      });
+      if (count) {
+        count.textContent = shown + ' / ' + cards.length;
+        count.setAttribute('data-zh', shown + ' / ' + cards.length + ' 个量化仓');
+        count.setAttribute('data-en', shown + ' / ' + cards.length + ' quant repos');
+      }
+    }
+
+    function sync(push) {
+      var vals = { q: q.value.trim() };
+      sels.forEach(function (s) { vals[s.getAttribute('data-dim') === 'q' ? 'quant' : s.getAttribute('data-dim') === 'tier' ? 'tier' : 'lic'] = s.value; });
+      writeUrl(vals);
+    }
+
+    // 首次：用 URL 参数还原
+    q.value = param('q');
+    sels.forEach(function (s) {
+      var dim = s.getAttribute('data-dim');
+      var v = param(dim === 'q' ? 'quant' : dim === 'tier' ? 'tier' : 'lic');
+      if (!v) return;
+      /* ⚠ 不能直接 s.value = v：`<select>` 遇到**选项里没有的值**会**静默忽略**，
+       *   于是「?quant=某人」被当成「没筛选」→ 列出全部。实测阴性对照跑出 26/26 才发现。
+       *   这里把 URL 里的值补成一个选项：筛出来就是 0 条，计数会显示「0 / N」——
+       *   读者看到的是「这个量化者在本系列没有仓」（如实），而不是「我要的筛选被无视了」。
+       *   （nav 站的 ?cat= 不同：那是「切到某个分区」的语义，未知值回退到「全部」是对的；
+       *     这里是「在一张表里筛行」，未知值的正确表现是没有行。） */
+      if (!Array.prototype.some.call(s.options, function (o) { return o.value === v; })) {
+        var extra = document.createElement('option');
+        extra.value = v;
+        extra.textContent = v;
+        s.appendChild(extra);
+      }
+      s.value = v;
+    });
+
+    q.addEventListener('input', function () { apply(); sync(); });
+    sels.forEach(function (s) { s.addEventListener('change', function () { apply(); sync(); }); });
+    apply();
+  });
+
+  /* ═══ B4（2026-10-09）· 显存倒推决策工具 ═══
+   * 按真实实测体积算能装下哪些档位：可装 = sizeGB × 1.15 ≤ 显存。
+   * 15% 余量是页面自己声明的口径（运行时 + KV cache），与静态速查表一致。
+   * 每个答案都带来源（量化者 + HF 发布页链接）—— B4 的验收是「可溯源到具体数据行」。
+   * `?vram=12` 可分享（与 B2 的筛选参数同一套路）。 */
+  var vt = document.querySelector('.vramtool');
+  if (vt) {
+    var vtIn = vt.querySelector('.vt-in');
+    var vtOut = vt.querySelector('.vt-out');
+    var vtDataEl = vt.querySelector('.vt-data');
+    var DATA = [];
+    try { DATA = JSON.parse(vtDataEl.textContent) || []; } catch (e) { DATA = []; }
+    var MARGIN = 1.15;
+
+    function renderVram() {
+      var gb = Number(vtIn.value);
+      if (!gb || gb <= 0 || !DATA.length) { vtOut.innerHTML = ''; return; }
+      var fits = DATA.filter(function (x) { return x.g * MARGIN <= gb; });
+      var need = function (x) { return Math.ceil(x.g * MARGIN); };
+      if (!fits.length) {
+        var smallest = DATA[0];
+        vtOut.innerHTML = '<p class="vt-none">' + esc(IS_EN()
+          ? 'No tier fits. The smallest here is ' + smallest.q + ' at ' + smallest.g + ' GB, needing about ' + need(smallest) + ' GB with headroom. Below that, use -ngl to keep only some layers on the GPU (see the table below).'
+          : '装不下任何档。本成员最小的档是 ' + smallest.q + '（' + smallest.g + ' GB），加余量约需 ' + need(smallest) + ' GB 显存。再少就只能用 -ngl 只把部分层放显存（见下方替代路径）。') + '</p>';
+        return;
+      }
+      var best = fits[fits.length - 1];
+      var rest = fits.slice(0, -1).reverse();
+      var link = function (x) {
+        return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.q) + '</a>'
+          + ' <span class="vt-meta">' + x.g + ' GB · ' + esc(x.t) + ' · ' + esc(x.b) + '</span>';
+      };
+      var h = '<p class="vt-best"><b>' + (IS_EN() ? 'Recommended: ' : '建议：') + '</b>' + link(best)
+        + ' <span class="vt-meta">' + (IS_EN() ? 'needs about ' : '加余量约需 ') + need(best) + ' GB</span></p>';
+      if (rest.length) {
+        h += '<p class="vt-rest"><span class="vt-dim">' + (IS_EN() ? 'Also fit (smaller): ' : '也装得下（更省）：') + '</span>'
+          + rest.map(link).join(' · ') + '</p>';
+      }
+      h += '<p class="vt-note">' + (IS_EN()
+        ? 'Sizes are measured from the release page file listing; the tier shown is the smallest file of that name in this member. Headroom is 15%. Each name links to its Hugging Face page — check it yourself.'
+        : '体积是发布页文件列表的实测值；档位取该名称在本成员下的最省文件。余量 15%。每个档名都链到对应的 Hugging Face 发布页，可自行核对。') + '</p>';
+      vtOut.innerHTML = h;
+    }
+
+    function syncVram() {
+      try {
+        var u = new URL(location.href);
+        if (vtIn.value) u.searchParams.set('vram', vtIn.value); else u.searchParams.delete('vram');
+        history.replaceState(null, '', u.toString());
+      } catch (e) { /* 静默降级：功能可用，地址栏不同步 */ }
+    }
+
+    vtIn.value = param('vram');
+    vtIn.addEventListener('input', function () { renderVram(); syncVram(); });
+    Array.prototype.forEach.call(vt.querySelectorAll('.vt-preset'), function (b) {
+      b.addEventListener('click', function () { vtIn.value = b.getAttribute('data-gb'); renderVram(); syncVram(); });
+    });
+    renderVram();
+    /* 语言切换后要重渲染：工具输出是拼字符串生成的（不是 data-zh/data-en 双节点），
+     * 不重渲染的话切到英文仍显示中文（而其余部分会切走，看起来像坏了）。 */
+    new MutationObserver(function () { renderVram(); })
+      .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+
+  /* ── 索引页：系列筛选 ── */
+  var sf = document.querySelector('.sfilter');  if (sf) {
+    var sq = sf.querySelector('.sq');
+    var ssel = sf.querySelector('.ssel');
+    var scount = sf.querySelector('.vcount');
+    var scards = Array.prototype.slice.call(document.querySelectorAll('.scard'));
+    if (sq && scards.length) {
+      var applyS = function () {
+        var term = (sq.value || '').trim().toLowerCase();
+        var lic = ssel ? ssel.value : '';
+        var shown = 0;
+        scards.forEach(function (c) {
+          var okQ = !term || (c.getAttribute('data-blob') || '').indexOf(term) !== -1 || (c.textContent || '').toLowerCase().indexOf(term) !== -1;
+          var okL = !lic || (c.getAttribute('data-lic') || '').split(' ').indexOf(lic) !== -1;
+          var on = okQ && okL;
+          c.hidden = !on;
+          if (on) shown++;
+        });
+        if (scount) {
+          scount.textContent = shown + ' / ' + scards.length;
+          scount.setAttribute('data-zh', shown + ' / ' + scards.length + ' 个系列');
+          scount.setAttribute('data-en', shown + ' / ' + scards.length + ' series');
+        }
+      };
+      var syncS = function () { writeUrl({ q: sq.value.trim(), lic: ssel ? ssel.value : '' }); };
+      sq.value = param('q');
+      if (ssel && param('lic')) ssel.value = param('lic');
+      sq.addEventListener('input', function () { applyS(); syncS(); });
+      if (ssel) ssel.addEventListener('change', function () { applyS(); syncS(); });
+      applyS();
+    }
+  }
+})();
+</script>
   </main>
   <footer class="site-footer">
     <div class="container foot-row">
