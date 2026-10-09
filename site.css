@@ -19,7 +19,11 @@ html:not([data-theme="light"]) {
   --brand-line: rgba(245, 197, 66, .34);
 }
 html[data-theme="light"] {
-  --brand: #a97a08;
+  /* B6（2026-10-09）：--brand 从 #a97a08 压深到 #906807。
+     它们当**填充色**没问题，但当**正文文字色**（12px 标签、链接）在亮底上只有 3.84:1，
+     达不到 AA 的 4.5。这与共享 brand.css 的既有约定一致：亮色主题用深一档的品牌色。
+     新值是按「白底 + 各自柔和底」双条件算出来的（5.06 / 4.54）。 */
+  --brand: #906807;
   --brand-on: #ffffff;
   --brand-soft: rgba(169, 122, 8, .10);
   --brand-line: rgba(169, 122, 8, .30);
@@ -288,3 +292,42 @@ details.all-quants summary{cursor:pointer;font-size:12px;color:var(--brand)}
   margin-block: var(--section-pad-sm);
 }
 .page-head + .home-stats, .home-head + .home-stats{margin-top:var(--section-pad-sm)}
+
+.vfilter{display:flex;flex-wrap:wrap;gap:.7rem;align-items:flex-end;margin:1.2rem 0 1.6rem;padding:.9rem 1rem;border:1px solid var(--line);border-radius:var(--r-sm,10px)}
+.vfilter .vf-f{display:flex;flex-direction:column;gap:.25rem;min-width:9rem}
+.vfilter .vh{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+.vfilter input,.vfilter select{font:inherit;font-size:.875rem;padding:.34rem .5rem;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit}
+.vfilter .vf-f:first-child{min-width:13rem;flex:1 1 13rem}
+.vcount{margin-left:auto;font-size:.8125rem;opacity:.7;white-space:nowrap}
+.sfilter{display:flex;flex-wrap:wrap;gap:.7rem;align-items:flex-end;margin:1.2rem 0 1.4rem;padding:.9rem 1rem;border:1px solid var(--line);border-radius:var(--r-sm,10px)}
+.sfilter .vf-f{display:flex;flex-direction:column;gap:.25rem;min-width:9rem}
+.sfilter .vh{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+.sfilter input,.sfilter select{font:inherit;font-size:.875rem;padding:.34rem .5rem;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit}
+.sfilter .vf-f:first-child{min-width:13rem;flex:1 1 13rem}
+@media(max-width:560px){.vfilter,.sfilter{flex-direction:column;align-items:stretch}.vcount{margin-left:0}}
+/* B3：companion 块（下好之后用什么跑）。字号一律整数 px —— 见上方 FILTER_CSS 的说明。 */
+.companion{margin:2.6rem 0 1rem}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:.8rem;margin:1rem 0}
+.comp-card{display:flex;flex-direction:column;gap:.3rem;padding:.85rem 1rem;border:1px solid var(--line);border-radius:var(--r-sm,8px);text-decoration:none;background:var(--bg-raise,rgba(127,127,127,.05))}
+.comp-card b{font-size:.9375rem}
+.comp-card span{font-size:.8125rem;opacity:.75;line-height:1.6}
+.comp-card:hover{border-color:var(--accent,currentColor)}
+/* B4：显存倒推工具。字号一律整数 px（.75rem=12 / .8125rem=13 / .875rem=14 / 1rem=16）。 */
+.vramtool{margin:1.2rem 0 1.6rem;padding:.9rem 1rem;border:1px solid var(--line);border-radius:var(--r-sm,10px);background:var(--bg-raise,rgba(127,127,127,.04))}
+.vt-row{display:flex;flex-wrap:wrap;gap:.7rem;align-items:flex-end}
+.vt-f{display:flex;flex-direction:column;gap:.25rem}
+.vt-h{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+.vt-in{font:inherit;font-size:.875rem;padding:.34rem .5rem;width:7rem;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit}
+.vt-quick{display:flex;flex-wrap:wrap;gap:.3rem}
+.vt-preset{font:inherit;font-size:.8125rem;padding:.3rem .6rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:inherit;cursor:pointer}
+.vt-preset:hover{border-color:var(--accent,currentColor)}
+.vt-out{margin-top:.9rem}
+.vt-out p{margin:.4rem 0;line-height:1.7;font-size:.875rem}
+.vt-best b{opacity:.7}
+.vt-best a{font-size:1rem}
+.vt-meta{font-size:.8125rem;opacity:.65}
+.vt-dim{font-size:.8125rem;opacity:.65}
+.vt-rest a{font-size:.875rem}
+.vt-note{font-size:.8125rem;opacity:.6}
+.vt-none{font-size:.875rem;opacity:.85}
+@media(max-width:560px){.vt-in{width:100%}}
