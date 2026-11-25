@@ -13,9 +13,6 @@
   <meta property="og:description" content="把模型权重与常用工具的许可拆成四栏：能不能商用、要不要署名、有没有用户规模门槛、允不允许蒸馏。只做字段翻译与原文摘录，不构成法律意见。" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:locale:alternate" content="en_US" />
-  <link rel="alternate" hreflang="zh-CN" href="https://models.specul.com/license.html" />
-  <link rel="alternate" hreflang="en" href="https://models.specul.com/license.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://models.specul.com/license.html" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/png" href="assets/brand/dandelion-favicon-site.png" />
   <link rel="apple-touch-icon" href="assets/brand/dandelion-apple-touch-site.png" />
@@ -135,10 +132,14 @@
         <option value="internal">公司内部使用</option>
         <option value="client">交付给客户</option>
         <option value="redistribute">再分发/对外开源</option>
+        <option value="saas">SaaS / 对外服务</option>
       </select>
       <label for="lic-type">类型</label>
       <select id="lic-type"><option value="all">全部</option><option value="model">模型权重</option><option value="tool">工具/服务</option></select>
       <label class="lic-check"><input id="lic-strict" type="checkbox"> 只看“明确允许商用”</label>
+    </div>
+    <div class="license-usage-note">
+      <p><b>四种用法看不同条款：</b>内部使用看商用与数据留存；交付客户看再分发与责任；对外开源看署名与开源义务；SaaS 对外服务还要看 MAU 门槛、备案与内容安全。筛不到就放宽一个条件，别把“未知”当“允许”。</p>
     </div>
     <p class="section-desc" id="lic-count">共 33 条。筛选不会改变排序；未知的许可保留在结果里并标“需确认”，不替你删掉。</p>
   </div>
@@ -147,7 +148,7 @@
 <section class="section">
   <div class="container">
     <div class="license-card-grid" id="license-grid">
-      <article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="千问 3.8 · qwen3.8 27b（密集） 阿里 · 通义千问 apache-2.0">
+      <article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="千问 3.8 · qwen3.8 27b（密集） 阿里 · 通义千问 apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -157,6 +158,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -167,7 +169,7 @@
       <a href="https://models.specul.com/series/qwen3-8/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="千问 3.8 · qwen3.8 flash-next 阿里 · 通义千问 厂商自定义许可（other）">
+  </article><article class="license-card" data-type="model" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="千问 3.8 · qwen3.8 flash-next 阿里 · 通义千问 厂商自定义许可（other）">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -177,6 +179,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -187,7 +190,7 @@
       <a href="https://models.specul.com/series/qwen3-8/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="gemma 4 · gemma 4 26b-a4b（moe） google apache-2.0">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="gemma 4 · gemma 4 26b-a4b（moe） google apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -197,6 +200,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -207,7 +211,7 @@
       <a href="https://models.specul.com/series/gemma-4/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="gemma 4 · gemma 4 31b（密集） google apache-2.0">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="gemma 4 · gemma 4 31b（密集） google apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -217,6 +221,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -227,7 +232,7 @@
       <a href="https://models.specul.com/series/gemma-4/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="gemma 4 · gemma 4 e4b（高效） google apache-2.0">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="gemma 4 · gemma 4 e4b（高效） google apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -237,6 +242,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -247,7 +253,7 @@
       <a href="https://models.specul.com/series/gemma-4/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="glm 5 · glm 5.3（完整版） 智谱 ai 厂商自定义许可（other）">
+  </article><article class="license-card" data-type="model" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="glm 5 · glm 5.3（完整版） 智谱 ai 厂商自定义许可（other）">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -257,6 +263,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -267,7 +274,7 @@
       <a href="https://models.specul.com/series/glm-5/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="glm 5 · glm 5.3 flash 智谱 ai mit">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="glm 5 · glm 5.3 flash 智谱 ai mit">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -277,6 +284,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -287,7 +295,7 @@
       <a href="https://models.specul.com/series/glm-5/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="deepseek v4 · deepseek v4.1 flash deepseek mit">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="deepseek v4 · deepseek v4.1 flash deepseek mit">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -297,6 +305,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -307,7 +316,7 @@
       <a href="https://models.specul.com/series/deepseek-v4/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="gpt-oss · gpt-oss 20b openai apache-2.0">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="gpt-oss · gpt-oss 20b openai apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -317,6 +326,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -327,7 +337,7 @@
       <a href="https://models.specul.com/series/gpt-oss/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="kimi k3 · kimi k3 月之暗面 厂商自定义许可（other）">
+  </article><article class="license-card" data-type="model" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="kimi k3 · kimi k3 月之暗面 厂商自定义许可（other）">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -337,6 +347,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -347,7 +358,7 @@
       <a href="https://models.specul.com/series/kimi-k3/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="minicpm 5 · minicpm5 2b 面壁智能 · openbmb apache-2.0">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="minicpm 5 · minicpm5 2b 面壁智能 · openbmb apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -357,6 +368,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -367,7 +379,7 @@
       <a href="https://models.specul.com/series/minicpm5/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="ornith 1.5 · ornith 1.5 35b-a3b（moe） ornith ai mit">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="ornith 1.5 · ornith 1.5 35b-a3b（moe） ornith ai mit">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -377,6 +389,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -387,7 +400,7 @@
       <a href="https://models.specul.com/series/ornith-1-5/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="ornith 1.5 · ornith 1.5 9b（密集） ornith ai mit">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="ornith 1.5 · ornith 1.5 9b（密集） ornith ai mit">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -397,6 +410,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -407,7 +421,7 @@
       <a href="https://models.specul.com/series/ornith-1-5/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="muse glimmer · muse glimmer 30b meta apache-2.0">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="muse glimmer · muse glimmer 30b meta apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -417,6 +431,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -427,7 +442,7 @@
       <a href="https://models.specul.com/series/muse-glimmer/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="kat coder v2.5 · kat coder v2.5 dev kwaipilot apache-2.0">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="kat coder v2.5 · kat coder v2.5 dev kwaipilot apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -437,6 +452,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -447,7 +463,7 @@
       <a href="https://models.specul.com/series/kat-coder/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="laguna 2.1 · laguna xs 2.1 poolside apache-2.0">
+  </article><article class="license-card" data-type="model" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="laguna 2.1 · laguna xs 2.1 poolside apache-2.0">
     <div class="license-top">
       <span class="license-type">模型权重</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -457,6 +473,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -467,7 +484,7 @@
       <a href="https://models.specul.com/series/laguna/">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="whisper openai（开源） mit">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="whisper openai（开源） mit">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -477,6 +494,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -487,7 +505,7 @@
       <a href="https://tools.specul.com/audio/whisper.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="ollama ollama inc. mit">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="ollama ollama inc. mit">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -497,6 +515,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -507,7 +526,7 @@
       <a href="https://tools.specul.com/runner/ollama.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="llama.cpp ggml-org mit">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="llama.cpp ggml-org mit">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -517,6 +536,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -527,7 +547,7 @@
       <a href="https://tools.specul.com/runner/llama-cpp.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="vllm vllm 项目（pytorch 基金会） apache-2.0">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="vllm vllm 项目（pytorch 基金会） apache-2.0">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -537,6 +557,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -547,7 +568,7 @@
       <a href="https://tools.specul.com/runner/vllm.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="sglang lmsys / sgl-project apache-2.0">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="sglang lmsys / sgl-project apache-2.0">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -557,6 +578,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -567,7 +589,7 @@
       <a href="https://tools.specul.com/runner/sglang.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="jan menlo research apache-2.0">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="jan menlo research apache-2.0">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -577,6 +599,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -587,7 +610,7 @@
       <a href="https://tools.specul.com/runner/jan.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="unknown" data-text="koboldcpp lostruins（koboldai 社区） agpl-3.0">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="unknown" data-obligations="署名 开源义务 蒸馏待核" data-text="koboldcpp lostruins（koboldai 社区） agpl-3.0">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">可商用，但有开源义务</span>
@@ -597,6 +620,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>可商用，但有开源义务</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span> <span class="license-obligation">开源义务</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -607,7 +631,7 @@
       <a href="https://tools.specul.com/runner/koboldcpp.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="localai mudler t.（mudler） mit">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="localai mudler t.（mudler） mit">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -617,6 +641,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -627,7 +652,7 @@
       <a href="https://tools.specul.com/runner/localai.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-text="mlx（mlx-lm） apple mit">
+  </article><article class="license-card" data-type="tool" data-commercial="yes" data-attribution="yes" data-distill="allowed" data-obligations="署名" data-text="mlx（mlx-lm） apple mit">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-ok">明确允许商用</span>
@@ -637,6 +662,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确允许商用</dd>
       <dt>署名</dt><dd>需要署名/保留声明</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
       <dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
       <dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
     </dl>
@@ -647,7 +673,7 @@
       <a href="https://tools.specul.com/runner/mlx.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="no" data-attribution="unknown" data-distill="unknown" data-text="kagi kagi kagi 服务条款（前端非商业）">
+  </article><article class="license-card" data-type="tool" data-commercial="no" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="kagi kagi kagi 服务条款（前端非商业）">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-no">明确禁止商用</span>
@@ -657,6 +683,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>明确禁止商用</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -667,7 +694,7 @@
       <a href="https://tools.specul.com/research/kagi.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="cursor anysphere 厂商专有条款">
+  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="cursor anysphere 厂商专有条款">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -677,6 +704,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -687,7 +715,7 @@
       <a href="https://tools.specul.com/coding/cursor.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="github copilot github / microsoft 厂商专有条款">
+  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="github copilot github / microsoft 厂商专有条款">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -697,6 +725,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -707,7 +736,7 @@
       <a href="https://tools.specul.com/coding/copilot.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="claude code ide 扩展 anthropic 厂商专有条款">
+  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="claude code ide 扩展 anthropic 厂商专有条款">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -717,6 +746,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -727,7 +757,7 @@
       <a href="https://tools.specul.com/coding/claude-code.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="perplexity perplexity ai 厂商专有条款">
+  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="perplexity perplexity ai 厂商专有条款">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -737,6 +767,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -747,7 +778,7 @@
       <a href="https://tools.specul.com/research/perplexity.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="otter.ai otter.ai 厂商专有条款">
+  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="otter.ai otter.ai 厂商专有条款">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -757,6 +788,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -767,7 +799,7 @@
       <a href="https://tools.specul.com/audio/otter.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="fireflies.ai fireflies.ai 厂商专有条款">
+  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="fireflies.ai fireflies.ai 厂商专有条款">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -777,6 +809,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>
@@ -787,7 +820,7 @@
       <a href="https://tools.specul.com/office/fireflies-ai.html">本站档案</a>
     </div>
     <p class="license-checked">核验 2026-11-25</p>
-  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-text="飞书智能伙伴 飞书 厂商专有条款">
+  </article><article class="license-card" data-type="tool" data-commercial="unknown" data-attribution="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="飞书智能伙伴 飞书 厂商专有条款">
     <div class="license-top">
       <span class="license-type">工具/服务</span>
       <span class="license-status status-warn">未说明 / 需读原文</span>
@@ -797,6 +830,7 @@
     <dl class="license-facts">
       <dt>商用</dt><dd>未说明 / 需读原文</dd>
       <dt>署名</dt><dd>署名要求未核验</dd>
+      <dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
       <dt>MAU 门槛</dt><dd>未核验</dd>
       <dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
     </dl>

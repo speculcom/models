@@ -25,10 +25,18 @@
       if (u === 'internal' && commercial === 'no') ok = false;
       if (u === 'client' && commercial !== 'yes') ok = false;
       if (u === 'redistribute' && !(commercial === 'yes' && attribution === 'yes')) ok = false;
+      if (u === 'saas' && commercial !== 'yes') ok = false;
       card.hidden = !ok;
       if (ok) shown++;
     });
-    count.textContent = '显示 ' + shown + ' / ' + total + ' 条。未知的许可保留在结果里并标“需确认”，不替你删掉。';
+    const usageNote = {
+      any: '未知的许可保留在结果里并标“需确认”，不替你删掉。',
+      internal: '内部使用仍要看数据留存与训练条款；商用允许不等于可以上传客户数据。',
+      client: '交付客户要再看再分发、责任限制与输出归属；这里只按“明确允许商用”初筛。',
+      redistribute: '再分发要求商用允许 + 署名；AGPL 还要承担开源义务，不能只看“可商用”。',
+      saas: 'SaaS 对外服务还要看 MAU 门槛、备案、内容标识与安全评估；许可允许不等于境内合规。'
+    }[u] || '';
+    count.textContent = '显示 ' + shown + ' / ' + total + ' 条。' + usageNote;
   }
 
   [search, usage, type, strict].forEach((el) => el.addEventListener('input', apply));

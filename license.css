@@ -18,6 +18,8 @@
 .license-filters input[type="search"], .license-filters select { min-height: 44px; width: 100%; padding: 8px 10px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-sm); font: inherit; }
 .lic-check { display: flex; align-items: center; gap: 6px; color: var(--ink-mid) !important; white-space: nowrap; }
 .lic-check input { width: 18px; height: 18px; accent-color: var(--brand); }
+.license-usage-note { margin-top: var(--sp-3); padding: var(--sp-3) var(--sp-4); color: var(--ink-mid); background: var(--bg-inset); border-left: 3px solid var(--brand-line); border-radius: var(--r-xs); font-size: var(--fs-sm); line-height: 1.65; }
+.license-obligation { display: inline-block; margin: 0 4px 2px 0; padding: 1px 7px; color: var(--warn-ink); background: var(--warn-soft); border-radius: 999px; font-size: var(--fs-micro); }
 
 .license-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--sp-4); }
 .license-card { display: flex; flex-direction: column; padding: var(--sp-5); background: var(--bg-panel); border: 1px solid var(--line); border-radius: var(--r-lg); }

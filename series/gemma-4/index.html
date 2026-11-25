@@ -13,9 +13,6 @@
   <meta property="og:description" content="Gemma 4（Google）的第三方 GGUF 量化版本对比：3 个规格、26 个量化来源，含实测文件体积、许可、上下文长度与选档建议。" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:locale:alternate" content="en_US" />
-  <link rel="alternate" hreflang="zh-CN" href="https://models.specul.com/series/gemma-4/" />
-  <link rel="alternate" hreflang="en" href="https://models.specul.com/series/gemma-4/?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://models.specul.com/series/gemma-4/" />
   <meta name="theme-color" content="#16121f" />
   <link rel="icon" type="image/png" href="../../assets/brand/dandelion-favicon-site.png" />
   <link rel="apple-touch-icon" href="../../assets/brand/dandelion-apple-touch-site.png" />
@@ -2891,7 +2888,7 @@
         <div class="vf"><span class="vf-k"><span data-zh>存在的意义</span><span data-en>Why it exists</span></span><span class="vf-v"><span data-zh>提供 Q4_K_M 等量化候选。请核对基座版本、量化说明、校验值与运行器支持；第三方身份本身不说明质量高低。</span><span data-en>Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>优势</span><span data-en>Strengths</span></span><span class="vf-v">· <span data-zh>规则候选为 <code>Q4_K_M</code>（5.3 GB），不构成性能结论</span><span data-en>Rule-based candidate: <code>Q4_K_M</code> (5.3 GB), not a performance finding</span></span></div>
         <div class="vf"><span class="vf-k"><span data-zh>为什么选它 / 目的</span><span data-en>Why you would pick it / its purpose</span></span><span class="vf-v"><span data-zh>文件体积候选为 <code>Q4_K_M</code>（5.3 GB，平衡档）。先用<a href="../../guides/gpu-cost-math.html">容量预算</a>核对缓存、并发与系统开销，再查发布说明中的版本兼容性。</span><span data-en>File-size candidate: <code>Q4_K_M</code> (5.3 GB, Balanced). Check cache, concurrency and system overhead with the <a href="../../guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></span></div>
-        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>未记录 imatrix，需另查发布说明；该字段缺失不能单独判定质量</span><span data-en>No imatrix recorded; inspect release notes. This missing field alone does not determine quality</span><br>· <span data-zh>已 228 天未更新，基础模型若有新版可能已不同步</span><span data-en>Not updated for 228 days, so it may no longer track a newer base model</span></span></div>
+        <div class="vf"><span class="vf-k"><span data-zh>已知取舍</span><span data-en>Known trade-offs</span></span><span class="vf-v">· <span data-zh>未记录 imatrix，需另查发布说明；该字段缺失不能单独判定质量</span><span data-en>No imatrix recorded; inspect release notes. This missing field alone does not determine quality</span><br>· <span data-zh>已 229 天未更新，基础模型若有新版可能已不同步</span><span data-en>Not updated for 229 days, so it may no longer track a newer base model</span></span></div>
         </article>
       </div>
         </div>
