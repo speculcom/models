@@ -60,7 +60,7 @@
   <url><loc>https://models.specul.com/series/ornith-1-5/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://models.specul.com/series/qwen3-8/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://models.specul.com/license.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://models.specul.com/2026.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://models.specul.com/2026.html</loc><lastmod>2026-11-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://models.specul.com/data/aime-2024.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://models.specul.com/data/apps.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://models.specul.com/data/beir.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -300,7 +300,7 @@
   <url><loc>https://models.specul.com/en/series/minicpm5/</loc></url>
   <url><loc>https://models.specul.com/en/series/muse-glimmer/</loc></url>
   <url><loc>https://models.specul.com/en/evals/agent-arena-index.html</loc></url>
-  <url><loc>https://models.specul.com/en/2026.html</loc></url>
+  <url><loc>https://models.specul.com/en/2026.html</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://models.specul.com/en/data/guides/license-commercial.html</loc></url>
   <url><loc>https://models.specul.com/en/data/guides/rag-corpus.html</loc></url>
   <url><loc>https://models.specul.com/en/data/guides/read-dataset-card.html</loc></url>
