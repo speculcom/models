@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>How to read a model's evaluation write-up on its official…</title>
+<meta content="The four things to fill in when reading an official evaluation write-up: task-set scope, metric definition, comparison and version, and where the claim…" name="description"/>
+<link href="https://models.specul.com/en/guides/read-official-evals.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/guides/read-official-evals.html" property="og:url"/>
+<meta content="How to read a model's evaluation write-up on its official…" property="og:title"/>
+<meta content="The four things to fill in when reading an official evaluation write-up: task-set scope, metric definition, comparison and version, and where the claim…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to read a model's evaluation write-up on its official terms","description":"The four things to fill in when reading an official evaluation write-up: task-set scope, metric definition, comparison and version, and where the claim…","url":"https://models.specul.com/en/guides/read-official-evals.html","dateModified":"2026-11-06"}</script>
+<meta content="How to read a model's evaluation write-up on its official…" name="twitter:title"/><meta content="The four things to fill in when reading an official evaluation write-up: task-set scope, metric definition, comparison and version, and where the claim…" name="twitter:description"/><link href="https://models.specul.com/guides/read-official-evals.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/read-official-evals.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/read-official-evals.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/guides/read-official-evals.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">How models are made</p>
+<h1>How to read a model's evaluation write-up on its official terms<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
+<p class="lede">The four things to fill in when reading an official evaluation write-up: task-set scope, metric definition, comparison and version, and where the claim comes from. What can be stated, what must stay blank, and what separates a self-reported number from your task.</p>
+</header>
+<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">What this guide settles</a></li><li><a href="#guide-section-2">Locate the four parts first</a></li><li><a href="#guide-section-3">A task set bounds scope, it is not a capability label</a></li><li><a href="#guide-section-4">The conditions that sit outside the score</a></li><li><a href="#guide-section-5">Self-reported, replicated and third-party numbers</a></li><li><a href="#guide-section-6">Hardware and scale claims are conditional too</a></li><li><a href="#guide-section-7">A fictional example: reading one write-up</a></li><li><a href="#guide-section-8">Turning the write-up into your own checks</a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2>What this guide settles</h2>
+<p>This guide is about reading somebody else's evaluation write-up, not about replacing its conclusions.</p>
+<p>An evaluation statement is a conditional sentence: who, on which task set, under which metric, compared with which version. Reading it properly means recovering all four parts.</p>
+<p>This site runs no evaluations and reproduces no scores, and it ranks nothing across tiers. Capability statements on family cards each carry a source link; where there is no source, the field stays blank.</p>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2>Locate the four parts first</h2>
+<p>When you meet an evaluation claim, locate these four parts first and record any gap you cannot fill.</p>
+<ul>
+<li>Task-set scope: where the items come from, how many categories, whether training and test data are separated.</li>
+<li>Metric definition: pass rate, exact match or rating scale, and what the denominator counts.</li>
+<li>Comparison and version: against what, which release of the comparator, and who ran the evaluation.</li>
+<li>Statement location: whether the sentence appears in a paper, a model card or a release post, and whether that page is still checkable.</li>
+</ul>
+<p>If any one of the four is missing, record the claim as an undefined measure rather than promoting it into a conclusion.</p>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2>A task set bounds scope, it is not a capability label</h2>
+<p>A task set defines what it can say, and equally what it cannot.</p>
+<ul>
+<li>The MMLU abstract describes it as a test of a text model's multitask accuracy covering 57 tasks; source: <a href="https://arxiv.org/abs/2009.03300" rel="noopener" target="_blank">arXiv 2009.03300</a>. The scope statement stops there, and the score does not extend to other tasks.</li>
+<li>The Codex abstract describes HumanEval as measuring functional correctness for synthesizing programs from docstrings; source: <a href="https://arxiv.org/abs/2107.03374" rel="noopener" target="_blank">arXiv 2107.03374</a>. It tests passing given checks, not whether code is maintainable.</li>
+<li>The same figure means something else with another denominator: per-item pass rate, macro average across tasks and sample-weighted average are three different measures.</li>
+<li>Task sets can appear inside training corpora. Whether that was handled, and how, belongs to the evaluation's own description.</li>
+</ul>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2>The conditions that sit outside the score</h2>
+<p>The same weights produce different numbers under different settings. Each missing item removes one piece of comparability.</p>
+<ul>
+<li>Prompt template and few-shot count: different templates can change the score on the same task.</li>
+<li>Context length and truncation rules: when long input is cut, the score describes the truncated behaviour.</li>
+<li>Sampling settings: greedy decoding, temperature, sample count and best-of-N all move results.</li>
+<li>Evaluation scripts and version: parsing, scoring implementation and tolerance rules change between releases.</li>
+<li>Comparator conditions: whether the baseline ran under the same setup has to be stated by the page itself.</li>
+</ul>
+<p>When the official page omits these items there is one handling rule: <b>record it as not stated</b> and do not fill the gap with another model's settings.</p>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2>Self-reported, replicated and third-party numbers</h2>
+<p>The three provenances carry different weight and are read differently.</p>
+<ul>
+<li>Self-reported: measured and published by the authors. Usually the most complete, so inspect the scripts and settings they expose.</li>
+<li>Replicated: a third party reruns the published method. Differences require checking versions, settings and scoring together.</li>
+<li>Leaderboards: aggregation often imposes one prompt template, which is not your task's template.</li>
+<li>Vendor self-assessment benchmarks: family cards name these explicitly as the vendor's own benchmark, not as a cross-vendor judgement.</li>
+</ul>
+<p>The house wording is narrow: this site says whether a claim has a source and what that source covers. It never says the claim proves a model is good.</p>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2>Hardware and scale claims are conditional too</h2>
+<p>Evaluation write-ups often add a sentence about hardware. That sentence is conditional as well.</p>
+<ul>
+<li>The QLoRA abstract describes 4-bit NormalFloat (NF4) and reports fine-tuning a 65B parameter model on a single 48GB GPU; source: <a href="https://arxiv.org/abs/2305.14314" rel="noopener" target="_blank">arXiv 2305.14314</a>. The statement is bound to the method and settings in that paper, not a guarantee for any machine.</li>
+<li>The Llama 3 abstract describes releasing pretrained and post-trained 405B parameter models plus Llama Guard 3 for input and output safety; source: <a href="https://arxiv.org/abs/2407.21783" rel="noopener" target="_blank">arXiv 2407.21783</a>. The abstract itself does not itemise evaluation scores; those belong to the relevant paper sections.</li>
+<li>"Fits on one card" still needs precision, context length, concurrency and runtime reserve. Change those four and the conclusion changes.</li>
+<li>Neither parameter count nor file size computes the memory available on your machine; see "GPU facts and cost math".</li>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-7">
+<h2>A fictional example: reading one write-up</h2>
+<p>Everything in this example, including its numbers, is a fictional teaching assumption. It corresponds to no real model, official page or result produced by this site.</p>
+<p>Suppose an official page said: "61.2 on task A, 47.5 on task B, 6.1 above the previous version."</p>
+<ul>
+<li>Ask about the denominator first: how many items task A has, how they are judged, and whether 61.2 is a pass rate or a scale score.</li>
+<li>Then ask about settings: prompt template, few-shot count, context length, sampling and repeat count.</li>
+<li>Then ask about the comparison: whether the previous version used the same script, hardware and configuration, or merely quoted an older page.</li>
+<li>Finally ask about scope: whether these two task sets cover what you intend to do. If they do not, the sentence only describes its own range.</li>
+</ul>
+<p>If none of the four questions has an answer, record the numbers as published and mark the measure undefined. Do not read them as "this model suits a given task".</p>
+</section>
+<section class="fam-sec" id="guide-section-8">
+<h2>Turning the write-up into your own checks</h2>
+<p>The value of an evaluation write-up is the check it lets you run, not a conclusion you can quote directly.</p>
+<ul>
+<li>Set your own task and pass criteria first, then decide which scores matter; criteria ideas are in <a href="https://tools.specul.com/en/mcp/guides/evaluation.html" rel="noopener" target="_blank">building an evaluation</a>.</li>
+<li>Run one fixed-input result check; the entry point is the <a href="https://tools.specul.com/en/mcp/guides/selftest-20.html" rel="noopener" target="_blank">20-item self-test</a>.</li>
+<li>To record assumptions and capacity, use the <a href="https://models.specul.com/en/guides/gpu-cost-math.html#capacity-workbench" rel="noopener" target="_blank">context and concurrency budget</a>. Its formula applies only to standard same-layer full-attention MHA/GQA; MLA, hybrid and sliding-window designs need separate arithmetic.</li>
+<li>For cost composition use the <a href="https://tools.specul.com/en/mcp/guides/cost-calculator.html" rel="noopener" target="_blank">cost calculator</a>; this site stores no unit prices.</li>
+</ul>
+<p>The Learn site pages <a href="https://learn.specul.com/en/term/%E6%A8%A1%E5%9E%8B%E8%AF%84%E6%B5%8B%E7%9A%84%E5%B1%80%E9%99%90/" rel="noopener" target="_blank">limits of model evaluation</a>, <a href="https://learn.specul.com/en/term/%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" rel="noopener" target="_blank">benchmark</a> and <a href="https://learn.specul.com/en/term/%E6%A8%A1%E5%9E%8B%E5%8D%A1/" rel="noopener" target="_blank">model card</a> are one-page explainers for users.</p>
+<p>This guide lists which conditions to fill in when reading an official evaluation write-up. Same concept, different depth, cross-linked without duplication.</p>
+</section>
+<nav aria-label="Next steps" class="fam-sec">
+<h2>What to do next</h2>
+<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
+<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
+<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list">
+<li>MMLU paper abstract page (arXiv 2009.03300; describes a multitask accuracy test covering 57 tasks; fetched directly 2026-11-06)：<a href="https://arxiv.org/abs/2009.03300" rel="noopener" target="_blank">https://arxiv.org/abs/2009.03300</a></li>
+<li>Codex paper abstract page (arXiv 2107.03374; describes HumanEval as measuring functional correctness for programs synthesised from docstrings; fetched directly 2026-11-06)：<a href="https://arxiv.org/abs/2107.03374" rel="noopener" target="_blank">https://arxiv.org/abs/2107.03374</a></li>
+<li>QLoRA paper abstract page (arXiv 2305.14314; describes the NF4 data type and reports fine-tuning a 65B model on a single 48GB GPU; fetched directly 2026-11-06)：<a href="https://arxiv.org/abs/2305.14314" rel="noopener" target="_blank">https://arxiv.org/abs/2305.14314</a></li>
+<li>Llama 3 paper abstract page (arXiv 2407.21783; states the released artefacts and safety model without itemising evaluation scores; fetched directly 2026-11-06)：<a href="https://arxiv.org/abs/2407.21783" rel="noopener" target="_blank">https://arxiv.org/abs/2407.21783</a></li>
+</ul>
+<p class="fam-foot">Base source snapshot: 2026-11-06; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
+</section>
+<p class="t-sm dim">This page appears in: <a href="https://specul.com/en/topic-prompts.html">Use AI well</a> · <a href="https://specul.com/en/topic-research.html">Research with AI</a></p>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

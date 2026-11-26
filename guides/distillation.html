@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>蒸馏：小模型怎么从大模型身上学 · 做模型专题</title>
-  <meta name="description" content="logit 蒸馏与数据蒸馏两条路、为什么开放权重家族几乎人人蒸馏、以及「蒸馏来的」这个标签在选型里意味着什么。从业者视角深版；一页科普在学 AI 站。（资料更新到 2026-10-20，关键事实挂官方出处）" />
-  <link rel="canonical" href="https://models.specul.com/guides/distillation.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="蒸馏：小模型怎么从大模型身上学 · 做模型专题" />
-  <meta property="og:url" content="https://models.specul.com/guides/distillation.html" />
-  <meta property="og:title" content="蒸馏：小模型怎么从大模型身上学 · 做模型专题" />
-  <meta property="og:description" content="logit 蒸馏与数据蒸馏两条路、为什么开放权重家族几乎人人蒸馏、以及「蒸馏来的」这个标签在选型里意味着什么。从业者视角深版；一页科普在学 AI 站。（资料更新到 2026-10-20，关键事实挂官方出处）" />
-  <meta property="og:image" content="https://specul.com/home-shots/og-home.jpg?v=20261123d" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="zh_CN" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta name="theme-color" content="#16121f" />
-  <link rel="icon" type="image/png" href="../assets/brand/dandelion-favicon-site.png" />
-  <link rel="apple-touch-icon" href="../assets/brand/dandelion-apple-touch-site.png" />
-  <script src="../brand.js?v=37d1072be69b"></script>
-  <link rel="stylesheet" href="../brand.css?v=37d1072be69b" />
-  <link rel="stylesheet" href="../site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Distillation: how small models learn from big ones","description":"Logit distillation versus data distillation, why nearly every open-weight family distils, and what the \"distilled\" label means when choosing a model. Practitioner depth; the one-page explainer lives on the Learn site.","url":"https://models.specul.com/guides/distillation.html","dateModified":"2026-10-20"}</script>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>蒸馏：小模型怎么从大模型身上学 · 做模型专题</title>
+<meta content="logit 蒸馏与数据蒸馏两条路、为什么开放权重家族几乎人人蒸馏、以及「蒸馏来的」这个标签在选型里意味着什么。从业者视角深版；一页科普在学 AI 站。（资料更新到 2026-10-20，关键事实挂官方出处）" name="description"/>
+<link href="https://models.specul.com/guides/distillation.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="蒸馏：小模型怎么从大模型身上学 · 做模型专题" property="og:site_name"/>
+<meta content="https://models.specul.com/guides/distillation.html" property="og:url"/>
+<meta content="蒸馏：小模型怎么从大模型身上学 · 做模型专题" property="og:title"/>
+<meta content="logit 蒸馏与数据蒸馏两条路、为什么开放权重家族几乎人人蒸馏、以及「蒸馏来的」这个标签在选型里意味着什么。从业者视角深版；一页科普在学 AI 站。（资料更新到 2026-10-20，关键事实挂官方出处）" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="en_US" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="../assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="../assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="../brand.js?v=37d1072be69b"></script>
+<link href="../brand.css?v=37d1072be69b" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Distillation: how small models learn from big ones","description":"Logit distillation versus data distillation, why nearly every open-weight family distils, and what the \"distilled\" label means when choosing a model. Practitioner depth; the one-page explainer lives on the Learn site.","url":"https://models.specul.com/guides/distillation.html","dateModified":"2026-10-20"}</script>
+<link href="https://models.specul.com/guides/distillation.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/distillation.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/distillation.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -32,215 +32,211 @@
      ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
      （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
 <body class="brand-ambient has-tabbar has-tabbar-1row">
-  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
-  <header class="site-header">
-    <div class="container site-bar">
-      <a class="brand" href="https://specul.com/" title="投机取巧">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
-          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="站点导航">
-        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
-        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
-        <a href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a>
-        <a href="https://models.specul.com/" aria-current="page"><span data-zh>模型</span><span data-en>Models</span></a>
-        <a href="https://demos.specul.com/"><span data-zh>作品演示</span><span data-en>Playground</span></a>
-        <a href="https://oss.specul.com/"><span data-zh>开源库</span><span data-en>OSS</span></a>
-        <a href="https://hardware.specul.com/"><span data-zh>硬件算力</span><span data-en>Compute</span></a>
-        <a href="https://papers.specul.com/"><span data-zh>AI 论文</span><span data-en>AI Papers</span></a>
-        <a href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a>
-        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
-      </nav>
-      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+<a class="t-skip" href="#main"><span data-zh="">跳到主要内容</span><span data-en="">Skip to main content</span></a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" data-en-name="Speculative Speculation" data-zh-name="投机取巧" id="markName">投机取巧</span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation" id="markSub">Speculative Speculation</span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span data-zh="">作品演示</span><span data-en="">Playground</span></a>
+<a href="https://oss.specul.com/"><span data-zh="">开源库</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span data-zh="">硬件算力</span><span data-en="">Compute</span></a>
+<a href="https://papers.specul.com/"><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></a>
+<a href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a href="https://nav.specul.com/"><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
            放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
            （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
            链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
-      <span class="nav-tools">
-        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
-        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
-      </span>
-      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+<span class="nav-tools">
+<a aria-label="搜索" class="icon-btn" data-ui-aria-label-en="Search" data-ui-aria-label-zh="搜索" data-ui-title-en="Search all sites" data-ui-title-zh="搜索全站" href="https://specul.com/search.html" title="搜索全站"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="Switch to English" class="icon-btn" href="/en/guides/distillation.html" hreflang="en" id="langBtn" lang="en" title="Switch to English">EN</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
            行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
            无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
            「导航被藏进一个点了没反应的按钮」。 -->
-      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
-        <i></i><i></i><i></i>
-      </button>
-    </div>
-  </header>
-  <div class="nav-scrim"></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
-    <div class="nav-drawer-h">
-      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
-      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
-    </div>
-    <nav class="nav-drawer-list">
-      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://tools.specul.com/"><span><span data-zh>工具</span><span data-en>Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://models.specul.com/" aria-current="page"><span><span data-zh>模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://demos.specul.com/"><span><span data-zh>作品演示</span><span data-en>Playground</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://oss.specul.com/"><span><span data-zh>开源库</span><span data-en>OSS</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://hardware.specul.com/" class="nav-group-start"><span><span data-zh>硬件算力</span><span data-en>Compute</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://papers.specul.com/"><span><span data-zh>AI 论文</span><span data-en>AI Papers</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://chain.specul.com/"><span><span data-zh>链</span><span data-en>Chain</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://nav.specul.com/" class="nav-group-start" data-nav-group="external"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="nav-drawer-foot">
-      <p><span data-zh>内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
-      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
-    </div>
-  </aside>
-  <main id="main">
-  <div class="container guide-body">
-    <nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh>回开放权重图谱</span><span data-en>Back to the open-weight map</span></a></nav>
-    <header class="page-head">
-      <p class="eyebrow"><span data-zh>做模型专题</span><span data-en>How models are made</span>　<span class="t-tag"><span data-zh>训练管线 · 第 4 站</span><span data-en>training pipeline · stage 4</span></span></p>
-      <h1><span data-zh>蒸馏：小模型怎么从大模型身上学</span><span data-en>Distillation: how small models learn from big ones</span><span class="sub"><span data-zh>从业者视角的方法论 · 关键事实挂官方出处</span><span data-en>practitioner-perspective methodology · key facts carry official sources</span></span></h1>
-      <p class="lede"><span data-zh>logit 蒸馏与数据蒸馏两条路、为什么开放权重家族几乎人人蒸馏、以及「蒸馏来的」这个标签在选型里意味着什么。从业者视角深版；一页科普在学 AI 站。</span><span data-en>Logit distillation versus data distillation, why nearly every open-weight family distils, and what the &quot;distilled&quot; label means when choosing a model. Practitioner depth; the one-page explainer lives on the Learn site.</span></p>
-    </header>
-
-    <nav class="fam-sec" aria-label="文章目录" data-ui-aria-label-zh="文章目录" data-ui-aria-label-en="Article contents"><p><span data-zh>按问题阅读</span><span data-en>On this page</span></p><ul><li><a href="#guide-section-1"><span data-zh>这一篇讲什么</span><span data-en>What this guide covers</span></a></li><li><a href="#guide-section-2"><span data-zh>两支：logit 蒸馏与数据蒸馏</span><span data-en>Two branches: logits versus data</span></a></li><li><a href="#guide-section-3"><span data-zh>为什么开放权重几乎人人蒸馏</span><span data-en>Why every open-weight family distils</span></a></li><li><a href="#guide-section-4"><span data-zh>选型时「蒸馏来的」意味着什么</span><span data-en>What &quot;distilled&quot; means when choosing</span></a></li><li><a href="#guide-section-5"><span data-zh>许可与合规：蒸馏不豁免原模型条款</span><span data-en>Licences: distilling does not escape the base terms</span></a></li><li><a href="#guide-section-6"><span data-zh>和学 AI 站的分工</span><span data-en>How this differs from the Learn site</span></a></li></ul></nav>
-    <section class="fam-sec" id="guide-section-0">
-      <h2></h2>
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name"><span data-zh="">投机取巧</span><span data-en="">Speculative Speculation</span></span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation">Speculative Speculation</span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/"><span><span data-zh="">首页</span><span data-en="">Home</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/"><span><span data-zh="">学 AI</span><span data-en="">Learn</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/"><span><span data-zh="">工具</span><span data-en="">Tools</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span><span data-zh="">模型</span><span data-en="">Models</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/"><span><span data-zh="">作品演示</span><span data-en="">Playground</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/"><span><span data-zh="">开源库</span><span data-en="">OSS</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/"><span><span data-zh="">硬件算力</span><span data-en="">Compute</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/"><span><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/"><span><span data-zh="">链</span><span data-en="">Chain</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/"><span><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p><span data-zh="">内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en="">Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
+<nav><a href="https://specul.com/legal.html"><span data-zh="">法律条款</span><span data-en="">Legal terms</span></a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh="">回开放权重图谱</span><span data-en="">Back to the open-weight map</span></a></nav>
+<header class="page-head">
+<p class="eyebrow"><span data-zh="">做模型专题</span><span data-en="">How models are made</span>　<span class="t-tag"><span data-zh="">训练管线 · 第 4 站</span><span data-en="">training pipeline · stage 4</span></span></p>
+<h1><span data-zh="">蒸馏：小模型怎么从大模型身上学</span><span data-en="">Distillation: how small models learn from big ones</span><span class="sub"><span data-zh="">从业者视角的方法论 · 关键事实挂官方出处</span><span data-en="">practitioner-perspective methodology · key facts carry official sources</span></span></h1>
+<p class="lede"><span data-zh="">logit 蒸馏与数据蒸馏两条路、为什么开放权重家族几乎人人蒸馏、以及「蒸馏来的」这个标签在选型里意味着什么。从业者视角深版；一页科普在学 AI 站。</span><span data-en="">Logit distillation versus data distillation, why nearly every open-weight family distils, and what the "distilled" label means when choosing a model. Practitioner depth; the one-page explainer lives on the Learn site.</span></p>
+</header>
+<nav aria-label="文章目录" class="fam-sec" data-ui-aria-label-en="Article contents" data-ui-aria-label-zh="文章目录"><p><span data-zh="">按问题阅读</span><span data-en="">On this page</span></p><ul><li><a href="#guide-section-1"><span data-zh="">这一篇讲什么</span><span data-en="">What this guide covers</span></a></li><li><a href="#guide-section-2"><span data-zh="">两支：logit 蒸馏与数据蒸馏</span><span data-en="">Two branches: logits versus data</span></a></li><li><a href="#guide-section-3"><span data-zh="">为什么开放权重几乎人人蒸馏</span><span data-en="">Why every open-weight family distils</span></a></li><li><a href="#guide-section-4"><span data-zh="">选型时「蒸馏来的」意味着什么</span><span data-en="">What "distilled" means when choosing</span></a></li><li><a href="#guide-section-5"><span data-zh="">许可与合规：蒸馏不豁免原模型条款</span><span data-en="">Licences: distilling does not escape the base terms</span></a></li><li><a href="#guide-section-6"><span data-zh="">和学 AI 站的分工</span><span data-en="">How this differs from the Learn site</span></a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
 <ul>
-
 </ul>
-    </section>
-    <section class="fam-sec" id="guide-section-1">
-      <h2><span data-zh>这一篇讲什么</span><span data-en>What this guide covers</span></h2>
-<span data-zh><p><b>蒸馏 = 让小模型向大模型学，而不是直接从原始数据学。</b></p>
-<p>原始方法是 Hinton 等人的软标签蒸馏（出处见文末清单）。<br>不只给「答案是猫」这个硬结论，还给出概率分布：<br>六成像猫、三成像狗、一成像狐狸。</p>
-<p>类间相似度信息比硬标签的信息量大。<br>大模型时代，这条路分成了两支。</p></span><span data-en><p><b>Distillation = a small model learns from a big one instead of learning straight from raw data.</b></p>
-<p>The original method is Hinton et al.&#39;s soft-label distillation (source in the list at the end).<br>It passes not just the hard verdict “the answer is cat” but the probability distribution:<br>six-tenths cat-like, three-tenths dog-like, one-tenth fox-like.</p>
-<p>Inter-class similarity carries more information than a hard label.<br>In the LLM era this route split into two branches.</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-2">
-      <h2><span data-zh>两支：logit 蒸馏与数据蒸馏</span><span data-en>Two branches: logits versus data</span></h2>
-<span data-zh><p><b>logit 蒸馏</b>要同时跑教师与学生，教师输出分布当训练信号。</p>
-<p>DistilBERT 是公开范例：同架构自蒸馏，参数减半、<br>速度提升 60%、保留 97% 语言理解能力（论文口径）。</p>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2><span data-zh="">这一篇讲什么</span><span data-en="">What this guide covers</span></h2>
+<span data-zh=""><p><b>蒸馏 = 让小模型向大模型学，而不是直接从原始数据学。</b></p>
+<p>原始方法是 Hinton 等人的软标签蒸馏（出处见文末清单）。<br/>不只给「答案是猫」这个硬结论，还给出概率分布：<br/>六成像猫、三成像狗、一成像狐狸。</p>
+<p>类间相似度信息比硬标签的信息量大。<br/>大模型时代，这条路分成了两支。</p></span><span data-en=""><p><b>Distillation = a small model learns from a big one instead of learning straight from raw data.</b></p>
+<p>The original method is Hinton et al.'s soft-label distillation (source in the list at the end).<br/>It passes not just the hard verdict “the answer is cat” but the probability distribution:<br/>six-tenths cat-like, three-tenths dog-like, one-tenth fox-like.</p>
+<p>Inter-class similarity carries more information than a hard label.<br/>In the LLM era this route split into two branches.</p></span>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2><span data-zh="">两支：logit 蒸馏与数据蒸馏</span><span data-en="">Two branches: logits versus data</span></h2>
+<span data-zh=""><p><b>logit 蒸馏</b>要同时跑教师与学生，教师输出分布当训练信号。</p>
+<p>DistilBERT 是公开范例：同架构自蒸馏，参数减半、<br/>速度提升 60%、保留 97% 语言理解能力（论文口径）。</p>
 <p>开放权重家族里 logit 级蒸馏越来越少——教师太大，跑不起。</p>
-<p><b>数据蒸馏</b>只要教师生成数据，学生照常 SFT。<br>LLaMA 2 论文写明：13B 与 34B 用 70B 生成的对话数据训练。</p>
-<p>DeepSeek-R1 把自家的长思维链样本蒸馏进一系列小模型，<br>从 1.5B 一直做到 70B，官方论文给出各尺寸的成绩表。<br>这是「思维链蒸馏」的官方范例。</p>
-<p>MiniCPM 谱系把蒸馏写进训练流程的正式阶段（论文口径）。</p></span><span data-en><p><b>Logits distillation</b> runs teacher and student together, using the teacher&#39;s output distribution as the training signal.</p>
-<p>DistilBERT is the public example: same-architecture self-distillation, parameters halved,<br>60% faster, retaining 97% of language understanding (the paper&#39;s figures).</p>
+<p><b>数据蒸馏</b>只要教师生成数据，学生照常 SFT。<br/>LLaMA 2 论文写明：13B 与 34B 用 70B 生成的对话数据训练。</p>
+<p>DeepSeek-R1 把自家的长思维链样本蒸馏进一系列小模型，<br/>从 1.5B 一直做到 70B，官方论文给出各尺寸的成绩表。<br/>这是「思维链蒸馏」的官方范例。</p>
+<p>MiniCPM 谱系把蒸馏写进训练流程的正式阶段（论文口径）。</p></span><span data-en=""><p><b>Logits distillation</b> runs teacher and student together, using the teacher's output distribution as the training signal.</p>
+<p>DistilBERT is the public example: same-architecture self-distillation, parameters halved,<br/>60% faster, retaining 97% of language understanding (the paper's figures).</p>
 <p>Logit-level distillation is rarer and rarer among open-weight families — the teacher is too big to run.</p>
-<p><b>Data distillation</b> only needs the teacher to generate data; the student does ordinary SFT.<br>The LLaMA 2 paper states plainly: the 13B and 34B were trained on dialogue data generated by the 70B.</p>
-<p>DeepSeek-R1 distilled its own long chain-of-thought samples into a series of small models,<br>from 1.5B up to 70B, with the official paper giving a results table per size.<br>This is the official example of “chain-of-thought distillation”.</p>
-<p>The MiniCPM lineage writes distillation in as a formal stage of its training pipeline (the paper&#39;s wording).</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-3">
-      <h2><span data-zh>为什么开放权重几乎人人蒸馏</span><span data-en>Why every open-weight family distils</span></h2>
-<span data-zh><p>三个理由，都有官方出处可查：</p>
+<p><b>Data distillation</b> only needs the teacher to generate data; the student does ordinary SFT.<br/>The LLaMA 2 paper states plainly: the 13B and 34B were trained on dialogue data generated by the 70B.</p>
+<p>DeepSeek-R1 distilled its own long chain-of-thought samples into a series of small models,<br/>from 1.5B up to 70B, with the official paper giving a results table per size.<br/>This is the official example of “chain-of-thought distillation”.</p>
+<p>The MiniCPM lineage writes distillation in as a formal stage of its training pipeline (the paper's wording).</p></span>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2><span data-zh="">为什么开放权重几乎人人蒸馏</span><span data-en="">Why every open-weight family distils</span></h2>
+<span data-zh=""><p>三个理由，都有官方出处可查：</p>
 <ul>
-  <li><b>便宜</b>：数据蒸馏不需要教师常驻显存，成本结构等于普通 SFT。</li>
+<li><b>便宜</b>：数据蒸馏不需要教师常驻显存，成本结构等于普通 SFT。</li>
 </ul>
 <ul>
-  <li><b>快</b>：小模型推理便宜，跑在端侧与显卡农场里都划算（与预训练篇的「过训练」同一张账）。</li>
+<li><b>快</b>：小模型推理便宜，跑在端侧与显卡农场里都划算（与预训练篇的「过训练」同一张账）。</li>
 </ul>
 <ul>
-  <li><b>许可</b>：多数家族许可允许用其输出再训模型（以各许可文本为准，这里不解读条款）。</li>
-</ul></span><span data-en><p>Three reasons, each with a checkable official source:</p>
+<li><b>许可</b>：多数家族许可允许用其输出再训模型（以各许可文本为准，这里不解读条款）。</li>
+</ul></span><span data-en=""><p>Three reasons, each with a checkable official source:</p>
 <ul>
-  <li><b>Cheap</b>: data distillation needs no teacher resident in memory — the cost structure equals ordinary SFT.</li>
+<li><b>Cheap</b>: data distillation needs no teacher resident in memory — the cost structure equals ordinary SFT.</li>
 </ul>
 <ul>
-  <li><b>Fast</b>: small models are cheap to infer, paying off both on edge devices and GPU farms (the same ledger as “over-training” in the pre-training guide).</li>
+<li><b>Fast</b>: small models are cheap to infer, paying off both on edge devices and GPU farms (the same ledger as “over-training” in the pre-training guide).</li>
 </ul>
 <ul>
-  <li><b>Licence</b>: most family licences allow re-training models on their outputs (each licence text governs; this site does not interpret terms).</li>
+<li><b>Licence</b>: most family licences allow re-training models on their outputs (each licence text governs; this site does not interpret terms).</li>
 </ul></span>
-    </section>
-    <section class="fam-sec" id="guide-section-4">
-      <h2><span data-zh>选型时「蒸馏来的」意味着什么</span><span data-en>What &quot;distilled&quot; means when choosing</span></h2>
-<span data-zh><p>这里口径与 S53 派生标记同一套纪律：<br><b>只有官方自己声明的谱系才标「蒸馏/派生」</b>。<br>依据是模型卡的 <code>base_model</code> 字段，或论文、技术报告的明文。<br>不猜，也不根据「像」来推断。</p>
-<p>事实层面的含义：蒸馏模型的能力上限受教师约束。<br>教师不会的，它大概率不会。</p>
-<p>但小模型在窄任务上可以超过教师。<br>R1 蒸馏出的 7B 在数学评测上超过不少更大的通用模型（官方论文口径）。</p>
-<p>「蒸馏来的」不是贬义标签。它告诉你权重谱系从哪来。<br>选型时把它当出处信息读，不当质量结论读。</p></span><span data-en><p>This site follows the same discipline as the S53 derived-marker:<br><b>only lineages the vendor itself declares get marked “distilled/derived”</b>.<br>The basis is the model card&#39;s <code>base_model</code> field, or explicit text in papers and technical reports.<br>No guessing, no inference from “looks similar”.</p>
-<p>What it means factually: a distilled model&#39;s capability ceiling is bounded by its teacher.<br>What the teacher cannot do, it most likely cannot do.</p>
-<p>But small models can beat the teacher on narrow tasks.<br>The 7B distilled from R1 outperforms several much larger general models on math evaluations (the official paper&#39;s figures).</p>
-<p>“Distilled” is not a pejorative label. It tells you where the weight lineage comes from.<br>Read it as provenance when choosing, not as a quality verdict.</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-5">
-      <h2><span data-zh>许可与合规：蒸馏不豁免原模型条款</span><span data-en>Licences: distilling does not escape the base terms</span></h2>
-<span data-zh><p>用某模型的输出去训新模型，是否受原模型许可约束？<br>各许可写法不同，Llama 与 Gemma 的条款各有附加约定（条款文本见文末清单）。</p>
-<p>这里的立场与全站法律页一致：<br>只索引、只引述、不解读许可、不给法律意见。</p></span><span data-en><p>Does training a new model on some model&#39;s outputs fall under the original model&#39;s licence?<br>Each licence is worded differently; Llama&#39;s and Gemma&#39;s terms each carry extra conditions (licence texts in the list at the end).</p>
-<p>This site&#39;s stance matches the site-wide legal page:<br>index only, quote only, no licence interpretation, no legal advice.</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-6">
-      <h2><span data-zh>和学 AI 站的分工</span><span data-en>How this differs from the Learn site</span></h2>
-<span data-zh><p>一页科普版在学 AI 站：<a href="https://learn.specul.com/term/知识蒸馏/" target="_blank" rel="noopener">知识蒸馏</a><br>与 <a href="https://learn.specul.com/term/剪枝/" target="_blank" rel="noopener">剪枝</a>（压缩的另一条路）。</p>
-<p>本篇讲两支蒸馏的成本结构、官方范例、选型读法与许可边界。<br>这里家族卡上的「派生自 X」标记（S53）用的就是本篇的谱系口径。</p></span><span data-en><p>The one-page explainers live on the Learn site: <a href="https://learn.specul.com/term/知识蒸馏/" target="_blank" rel="noopener">knowledge distillation</a><br>and <a href="https://learn.specul.com/term/剪枝/" target="_blank" rel="noopener">pruning</a> (the other compression route).</p>
-<p>This guide covers the cost structure of the two distillation branches, the official examples, how to read the label when choosing, and the licence boundary.<br>The “derived from X” marker on this site&#39;s family cards (S53) uses exactly this guide&#39;s lineage yardstick.</p></span>
-    </section>
-
-    <nav class="fam-sec" aria-label="下一步" data-ui-aria-label-zh="下一步" data-ui-aria-label-en="Next steps">
-      <h2><span data-zh>继续做什么</span><span data-en>What to do next</span></h2>
-      <ul><li><a href="gpu-cost-math.html#capacity-workbench"><span data-zh>填写上下文与并发容量假设</span><span data-en>Budget context and concurrency</span></a></li>
-      <li><a href="https://learn.specul.com/guide/怎么验证%20AI%20的输出/"><span data-zh>检查输出是否有依据</span><span data-en>Verify evidence for the output</span></a></li>
-      <li><a href="https://tools.specul.com/mcp/guides/failure-library.html#by-symptom"><span data-zh>按症状排查</span><span data-en>Troubleshoot by symptom</span></a></li></ul>
-    </nav>
-
-    <section class="fam-sec fam-sources">
-      <h2><span data-zh>出处</span><span data-en>Sources</span></h2>
-      <ul class="fam-src-list">
-        <li><span data-zh>知识蒸馏原始论文（arXiv 1503.02531，Hinton 等，软标签蒸馏，2026-10-20 直抓摘要页）</span><span data-en>The original knowledge-distillation paper (arXiv 1503.02531, Hinton et al., soft-label distillation; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/1503.02531" target="_blank" rel="noopener">https://arxiv.org/abs/1503.02531</a></li>
-        <li><span data-zh>DistilBERT 论文（arXiv 1910.01108，自蒸馏减半 BERT 的公开范例，2026-10-20 直抓摘要页）</span><span data-en>DistilBERT paper (arXiv 1910.01108, the public example of halving BERT via self-distillation; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/1910.01108" target="_blank" rel="noopener">https://arxiv.org/abs/1910.01108</a></li>
-        <li><span data-zh>MiniCPM 论文（arXiv 2404.06395，小模型训练含蒸馏阶段的小模型谱系，2026-10-20 直抓摘要页）</span><span data-en>MiniCPM paper (arXiv 2404.06395, a small-model lineage whose training includes a distillation stage; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2404.06395" target="_blank" rel="noopener">https://arxiv.org/abs/2404.06395</a></li>
-        <li><span data-zh>DeepSeek-R1 论文（arXiv 2501.12948，用 R1 蒸馏 1.5B–70B 小模型的官方路线，2026-10-20 直抓摘要页）</span><span data-en>DeepSeek-R1 paper (arXiv 2501.12948, the official route of distilling 1.5B–70B small models from R1; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener">https://arxiv.org/abs/2501.12948</a></li>
-        <li><span data-zh>LLaMA 2 论文（arXiv 2307.09288，13B/34B 用 70B 生成数据蒸馏的官方说明，2026-10-20 直抓摘要页）</span><span data-en>LLaMA 2 paper (arXiv 2307.09288, the official statement that 13B/34B were distilled from 70B-generated data; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2307.09288" target="_blank" rel="noopener">https://arxiv.org/abs/2307.09288</a></li>
-        <li><span data-zh>Gemma 技术报告（arXiv 2403.08295，基于 Gemini 技术栈训练，2026-10-20 直抓摘要页）</span><span data-en>Gemma technical report (arXiv 2403.08295, trained on the Gemini technology stack; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2403.08295" target="_blank" rel="noopener">https://arxiv.org/abs/2403.08295</a></li>
-        <li><span data-zh>Llama Community License 原文页（官方许可文本入口，2026-10-20 直抓 200）</span><span data-en>Llama Community License text page (entry to the official licence text; fetched directly, HTTP 200, 2026-10-20)</span>：<a href="https://www.llama.com/llama-license/" target="_blank" rel="noopener">https://www.llama.com/llama-license/</a></li>
-        <li><span data-zh>Gemma Terms of Use 原文页（官方许可文本入口，2026-10-20 直抓 200）</span><span data-en>Gemma Terms of Use text page (entry to the official licence text; fetched directly, HTTP 200, 2026-10-20)</span>：<a href="https://ai.google.dev/gemma/terms" target="_blank" rel="noopener">https://ai.google.dev/gemma/terms</a></li>
-      </ul>
-      <p class="fam-foot"><span data-zh>基础来源快照：2026-10-20；单项补充与补充范围见正文和来源标签。请回原始说明核对规格、方法与适用条件。</span><span data-en>Base source snapshot: 2026-10-20; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</span></p>
-    </section>
-  </div>
-  </main>
-  <footer class="site-footer foot-single">
-    <div class="container foot-line">
-      <div class="foot-brand">
-        <span class="foot-brand-main">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span class="foot-copy"><span data-zh>投机取巧 · specul.com</span><span data-en>Specul · specul.com</span></span>
-        </span>
-        <span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh>内容 CC BY 4.0</span><span data-en>Content CC BY 4.0</span></a><span class="sep" aria-hidden="true">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh>代码 MIT</span><span data-en>Code MIT</span></a><span class="sep" aria-hidden="true">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" target="_blank" rel="noopener"><span data-zh>源码</span><span data-en>Source</span></a></span>
-      </div>
-      <nav class="foot-sites" aria-label="Footer site links">
-        <a class="site-link" href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://demos.specul.com/"><span data-zh>演示</span><span data-en>Demos</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://oss.specul.com/"><span data-zh>开源</span><span data-en>OSS</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://hardware.specul.com/"><span data-zh>算力</span><span data-en>Compute</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://papers.specul.com/"><span data-zh>论文</span><span data-en>Papers</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-      </nav>
-      <nav class="foot-legal" aria-label="Legal and corrections">
-        <a href="https://specul.com/legal.html"><span data-zh>法律</span><span data-en>Legal</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私</span><span data-en>Privacy</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/correct.html"><span data-zh>纠错</span><span data-en>Corrections</span></a>
-      </nav>
-    </div>
-  </footer>
-<nav class="nav-tabbar nav-tabbar-1row" aria-label="快捷导航">
-    <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
-    <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学AI</span><span data-en>Learn</span></a>
-    <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
-    <a href="https://models.specul.com/" aria-current="page"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
-    <a href="https://demos.specul.com/"><span class="ti" aria-hidden="true">▷</span><span data-zh>演示</span><span data-en>Demos</span></a>
-    <a href="https://oss.specul.com/"><span class="ti" aria-hidden="true">▧</span><span data-zh>开源</span><span data-en>OSS</span></a>
-    <a href="https://hardware.specul.com/"><span class="ti" aria-hidden="true">▣</span><span data-zh>算力</span><span data-en>Chips</span></a>
-    <a href="https://papers.specul.com/"><span class="ti" aria-hidden="true">▥</span><span data-zh>论文</span><span data-en>Papers</span></a>
-    <a href="https://chain.specul.com/"><span class="ti" aria-hidden="true">◇</span><span data-zh>链</span><span data-en>Chain</span></a>
-    <a href="https://nav.specul.com/" data-nav-group="external"><span class="ti" aria-hidden="true">↗</span><span data-zh>导航</span><span data-en>Nav</span></a>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2><span data-zh="">选型时「蒸馏来的」意味着什么</span><span data-en="">What "distilled" means when choosing</span></h2>
+<span data-zh=""><p>这里口径与 S53 派生标记同一套纪律：<br/><b>只有官方自己声明的谱系才标「蒸馏/派生」</b>。<br/>依据是模型卡的 <code>base_model</code> 字段，或论文、技术报告的明文。<br/>不猜，也不根据「像」来推断。</p>
+<p>事实层面的含义：蒸馏模型的能力上限受教师约束。<br/>教师不会的，它大概率不会。</p>
+<p>但小模型在窄任务上可以超过教师。<br/>R1 蒸馏出的 7B 在数学评测上超过不少更大的通用模型（官方论文口径）。</p>
+<p>「蒸馏来的」不是贬义标签。它告诉你权重谱系从哪来。<br/>选型时把它当出处信息读，不当质量结论读。</p></span><span data-en=""><p>This site follows the same discipline as the S53 derived-marker:<br/><b>only lineages the vendor itself declares get marked “distilled/derived”</b>.<br/>The basis is the model card's <code>base_model</code> field, or explicit text in papers and technical reports.<br/>No guessing, no inference from “looks similar”.</p>
+<p>What it means factually: a distilled model's capability ceiling is bounded by its teacher.<br/>What the teacher cannot do, it most likely cannot do.</p>
+<p>But small models can beat the teacher on narrow tasks.<br/>The 7B distilled from R1 outperforms several much larger general models on math evaluations (the official paper's figures).</p>
+<p>“Distilled” is not a pejorative label. It tells you where the weight lineage comes from.<br/>Read it as provenance when choosing, not as a quality verdict.</p></span>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2><span data-zh="">许可与合规：蒸馏不豁免原模型条款</span><span data-en="">Licences: distilling does not escape the base terms</span></h2>
+<span data-zh=""><p>用某模型的输出去训新模型，是否受原模型许可约束？<br/>各许可写法不同，Llama 与 Gemma 的条款各有附加约定（条款文本见文末清单）。</p>
+<p>这里的立场与全站法律页一致：<br/>只索引、只引述、不解读许可、不给法律意见。</p></span><span data-en=""><p>Does training a new model on some model's outputs fall under the original model's licence?<br/>Each licence is worded differently; Llama's and Gemma's terms each carry extra conditions (licence texts in the list at the end).</p>
+<p>This site's stance matches the site-wide legal page:<br/>index only, quote only, no licence interpretation, no legal advice.</p></span>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2><span data-zh="">和学 AI 站的分工</span><span data-en="">How this differs from the Learn site</span></h2>
+<span data-zh=""><p>一页科普版在学 AI 站：<a href="https://learn.specul.com/term/知识蒸馏/" rel="noopener" target="_blank">知识蒸馏</a><br/>与 <a href="https://learn.specul.com/term/剪枝/" rel="noopener" target="_blank">剪枝</a>（压缩的另一条路）。</p>
+<p>本篇讲两支蒸馏的成本结构、官方范例、选型读法与许可边界。<br/>这里家族卡上的「派生自 X」标记（S53）用的就是本篇的谱系口径。</p></span><span data-en=""><p>The one-page explainers live on the Learn site: <a href="https://learn.specul.com/term/知识蒸馏/" rel="noopener" target="_blank">knowledge distillation</a><br/>and <a href="https://learn.specul.com/term/剪枝/" rel="noopener" target="_blank">pruning</a> (the other compression route).</p>
+<p>This guide covers the cost structure of the two distillation branches, the official examples, how to read the label when choosing, and the licence boundary.<br/>The “derived from X” marker on this site's family cards (S53) uses exactly this guide's lineage yardstick.</p></span>
+</section>
+<nav aria-label="下一步" class="fam-sec" data-ui-aria-label-en="Next steps" data-ui-aria-label-zh="下一步">
+<h2><span data-zh="">继续做什么</span><span data-en="">What to do next</span></h2>
+<ul><li><a href="gpu-cost-math.html#capacity-workbench"><span data-zh="">填写上下文与并发容量假设</span><span data-en="">Budget context and concurrency</span></a></li>
+<li><a href="https://learn.specul.com/guide/怎么验证%20AI%20的输出/"><span data-zh="">检查输出是否有依据</span><span data-en="">Verify evidence for the output</span></a></li>
+<li><a href="https://tools.specul.com/mcp/guides/failure-library.html#by-symptom"><span data-zh="">按症状排查</span><span data-en="">Troubleshoot by symptom</span></a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2><span data-zh="">出处</span><span data-en="">Sources</span></h2>
+<ul class="fam-src-list">
+<li><span data-zh="">知识蒸馏原始论文（arXiv 1503.02531，Hinton 等，软标签蒸馏，2026-10-20 直抓摘要页）</span><span data-en="">The original knowledge-distillation paper (arXiv 1503.02531, Hinton et al., soft-label distillation; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/1503.02531" rel="noopener" target="_blank">https://arxiv.org/abs/1503.02531</a></li>
+<li><span data-zh="">DistilBERT 论文（arXiv 1910.01108，自蒸馏减半 BERT 的公开范例，2026-10-20 直抓摘要页）</span><span data-en="">DistilBERT paper (arXiv 1910.01108, the public example of halving BERT via self-distillation; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/1910.01108" rel="noopener" target="_blank">https://arxiv.org/abs/1910.01108</a></li>
+<li><span data-zh="">MiniCPM 论文（arXiv 2404.06395，小模型训练含蒸馏阶段的小模型谱系，2026-10-20 直抓摘要页）</span><span data-en="">MiniCPM paper (arXiv 2404.06395, a small-model lineage whose training includes a distillation stage; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2404.06395" rel="noopener" target="_blank">https://arxiv.org/abs/2404.06395</a></li>
+<li><span data-zh="">DeepSeek-R1 论文（arXiv 2501.12948，用 R1 蒸馏 1.5B–70B 小模型的官方路线，2026-10-20 直抓摘要页）</span><span data-en="">DeepSeek-R1 paper (arXiv 2501.12948, the official route of distilling 1.5B–70B small models from R1; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2501.12948" rel="noopener" target="_blank">https://arxiv.org/abs/2501.12948</a></li>
+<li><span data-zh="">LLaMA 2 论文（arXiv 2307.09288，13B/34B 用 70B 生成数据蒸馏的官方说明，2026-10-20 直抓摘要页）</span><span data-en="">LLaMA 2 paper (arXiv 2307.09288, the official statement that 13B/34B were distilled from 70B-generated data; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2307.09288" rel="noopener" target="_blank">https://arxiv.org/abs/2307.09288</a></li>
+<li><span data-zh="">Gemma 技术报告（arXiv 2403.08295，基于 Gemini 技术栈训练，2026-10-20 直抓摘要页）</span><span data-en="">Gemma technical report (arXiv 2403.08295, trained on the Gemini technology stack; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2403.08295" rel="noopener" target="_blank">https://arxiv.org/abs/2403.08295</a></li>
+<li><span data-zh="">Llama Community License 原文页（官方许可文本入口，2026-10-20 直抓 200）</span><span data-en="">Llama Community License text page (entry to the official licence text; fetched directly, HTTP 200, 2026-10-20)</span>：<a href="https://www.llama.com/llama-license/" rel="noopener" target="_blank">https://www.llama.com/llama-license/</a></li>
+<li><span data-zh="">Gemma Terms of Use 原文页（官方许可文本入口，2026-10-20 直抓 200）</span><span data-en="">Gemma Terms of Use text page (entry to the official licence text; fetched directly, HTTP 200, 2026-10-20)</span>：<a href="https://ai.google.dev/gemma/terms" rel="noopener" target="_blank">https://ai.google.dev/gemma/terms</a></li>
+</ul>
+<p class="fam-foot"><span data-zh="">基础来源快照：2026-10-20；单项补充与补充范围见正文和来源标签。请回原始说明核对规格、方法与适用条件。</span><span data-en="">Base source snapshot: 2026-10-20; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</span></p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy"><span data-zh="">投机取巧 · specul.com</span><span data-en="">Specul · specul.com</span></span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh="">内容 CC BY 4.0</span><span data-en="">Content CC BY 4.0</span></a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh="">代码 MIT</span><span data-en="">Code MIT</span></a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank"><span data-zh="">源码</span><span data-en="">Source</span></a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/"><span data-zh="">演示</span><span data-en="">Demos</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/"><span data-zh="">开源</span><span data-en="">OSS</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/"><span data-zh="">算力</span><span data-en="">Compute</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/"><span data-zh="">论文</span><span data-en="">Papers</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/"><span data-zh="">导航</span><span data-en="">Directory</span></a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/legal.html"><span data-zh="">法律</span><span data-en="">Legal</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/legal.html#s8"><span data-zh="">隐私</span><span data-en="">Privacy</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/correct.html"><span data-zh="">纠错</span><span data-en="">Corrections</span></a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/"><span aria-hidden="true" class="ti">◎</span><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span aria-hidden="true" class="ti">▤</span><span data-zh="">学AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span aria-hidden="true" class="ti">◈</span><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span aria-hidden="true" class="ti">▦</span><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span aria-hidden="true" class="ti">▷</span><span data-zh="">演示</span><span data-en="">Demos</span></a>
+<a href="https://oss.specul.com/"><span aria-hidden="true" class="ti">▧</span><span data-zh="">开源</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span aria-hidden="true" class="ti">▣</span><span data-zh="">算力</span><span data-en="">Chips</span></a>
+<a href="https://papers.specul.com/"><span aria-hidden="true" class="ti">▥</span><span data-zh="">论文</span><span data-en="">Papers</span></a>
+<a href="https://chain.specul.com/"><span aria-hidden="true" class="ti">◇</span><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a data-nav-group="external" href="https://nav.specul.com/"><span aria-hidden="true" class="ti">↗</span><span data-zh="">导航</span><span data-en="">Nav</span></a>
 </nav>
 </body>
 </html>

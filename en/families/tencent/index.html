@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Tencent Hunyuan model family lineage card | Models</title>
+<meta content="An uncommon large-total/high-active Chinese open-weight family: production Hy4 is 770B total / 49B active, targeting visual understanding, long context…" name="description"/>
+<link href="https://models.specul.com/en/families/tencent/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/families/tencent/" property="og:url"/>
+<meta content="Tencent Hunyuan model family lineage card | Models" property="og:title"/>
+<meta content="An uncommon large-total/high-active Chinese open-weight family: production Hy4 is 770B total / 49B active, targeting visual understanding, long context…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"腾讯混元 家族谱系卡","description":"An uncommon large-total/high-active Chinese open-weight family: production Hy4 is 770B total / 49B active, targeting visual understanding, long context…","url":"https://models.specul.com/en/families/tencent/","dateModified":"2026-11-25"}</script>
+<meta content="Tencent Hunyuan model family lineage card | Models" name="twitter:title"/><meta content="An uncommon large-total/high-active Chinese open-weight family: production Hy4 is 770B total / 49B active, targeting visual understanding, long context…" name="twitter:description"/><link href="https://models.specul.com/families/tencent/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/families/tencent/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/families/tencent/" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/families/tencent/" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← All families</a></nav>
+<header class="page-head">
+<p class="eyebrow">Tencent　·　current generation Hy4 / Hy4 flash（2026-11）</p>
+<h1>Tencent Hunyuan<span class="sub">model family lineage card</span></h1>
+<p class="lede">An uncommon large-total/high-active Chinese open-weight family: production Hy4 is 770B total / 49B active, targeting visual understanding, long context and long-horizon agents, while Hy4 flash trades 224B total / 12B active for speed and cost. Weights opened on 2026-11-20 under the Tencent Hy License, not an OSI-standard licence; there is no GGUF coverage yet — read the licence text and the hardware floor before choosing.</p>
+<p class="fam-onsite fam-onsite-no">No GGUF coverage for Tencent Hunyuan on this site yet (below the quantisation-heat and verifiable-coverage threshold).</p>
+</header>
+<section class="fam-sec cn-sec">
+<h2>China availability <small>domestic / direct access / CAC filing · snapshot 2026-11-03</small></h2>
+<ul class="fam-claims cn-rows">
+<li><b>Origin</b>　domestic　Made by Tencent (Shenzhen).</li>
+<li><b>Direct access</b>　direct OK　Official hunyuan.tencent.com page reachable from the mainland (not re-tested item by item on 2026-11-03).　·　<a href="https://hunyuan.tencent.com/model/hy-model" rel="noopener" target="_blank">domestic mirror</a></li>
+<li><b>CAC filing</b>　filing unknown：Filing entries for Tencent Hunyuan not verified item by item; the CAC public registry is authoritative.</li>
+</ul>
+<p class="fam-claims-note">Filing status is quoted from the CAC public registry by number. "Direct access" means the page opened once from a mainland network — not a vendor promise.</p>
+<ul class="fam-src-list cn-srcs"><li>Tencent Hunyuan official model page: <a href="https://hunyuan.tencent.com/model/hy-model" rel="noopener" target="_blank">https://hunyuan.tencent.com/model/hy-model</a></li></ul>
+</section>
+<section class="fam-sec fam-fit">
+<h2>What it fits / what it does not</h2>
+<div class="fam-fit-grid">
+<article>
+<h3>Start here if</h3>
+<p>An uncommon large-total/high-active Chinese open-weight family: production Hy4 is 770B total / 49B active, targeting visual understanding, long context and long-horizon agents, while Hy4 flash trades 224B total / 12B active for speed and cost. Weights opened on 2026-11-20 under the Tencent Hy License, not an OSI-standard licence; there is no GGUF coverage yet — read the licence text and the hardware floor before choosing.</p>
+</article>
+<article>
+<h3>Rule it out first if</h3>
+<p>要跑最大档（Hy3：295B 总参（MoE，21B 激活），256K 上下文），显存和预算先按这一档估；小机器别拿最小档的体验代替。 许可含“非宽松许可：使用前须读腾讯混元发布页的许可原文，这里不解读条款。”，商用或再分发前先读原文；本页不替你判断。</p>
+</article>
+</div>
+<p class="fam-fit-next">Next: <a href="https://tools.specul.com/en/finder/">narrow to three candidates</a> · <a href="https://models.specul.com/en/license.html">check the licence</a> · <a href="https://tools.specul.com/en/guides/">open task playbooks</a></p>
+</section>
+<section class="fam-sec">
+<h2>Generations</h2>
+<ul class="fam-gens">
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Hy4</b><span class="fam-gen-date">2026-11-20</span></div>
+<p>Announced 2026-11-04 and open-sourced 2026-11-20: a 770B-total / 49B-active MoE with a 1M-token context and first-time visual understanding; weights shipped under the Tencent Hy License on GitHub, Hugging Face, ModelScope and GitCode with a system card.</p>
+<a class="fam-src" href="https://github.com/Tencent-Hunyuan/Hy4" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Hy4 flash</b><span class="fam-gen-date">2026-11-18</span></div>
+<p>Released 2026-11-16 and open-sourced 2026-11-18: 224B total parameters (including 64B Engram), 12B active, multimodal input and 1M context; pitched at high speed and low cost, with Hy4 flash / FP8 / Base in the open release.</p>
+<a class="fam-src" href="https://www.tencent.com/tencent-launches-hy4-flash-to-power-high-speed-cost-efficient-ai-deployment-for-everyday-workflows/" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Hy4 preview</b><span class="fam-gen-date">2026-08</span></div>
+<p>Previous preview: a 770B-total MoE with 49B active parameters and beyond one million tokens of context, positioned for long-horizon agents, coding and office work; preview and FP8 weights opened on 2026-08-28.</p>
+<a class="fam-src" href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Hy3 / Hy3 preview</b><span class="fam-gen-date">2026-07</span></div>
+<p>Hy3 launched officially in July 2026; the preview was released and open-sourced on 2026-04-23: 295B total, 21B active, up to 256K context, a hybrid fast/slow-thinking MoE.</p>
+<a class="fam-src" href="https://www.tencent.com/tencent-hunyuan-officially-releases-hy3-advancing-agent-capabilities-and-deeper-product-integration/" rel="noopener" target="_blank">official page ↗</a>
+</li>
+</ul>
+</section>
+<section class="fam-sec">
+<h2>Size tiers</h2>
+<ul class="fam-tiers"><li>Hy4: 770B total / 49B active (HF model card; plus 1.23B vision), 1M context</li><li>Hy4 flash: 224B total (64B Engram included, 12B active), 1M context</li><li>Hy4 Preview: 770B total / 49B active (comparison figure in the Hy4 flash release)</li><li>Hy3: 295B total (MoE, 21B active), 256K context</li></ul>
+</section>
+<section class="fam-sec">
+<h2>Licences</h2>
+<ul class="fam-lics"><li><a class="lic lic-tight" href="https://huggingface.co/search?license=other" rel="noopener" target="_blank">other</a><span class="fam-lic-txt">Non-permissive: read the licence text on the Tencent Hunyuan release page; this site does not interpret it.</span> <a class="fam-src" href="https://hunyuan.tencent.com/model/hy-model" rel="noopener" target="_blank">licence text ↗</a></li></ul>
+</section>
+<section class="fam-sec">
+<h2>Official capability claims (with sources)</h2>
+<ul class="fam-claims">
+<li>Tencent official: Hy4 launched on 2026-11-04, adding visual understanding for the first time and claiming clear gains in instruction following, long-context comprehension and long-horizon agentic tasks; the HF model card's 770B total / 49B active, weights and system card shipped together on 2026-11-20.<a class="fam-src" href="https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/" rel="noopener" target="_blank">source ↗</a></li>
+<li>Tencent official: Hy4 flash has 224B total parameters (including 64B Engram), 12B active, multimodal input and 1M context; the vendor calls it the most cost-effective Hy model to date. Hy4 flash, Hy4 flash-FP8 and Hy4 flash-base were open-sourced on 2026-11-18; the model card's detailed components sum to about 220B (roughly 4B below the 224B launch figure — state the basis when quoting).<a class="fam-src" href="https://www.tencent.com/tencent-launches-hy4-flash-to-power-high-speed-cost-efficient-ai-deployment-for-everyday-workflows/" rel="noopener" target="_blank">source ↗</a></li>
+<li>Tencent official: Hy4 preview has 770B total parameters, 49B active and a context beyond 1M tokens, pitched at long-horizon agents, coding and office work.<a class="fam-src" href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" rel="noopener" target="_blank">source ↗</a></li>
+<li>Tencent official: Hy3 preview has 295B total parameters, 21B active and up to 256K context, a hybrid fast/slow-thinking MoE.<a class="fam-src" href="https://www.tencent.com/zh-cn/articles/2202320.html" rel="noopener" target="_blank">source ↗</a></li>
+</ul>
+<p class="fam-claims-note">The above are quotations of official pages or transcriptions of vendor-run benchmarks; this site does not endorse cross-model conclusions.</p>
+</section>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list"><li>Tencent · Tencent Releases and Open-Sources Tencent Hy4 preview (official release, 2026-08): <a href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" rel="noopener" target="_blank">https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/</a></li><li>Tencent · Hunyuan Hy3 preview release (official page, 2026-04-24): <a href="https://www.tencent.com/zh-cn/articles/2202320.html" rel="noopener" target="_blank">https://www.tencent.com/zh-cn/articles/2202320.html</a></li><li>Tencent Hunyuan · official model page (Hy series specs): <a href="https://hunyuan.tencent.com/model/hy-model" rel="noopener" target="_blank">https://hunyuan.tencent.com/model/hy-model</a></li><li>Tencent · Tencent Launches Hy4 (2026-11-04): <a href="https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/" rel="noopener" target="_blank">https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/</a></li><li>Tencent · Tencent Launches Hy4 flash (2026-11-16): <a href="https://www.tencent.com/tencent-launches-hy4-flash-to-power-high-speed-cost-efficient-ai-deployment-for-everyday-workflows/" rel="noopener" target="_blank">https://www.tencent.com/tencent-launches-hy4-flash-to-power-high-speed-cost-efficient-ai-deployment-for-everyday-workflows/</a></li><li>Tencent Hunyuan · Hy4 official model card (770B total / 49B active, Tencent Hy License, system card; rechecked 2026-11-25): <a href="https://huggingface.co/tencent/Hy4" rel="noopener" target="_blank">https://huggingface.co/tencent/Hy4</a></li><li>Tencent Hunyuan · Hy4 flash official model card (open release includes flash / FP8 / base; Tencent Hy License; rechecked 2026-11-25): <a href="https://huggingface.co/tencent/Hy4-flash" rel="noopener" target="_blank">https://huggingface.co/tencent/Hy4-flash</a></li>
+</ul>
+<p class="fam-foot">Data as of 2026-11-25 — fields we did not measure are left blank.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

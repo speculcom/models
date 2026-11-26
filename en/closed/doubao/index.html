@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Doubao (closed API) closed model · official spec snapshot…</title>
+<meta content="The domestic closed flagship: the Doubao consumer app and the Doubao-Seed API are two lines of one family; the service is CAC-filed…" name="description"/>
+<link href="https://models.specul.com/en/closed/doubao/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/closed/doubao/" property="og:url"/>
+<meta content="Doubao (closed API) closed model · official spec snapshot…" property="og:title"/>
+<meta content="The domestic closed flagship: the Doubao consumer app and the Doubao-Seed API are two lines of one family; the service is CAC-filed…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"豆包（闭源 API） 闭源谱系卡","description":"The domestic closed flagship: the Doubao consumer app and the Doubao-Seed API are two lines of one family; the service is CAC-filed…","url":"https://models.specul.com/en/closed/doubao/","dateModified":"2026-11-25"}</script>
+<meta content="Doubao (closed API) closed model · official spec snapshot…" name="twitter:title"/><meta content="The domestic closed flagship: the Doubao consumer app and the Doubao-Seed API are two lines of one family; the service is CAC-filed…" name="twitter:description"/><link href="https://models.specul.com/closed/doubao/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/closed/doubao/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/closed/doubao/" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/closed/doubao/" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">ByteDance · Volcengine　·　closed model lineage card　·　current generation Doubao-Seed 2.1 line (Pro / Lite / Seed-Evolving) + SeedRealtime 1.0（2026-11）</p>
+<h1>Doubao (closed API)<span class="sub">closed model · official spec snapshot · with review cycle</span></h1>
+<p class="lede">The domestic closed flagship: the Doubao consumer app and the Doubao-Seed API are two lines of one family; the service is CAC-filed (Beijing-YunQue-20230821 — Doubao LLM is the renamed YunQue, confirmed on the official filing-disclosure page). Generations churn fast, so the card carries a check date and review interval.</p>
+<p class="closed-access"><b>How you can use it：</b>Volcengine Ark API and the Doubao app; weights are not open.</p>
+<p class="fam-onsite">No open weights, no quantisation coverage; the three-essentials light entry for the app lives on the tools site (chat section).</p>
+</header>
+<section class="fam-sec cn-sec">
+<h2>China availability <small>domestic / direct access / CAC filing · snapshot 2026-10-20</small></h2>
+<ul class="fam-claims cn-rows">
+<li><b>Origin</b>　domestic　Made by ByteDance (Beijing).</li>
+<li><b>Direct access</b>　direct OK　Volcengine and Doubao sites reachable direct from the mainland (measured 200 on 2026-10-30).</li>
+<li><b>CAC filing</b>　Filed：<code>Beijing-YunQue-20230821</code>　listed as<span data-source-name="" lang="zh-CN">「云雀（豆包大模型）」</span>　·　filed 2023-08-31　·　Filed in the first batch (row 3 of the public list: “YunQue model · Beijing Douyin Information Service Co.”); Doubao’s official filing page confirms Doubao is YunQue (Beijing-YunQue-20230821).</li>
+</ul>
+<p class="fam-claims-note">Filing status is quoted from the CAC public registry by number. "Direct access" means the page opened once from a mainland network — not a vendor promise.</p>
+<ul class="fam-src-list cn-srcs"><li>CAC · filed generative-AI service information (rolling announcement page, 13 batch attachment PDFs, full download &amp; search on 2026-10-20): <a href="https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm" rel="noopener" target="_blank">https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm</a></li><li>Doubao official filing disclosure page (search snapshot 2026-10-20: Doubao LLM = Beijing-YunQue-20230821): <a href="https://aweme.snssdk.com/aweme/v1/public/draft/douyin_agreement/" rel="noopener" target="_blank">https://aweme.snssdk.com/aweme/v1/public/draft/douyin_agreement/</a></li></ul>
+</section>
+<section class="fam-sec">
+<h2>Generations <small>as recorded by official releases and docs</small></h2>
+<ul class="fam-gens">
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Doubao-Seed-Realtime 1.0</b><span class="fam-gen-date">2026-11</span></div>
+<p>API live on 2026-11-19: a full-duplex, end-to-end realtime audio-video interaction model that natively fuses audio, video and text; on top of Seeduplex it adds video-frame / image input (≤2 FPS) and Volcengine image search, enabling proactive on-screen interaction.</p>
+<a class="fam-src" href="https://docs.volcengine.com/docs/doubao-voice/product-overview-13?lang=zh" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Seed-Evolving version update</b><span class="fam-gen-date">2026-11</span></div>
+<p>November 2026 Seed-Evolving update: officially positioned as a continuously upgraded Coding &amp; Agent model, 1024k context / 256k output (Volcengine Ark model marketplace).</p>
+<a class="fam-src" href="https://ai.volcengine.com/model" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Doubao-Seed 2.1 Pro / Lite 0915</b><span class="fam-gen-date">2026-09</span></div>
+<p>Pro / Lite 0915 launched on 2026-09-15: 1024k input; Pro supports 256k output and 256k thinking; Lite natively unifies text, vision and audio understanding (Volcengine Ark announcement).</p>
+<a class="fam-src" href="https://ark.volcengine.com/region:cn-beijing/model/detail?name=doubao-seed-2-1-pro" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Doubao-Seed 2.1</b><span class="fam-gen-date">2026-06</span></div>
+<p>Current line: the model marketplace lists doubao-seed-2-1-pro-260628 (256k context / 256k output) and 2.1-turbo; plus doubao-seed-evolving (1024k / 256k, pitched as a continuously upgraded Coding &amp; Agent model).</p>
+<a class="fam-src" href="https://ai.volcengine.com/model" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Doubao-Seed 2.0</b><span class="fam-gen-date">2026-02–04</span></div>
+<p>Previous line: 2.0-pro/lite/mini (256k context / 128k output; lite billed by the vendor as its "first omni-modal understanding model"); the 260215 snapshots are still marked "soon to be retired" on the Volcengine Ark model list, and Coze coding's low-code projects retired that build at 14:00 on 2026-11-24 — direct evidence of closed-line churn.</p>
+<a class="fam-src" href="https://ai.volcengine.com/model" rel="noopener" target="_blank">official page ↗</a>
+</li>
+</ul>
+</section>
+<section class="fam-sec">
+<h2>Official spec facts (each with a source) <small>as of</small></h2>
+<ul class="fam-claims cn-rows">
+<li><b>Context window</b>　2.1-pro-260915 / 2.1-lite-260915: 1024k input; 2.1-pro supports 256k max output and 256k max thinking (Volcengine Ark model detail)<a class="fam-src" href="https://ark.volcengine.com/region:cn-beijing/model/detail?name=doubao-seed-2-1-pro" rel="noopener" target="_blank">source ↗</a></li>
+<li><b>Pricing pointer</b>　Billed by tier and usage; this site does not copy numbers — see the official pricing table.<a class="fam-src" href="https://ark.volcengine.com/region:cn-beijing/model/detail?name=doubao-seed-2-1-pro" rel="noopener" target="_blank">source ↗</a></li>
+<li><b>Input modalities</b>　Text, image and video input; 2.1-lite natively unifies text, vision and audio understanding (Volcengine release announcement)<a class="fam-src" href="https://console.volcengine.com/ark/region:cn-beijing/docs/model-release-announcement" rel="noopener" target="_blank">source ↗</a></li>
+<li><b>What changed</b>　The 0915 release strengthens long-horizon agent execution, multimodal coding and multimodal understanding; the November Seed-Evolving update focuses on multi-step planning, result acceptance, tool use and factual consistency, with lower latency and cost per call (Volcengine announcement)<a class="fam-src" href="https://console.volcengine.com/ark/region:cn-beijing/docs/model-release-announcement" rel="noopener" target="_blank">source ↗</a></li>
+<li><b>Sibling generation lines</b>　Seedream 5.5 (image) and Seedance 2.5 Flash (video) went live on 2026-11-18; Seedance 2.5 Flash supports up to 30s, 480P/720P, and up to 10 images + 5 videos + 5 audio references (Volcengine model marketplace)<a class="fam-src" href="https://ark.volcengine.com/region:cn-beijing/model/detail?name=doubao-seed-2-1-pro" rel="noopener" target="_blank">source ↗</a></li>
+<li><b>Realtime audio-video line</b>　Doubao-Seed-Realtime 1.0 went live in the API on 2026-11-19: full-duplex, end-to-end, natively fusing audio, video and text; clients can push camera / screen frames at up to 2 FPS so the model can resolve references and track scene changes (Volcengine Doubao Voice product page / Android SDK docs).<a class="fam-src" href="https://docs.volcengine.com/docs/doubao-voice/product-overview-13?lang=zh" rel="noopener" target="_blank">source ↗</a></li>
+</ul>
+<p class="fam-claims-note">The above transcribe official docs and release pages; vendors may have changed specs since. For pricing, use the official pricing page linked below.</p>
+</section>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list"><li>Volcengine Ark · Doubao-Seed-2.1-pro model detail (1024k / 256k / pricing): <a href="https://ark.volcengine.com/region:cn-beijing/model/detail?name=doubao-seed-2-1-pro" rel="noopener" target="_blank">https://ark.volcengine.com/region:cn-beijing/model/detail?name=doubao-seed-2-1-pro</a></li><li>Volcengine Ark model release announcements (updated 2026-11-19: 2.1 Pro/Lite 0915, Seed-Evolving update): <a href="https://console.volcengine.com/ark/region:cn-beijing/docs/model-release-announcement" rel="noopener" target="_blank">https://console.volcengine.com/ark/region:cn-beijing/docs/model-release-announcement</a></li><li>ByteDance Seed · Seed2.1 official page: <a href="https://research.doubao.com/zh/seed2_1" rel="noopener" target="_blank">https://research.doubao.com/zh/seed2_1</a></li><li>Volcano Engine model marketplace (direct fetch 200 on 2026-10-30; specs and deprecation notes taken from this page): <a href="https://ai.volcengine.com/model" rel="noopener" target="_blank">https://ai.volcengine.com/model</a></li><li>Volcano Ark model list (console docs page, search snapshot 2026-10-30, same basis): <a href="https://console.volcengine.com/ark/region:cn-beijing/docs/model-list" rel="noopener" target="_blank">https://console.volcengine.com/ark/region:cn-beijing/docs/model-list</a></li><li>Volcengine · Doubao Voice product overview (realtime audio-video, updated 2026-11-19): <a href="https://docs.volcengine.com/docs/doubao-voice/product-overview-13?lang=zh" rel="noopener" target="_blank">https://docs.volcengine.com/docs/doubao-voice/product-overview-13?lang=zh</a></li><li>Volcengine · realtime audio-video Android SDK docs (Doubao-Seed-Realtime-1.0, ≤2 FPS frame input): <a href="https://docs.volcengine.com/docs/doubao-voice/end-to-end-full-duplex-android-sdk-documentation?lang=en" rel="noopener" target="_blank">https://docs.volcengine.com/docs/doubao-voice/end-to-end-full-duplex-android-sdk-documentation?lang=en</a></li><li>Coze · model retirement notice (doubao-seed-2-0-pro-260215 and others retired at 14:00 on 2026-11-24; rechecked 2026-11-25): <a href="https://docs.coze.cn/guides_model_offline_note" rel="noopener" target="_blank">https://docs.coze.cn/guides_model_offline_note</a></li>
+</ul>
+<p class="fam-foot">Data as of 2026-11-25 · 30-day review cycle · next look by 2026-12-25.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

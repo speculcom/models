@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Counting memory for a multimodal model…</title>
+<meta content="Split multimodal occupancy into three bills — encoder, projector files and decoder cache — with the source, unit (GiB) and scope stated for each. The KV…" name="description"/>
+<link href="https://models.specul.com/en/guides/multimodal-memory.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/guides/multimodal-memory.html" property="og:url"/>
+<meta content="Counting memory for a multimodal model…" property="og:title"/>
+<meta content="Split multimodal occupancy into three bills — encoder, projector files and decoder cache — with the source, unit (GiB) and scope stated for each. The KV…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Counting memory for a multimodal model","description":"Split multimodal occupancy into three bills — encoder, projector files and decoder cache — with the source, unit (GiB) and scope stated for each. The KV…","url":"https://models.specul.com/en/guides/multimodal-memory.html","dateModified":"2026-11-06"}</script>
+<meta content="Counting memory for a multimodal model…" name="twitter:title"/><meta content="Split multimodal occupancy into three bills — encoder, projector files and decoder cache — with the source, unit (GiB) and scope stated for each. The KV…" name="twitter:description"/><link href="https://models.specul.com/guides/multimodal-memory.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/multimodal-memory.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/multimodal-memory.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/guides/multimodal-memory.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">How models are made</p>
+<h1>Counting memory for a multimodal model<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
+<p class="lede">Split multimodal occupancy into three bills — encoder, projector files and decoder cache — with the source, unit (GiB) and scope stated for each. The KV formula covers only a standard same-layer full-attention decoder; it does not extend to encoders or to MLA, hybrid and sliding-window designs.</p>
+</header>
+<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">This guide counts three bills</a></li><li><a href="#guide-section-2">List the three bills separately</a></li><li><a href="#guide-section-3">The encoder and projector are their own layer</a></li><li><a href="#guide-section-4">How many tokens an image costs: read the configuration</a></li><li><a href="#guide-section-5">The KV formula only applies after tokens reach the decoder</a></li><li><a href="#guide-section-6">A fictional exercise: budgeting one image input</a></li><li><a href="#guide-section-7">Check and troubleshooting entry points</a></li><li><a href="#guide-section-8">How this differs from the Learn site</a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2>This guide counts three bills</h2>
+<p>Memory for a multimodal model is the total of three separate bills, not one number.</p>
+<p>The three are: encoder occupancy, projector and connector files, and the decoder side's weights plus cache.</p>
+<p>This site runs no models, reads no hardware and issues no occupancy conclusion for any multimodal model. What it can give is the split, the units and the boundaries.</p>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2>List the three bills separately</h2>
+<p>Asking "how much VRAM does it need" has no answer until the layers are split and each line records its own source.</p>
+<ul>
+<li>Text weights: the resident volume of the decoder backbone. A residency estimate, not the downloaded file's byte count.</li>
+<li>Encoder and projector: the image/audio path's own weights, which the runner loads as separate files.</li>
+<li>Runtime and temporary tensors: preprocessing, scheduling and CUDA-graph style overhead; left blank when not documented.</li>
+<li>Decoder cache: the KV that appears only after image tokens enter the context.</li>
+</ul>
+<p>If one line uses the wrong unit, the total is meaningless. This page books everything in GiB and converts decimal GB first.</p>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2>The encoder and projector are their own layer</h2>
+<p>Multimodal support is not the sentence "it accepts images"; it has its own files and switches.</p>
+<ul>
+<li>The runner needs the text file and the projector file at once: the official documentation describes <code>-m model.gguf</code> together with <code>--mmproj file.gguf</code>, one per side. Source: <a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/docs/multimodal.md" rel="noopener" target="_blank">docs/multimodal.md</a>.</li>
+<li>The projector is offloaded to the GPU by default, and the same documentation gives <code>--no-mmproj-offload</code> to stop that. This decides whether the line counts as VRAM or system memory.</li>
+<li>A projector file is more than a projection: the official quantize documentation says it may contain vision or audio encoders and other components.</li>
+<li>Conversion and quantisation are done separately: the documentation states that models accepting image or audio input need their encoders and projectors converted and quantised as well.</li>
+<li>OCR-style models carry their own prompt and input-structure requirements; the documentation points back to the model's instructions rather than chat-style feeding.</li>
+</ul>
+<p>The official quantize documentation adds a precision note: these components are usually kept in a high-quality format, and using a smaller quant affects speed and memory only slightly but can affect overall quality. That is the vendor's statement, not a measurement by this site.</p>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2>How many tokens an image costs: read the configuration</h2>
+<p>How many tokens an image becomes inside the decoder is set by the model and its preprocessing. It cannot be derived from file size.</p>
+<ul>
+<li>Take the figure from the official model configuration, preprocessing description or runner documentation. When none of the three gives it, this site writes that it is not stated rather than guessing from patch counts.</li>
+<li>The same model at another resolution, or with another resizing strategy, yields a different token count, and the cache line moves with it.</li>
+<li>How many images or video clips a request may carry is a limitable setting. vLLM's memory documentation lists parameters such as <code>limit_mm_per_prompt</code>; see <a href="https://docs.vllm.ai/en/latest/configuration/conserving_memory/" rel="noopener" target="_blank">conserving_memory</a>.</li>
+<li>The official documentation also warns that some models need a larger context window, with an example setting the context to 8192. A longer context mainly grows the cache line.</li>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2>The KV formula only applies after tokens reach the decoder</h2>
+<p>The standard decoder cache calculation is 2 × L × Hkv × D × B × C × N; divide the byte result by 1,073,741,824 to obtain GiB.</p>
+<p>Its scope is narrow: standard full-attention MHA/GQA decoders with identical layers and complete key/value state kept at every layer.</p>
+<p>MLA, hybrid state-space designs, sliding windows and architectures whose caches differ per layer are outside it, and encoders never produce this kind of cache.</p>
+<ul>
+<li>Count C as prompt tokens plus tokens produced from the image plus generated content, not text length alone.</li>
+<li>N assumes equal request lengths and no cache sharing; paging reuse and shared prefixes change the basis.</li>
+<li>vLLM's PagedAttention design document describes blocks holding a fixed number of tokens per head; see <a href="https://docs.vllm.ai/en/latest/design/paged_attention.html" rel="noopener" target="_blank">paged_attention</a>.</li>
+<li>Cache precision is a separate setting; the same memory documentation configures cache space in GiB.</li>
+</ul>
+<p>Fill the fields and see the arithmetic in the capacity workbench: <a href="https://models.specul.com/en/guides/gpu-cost-math.html#capacity-workbench" rel="noopener" target="_blank">context and concurrency budget</a>.</p>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2>A fictional exercise: budgeting one image input</h2>
+<p>Every number in this section is a fictional teaching assumption. It matches no real model, official page or result produced by this site.</p>
+<p>Assume text weights of 5 GiB, an encoder plus projector total of 1.5 GiB, and 1 GiB for runtime and reserve.</p>
+<p>Now assume each image becomes 256 tokens, one request carries 2 images, and prompt plus generated content totals 1,500 tokens, so C is 2,010 with N = 1.</p>
+<p>Under a standard same-layer full-attention MHA/GQA assumption with L 32, Hkv 8, D 128 and B at 2 bytes, KV is about 0.2 GiB and the total about 7.7 GiB.</p>
+<ul>
+<li>If the architecture cannot be confirmed (MLA, hybrid or sliding window), this calculation is void and the official method for that architecture must be used instead.</li>
+<li>Against an 8 GiB task-available budget the assumption leaves 0.3 GiB headroom. That figure promises neither a successful start nor image-understanding quality.</li>
+<li>To shrink the result, reduce image count, context length or concurrency. Each change moves that cache line.</li>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-7">
+<h2>Check and troubleshooting entry points</h2>
+<ul>
+<li>Load failures: first check whether the runner supports this architecture and projector combination; start at the <a href="https://tools.specul.com/en/mcp/guides/failure-library.html#files" rel="noopener" target="_blank">failure library</a>.</li>
+<li>Over budget: the entry point is <a href="https://tools.specul.com/en/mcp/guides/failure-library.html#memory" rel="noopener" target="_blank">memory troubleshooting</a>. Confirm units and assumptions before changing settings.</li>
+<li>Acceptance: use the <a href="https://tools.specul.com/en/mcp/guides/selftest-20.html" rel="noopener" target="_blank">20-item self-test</a> and write checkable fields for image tasks.</li>
+<li>For interface-level differences (OCR, speech, embedding, reranking) see the "Task models" guide on this site; the decoder KV formula is not applied to encoders there either.</li>
+<li>To record cost components per task use the <a href="https://tools.specul.com/en/mcp/guides/cost-calculator.html" rel="noopener" target="_blank">cost calculator</a>; this site stores no unit prices and predicts no machine output.</li>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-8">
+<h2>How this differs from the Learn site</h2>
+<p>The Learn site's <a href="https://learn.specul.com/en/term/%E5%A4%9A%E6%A8%A1%E6%80%81/" rel="noopener" target="_blank">multimodal</a>, <a href="https://learn.specul.com/en/term/%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E8%A7%A3%E7%A0%81%E5%99%A8/" rel="noopener" target="_blank">encoder and decoder</a> and <a href="https://learn.specul.com/en/term/%E6%98%BE%E5%AD%98/" rel="noopener" target="_blank">VRAM</a> pages are one-page explainers for users.</p>
+<p>This guide splits occupancy into three bills and states the source and scope for each.</p>
+<p>Same concept, different depth on each side, cross-linked without duplication. For bandwidth and cost composition see "GPU facts and cost math".</p>
+</section>
+<nav aria-label="Next steps" class="fam-sec">
+<h2>What to do next</h2>
+<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
+<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
+<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list">
+<li>llama.cpp multimodal documentation (libmtmd, --mmproj, and the default GPU offload of the projector; fetched directly 2026-11-06)：<a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/docs/multimodal.md" rel="noopener" target="_blank">https://raw.githubusercontent.com/ggml-org/llama.cpp/master/docs/multimodal.md</a></li>
+<li>llama.cpp quantize tool documentation (multimodal encoders and projectors need separate conversion and quantisation; fetched directly 2026-11-06)：<a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/quantize/README.md" rel="noopener" target="_blank">https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/quantize/README.md</a></li>
+<li>vLLM memory-conservation documentation (limit_mm_per_prompt and cache space configured in GiB; fetched directly 2026-11-06)：<a href="https://docs.vllm.ai/en/latest/configuration/conserving_memory/" rel="noopener" target="_blank">https://docs.vllm.ai/en/latest/configuration/conserving_memory/</a></li>
+<li>vLLM PagedAttention design document (blocks store a fixed number of tokens per head; fetched directly 2026-11-06)：<a href="https://docs.vllm.ai/en/latest/design/paged_attention.html" rel="noopener" target="_blank">https://docs.vllm.ai/en/latest/design/paged_attention.html</a></li>
+<li>NVIDIA GeForce RTX 4090 official specification page (published memory capacity; fetched directly 2026-11-06)：<a href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/" rel="noopener" target="_blank">https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/</a></li>
+</ul>
+<p class="fam-foot">Base source snapshot: 2026-11-06; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
+</section>
+<p class="t-sm dim">This page appears in: <a href="https://specul.com/en/topic-robot.html">Build a robot</a> · <a href="https://specul.com/en/topic-video.html">Make video with AI</a></p>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

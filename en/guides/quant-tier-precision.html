@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Quantisation tiers and accuracy loss: what can be said…</title>
+<meta content="Split tier names, bits per weight and accuracy loss into three layers: publishing-page facts, this site's derivation from the public naming standard, and…" name="description"/>
+<link href="https://models.specul.com/en/guides/quant-tier-precision.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/guides/quant-tier-precision.html" property="og:url"/>
+<meta content="Quantisation tiers and accuracy loss: what can be said…" property="og:title"/>
+<meta content="Split tier names, bits per weight and accuracy loss into three layers: publishing-page facts, this site's derivation from the public naming standard, and…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Quantisation tiers and accuracy loss: what can be said, and what cannot","description":"Split tier names, bits per weight and accuracy loss into three layers: publishing-page facts, this site's derivation from the public naming standard, and…","url":"https://models.specul.com/en/guides/quant-tier-precision.html","dateModified":"2026-11-06"}</script>
+<meta content="Quantisation tiers and accuracy loss: what can be said…" name="twitter:title"/><meta content="Split tier names, bits per weight and accuracy loss into three layers: publishing-page facts, this site's derivation from the public naming standard, and…" name="twitter:description"/><link href="https://models.specul.com/guides/quant-tier-precision.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/quant-tier-precision.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/quant-tier-precision.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/guides/quant-tier-precision.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">How models are made</p>
+<h1>Quantisation tiers and accuracy loss: what can be said, and what cannot<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
+<p class="lede">Split tier names, bits per weight and accuracy loss into three layers: publishing-page facts, this site's derivation from the public naming standard, and what must stay blank. It also states which line in the memory bill actually moves when a tier changes.</p>
+</header>
+<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">What this guide bounds</a></li><li><a href="#guide-section-2">What you can say: three supported statements</a></li><li><a href="#guide-section-3">What you cannot say: four boundaries</a></li><li><a href="#guide-section-4">A tier name describes size, not quality</a></li><li><a href="#guide-section-5">Where accuracy-loss statements come from</a></li><li><a href="#guide-section-6">Which line of the memory bill moves with a tier</a></li><li><a href="#guide-section-7">A fictional exercise: two tiers of one model</a></li><li><a href="#guide-section-8">How this fits the series pages and the Learn site</a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2>What this guide bounds</h2>
+<p>A quantisation tier name says how weights are stored. It does not carry a score for the model.</p>
+<p>This guide draws one line: which statements have evidence, and which must stay blank.</p>
+<p>This site downloads no weights, runs no evaluations, and issues no "this tier is enough" advice. What it offers is file size, naming arithmetic and the scope of the formulas.</p>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2>What you can say: three supported statements</h2>
+<p>The three statements below rest on publishing-page file listings and the public naming standard.</p>
+<ul>
+<li>Size: the byte count of a quantised file is in the publishing page's file listing and can be checked directly.</li>
+<li>Bits per weight: derived from the tier label under the public naming standard. This site marks it as a derivation, never as a measurement.</li>
+<li>Tier coverage: which tiers a quantiser publishes, and whether it ships an importance matrix, are also listing facts.</li>
+</ul>
+<p>On differences between methods, the official quantize documentation says only that they show up in disk size and inference speed, and its figures belong to its own example: <a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/quantize/README.md" rel="noopener" target="_blank">tools/quantize/README.md</a></p>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2>What you cannot say: four boundaries</h2>
+<p>A conclusion of this kind has to be re-established for every model, so this site does not write the four statements below.</p>
+<ul>
+<li>Not "this tier is good enough": sufficiency depends on the task and its pass criteria, not on the tier label.</li>
+<li>Not "drop a tier and gain X in speed": official documentation gives no proportion usable across models.</li>
+<li>Not "this quantiser is safer": implementations and tier selections differ, and there is no comparable published measure.</li>
+<li>No ranking across tiers, and no equation between a tier and "who it suits".</li>
+</ul>
+<p>When you need speed or quality evidence, record it in your own authorised environment against a fixed task. That reading is yours, not this site's.</p>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2>A tier name describes size, not quality</h2>
+<p>A tier label describes how weights are stored and roughly how large the file is. It carries no task-level quality meaning.</p>
+<p>Real bits per weight differ slightly between models under the same label, which is why this site marks the figure as derived.</p>
+<ul>
+<li>The official README lists integer bit widths covering 1.5, 2, 3, 4, 5, 6 and 8 bits; source: <a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md" rel="noopener" target="_blank">llama.cpp README</a>.</li>
+<li>The official quantize documentation includes an example table giving bits/weight and size in GiB per tier. Its heading states the figures belong to one specific 8B model; another model will not reproduce the same numbers.</li>
+<li>In fine-tuning, 4-bit is also a data-type choice: the paper abstract describes NF4 as information-theoretically optimal for normally distributed weights; source: <a href="https://arxiv.org/abs/2305.14314" rel="noopener" target="_blank">arXiv 2305.14314</a>. That is training load precision, a different layer from an inference GGUF tier label.</li>
+</ul>
+<p>This site assigns a tier only from the derived bits-per-weight value. The rule is written in the data specification and anyone can recompute it.</p>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2>Where accuracy-loss statements come from</h2>
+<p>The official quantize documentation states that quantisation may introduce accuracy loss. It says the loss is usually measured in perplexity (ppl) and/or Kullback-Leibler divergence (kld), and that a suitable importance matrix can reduce it.</p>
+<p>That sentence carries three usable facts, and stops there.</p>
+<ul>
+<li>Those metrics are language-modelling proxies, not performance on any concrete task.</li>
+<li>Published figures are bound to that document's own model, corpus and settings; they cannot be copied onto another model.</li>
+<li>Where the numbers are not published, this site records the gap instead of borrowing figures from elsewhere.</li>
+</ul>
+<p>How much drop is acceptable depends on the downstream task and its acceptance criteria. This site ran no evaluation and sets no default threshold.</p>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2>Which line of the memory bill moves with a tier</h2>
+<p>A tier changes the weights line of the bill. The cache does not shrink automatically unless the runtime explicitly supports a quantised cache.</p>
+<p>vLLM's quantisation documentation lists "Quantized KV Cache" as its own item, which shows weight precision and cache precision are two separate settings: <a href="https://docs.vllm.ai/en/latest/features/quantization/" rel="noopener" target="_blank">features/quantization</a>. The memory-conservation page on the same site configures cache space in GiB: <a href="https://docs.vllm.ai/en/latest/configuration/conserving_memory/" rel="noopener" target="_blank">conserving_memory</a>.</p>
+<p>Fill and check both lines in the capacity workbench: <a href="https://models.specul.com/en/guides/gpu-cost-math.html#capacity-workbench" rel="noopener" target="_blank">context and concurrency budget</a>.</p>
+<ul>
+<li>Scope: standard full-attention MHA/GQA decoders with identical layers and complete per-layer key/value state.</li>
+<li>Out of scope: MLA, hybrid state-space designs, sliding windows and architectures whose caches differ per layer need separate arithmetic.</li>
+<li>Units: write weights, cache and runtime reserve all in GiB; convert decimal GB before adding.</li>
+<li>Not established by this: whether a run starts, whether it stays within a time limit, and whether output passes. None of that is inside the formula.</li>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-7">
+<h2>A fictional exercise: two tiers of one model</h2>
+<p>Every number in this section is a fictional teaching assumption. It matches no real model, publishing page or result produced by this site.</p>
+<p>Assume a dense model's high-precision weights occupy 30 GiB, and the exercise swaps them for a 5 GiB tier. Context and concurrency stay fixed, with cache assumed at 2 GiB and runtime reserve at 1 GiB.</p>
+<p>Under those assumptions the totals are 33 GiB and 8 GiB. The difference only measures the weights line.</p>
+<p>Now assume 10 GiB is available for the task: the 5 GiB case leaves 2 GiB headroom and the 30 GiB case exceeds the budget. This is exercise arithmetic, not a run result.</p>
+<ul>
+<li>When a check fails, the next step is not blind tier-swapping but re-examining the residency assumption, the cache fields and the architecture scope.</li>
+<li>For size comparisons go back to block B of the series pages: it filters candidates by published size × 1.15, judges nothing, and does not guarantee that anything runs.</li>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-8">
+<h2>How this fits the series pages and the Learn site</h2>
+<p>Series pages answer "which files fit my size budget"; this guide answers "how far can a statement about those files be taken".</p>
+<ul>
+<li>List capacity and cache fields separately in the workbench: <a href="https://models.specul.com/en/guides/gpu-cost-math.html#capacity-workbench" rel="noopener" target="_blank">context and concurrency budget</a>.</li>
+<li>Record cost components with the <a href="https://tools.specul.com/en/mcp/guides/cost-calculator.html" rel="noopener" target="_blank">cost calculator</a>; this site stores no unit prices.</li>
+<li>Write the acceptance conditions first with the <a href="https://tools.specul.com/en/mcp/guides/selftest-20.html" rel="noopener" target="_blank">20-item self-test</a>, then decide whether a tier change is even the question.</li>
+</ul>
+<p>The Learn site's <a href="https://learn.specul.com/en/term/%E9%87%8F%E5%8C%96/" rel="noopener" target="_blank">quantisation</a>, <a href="https://learn.specul.com/en/term/%E9%87%8F%E5%8C%96%E6%96%B9%E6%B3%95/" rel="noopener" target="_blank">quantisation methods</a>, <a href="https://learn.specul.com/en/term/bpw/" rel="noopener" target="_blank">bpw</a> and <a href="https://learn.specul.com/en/term/%E5%9B%B0%E6%83%91%E5%BA%A6/" rel="noopener" target="_blank">perplexity</a> pages are one-page explainers for users.</p>
+<p>This guide gives the statement boundary and the capacity terms. Same concept, different depth, cross-linked without duplication.</p>
+</section>
+<nav aria-label="Next steps" class="fam-sec">
+<h2>What to do next</h2>
+<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
+<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
+<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list">
+<li>llama.cpp quantize tool documentation (accuracy loss usually measured in ppl and/or KL divergence; importance-matrix and requantisation notes; fetched directly 2026-11-06)：<a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/quantize/README.md" rel="noopener" target="_blank">https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/quantize/README.md</a></li>
+<li>llama.cpp official README (the integer bit widths it lists; fetched directly 2026-11-06)：<a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md" rel="noopener" target="_blank">https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md</a></li>
+<li>vLLM quantization documentation (lists quantized KV cache as a separate item; fetched directly 2026-11-06)：<a href="https://docs.vllm.ai/en/latest/features/quantization/" rel="noopener" target="_blank">https://docs.vllm.ai/en/latest/features/quantization/</a></li>
+<li>vLLM memory-conservation documentation (cache space configured in GiB; fetched directly 2026-11-06)：<a href="https://docs.vllm.ai/en/latest/configuration/conserving_memory/" rel="noopener" target="_blank">https://docs.vllm.ai/en/latest/configuration/conserving_memory/</a></li>
+<li>QLoRA paper abstract page (arXiv 2305.14314; describes the 4-bit NormalFloat data type; fetched directly 2026-11-06)：<a href="https://arxiv.org/abs/2305.14314" rel="noopener" target="_blank">https://arxiv.org/abs/2305.14314</a></li>
+</ul>
+<p class="fam-foot">Base source snapshot: 2026-11-06; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

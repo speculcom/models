@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>What keeping logs on your own machine actually means…</title>
+<meta content="Unpack &quot;logs stay local&quot; into three lines: where they are written, who can read them, and how long they persist. Each item points at the runner's own…" name="description"/>
+<link href="https://models.specul.com/en/guides/local-log-retention.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/guides/local-log-retention.html" property="og:url"/>
+<meta content="What keeping logs on your own machine actually means…" property="og:title"/>
+<meta content="Unpack &quot;logs stay local&quot; into three lines: where they are written, who can read them, and how long they persist. Each item points at the runner's own…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What keeping logs on your own machine actually means","description":"Unpack \"logs stay local\" into three lines: where they are written, who can read them, and how long they persist. Each item points at the runner's own…","url":"https://models.specul.com/en/guides/local-log-retention.html","dateModified":"2026-11-06"}</script>
+<meta content="What keeping logs on your own machine actually means…" name="twitter:title"/><meta content="Unpack &quot;logs stay local&quot; into three lines: where they are written, who can read them, and how long they persist. Each item points at the runner's own…" name="twitter:description"/><link href="https://models.specul.com/guides/local-log-retention.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/local-log-retention.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/local-log-retention.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/guides/local-log-retention.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">How models are made</p>
+<h1>What keeping logs on your own machine actually means<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
+<p class="lede">Unpack "logs stay local" into three lines: where they are written, who can read them, and how long they persist. Each item points at the runner's own documentation, and explains why disk encryption, backup sync and bind address are not contained in those four words.</p>
+</header>
+<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">A storage-location statement, not a confidentiality promise</a></li><li><a href="#guide-section-2">Separate the three lines first</a></li><li><a href="#guide-section-3">Where the files land by default</a></li><li><a href="#guide-section-4">Local files do not stay local by themselves</a></li><li><a href="#guide-section-5">What the logs actually carry</a></li><li><a href="#guide-section-6">Retention and deletion, in order</a></li><li><a href="#guide-section-7">The capacity and cost side-effect</a></li><li><a href="#guide-section-8">What this does and does not establish</a></li><li><a href="#guide-section-9">How this differs from the Learn site</a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2>A storage-location statement, not a confidentiality promise</h2>
+<p>"Keeping logs local" is a statement about where files are written. It is not a confidentiality promise.</p>
+<p>It says the target path is on this machine. It does not say who can read them, whether copies exist elsewhere, or how long they persist.</p>
+<p>This site does not judge any compliance obligation for you and never writes "local" as "safe". This guide gives the checking order and where the evidence lives.</p>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2>Separate the three lines first</h2>
+<p>The three questions need three kinds of evidence; collapsing them into the word "local" loses things.</p>
+<ul>
+<li>Where they are written: logs, chat history, crash dumps, caches and temporary files are separate targets.</li>
+<li>Who can read them: account permissions, process permissions, whether the volume is encrypted, and whether backups synchronise.</li>
+<li>How long they persist: rotation policy, retention ceiling, and whether historical copies survive deletion.</li>
+</ul>
+<p>When documentation gives no answer there is one handling rule: <b>record it as not stated</b>. Do not substitute "that is how it usually goes" for an answer.</p>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2>Where the files land by default</h2>
+<p>Only the runner's own documentation answers this layer. This site reads no machine on your behalf.</p>
+<ul>
+<li>Ollama's troubleshooting page gives log locations: macOS reads <code>~/.ollama/logs/server.log</code>; Windows points at the <code>%LOCALAPPDATA%\Ollama</code> folder; Linux is viewed with <code>journalctl -u ollama</code>. Location: <a href="https://docs.ollama.com/troubleshooting" rel="noopener" target="_blank">troubleshooting</a>.</li>
+<li>The same vendor's FAQ page states models are stored under <code>~/.ollama/models</code>; see <a href="https://docs.ollama.com/faq" rel="noopener" target="_blank">faq</a>. Model files and logs are different objects with different retention settings.</li>
+<li>vLLM exposes logging as separate switches: <code>VLLM_CONFIGURE_LOGGING</code>, <code>VLLM_LOGGING_LEVEL</code>, <code>VLLM_LOG_STATS_INTERVAL</code>; see <a href="https://docs.vllm.ai/en/latest/configuration/env_vars/" rel="noopener" target="_blank">env_vars</a>.</li>
+<li>The llama-server argument list includes <code>--log-disable</code> and <code>--api-key</code>; see the <a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/server/README.md" rel="noopener" target="_blank">server argument documentation</a>. Whether request content is written, and at what level, follows that page and the version in use.</li>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2>Local files do not stay local by themselves</h2>
+<p>Four channels make "kept local" inaccurate, and each needs handling on its own.</p>
+<ul>
+<li>Backup and sync: cloud drives and system backup tools copy the log folder along with everything else, and the copy leaves the original path's control.</li>
+<li>Encryption and where the key goes: Microsoft's BitLocker overview states that full-volume encryption addresses data theft or exposure from lost or stolen devices, and the same page says device encryption backs the recovery key up to Microsoft Entra ID, AD DS or the user's Microsoft account. See <a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener" target="_blank">BitLocker Overview</a>.</li>
+<li>Bind address: Ollama's documentation changes the bind address with <code>OLLAMA_HOST</code>; see <a href="https://docs.ollama.com/faq" rel="noopener" target="_blank">faq</a>. Bound to all interfaces, other machines on the same network can send requests.</li>
+<li>Credentials: settings such as <code>--api-key</code> decide who may call the local service, and both the key and the traffic it protects can appear in other logs.</li>
+</ul>
+<p>Encryption protects data at rest; where the key lives is a separate matter. All four channels can be closed, but none closes automatically because of the word "local".</p>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2>What the logs actually carry</h2>
+<p>Log content is decided by the runner, and this site assumes no fields on any implementation's behalf. Check the four categories separately.</p>
+<ul>
+<li>Request side: prompt text, attachments or file paths, tool-call arguments, system prompt content.</li>
+<li>Response side: generated text, error messages, and where output was truncated.</li>
+<li>Runtime side: timestamps, durations, concurrency, request identifiers and caller addresses.</li>
+<li>Derived copies: crash dumps, response bodies written while a debug switch is on, and statistics logged at an interval.</li>
+</ul>
+<p>One vLLM variable writes API-server responses to the log for debugging. Another records statistics at an interval. On and off are two different facts.</p>
+<p>Whether a field is persisted, into which file, and at what level all go back to that runner's documentation rather than to convention.</p>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2>Retention and deletion, in order</h2>
+<p>Skip one step in this order and deletion becomes an illusion. Do the five steps in sequence and date each one.</p>
+<ul>
+<li>First list the write points: logs, chat history, cache, temporary files and crash folders as separate lines.</li>
+<li>Then set the ceiling: rotation by age or by size, and who configured it.</li>
+<li>Then look for copies: backups, sync folders, snapshots and container volumes.</li>
+<li>After deleting, re-check: inspect the original path and the copy locations once each, with a record for both.</li>
+<li>Finally record the scope: what was checked, on which date, and how far the conclusion reaches.</li>
+</ul>
+<p>Step five proves only the state on the day it was recorded. It proves nothing about the past and guarantees nothing about the future.</p>
+</section>
+<section class="fam-sec" id="guide-section-7">
+<h2>The capacity and cost side-effect</h2>
+<p>Logs consume disk, not the memory budget the capacity workbench calculates. Keep the two bills in separate columns.<br/>- Estimate growth yourself as daily writes times retention days; this site publishes no generic figure.<br/>- Task-memory assumptions, fields and units are entered in the workbench: <a href="https://models.specul.com/en/guides/gpu-cost-math.html#capacity-workbench" rel="noopener" target="_blank">context and concurrency budget</a>.<br/>- Record cost components with the <a href="https://tools.specul.com/en/mcp/guides/cost-calculator.html" rel="noopener" target="_blank">cost calculator</a>; storage and backup are separate lines inside it.<br/>- The workbench's KV formula covers only standard full-attention MHA/GQA decoders with identical layers and has no derivation link to log retention. MLA, hybrid and sliding-window designs need separate arithmetic, and disk is not in that formula at all.</p>
+</section>
+<section class="fam-sec" id="guide-section-8">
+<h2>What this does and does not establish</h2>
+<p>What can be said: this machine can list its write points, permissions and retention periods, and each check carries a date.</p>
+<p>What cannot be said: that running locally satisfies a given compliance requirement; that encryption means nobody can read it; that deleting a file means no copy exists.</p>
+<ul>
+<li>No legal opinion, and no substitute for obligations in your own jurisdiction.</li>
+<li>No ranking of "which deployment is more private", and no calling a particular runner safer.</li>
+<li>Fields not checked stay blank; local convention is not used to fill them in as facts.</li>
+</ul>
+<p>Result checks and troubleshooting entry points: the <a href="https://tools.specul.com/en/mcp/guides/selftest-20.html" rel="noopener" target="_blank">20-item self-test</a> and <a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom" rel="noopener" target="_blank">troubleshooting by symptom</a>.</p>
+</section>
+<section class="fam-sec" id="guide-section-9">
+<h2>How this differs from the Learn site</h2>
+<p>The Learn site's <a href="https://learn.specul.com/en/term/%E6%95%B0%E6%8D%AE%E9%A9%BB%E7%95%99/" rel="noopener" target="_blank">data residency</a>, <a href="https://learn.specul.com/en/term/%E9%9A%90%E7%A7%81%E4%B8%8E%E5%90%88%E8%A7%84/" rel="noopener" target="_blank">privacy and compliance</a>, <a href="https://learn.specul.com/en/term/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" rel="noopener" target="_blank">local deployment</a> and <a href="https://learn.specul.com/en/term/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" rel="noopener" target="_blank">observability</a> pages are one-page explainers for users.</p>
+<p>This guide gives the checking order, evidence locations and statement boundaries. Same concept, different depth, cross-linked without duplication.</p>
+<p>For the pre-run overview see "Seven checks before a local run starts", and for formula limits see "GPU facts and cost math".</p>
+</section>
+<nav aria-label="Next steps" class="fam-sec">
+<h2>What to do next</h2>
+<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
+<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
+<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list">
+<li>Ollama troubleshooting documentation (log locations on macOS and Windows, and the Linux viewing command; fetched directly 2026-11-06)：<a href="https://docs.ollama.com/troubleshooting" rel="noopener" target="_blank">https://docs.ollama.com/troubleshooting</a></li>
+<li>Ollama FAQ documentation (model storage directory and the OLLAMA_HOST bind address; fetched directly 2026-11-06)：<a href="https://docs.ollama.com/faq" rel="noopener" target="_blank">https://docs.ollama.com/faq</a></li>
+<li>vLLM environment variable documentation (logging configuration, level, statistics interval and debug switches; fetched directly 2026-11-06)：<a href="https://docs.vllm.ai/en/latest/configuration/env_vars/" rel="noopener" target="_blank">https://docs.vllm.ai/en/latest/configuration/env_vars/</a></li>
+<li>llama.cpp llama-server argument documentation (lists --log-disable and --api-key; fetched directly 2026-11-06)：<a href="https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/server/README.md" rel="noopener" target="_blank">https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/server/README.md</a></li>
+<li>Microsoft Learn BitLocker overview (full-volume encryption scope and where device-encryption recovery keys are backed up; fetched directly 2026-11-06)：<a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" rel="noopener" target="_blank">https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/</a></li>
+</ul>
+<p class="fam-foot">Base source snapshot: 2026-11-06; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

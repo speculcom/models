@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Eleven key nodes rewrote the 2026 selection table | Models</title>
+<meta content="Only 2026 models that change selection: GLM-5.4, Tencent Hy4, Inkling 2 Small, Inkling 2 Mini, Mistral Large 4, Muse Spark, MiMo-V2.6, DeepSeek V4.1…" name="description"/>
+<link href="https://models.specul.com/en/2026.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/2026.html" property="og:url"/>
+<meta content="Eleven key nodes rewrote the 2026 selection table | Models" property="og:title"/>
+<meta content="Only 2026 models that change selection: GLM-5.4, Tencent Hy4, Inkling 2 Small, Inkling 2 Mini, Mistral Large 4, Muse Spark, MiMo-V2.6, DeepSeek V4.1…" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<style>
+.u26-hero{padding:24px 0 14px}
+.u26-kicker{margin:0 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-weight:650}
+.u26-h1{margin:0;max-width:20ch;font-size:clamp(30px,4.3vw,52px);line-height:1.1;letter-spacing:-.03em;color:var(--ink)}
+.u26-lede{margin:12px 0 0;max-width:70ch;font-size:15px;line-height:1.62;color:var(--ink-mid)}
+.u26-note{margin:12px 0 0;max-width:72ch;padding:10px 12px;border-left:2px solid var(--cyan);background:var(--brand-soft);font-size:13px;line-height:1.6;color:var(--ink-mid)}
+.u26-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.u26-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--ink-mid);background:var(--bg-panel)}
+.u26-chip b{color:var(--cyan);font-variant-numeric:tabular-nums}
+.u26-section{padding:24px 0;border-top:1px solid var(--line)}
+.u26-h2{margin:0 0 6px;font-size:clamp(22px,2.8vw,32px);line-height:1.2;color:var(--ink)}
+.u26-sub{margin:0 0 12px;font-size:13px;line-height:1.6;color:var(--ink-faint);max-width:68ch}
+.u26-figure{margin:0 0 14px;padding:12px 12px 8px;border:1px solid var(--line);border-radius:14px;background:var(--bg-panel)}
+.u26-figure figcaption{margin-top:6px;font-size:11px;line-height:1.5;color:var(--ink-faint)}
+.u26-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px}
+.u26-card{grid-column:span 6;min-width:0;padding:14px 14px 12px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--bg-panel),var(--bg-inset))}
+.u26-card.wide{grid-column:span 12}
+.u26-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:6px}
+.u26-badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;border:1px solid var(--brand-line);background:var(--brand-soft);color:var(--cyan);font-size:11px;font-variant-numeric:tabular-nums}
+.u26-tag{font-size:11px;color:var(--ink-faint)}
+.u26-card h2{margin:0 0 6px;font-size:17px;line-height:1.3;color:var(--ink)}
+.u26-card .u26-p{margin:0;font-size:13px;line-height:1.62;color:var(--ink-mid)}
+.u26-dl{display:grid;grid-template-columns:auto 1fr;gap:5px 10px;margin:10px 0 0;padding:8px 0 2px;border-top:1px dashed var(--line);font-size:12px;line-height:1.5}
+.u26-dl dt{color:var(--ink-faint)}
+.u26-dl dd{margin:0;color:var(--ink)}
+.u26-block{margin-top:9px;padding-top:7px;border-top:1px dashed var(--line)}
+.u26-block b{display:block;margin-bottom:3px;font-size:11px;letter-spacing:.04em;color:var(--cyan)}
+.u26-block p{margin:0;font-size:12px;line-height:1.6;color:var(--ink-mid)}
+.u26-boundary{border-left:2px solid var(--warn);padding-left:9px}
+.u26-src{margin:10px 0 0;font-size:11px;line-height:1.6;color:var(--ink-faint);overflow-wrap:anywhere}
+.u26-src a{color:var(--ink-mid);text-decoration:none;border-bottom:1px solid var(--line)}
+.u26-brief{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg-panel)}
+.u26-row{display:grid;grid-template-columns:82px 1fr auto;gap:10px;align-items:start;padding:10px 12px;border-bottom:1px solid var(--line)}
+.u26-row:last-child{border-bottom:0}
+.u26-row time{font-size:11px;color:var(--cyan);font-variant-numeric:tabular-nums;padding-top:2px}
+.u26-row b{display:block;font-size:14px;line-height:1.4;color:var(--ink)}
+.u26-row p{margin:3px 0 0;font-size:12px;line-height:1.55;color:var(--ink-mid)}
+.u26-row a{font-size:11px;color:var(--ink-faint);text-decoration:none;white-space:nowrap}
+.u26-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.u26-two .u26-card{grid-column:auto}
+.u26-quote{margin:10px 0 0;padding:9px 10px;border-left:2px solid var(--brand-line);background:var(--bg-inset);font-size:12px;line-height:1.6;color:var(--ink-mid);overflow-wrap:anywhere}
+.u26-list{display:grid;gap:6px;margin:10px 0 0}
+.u26-list div{display:grid;grid-template-columns:26px 1fr;gap:8px;font-size:12px;line-height:1.55;color:var(--ink-mid)}
+.u26-list b{color:var(--cyan);font-variant-numeric:tabular-nums}
+.u26-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:2px 0 14px}
+.u26-lane{padding:12px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--bg-panel),var(--bg-inset))}
+.u26-lane>b{display:block;font-size:12px;letter-spacing:.06em;color:var(--cyan)}
+.u26-lane>span{display:block;margin:3px 0 9px;font-size:11px;line-height:1.5;color:var(--ink-faint)}
+.u26-lane a{display:grid;grid-template-columns:48px 1fr;gap:8px;padding:6px 0;border-top:1px dashed var(--line);font-size:11px;line-height:1.5;color:var(--ink-mid)}
+.u26-lane a time{color:var(--ink-faint);font-variant-numeric:tabular-nums}
+.u26-lane a:hover{color:var(--ink)}
+.u26-chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 14px;counter-reset:step}
+.u26-chain div{position:relative;padding:11px 10px 10px;border:1px solid var(--line);border-radius:12px;background:var(--bg-panel)}
+.u26-chain div:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink-faint)}
+.u26-chain b{display:block;font-size:11px;letter-spacing:.05em;color:var(--cyan)}
+.u26-chain span{display:block;margin-top:4px;font-size:13px;line-height:1.4;color:var(--ink)}
+.nf-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:clamp(24px,5vw,56px);align-items:center}
+.nf-art{opacity:.95}
+.nf-art svg{display:block;width:100%;height:auto}
+@media(max-width:900px){.u26-card{grid-column:span 12}.u26-two{grid-template-columns:1fr}.u26-row{grid-template-columns:70px 1fr}.u26-row a{display:none}.u26-map{grid-template-columns:1fr}.u26-chain{grid-template-columns:1fr 1fr}.u26-chain div:nth-child(2)::after{content:none}.nf-grid{grid-template-columns:1fr}.nf-art{max-width:200px;margin:8px auto 0}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Eleven key nodes rewrote the 2026 selection table | Models","description":"Only 2026 models that change selection: GLM-5.4, Tencent Hy4, Inkling 2 Small, Inkling 2 Mini, Mistral Large 4, Muse Spark, MiMo-V2.6, DeepSeek V4.1…","url":"https://models.specul.com/en/2026.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/2026.html"}}</script>
+<meta content="Eleven key nodes rewrote the 2026 selection table | Models" name="twitter:title"/><meta content="Only 2026 models that change selection: GLM-5.4, Tencent Hy4, Inkling 2 Small, Inkling 2 Mini, Mistral Large 4, Muse Spark, MiMo-V2.6, DeepSeek V4.1…" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/2026.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<section class="u26-hero"><div class="container">
+<p class="u26-kicker">Models · 2026 additions · 2026-11-24</p>
+<h1 class="u26-h1">Eleven key nodes rewrote the 2026 selection table</h1>
+<p class="u26-lede">Only 2026 models that change selection: GLM-5.4, Tencent Hy4, Inkling 2 Small, Inkling 2 Mini, Mistral Large 4, Muse Spark, MiMo-V2.6, DeepSeek V4.1 Flash, GLM-5.3, Nous Arete-27B, plus the Kimi K3 date correction. Each states specs, licence and what it does not claim.</p>
+<p class="u26-note">Parameters, context and licence come from official model cards; capability scores are third-party indices and labelled. This site does not rank models or treat vendor claims as measurement. GLM-5.4 is a closed release with no weights yet and is labelled as such; one quantisation result does not get its own model card: NariQ compresses Qwen3.8-27B to 3.0 / 2.5 bpw (10.1 / 8.4GB) and stays level with BF16 on DeepSWE and Terminal Bench; 2.0bpw degrades. See the papers site.</p>
+</div></section>
+<section class="u26-section"><div class="container">
+<figure class="u26-figure"><svg aria-label="Timeline" class="vz-svg" role="img" viewbox="0 0 760 546" xmlns="http://www.w3.org/2000/svg">
+<text class="vz-t-dim" text-anchor="end" x="104" y="27">2026-11-23</text>
+<line class="vz-axis" x1="120" x2="120" y1="10" y2="54"></line>
+<circle cx="120" cy="22" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="27">GLM-5.4</text>
+<text class="vz-t-dim" x="140" y="47">闭源 / 旗舰</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="75">2026-11-20</text>
+<line class="vz-axis" x1="120" x2="120" y1="58" y2="102"></line>
+<circle cx="120" cy="70" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="75">腾讯 Hy4</text>
+<text class="vz-t-dim" x="140" y="95">开放权重 / 旗舰</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="123">2026-11-20</text>
+<line class="vz-axis" x1="120" x2="120" y1="106" y2="150"></line>
+<circle cx="120" cy="118" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="123">Inkling 2 Mini</text>
+<text class="vz-t-dim" x="140" y="143">开放权重 / 本地</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="171">2026-11-06</text>
+<line class="vz-axis" x1="120" x2="120" y1="154" y2="198"></line>
+<circle cx="120" cy="166" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="171">Nous Arete-27B</text>
+<text class="vz-t-dim" x="140" y="191">开放权重 / 再调</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="219">2026-11-05</text>
+<line class="vz-axis" x1="120" x2="120" y1="202" y2="246"></line>
+<circle cx="120" cy="214" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="219">Inkling 2 Small</text>
+<text class="vz-t-dim" x="140" y="239">开放权重 / 旗舰</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="267">2026-10-29</text>
+<line class="vz-axis" x1="120" x2="120" y1="250" y2="294"></line>
+<circle cx="120" cy="262" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="267">Mistral Large 4</text>
+Open weights
+<text class="vz-t-dim" text-anchor="end" x="104" y="315">2026-10-15</text>
+<line class="vz-axis" x1="120" x2="120" y1="298" y2="342"></line>
+<circle cx="120" cy="310" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="315">Meta Muse Spark Open</text>
+Open weights
+<text class="vz-t-dim" text-anchor="end" x="104" y="363">2026-09-22</text>
+<line class="vz-axis" x1="120" x2="120" y1="346" y2="390"></line>
+<circle cx="120" cy="358" r="6" style="fill:var(--cat-violet)"></circle>
+Xiaomi MiMo-V2.6
+Open source
+<text class="vz-t-dim" text-anchor="end" x="104" y="411">2026-09-10</text>
+<line class="vz-axis" x1="120" x2="120" y1="394" y2="438"></line>
+<circle cx="120" cy="406" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="411">DeepSeek V4.1 Flash</text>
+Open weights
+<text class="vz-t-dim" text-anchor="end" x="104" y="459">2026-08-14</text>
+<line class="vz-axis" x1="120" x2="120" y1="442" y2="486"></line>
+<circle cx="120" cy="454" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="459">GLM-5.3</text>
+Open weights
+<text class="vz-t-dim" text-anchor="end" x="104" y="507">2026-07-27</text>
+<line class="vz-axis" x1="120" x2="120" y1="490" y2="534"></line>
+<circle cx="120" cy="502" r="6" style="fill:var(--cat-violet)"></circle>
+<text class="vz-t-strong" x="140" y="507">Kimi K3</text>
+Open weights / corrections</svg><figcaption>Newest first by official release / open-weights date; Kimi K3 is a date correction, not a new release.</figcaption></figure>
+<div class="u26-grid"><article class="u26-card" id="glm-5-4">
+<div class="u26-meta"><span class="u26-badge">2026-11-23</span><span class="u26-tag">Closed API / frontier</span></div>
+<h2>GLM-5.4: the first Loop Transformer flagship</h2>
+<p class="u26-p">Z.ai runs 28 layers of its 750B base through two loops, trading repeated compute for reasoning depth without adding parameters; it claims intelligence in the 2–3T class. Native multimodality and “generalised coding” are the pitch, extending beyond code to video, game development and 3D modelling. Announced 2026-11-23; the API and open weights are not out yet.</p>
+<dl class="u26-dl"><dt>Base</dt><dd>750B；28 层循环两遍（Loop Transformer）</dd><dt>Vendor claim</dt><dd>智能水平 2–3T 级模型（厂商口径，无公开基准分）</dd><dt>Modality</dt><dd>原生多模态；文本、图像、视频、3D 场景</dd><dt>Use</dt><dd>泛 Coding：编程、视频创作、游戏开发、3D 建模</dd><dt>Status</dt><dd>2026-11-23 发布；API 与开源权重未放</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It represents a 2026 route: instead of pushing parameters to 2T, loop the same layers and make compute depth a new scaling axis. For teams watching inference cost, long-horizon agents and multimodal coding, it is a required comparison point — but it is an announcement, not deployable weights.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>“2–3T class” is a vendor claim with no published benchmark scores; looping twice means roughly double the compute at the same parameter count, so 750B is not 750B of compute cost. It is not open weights and cannot be hosted locally; neither API nor weights are available, and announcement time is not availability time. It does not claim looping always beats a wider model, or that 750B already exceeds a 2T model.</p></div>
+<p class="u26-src">Sources：<a href="https://z.ai/blog/glm-5.4" rel="noopener" target="_blank">Z.ai official blog</a> · <a href="https://www.zhipuai.cn/zh/research" rel="noopener" target="_blank">Z.ai research page</a> · <a href="https://docs.z.ai/guides/llm/glm-5.4" rel="noopener" target="_blank">GLM-5.4 docs</a></p>
+</article><article class="u26-card" id="tencent-hy4">
+<div class="u26-meta"><span class="u26-badge">2026-11-20</span><span class="u26-tag">Open weights / frontier</span></div>
+<h2>Tencent Hy4: 770B / 49B active, weights open</h2>
+<p class="u26-p">Hy4 was announced 2026-11-04 and open-sourced 2026-11-20: a 770B-total, 49B-active MoE with over one million tokens of context and first-time visual understanding; weights are under the Tencent Hy License (not an OSI-standard licence) on GitHub, Hugging Face, ModelScope and GitCode, so read the licence text before commercial use. The same batch includes Hy4 flash: 224B total (including 64B Engram), 12B active, multimodal input and 1M context.</p>
+<dl class="u26-dl"><dt>Total / active</dt><dd>Hy4：770B / 49B；Hy4 flash：224B / 12B（含 64B Engram）</dd><dt>Context</dt><dd>超过 1M tokens</dd><dt>Modality</dt><dd>Hy4 首次支持视觉理解；flash 支持多模态输入</dd><dt>Licence</dt><dd>Tencent Hy License（非 OSI 标准许可，以模型卡与许可原文为准）</dd><dt>Weights</dt><dd>GitHub、Hugging Face、ModelScope、GitCode 同步；含 FP8 / Base</dd><dt>API price</dt><dd>官方 2026-11-16 价目表：US$0.834 / 百万输入、US$2.501 / 百万输出（标准价）</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It puts 770B-class capacity, 1M context and visual input into open weights under the Tencent Hy License, and this is not a preview: Hy4 preview shipped in August, while this release adds the production weights and system card. For Chinese teams that need a self-hosted flagship and will read the licence clause by clause, Hy4 and Hy4 flash form flagship / value tiers, with flash’s 12B activation better suited to cost-sensitive deployment.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>770B total means server-class weight loading and inference; 49B is active per token, not total compute, and 1M is a ceiling with a separate KV-cache cost. The production model card fills in the full parameter table, but third-party evaluations remain thinner than the preview material; vendor claims cannot replace your own task evaluation. The Tencent Hy License permits commercial use within its terms but is not Apache-2.0; the system card’s safety boundaries and prohibited uses still apply. It is not a small model, nor a homogeneous scale-up of Hy4 flash.</p></div>
+<p class="u26-src">Sources：<a href="https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/" rel="noopener" target="_blank">Tencent official release</a> · <a href="https://github.com/Tencent-Hunyuan/Hy4" rel="noopener" target="_blank">Hy4 GitHub repo</a> · <a href="https://www.tencent.com/tencent-launches-hy4-flash-to-power-high-speed-cost-efficient-ai-deployment-for-everyday-workflows/" rel="noopener" target="_blank">Hy4 flash official page</a></p>
+</article><article class="u26-card" id="inkling-2-mini">
+<div class="u26-meta"><span class="u26-badge">2026-11-20</span><span class="u26-tag">Open weights / local</span></div>
+<h2>Inkling 2 Mini: 26.4B MoE / 3.4B active</h2>
+<p class="u26-p">Thinking Machines Lab’s local multimodal node: 26.4B total, 3.4B active (about 5.4B effective through looping), a 24-layer looped MoE, 1M context, text + image input under Apache-2.0. The official checkpoint is about 20GB (NVFP4 + MXFP8); Unsloth ships 7.76–22.87GB GGUF files, with Q4_K_M at 16.61GB.</p>
+<dl class="u26-dl"><dt>Total / active</dt><dd>26.4B / 3.4B（约 5.4B 有效；6–17 层循环 3 次）</dd><dt>Architecture</dt><dd>24 层 decoder-only；128 专家 / 8 激活；local/global 混合注意力</dd><dt>Context / modality</dt><dd>1M tokens；文本 + 图像输入，文本输出</dd><dt>Quant / GGUF</dt><dd>Q4_K_M 16.61GB；Q4_K_XL 17.63GB；Q8_K_XL 22.87GB；IQ3_XXS 11.66GB</dd><dt>Hardware / local</dt><dd>官方建议 32GB+ VRAM / 32GB+ Mac / DGX Spark；社区测算 24GB 可跑 Q4_K_M + 128K，16GB 用 IQ3/Q3 短上下文</dd><dt>Licence</dt><dd>Apache-2.0 + acceptable use policy</dd><dt>Public eval</dt><dd>AA Intelligence Index 20.1（与 Qwen3.8-27B 持平）；DeepSWE v1.1 48.2%；SWE-bench Verified 79.2%；SWE-bench Pro v2 Hard 77.9%；Terminal Bench 4.0 5.6%（指南汇总，非本站实测）</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It puts 26B-class open weights, 1M context and native multimodality onto 24GB-class local hardware; Q4_K_M at 16.61GB sits in the same file-size band as Arete’s 17.20GB Q4, making it the most direct local comparison of 2026. The looped layers trade repeated compute for capacity; the advantage concentrates on coding and agents, not across-the-board dominance.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>Not a 17B: 26.4B is total, 3.4B is active per token and 5.4B is effective active after looping; 17GB is a Q4 file size, not a parameter count. 1M is a ceiling and the KV cache consumes memory; Q4_K_M is not lossless. The vendor recommends 32GB+; 24GB with 128K is a community calculation, not a vendor guarantee. Scores come from public guides / vendor summaries and are not independently reproduced. It is not Nous Arete; Arete’s card lists “Inkling” as teacher without a version, so Mini cannot be assumed to be that exact teacher.</p></div>
+<p class="u26-src">Sources：<a href="https://huggingface.co/thinkingmachines/Inkling-2-Mini" rel="noopener" target="_blank">Hugging Face model card</a> · <a href="https://huggingface.co/unsloth/Inkling-2-Mini-GGUF" rel="noopener" target="_blank">Unsloth GGUF</a> · <a href="https://unsloth.ai/docs/models/inkling-2-mini" rel="noopener" target="_blank">Unsloth local guide</a></p>
+</article><article class="u26-card" id="arete-27b">
+<div class="u26-meta"><span class="u26-badge">2026-11-06</span><span class="u26-tag">Open weights / fine-tune</span></div>
+<h2>Nous Arete-27B: an Apache-2.0 retune of Qwen3.8-27B</h2>
+<p class="u26-p">Not a new architecture, and not a “17B”: a 27B dense SFT of Qwen3.8-27B with a frozen vision encoder, trained on roughly 52.8M tokens at 64k context. Weights, evaluation and training data are public under Apache-2.0; community GGUF builds appeared quickly.</p>
+<dl class="u26-dl"><dt>Params</dt><dd>27B 稠密（全部激活）</dd><dt>Base</dt><dd>Qwen3.8-27B（Apache-2.0）</dd><dt>Training</dt><dd>SFT；约 52.8M token × 2 epoch；64k 上下文；视觉编码器冻结</dd><dt>Quant</dt><dd>社区 GGUF：Q4_K_M 17.20GB；IQ3_XS 约 12.6GB；档位随量化者变化</dd><dt>Licence</dt><dd>Apache-2.0</dd><dt>Vendor eval</dt><dd>803 题敏感话题中「官方口径」回答 22%→0.9%；事实分 2.32→2.98；Hermes Bench 65.77→65.60（未独立复现）</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It extends the Qwen3.8-27B local quantisation ecosystem to a retuned variant: teams that want Apache-2.0 plus a different value alignment now have a self-hostable 27B option. Q4_K_M is 17.20GB and fits a 24GB card; 16GB cards need a shorter context or partial offload.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>It is a 27B dense retune, not a 17B small model and not a new architecture. 64k is the training context; do not treat the base model’s 262k as validated here. The vendor evaluation is not independently reproduced; a change in sensitive-topic framing is not a general capability gain. Community quant quality varies, and Q4 still loses precision.</p></div>
+<p class="u26-src">Sources：<a href="https://huggingface.co/NousResearch/Arete-27B" rel="noopener" target="_blank">Hugging Face model card</a> · <a href="https://huggingface.co/bartowski/NousResearch_Arete-27B-GGUF" rel="noopener" target="_blank">bartowski GGUF</a></p>
+</article><article class="u26-card" id="inkling-2-small">
+<div class="u26-meta"><span class="u26-badge">2026-11-05</span><span class="u26-tag">Open weights / frontier</span></div>
+<h2>Inkling 2 Small: 594B MoE / 17B active</h2>
+<p class="u26-p">Thinking Machines Lab’s 2026 open-weight flagship: 594B total, 17B active per token, 48 decoder-only layers, 384 experts with 8 active, 1M context, text + image input, Apache-2.0. Announced 2026-11-05, weights opened on Hugging Face 11-12; official NVFP4 and MXFP8 checkpoints, with MXFP8 requiring 800GB aggregate VRAM — not a single-machine local model.</p>
+<dl class="u26-dl"><dt>Total / active</dt><dd>594B / 17B</dd><dt>Architecture</dt><dd>48 层 decoder-only；384 专家 / 8 激活；local/global 混合注意力；292M 视觉编码器</dd><dt>Context / modality</dt><dd>1M tokens；文本 + 图像输入，文本输出；无音频</dd><dt>Checkpoints</dt><dd>官方 NVFP4 与 MXFP8；MXFP8 需约 800GB 聚合显存</dd><dt>Licence</dt><dd>Apache-2.0 + acceptable use policy</dd><dt>Public eval</dt><dd>AA Intelligence Index 31；SWE-Bench Pro v2 Hard 86.3%；ARC-AGI-2 81.7%；Terminal-Bench 4.0 13.1%；AA-Omniscience 幻觉率 27%（公开汇总，非本站实测）</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It pushes the highest-scoring open weights outside China into the 594B class while combining 1M context, native image input and Apache-2.0; for frontier agents, long-horizon coding and multimodal research, it is a 2026 comparison node that cannot be skipped. Its AA score of 31 sits in the same band as Qwen3.8-27B’s public result, but its parameter and hardware floors are two orders of magnitude higher, so capability and deployability must be compared separately.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>“Small” is relative to the previous generation, not a small model: 594B total and an 800GB-class MXFP8 footprint mean ordinary workstations cannot host it. AA 31 is one composite index; 86.3 / 81.7 / 13.1 come from official and media summaries and were not independently reproduced, while the 13.1% Terminal-Bench 4.0 result is a reminder that it is not a short-horizon terminal specialist. 1M is a ceiling with a separate KV-cache cost; it is neither a scaled-up Mini nor Nous Arete.</p></div>
+<p class="u26-src">Sources：<a href="https://thinkingmachines.ai/model-card/inkling-2-small/" rel="noopener" target="_blank">Official model card</a> · <a href="https://www.thinkingmachines.ai/news/inkling-2-small/" rel="noopener" target="_blank">Official release (weights update 11-12)</a> · <a href="https://artificialanalysis.ai/articles/thinking-machines-releases-inkling-2-small-highest-scoring-open-weights-model-outside-of-chinia-upon-weights-release-it" rel="noopener" target="_blank">AA evaluation</a> · <a href="https://vega.chat/blog/inkling-2-small" rel="noopener" target="_blank">Public benchmark summary</a></p>
+</article><article class="u26-card" id="mistral-large-4">
+<div class="u26-meta"><span class="u26-badge">2026-10-29</span><span class="u26-tag">Open weights</span></div>
+<h2>Mistral Large 4: 1.05T total / 49B active</h2>
+<p class="u26-p">A European open-weight flagship: 1T-class natively multimodal MoE, 1M context, 128 routed experts (4 active per token plus 1 shared), 160+ languages; trained on 3,800 Grace Blackwell GPUs per the model card.</p>
+<dl class="u26-dl"><dt>Total / active</dt><dd>1.05T / 49B（含嵌入输出 52B）</dd><dt>Experts</dt><dd>128 routed + 1 shared；4 active</dd><dt>Context</dt><dd>1M tokens</dd><dt>Input</dt><dd>文本 + 图像</dd><dt>Licence</dt><dd>Mistral Ecosystem Open-Weight License（修改版 MIT；MaaS 需单独授权）</dd><dt>Public index</dt><dd>AA Coding Agent 48%；AA Intelligence v5 26（第三方，非本站实测）</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It puts a 1T-class MoE and 1M context into open weights while keeping a European licensing story and multilingual coverage. For teams that need a flagship on-prem or in a private cloud without a fully closed API, this is one of the most important 2026 additions.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>49B is active per token, not total compute; 1T total means loading the weights is itself heavy. The release includes an NVFP4 checkpoint and a DSpark draft head, but local hosting still needs multiple GPUs. The licence is modified MIT, not OSI-approved; MaaS use needs a separate grant. AA scores are third-party indices and cannot replace your own task evaluation.</p></div>
+<p class="u26-src">Sources：<a href="https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B" rel="noopener" target="_blank">Hugging Face model card</a></p>
+</article><article class="u26-card" id="muse-spark-open">
+<div class="u26-meta"><span class="u26-badge">2026-10-15</span><span class="u26-tag">Open weights</span></div>
+<h2>Meta Muse Spark Open: 816B / 42B active</h2>
+<p class="u26-p">A new flagship on Meta’s Muse line, aimed at coding agents doing multi-file refactoring and long debugging; 816B total, 42B active, 1M context, natively multimodal, under the Muse Model License.</p>
+<dl class="u26-dl"><dt>Total / active</dt><dd>816B / 42B</dd><dt>Context</dt><dd>1M</dd><dt>Modality</dt><dd>原生多模态</dd><dt>Licence</dt><dd>Muse Model License（厂商许可，非 OSI）</dd><dt>Local demo</dt><dd>可在两台 M5 Ultra Mac Studio 运行（AMD 技术文章口径）</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It pushes open weights into the 800B class and explicitly targets coding agents; for teams that need long-context repository understanding while retaining weight control, it is a new upper bound.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>This site does not yet cover its quantisations; the family card records only the generation and specs. “Runs on two M5 Ultra Mac Studios” is a vendor demo, not general production throughput. The Muse Model License has scope limits; read it before commercial use. 816B total is an extremely high memory barrier.</p></div>
+<p class="u26-src">Sources：<a href="https://www.amd.com/en/developer/resources/technical-articles/2026/day-0-support-for-meta-muse-spark-open-on-amd.html" rel="noopener" target="_blank">AMD technical article</a></p>
+</article><article class="u26-card" id="mimo-v2-6">
+<div class="u26-meta"><span class="u26-badge">2026-09-22</span><span class="u26-tag">Open source</span></div>
+<h2>Xiaomi MiMo-V2.6: Pro / Flash line</h2>
+<p class="u26-p">Pro and Flash launched together with open weights; Pro scores 46.32 on the AA Intelligence Index, with 1M context and native omni-modality (text / image / video / audio); weights and a technical report are open.</p>
+<dl class="u26-dl"><dt>Variants</dt><dd>MiMo-V2.6-Pro / Flash</dd><dt>Context</dt><dd>1M</dd><dt>Modality</dt><dd>文本 / 图像 / 视频 / 音频</dd><dt>Public index</dt><dd>AA Intelligence 46.32（第三方）</dd><dt>Licence</dt><dd>以官方模型卡为准</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>One of the few 2026 Chinese open-weight lines to combine native omni-modality with 1M context; worth a task-specific evaluation for multimodal agents, video understanding and Chinese workloads.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>AA is a third-party index and does not cover your domain; “omni-modal” refers to input modalities, not equal quality on each. Test Flash and Pro separately for capability and cost.</p></div>
+<p class="u26-src">Sources：<a href="https://mimo.xiaomi.com/mimo-v2-6" rel="noopener" target="_blank">Xiaomi MiMo official page</a> · <a href="https://huggingface.co/collections/XiaomiMiMo/mimo-v26" rel="noopener" target="_blank">Hugging Face collection</a></p>
+</article><article class="u26-card" id="deepseek-v4-1-flash">
+<div class="u26-meta"><span class="u26-badge">2026-09-10</span><span class="u26-tag">Open weights</span></div>
+<h2>DeepSeek V4.1 Flash: 552B MoE, much smaller KV cache</h2>
+<p class="u26-p">552B MoE with a causal encoder–decoder architecture; 8B active on the input side and 16B on the output side; native multimodality; the official post says KV-cache HBM use drops to one quarter and SSD to one eighth; MIT weights.</p>
+<dl class="u26-dl"><dt>Total</dt><dd>552B MoE</dd><dt>Active</dt><dd>输入 8B / 输出 16B</dd><dt>Context</dt><dd>1M（官方 API 口径）</dd><dt>KV cache</dt><dd>HBM 1/4、SSD 1/8（官方口径）</dd><dt>Licence</dt><dd>MIT</dd><dt>API</dt><dd>deepseek-flash；1017 版本 2026-10-17</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It shifts long-context cost from “more HBM” to “smaller cache” and releases weights under MIT; for long documents, repositories and multi-turn agents, V4.1 Flash is a cost-sensitive baseline.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>The 1/4 and 1/8 figures are the official cache-footprint claims, not end-to-end throughput gains; real speed depends on the stack, batch and SSD. Native multimodality must be tested per task, not inferred from a spec table. 1017 is a point release; interfaces and behaviour may differ from earlier versions.</p></div>
+<p class="u26-src">Sources：<a href="https://api-docs.deepseek.com/zh-cn/news/news260910/" rel="noopener" target="_blank">DeepSeek release (2026-09-10)</a> · <a href="https://api-docs.deepseek.com/zh-cn/news/news261017/" rel="noopener" target="_blank">DeepSeek 1017 update</a> · <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017" rel="noopener" target="_blank">Hugging Face weights</a></p>
+</article><article class="u26-card" id="glm-5-3">
+<div class="u26-meta"><span class="u26-badge">2026-08-14</span><span class="u26-tag">Open weights</span></div>
+<h2>GLM-5.3: post-training scaling on the same base</h2>
+<p class="u26-p">Post-training scaling on the same GLM-5.2 base, 1M context, officially positioned for coding and cybersecurity; weights opened two weeks later. GLM-5.3-Flash 320B-A18B launched on 2026-08-26 under MIT.</p>
+<dl class="u26-dl"><dt>Base</dt><dd>GLM-5.2 同基座</dd><dt>Context</dt><dd>1M</dd><dt>Positioning</dt><dd>编程、网络安全（官方口径）</dd><dt>Flash / open</dt><dd>320B-A18B；MIT；2026-08-26</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>It shows that post-training alone, without a new base, can move capability — useful for teams with a fixed base and limited compute; the Flash tier brings 320B-A18B into a deployable range.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>“Coding / cybersecurity” is official positioning, not a third-party benchmark result; post-training gains depend on data and rewards and cannot be copied unconditionally. Flash is a different scale; do not transfer Pro scores to it.</p></div>
+<p class="u26-src">Sources：<a href="https://www.zhipuai.cn/zh/research/162" rel="noopener" target="_blank">Zhipu research page</a> · <a href="https://docs.bigmodel.cn/cn/update/new-releases" rel="noopener" target="_blank">BigModel release notes</a></p>
+</article><article class="u26-card" id="kimi-k3-date">
+<div class="u26-meta"><span class="u26-badge">2026-07-27</span><span class="u26-tag">Open weights / correction</span></div>
+<h2>Kimi K3: open-weights date corrected to 2026-07-27</h2>
+<p class="u26-p">The older card dated Kimi K3 to June 2026; the official page says 2026-07-27. This round corrects the family card and the charts. Specs unchanged: 2.8T total / 104B active, 16 of 896 experts, 1M context, native vision.</p>
+<dl class="u26-dl"><dt>Total / active</dt><dd>2.8T / 104B</dd><dt>Experts</dt><dd>896，激活 16</dd><dt>Context</dt><dd>1M</dd><dt>Licence</dt><dd>Kimi K3 License</dd></dl>
+<div class="u26-block"><b>Why it matters</b><p>A one-month date error shifts the “who shipped first” judgement; timeline errors are more hidden than parameter errors. With the correction, the July 2026 open-weight record is complete.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>The Kimi K3 License is not OSI-approved; “world’s first open 3T-class model” is vendor wording. The correction changes the date, not the capability conclusion.</p></div>
+<p class="u26-src">Sources：<a href="https://www.kimi.com/news/kimi-k3-open-source" rel="noopener" target="_blank">Kimi official release</a> · <a href="https://arxiv.org/pdf/2607.24653" rel="noopener" target="_blank">Technical report</a></p>
+</article></div>
+<p class="u26-note"><b>Next：</b><a href="https://models.specul.com/en/">Back to all model entries →</a></p>
+</div></section>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

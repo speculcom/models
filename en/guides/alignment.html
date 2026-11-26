@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Preference alignment: what RLHF and DPO actually solve…</title>
+<meta content="How reward models are distilled from human rankings, why the PPO step is expensive, why DPO skips reinforcement learning, and the costs — alignment tax…" name="description"/>
+<link href="https://models.specul.com/en/guides/alignment.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/guides/alignment.html" property="og:url"/>
+<meta content="Preference alignment: what RLHF and DPO actually solve…" property="og:title"/>
+<meta content="How reward models are distilled from human rankings, why the PPO step is expensive, why DPO skips reinforcement learning, and the costs — alignment tax…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Preference alignment: what RLHF and DPO actually solve","description":"How reward models are distilled from human rankings, why the PPO step is expensive, why DPO skips reinforcement learning, and the costs — alignment tax…","url":"https://models.specul.com/en/guides/alignment.html","dateModified":"2026-10-20"}</script>
+<meta content="Preference alignment: what RLHF and DPO actually solve…" name="twitter:title"/><meta content="How reward models are distilled from human rankings, why the PPO step is expensive, why DPO skips reinforcement learning, and the costs — alignment tax…" name="twitter:description"/><link href="https://models.specul.com/guides/alignment.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/alignment.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/alignment.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/guides/alignment.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">How models are made　<span class="t-tag">training pipeline · stage 3</span></p>
+<h1>Preference alignment: what RLHF and DPO actually solve<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
+<p class="lede">How reward models are distilled from human rankings, why the PPO step is expensive, why DPO skips reinforcement learning, and the costs — alignment tax and sycophancy. Practitioner depth; the one-page explainer lives on the Learn site.</p>
+</header>
+<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">What this guide covers</a></li><li><a href="#guide-section-2">Reward models: turning human judgement into a differentiable signal</a></li><li><a href="#guide-section-3">The PPO step: why it costs so much</a></li><li><a href="#guide-section-4">DPO: collapsing two steps into one</a></li><li><a href="#guide-section-5">RLAIF: models ranking when humans run out</a></li><li><a href="#guide-section-6">The costs: alignment tax and sycophancy</a></li><li><a href="#guide-section-7">How this differs from the Learn site</a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2>What this guide covers</h2>
+<p><b>Alignment solves “answering well”, not “being able to answer”.</b></p>
+<p>After SFT the model answers in format, but there is no signal for “which answer is better, where the line is crossed”.<br/>The original recipe for this step is InstructGPT's (arXiv 2203.02155) RLHF:<br/>humans rank answers, a reward model is trained, then PPO makes the language model court that reward model.</p>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2>Reward models: turning human judgement into a differentiable signal</h2>
+<p>Humans do not score directly; they compare pairs: of two answers to the same prompt, which is better.<br/>Anthropic's HH data (arXiv 2204.05862) splits the axes into helpful and harmless.<br/>The reward model learns this ranking tendency and emits a scalar score.</p>
+<p>The trap practitioners must watch: the reward model is a proxy metric, not goodness itself.<br/>It can be gamed — longer, more confident, model-essay-like answers score higher.<br/>“Length bias” is a side effect repeatedly acknowledged in RLHF-era papers.</p>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2>The PPO step: why it costs so much</h2>
+<p>InstructGPT's RL stage keeps four models resident at once:<br/>the policy being trained, the reference model that keeps it on the rails (KL constraint), the reward model, and the critic.<br/>Memory and compute cost several times SFT, and tuning is touchy (a skewed KL coefficient collapses the run).</p>
+<p>LLaMA 2 (arXiv 2307.09288) published both routes side by side:<br/>iterative SFT bootstrapping versus rejection sampling plus PPO, each winning on different evaluations.<br/>The authors themselves declared no outright winner; this site reports it as stated.</p>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2>DPO: collapsing two steps into one</h2>
+<p>DPO's (arXiv 2305.18290) derivation shows the optimal policy has a closed form,<br/>so preference pairs can feed a classification-style loss directly — no reward model to train, no RL to run.<br/>Memory drops back to SFT scale, the code is dozens of lines.</p>
+<p>Zephyr (arXiv 2310.16944) took a 7B model to the front of its size class at the time using public data,<br/>proving the route is community-reproducible.</p>
+<p>The cost too: DPO is sensitive to the distribution of preference pairs, and offline training easily “overfits the ranking style”;<br/>online RLHF keeps sampling fresh answers, so the signal stays fresher.<br/>Published head-to-head conclusions between the two routes are unstable and data-dependent.<br/>This site adjudicates neither — it records each mechanism and its published limits.</p>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2>RLAIF: models ranking when humans run out</h2>
+<p>Constitutional AI (arXiv 2212.08073) uses a written set of principles to make the model criticise and<br/>revise itself, then lets models prefer models. Human ranking retreats to a calibration role.</p>
+<p>Open-weight families' post-training routinely mixes this route in —<br/>the bottleneck that caps scale moves from compute to annotation.</p>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2>The costs: alignment tax and sycophancy</h2>
+<p>The “alignment tax” is the score a model can lose on original-task evaluations after alignment.<br/>The InstructGPT paper itself observed GPT-3 regressing on some public benchmarks because of alignment.</p>
+<p>Sycophancy is the mirror image of preference data:<br/>humans favour answers that agree with them, so the reward model learns to agree.</p>
+<p>Neither is rumour — both are side effects admitted in the papers themselves.<br/>When reading any model's official benchmarks, remember:<br/>post-alignment scores mix “a style that pleases the grader” with “actual capability”.</p>
+</section>
+<section class="fam-sec" id="guide-section-7">
+<h2>How this differs from the Learn site</h2>
+<p>The one-page explainers live on the Learn site: <a href="https://learn.specul.com/en/term/%E8%AE%AD%E7%BB%83%E4%B8%89%E9%98%B6%E6%AE%B5/" rel="noopener" target="_blank">three-stage training</a><br/>and <a href="https://learn.specul.com/en/term/%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90/" rel="noopener" target="_blank">preference alignment</a>.</p>
+<p>This guide covers the cost structure of four resident models, how a proxy metric can be gamed,<br/>and the sources behind the alignment tax and sycophancy — the traps practitioners watch, which an explainer page cannot hold.</p>
+</section>
+<nav aria-label="Next steps" class="fam-sec">
+<h2>What to do next</h2>
+<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
+<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
+<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list">
+<li>InstructGPT paper (arXiv 2203.02155, the three-stage RLHF and PPO details; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2203.02155" rel="noopener" target="_blank">https://arxiv.org/abs/2203.02155</a></li>
+<li>DPO paper (arXiv 2305.18290, preference optimisation without a reward model or RL; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2305.18290" rel="noopener" target="_blank">https://arxiv.org/abs/2305.18290</a></li>
+<li>LLaMA 2 paper (arXiv 2307.09288, rejection sampling + PPO versus the SFT route side by side; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2307.09288" rel="noopener" target="_blank">https://arxiv.org/abs/2307.09288</a></li>
+<li>Zephyr paper (arXiv 2310.16944, the public example of DPO on a 7B community model; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2310.16944" rel="noopener" target="_blank">https://arxiv.org/abs/2310.16944</a></li>
+<li>Anthropic HH preference-data paper (arXiv 2204.05862, rankings on the helpful/harmless axes; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2204.05862" rel="noopener" target="_blank">https://arxiv.org/abs/2204.05862</a></li>
+<li>Constitutional AI paper (arXiv 2212.08073, principles replacing part of the human ranking (RLAIF); abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2212.08073" rel="noopener" target="_blank">https://arxiv.org/abs/2212.08073</a></li>
+</ul>
+<p class="fam-foot">Base source snapshot: 2026-10-20; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>SFT：让续写机器学会「好好回答」 · 做模型专题</title>
-  <meta name="description" content="监督微调在预训练之后做什么——指令数据从哪来、质量为什么压过数量、LoRA 这类省显存做法的边界。从业者视角深版；一页科普在学 AI 站。（资料更新到 2026-10-20，关键事实挂官方出处）" />
-  <link rel="canonical" href="https://models.specul.com/guides/sft.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="SFT：让续写机器学会「好好回答」 · 做模型专题" />
-  <meta property="og:url" content="https://models.specul.com/guides/sft.html" />
-  <meta property="og:title" content="SFT：让续写机器学会「好好回答」 · 做模型专题" />
-  <meta property="og:description" content="监督微调在预训练之后做什么——指令数据从哪来、质量为什么压过数量、LoRA 这类省显存做法的边界。从业者视角深版；一页科普在学 AI 站。（资料更新到 2026-10-20，关键事实挂官方出处）" />
-  <meta property="og:image" content="https://specul.com/home-shots/og-home.jpg?v=20261123d" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="zh_CN" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta name="theme-color" content="#16121f" />
-  <link rel="icon" type="image/png" href="../assets/brand/dandelion-favicon-site.png" />
-  <link rel="apple-touch-icon" href="../assets/brand/dandelion-apple-touch-site.png" />
-  <script src="../brand.js?v=37d1072be69b"></script>
-  <link rel="stylesheet" href="../brand.css?v=37d1072be69b" />
-  <link rel="stylesheet" href="../site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SFT: teaching a completion machine to answer well","description":"What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like LoRA. Practitioner depth; the one-page explainer lives on the Learn site.","url":"https://models.specul.com/guides/sft.html","dateModified":"2026-10-20"}</script>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>SFT：让续写机器学会「好好回答」 · 做模型专题</title>
+<meta content="监督微调在预训练之后做什么——指令数据从哪来、质量为什么压过数量、LoRA 这类省显存做法的边界。从业者视角深版；一页科普在学 AI 站。（资料更新到 2026-10-20，关键事实挂官方出处）" name="description"/>
+<link href="https://models.specul.com/guides/sft.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="SFT：让续写机器学会「好好回答」 · 做模型专题" property="og:site_name"/>
+<meta content="https://models.specul.com/guides/sft.html" property="og:url"/>
+<meta content="SFT：让续写机器学会「好好回答」 · 做模型专题" property="og:title"/>
+<meta content="监督微调在预训练之后做什么——指令数据从哪来、质量为什么压过数量、LoRA 这类省显存做法的边界。从业者视角深版；一页科普在学 AI 站。（资料更新到 2026-10-20，关键事实挂官方出处）" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="en_US" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="../assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="../assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="../brand.js?v=37d1072be69b"></script>
+<link href="../brand.css?v=37d1072be69b" rel="stylesheet"/>
+<link href="../site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SFT: teaching a completion machine to answer well","description":"What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like LoRA. Practitioner depth; the one-page explainer lives on the Learn site.","url":"https://models.specul.com/guides/sft.html","dateModified":"2026-10-20"}</script>
+<link href="https://models.specul.com/guides/sft.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/sft.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/sft.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -32,194 +32,190 @@
      ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
      （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
 <body class="brand-ambient has-tabbar has-tabbar-1row">
-  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
-  <header class="site-header">
-    <div class="container site-bar">
-      <a class="brand" href="https://specul.com/" title="投机取巧">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
-          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="站点导航">
-        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
-        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
-        <a href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a>
-        <a href="https://models.specul.com/" aria-current="page"><span data-zh>模型</span><span data-en>Models</span></a>
-        <a href="https://demos.specul.com/"><span data-zh>作品演示</span><span data-en>Playground</span></a>
-        <a href="https://oss.specul.com/"><span data-zh>开源库</span><span data-en>OSS</span></a>
-        <a href="https://hardware.specul.com/"><span data-zh>硬件算力</span><span data-en>Compute</span></a>
-        <a href="https://papers.specul.com/"><span data-zh>AI 论文</span><span data-en>AI Papers</span></a>
-        <a href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a>
-        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
-      </nav>
-      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+<a class="t-skip" href="#main"><span data-zh="">跳到主要内容</span><span data-en="">Skip to main content</span></a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" data-en-name="Speculative Speculation" data-zh-name="投机取巧" id="markName">投机取巧</span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation" id="markSub">Speculative Speculation</span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span data-zh="">作品演示</span><span data-en="">Playground</span></a>
+<a href="https://oss.specul.com/"><span data-zh="">开源库</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span data-zh="">硬件算力</span><span data-en="">Compute</span></a>
+<a href="https://papers.specul.com/"><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></a>
+<a href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a href="https://nav.specul.com/"><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
            放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
            （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
            链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
-      <span class="nav-tools">
-        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
-        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
-      </span>
-      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+<span class="nav-tools">
+<a aria-label="搜索" class="icon-btn" data-ui-aria-label-en="Search" data-ui-aria-label-zh="搜索" data-ui-title-en="Search all sites" data-ui-title-zh="搜索全站" href="https://specul.com/search.html" title="搜索全站"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="Switch to English" class="icon-btn" href="/en/guides/sft.html" hreflang="en" id="langBtn" lang="en" title="Switch to English">EN</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
            行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
            无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
            「导航被藏进一个点了没反应的按钮」。 -->
-      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
-        <i></i><i></i><i></i>
-      </button>
-    </div>
-  </header>
-  <div class="nav-scrim"></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
-    <div class="nav-drawer-h">
-      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
-      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
-    </div>
-    <nav class="nav-drawer-list">
-      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://tools.specul.com/"><span><span data-zh>工具</span><span data-en>Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://models.specul.com/" aria-current="page"><span><span data-zh>模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://demos.specul.com/"><span><span data-zh>作品演示</span><span data-en>Playground</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://oss.specul.com/"><span><span data-zh>开源库</span><span data-en>OSS</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://hardware.specul.com/" class="nav-group-start"><span><span data-zh>硬件算力</span><span data-en>Compute</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://papers.specul.com/"><span><span data-zh>AI 论文</span><span data-en>AI Papers</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://chain.specul.com/"><span><span data-zh>链</span><span data-en>Chain</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://nav.specul.com/" class="nav-group-start" data-nav-group="external"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="nav-drawer-foot">
-      <p><span data-zh>内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
-      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
-    </div>
-  </aside>
-  <main id="main">
-  <div class="container guide-body">
-    <nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh>回开放权重图谱</span><span data-en>Back to the open-weight map</span></a></nav>
-    <header class="page-head">
-      <p class="eyebrow"><span data-zh>做模型专题</span><span data-en>How models are made</span>　<span class="t-tag"><span data-zh>训练管线 · 第 2 站</span><span data-en>training pipeline · stage 2</span></span></p>
-      <h1><span data-zh>SFT：让续写机器学会「好好回答」</span><span data-en>SFT: teaching a completion machine to answer well</span><span class="sub"><span data-zh>从业者视角的方法论 · 关键事实挂官方出处</span><span data-en>practitioner-perspective methodology · key facts carry official sources</span></span></h1>
-      <p class="lede"><span data-zh>监督微调在预训练之后做什么——指令数据从哪来、质量为什么压过数量、LoRA 这类省显存做法的边界。从业者视角深版；一页科普在学 AI 站。</span><span data-en>What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like LoRA. Practitioner depth; the one-page explainer lives on the Learn site.</span></p>
-    </header>
-
-    <nav class="fam-sec" aria-label="文章目录" data-ui-aria-label-zh="文章目录" data-ui-aria-label-en="Article contents"><p><span data-zh>按问题阅读</span><span data-en>On this page</span></p><ul><li><a href="#guide-section-1"><span data-zh>这一篇讲什么</span><span data-en>What this guide covers</span></a></li><li><a href="#guide-section-2"><span data-zh>数据从哪来：人写、模型写、混合</span><span data-en>Where the data comes from</span></a></li><li><a href="#guide-section-3"><span data-zh>质量压过数量：LIMA 一役</span><span data-en>Quality beats quantity: the LIMA result</span></a></li><li><a href="#guide-section-4"><span data-zh>省显存微调：LoRA 与 QLoRA</span><span data-en>Memory-savers: LoRA and QLoRA</span></a></li><li><a href="#guide-section-5"><span data-zh>SFT 之后：对齐另有一步</span><span data-en>What comes after SFT</span></a></li><li><a href="#guide-section-6"><span data-zh>和学 AI 站的分工</span><span data-en>How this differs from the Learn site</span></a></li></ul></nav>
-    <section class="fam-sec" id="guide-section-0">
-      <h2></h2>
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name"><span data-zh="">投机取巧</span><span data-en="">Speculative Speculation</span></span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation">Speculative Speculation</span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/"><span><span data-zh="">首页</span><span data-en="">Home</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/"><span><span data-zh="">学 AI</span><span data-en="">Learn</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/"><span><span data-zh="">工具</span><span data-en="">Tools</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span><span data-zh="">模型</span><span data-en="">Models</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/"><span><span data-zh="">作品演示</span><span data-en="">Playground</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/"><span><span data-zh="">开源库</span><span data-en="">OSS</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/"><span><span data-zh="">硬件算力</span><span data-en="">Compute</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/"><span><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/"><span><span data-zh="">链</span><span data-en="">Chain</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/"><span><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p><span data-zh="">内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en="">Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
+<nav><a href="https://specul.com/legal.html"><span data-zh="">法律条款</span><span data-en="">Legal terms</span></a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh="">回开放权重图谱</span><span data-en="">Back to the open-weight map</span></a></nav>
+<header class="page-head">
+<p class="eyebrow"><span data-zh="">做模型专题</span><span data-en="">How models are made</span>　<span class="t-tag"><span data-zh="">训练管线 · 第 2 站</span><span data-en="">training pipeline · stage 2</span></span></p>
+<h1><span data-zh="">SFT：让续写机器学会「好好回答」</span><span data-en="">SFT: teaching a completion machine to answer well</span><span class="sub"><span data-zh="">从业者视角的方法论 · 关键事实挂官方出处</span><span data-en="">practitioner-perspective methodology · key facts carry official sources</span></span></h1>
+<p class="lede"><span data-zh="">监督微调在预训练之后做什么——指令数据从哪来、质量为什么压过数量、LoRA 这类省显存做法的边界。从业者视角深版；一页科普在学 AI 站。</span><span data-en="">What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like LoRA. Practitioner depth; the one-page explainer lives on the Learn site.</span></p>
+</header>
+<nav aria-label="文章目录" class="fam-sec" data-ui-aria-label-en="Article contents" data-ui-aria-label-zh="文章目录"><p><span data-zh="">按问题阅读</span><span data-en="">On this page</span></p><ul><li><a href="#guide-section-1"><span data-zh="">这一篇讲什么</span><span data-en="">What this guide covers</span></a></li><li><a href="#guide-section-2"><span data-zh="">数据从哪来：人写、模型写、混合</span><span data-en="">Where the data comes from</span></a></li><li><a href="#guide-section-3"><span data-zh="">质量压过数量：LIMA 一役</span><span data-en="">Quality beats quantity: the LIMA result</span></a></li><li><a href="#guide-section-4"><span data-zh="">省显存微调：LoRA 与 QLoRA</span><span data-en="">Memory-savers: LoRA and QLoRA</span></a></li><li><a href="#guide-section-5"><span data-zh="">SFT 之后：对齐另有一步</span><span data-en="">What comes after SFT</span></a></li><li><a href="#guide-section-6"><span data-zh="">和学 AI 站的分工</span><span data-en="">How this differs from the Learn site</span></a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
 <ul>
-
 </ul>
-    </section>
-    <section class="fam-sec" id="guide-section-1">
-      <h2><span data-zh>这一篇讲什么</span><span data-en>What this guide covers</span></h2>
-<span data-zh><p><b>SFT 就是拿「问题 → 好回答」的示范对，继续训练预训练模型。</b></p>
-<p>预训练模型会续写，但不会对话：你问它问题，<br>它可能把问题续写成「这个问题有以下几种答案……」而不是直接回答。<br>SFT 教的是形式与分寸：按对话格式答、别瞎编、该拒就拒。</p></span><span data-en><p><b>SFT means continuing to train a pre-trained model on demonstration pairs of “question → good answer”.</b></p>
-<p>A pre-trained model can continue text but cannot hold a conversation: ask it a question<br>and it may continue the question into “This question has the following answers…” instead of answering directly.<br>What SFT teaches is form and judgement: answer in conversational format, don&#39;t fabricate, refuse when refusal is due.</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-2">
-      <h2><span data-zh>数据从哪来：人写、模型写、混合</span><span data-en>Where the data comes from</span></h2>
-<span data-zh><p>InstructGPT（arXiv 2203.02155）的路线是外包标注员写示范回答，<br>成本高、规模小（SFT 阶段约一万多条）。</p>
-<p>FLAN（arXiv 2109.01652）走另一路：<br>把上百个传统 NLP 数据集改写成指令模板，让模型见遍任务形态。</p>
-<p>LLaMA 2（arXiv 2307.09288）混合两者，并加入自举：<br>用自家模型生成候选、人工筛，扩大数据量。</p>
-<p>现在开放权重家族的 SFT 配方多数只公开数量不公开来源明细，<br>这里按官方写明的部分转述；没写明的不猜。</p></span><span data-en><p>InstructGPT (arXiv 2203.02155) went with outsourced annotators writing the demonstration answers —<br>expensive and small-scale (a little over ten thousand examples in the SFT stage).</p>
-<p>FLAN (arXiv 2109.01652) took another route:<br>rewriting hundreds of classic NLP datasets into instruction templates so the model sees every task shape.</p>
-<p>LLaMA 2 (arXiv 2307.09288) mixes both and adds bootstrapping:<br>its own models generate candidates, humans filter them, scaling the data volume up.</p>
-<p>Today most open-weight families publish only the quantity of their SFT recipe, not the source breakdown;<br>this site transcribes what the official statements say and does not guess at what they leave out.</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-3">
-      <h2><span data-zh>质量压过数量：LIMA 一役</span><span data-en>Quality beats quantity: the LIMA result</span></h2>
-<span data-zh><p>LIMA（arXiv 2305.11206）只用 1000 条人工精选样本做 SFT，<br>输出质量接近数万条的流水线数据。</p>
-<p>结论不是「1000 条就够」，而是：SFT 主要教形式，知识在预训练里已经有了。<br>示范对里的知识含量不重要，回答的风格、结构、边界才是它学的东西。</p>
-<p>从业者推论：SFT 数据里混进错误事实，模型学到的不是那条事实，<br>是「这种错误说法是合格回答」的风格。数据审核的重点在示范质量，不在条数。</p></span><span data-en><p>LIMA (arXiv 2305.11206) did SFT on just 1,000 hand-curated samples,<br>with output quality close to pipeline data of tens of thousands.</p>
-<p>The conclusion is not “1,000 examples are enough” but this: SFT mostly teaches form — the knowledge was already there from pre-training.<br>How much knowledge sits inside the demonstration pairs does not matter; what the model learns is the style, structure and boundaries of the answers.</p>
-<p>Practitioner corollary: when wrong facts slip into SFT data, what the model learns is not the fact itself<br>but the style of “this kind of wrong claim is an acceptable answer”. Data review should focus on demonstration quality, not on counts.</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-4">
-      <h2><span data-zh>省显存微调：LoRA 与 QLoRA</span><span data-en>Memory-savers: LoRA and QLoRA</span></h2>
-<span data-zh><p>全参数微调要存全部梯度和优化器状态，显存翻倍不止。</p>
-<p>LoRA（arXiv 2106.09685）冻结基座权重，只训注入的低秩小矩阵。<br>可训参数降到千分之几，产物只有几十 MB，可以热插拔换装。</p>
-<p>QLoRA（arXiv 2305.14314）把基座压到 4-bit 再挂 LoRA，<br>单卡微调 30B/65B 成为可能——这里的不少社区微调模型走的就是这条路。</p>
-<p>边界要如实说：LoRA 改「表达与风格」效率高，往模型里灌新知识的效果弱于全参训练。<br>低秩增量装不下多少新事实。「用 LoRA 把私有知识库训进模型」通常是错的工具，<br>检索（RAG）才是常规解。</p></span><span data-en><p>Full-parameter fine-tuning has to store every gradient and optimiser state — memory more than doubles.</p>
-<p>LoRA (arXiv 2106.09685) freezes the base weights and trains only injected low-rank matrices.<br>Trainable parameters drop to a fraction of a percent, the artefact is tens of MB, and adapters can be hot-swapped.</p>
-<p>QLoRA (arXiv 2305.14314) squeezes the base to 4-bit before attaching LoRA,<br>making single-GPU fine-tuning of 30B/65B models possible — quite a few community fine-tunes listed on this site follow exactly this route.</p>
-<p>State the limits honestly: LoRA is efficient at changing “expression and style” but weak at injecting new knowledge compared with full-parameter training.<br>A low-rank delta cannot hold many new facts. “Training a private knowledge base into the model with LoRA” is usually the wrong tool;<br>retrieval (RAG) is the standard answer.</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-5">
-      <h2><span data-zh>SFT 之后：对齐另有一步</span><span data-en>What comes after SFT</span></h2>
-<span data-zh><p>SFT 教了形式，但「哪个回答更好」它只会模仿示范，不会判断。<br>判断好坏交给下一步——奖励模型与偏好优化（RLHF/DPO），见下一篇。</p>
-<p>学 AI 站的 <a href="https://learn.specul.com/term/训练三阶段/" target="_blank" rel="noopener">训练三阶段</a> 词条<br>把三步的科普版一页讲完；这一篇是每步的从业者深版。</p></span><span data-en><p>SFT teaches form, but for “which answer is better” it can only imitate the demonstrations — it cannot judge.<br>Judging quality belongs to the next step — reward models and preference optimisation (RLHF/DPO), covered in the next guide.</p>
-<p>The Learn site&#39;s <a href="https://learn.specul.com/term/训练三阶段/" target="_blank" rel="noopener">three-stage training</a> term page<br>covers all three steps in one explainer page; this guide is the practitioner deep-dive for each step.</p></span>
-    </section>
-    <section class="fam-sec" id="guide-section-6">
-      <h2><span data-zh>和学 AI 站的分工</span><span data-en>How this differs from the Learn site</span></h2>
-<span data-zh><p>使用者视角的一页科普：学 AI 站的 <a href="https://learn.specul.com/term/监督学习/" target="_blank" rel="noopener">监督学习</a><br>与 <a href="https://learn.specul.com/term/训练三阶段/" target="_blank" rel="noopener">训练三阶段</a>。</p>
-<p>本篇讲数据路线的取舍、LIMA 的口径变化、LoRA 的适用边界——<br>同一个词，两处深度不同，互链不重复。</p></span><span data-en><p>The user-perspective explainers live on the Learn site: <a href="https://learn.specul.com/term/监督学习/" target="_blank" rel="noopener">supervised learning</a><br>and <a href="https://learn.specul.com/term/训练三阶段/" target="_blank" rel="noopener">three-stage training</a>.</p>
-<p>This guide covers the trade-offs between data routes, how LIMA changed the consensus, and where LoRA applies —<br>same term, different depth on each side, cross-linked without duplication.</p></span>
-    </section>
-
-    <nav class="fam-sec" aria-label="下一步" data-ui-aria-label-zh="下一步" data-ui-aria-label-en="Next steps">
-      <h2><span data-zh>继续做什么</span><span data-en>What to do next</span></h2>
-      <ul><li><a href="gpu-cost-math.html#capacity-workbench"><span data-zh>填写上下文与并发容量假设</span><span data-en>Budget context and concurrency</span></a></li>
-      <li><a href="https://learn.specul.com/guide/怎么验证%20AI%20的输出/"><span data-zh>检查输出是否有依据</span><span data-en>Verify evidence for the output</span></a></li>
-      <li><a href="https://tools.specul.com/mcp/guides/failure-library.html#by-symptom"><span data-zh>按症状排查</span><span data-en>Troubleshoot by symptom</span></a></li></ul>
-    </nav>
-
-    <section class="fam-sec fam-sources">
-      <h2><span data-zh>出处</span><span data-en>Sources</span></h2>
-      <ul class="fam-src-list">
-        <li><span data-zh>InstructGPT 论文（arXiv 2203.02155，SFT→奖励模型→RL 三阶段的原始流程，2026-10-20 直抓摘要页）</span><span data-en>InstructGPT paper (arXiv 2203.02155, the original SFT → reward model → RL pipeline; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener">https://arxiv.org/abs/2203.02155</a></li>
-        <li><span data-zh>LLaMA 2 论文（arXiv 2307.09288，SFT 数据量与蒸馏（SFT 自举）做法，2026-10-20 直抓摘要页）</span><span data-en>LLaMA 2 paper (arXiv 2307.09288, SFT data volume and distillation (SFT bootstrapping); abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2307.09288" target="_blank" rel="noopener">https://arxiv.org/abs/2307.09288</a></li>
-        <li><span data-zh>FLAN 论文（arXiv 2109.01652，指令模板池化训练，2026-10-20 直抓摘要页）</span><span data-en>FLAN paper (arXiv 2109.01652, pooling instruction templates for training; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2109.01652" target="_blank" rel="noopener">https://arxiv.org/abs/2109.01652</a></li>
-        <li><span data-zh>LIMA 论文（arXiv 2305.11206，「1000 条精选样本」的少数据 SFT 实验，2026-10-20 直抓摘要页）</span><span data-en>LIMA paper (arXiv 2305.11206, the low-data SFT experiment with “1,000 curated samples”; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2305.11206" target="_blank" rel="noopener">https://arxiv.org/abs/2305.11206</a></li>
-        <li><span data-zh>LoRA 论文（arXiv 2106.09685，低秩适配的原始方法，2026-10-20 直抓摘要页）</span><span data-en>LoRA paper (arXiv 2106.09685, the original low-rank adaptation method; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener">https://arxiv.org/abs/2106.09685</a></li>
-        <li><span data-zh>QLoRA 论文（arXiv 2305.14314，4-bit 基座 + LoRA 的微调路线，2026-10-20 直抓摘要页）</span><span data-en>QLoRA paper (arXiv 2305.14314, fine-tuning route with a 4-bit base + LoRA; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2305.14314" target="_blank" rel="noopener">https://arxiv.org/abs/2305.14314</a></li>
-        <li><span data-zh>OpenAI Cookbook · Finetuning 指南（官方微调教程与数据格式，2026-10-20 直抓 200）</span><span data-en>OpenAI Cookbook · Finetuning guide (official fine-tuning tutorial and data formats; fetched directly, HTTP 200, 2026-10-20)</span>：<a href="https://cookbook.openai.com/examples/openai_llm_cookbook" target="_blank" rel="noopener">https://cookbook.openai.com/examples/openai_llm_cookbook</a></li>
-      </ul>
-      <p class="fam-foot"><span data-zh>基础来源快照：2026-10-20；单项补充与补充范围见正文和来源标签。请回原始说明核对规格、方法与适用条件。</span><span data-en>Base source snapshot: 2026-10-20; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</span></p>
-    </section>
-  </div>
-  </main>
-  <footer class="site-footer foot-single">
-    <div class="container foot-line">
-      <div class="foot-brand">
-        <span class="foot-brand-main">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span class="foot-copy"><span data-zh>投机取巧 · specul.com</span><span data-en>Specul · specul.com</span></span>
-        </span>
-        <span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh>内容 CC BY 4.0</span><span data-en>Content CC BY 4.0</span></a><span class="sep" aria-hidden="true">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh>代码 MIT</span><span data-en>Code MIT</span></a><span class="sep" aria-hidden="true">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" target="_blank" rel="noopener"><span data-zh>源码</span><span data-en>Source</span></a></span>
-      </div>
-      <nav class="foot-sites" aria-label="Footer site links">
-        <a class="site-link" href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://demos.specul.com/"><span data-zh>演示</span><span data-en>Demos</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://oss.specul.com/"><span data-zh>开源</span><span data-en>OSS</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://hardware.specul.com/"><span data-zh>算力</span><span data-en>Compute</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://papers.specul.com/"><span data-zh>论文</span><span data-en>Papers</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-      </nav>
-      <nav class="foot-legal" aria-label="Legal and corrections">
-        <a href="https://specul.com/legal.html"><span data-zh>法律</span><span data-en>Legal</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私</span><span data-en>Privacy</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/correct.html"><span data-zh>纠错</span><span data-en>Corrections</span></a>
-      </nav>
-    </div>
-  </footer>
-<nav class="nav-tabbar nav-tabbar-1row" aria-label="快捷导航">
-    <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
-    <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学AI</span><span data-en>Learn</span></a>
-    <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
-    <a href="https://models.specul.com/" aria-current="page"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
-    <a href="https://demos.specul.com/"><span class="ti" aria-hidden="true">▷</span><span data-zh>演示</span><span data-en>Demos</span></a>
-    <a href="https://oss.specul.com/"><span class="ti" aria-hidden="true">▧</span><span data-zh>开源</span><span data-en>OSS</span></a>
-    <a href="https://hardware.specul.com/"><span class="ti" aria-hidden="true">▣</span><span data-zh>算力</span><span data-en>Chips</span></a>
-    <a href="https://papers.specul.com/"><span class="ti" aria-hidden="true">▥</span><span data-zh>论文</span><span data-en>Papers</span></a>
-    <a href="https://chain.specul.com/"><span class="ti" aria-hidden="true">◇</span><span data-zh>链</span><span data-en>Chain</span></a>
-    <a href="https://nav.specul.com/" data-nav-group="external"><span class="ti" aria-hidden="true">↗</span><span data-zh>导航</span><span data-en>Nav</span></a>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2><span data-zh="">这一篇讲什么</span><span data-en="">What this guide covers</span></h2>
+<span data-zh=""><p><b>SFT 就是拿「问题 → 好回答」的示范对，继续训练预训练模型。</b></p>
+<p>预训练模型会续写，但不会对话：你问它问题，<br/>它可能把问题续写成「这个问题有以下几种答案……」而不是直接回答。<br/>SFT 教的是形式与分寸：按对话格式答、别瞎编、该拒就拒。</p></span><span data-en=""><p><b>SFT means continuing to train a pre-trained model on demonstration pairs of “question → good answer”.</b></p>
+<p>A pre-trained model can continue text but cannot hold a conversation: ask it a question<br/>and it may continue the question into “This question has the following answers…” instead of answering directly.<br/>What SFT teaches is form and judgement: answer in conversational format, don't fabricate, refuse when refusal is due.</p></span>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2><span data-zh="">数据从哪来：人写、模型写、混合</span><span data-en="">Where the data comes from</span></h2>
+<span data-zh=""><p>InstructGPT（arXiv 2203.02155）的路线是外包标注员写示范回答，<br/>成本高、规模小（SFT 阶段约一万多条）。</p>
+<p>FLAN（arXiv 2109.01652）走另一路：<br/>把上百个传统 NLP 数据集改写成指令模板，让模型见遍任务形态。</p>
+<p>LLaMA 2（arXiv 2307.09288）混合两者，并加入自举：<br/>用自家模型生成候选、人工筛，扩大数据量。</p>
+<p>现在开放权重家族的 SFT 配方多数只公开数量不公开来源明细，<br/>这里按官方写明的部分转述；没写明的不猜。</p></span><span data-en=""><p>InstructGPT (arXiv 2203.02155) went with outsourced annotators writing the demonstration answers —<br/>expensive and small-scale (a little over ten thousand examples in the SFT stage).</p>
+<p>FLAN (arXiv 2109.01652) took another route:<br/>rewriting hundreds of classic NLP datasets into instruction templates so the model sees every task shape.</p>
+<p>LLaMA 2 (arXiv 2307.09288) mixes both and adds bootstrapping:<br/>its own models generate candidates, humans filter them, scaling the data volume up.</p>
+<p>Today most open-weight families publish only the quantity of their SFT recipe, not the source breakdown;<br/>this site transcribes what the official statements say and does not guess at what they leave out.</p></span>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2><span data-zh="">质量压过数量：LIMA 一役</span><span data-en="">Quality beats quantity: the LIMA result</span></h2>
+<span data-zh=""><p>LIMA（arXiv 2305.11206）只用 1000 条人工精选样本做 SFT，<br/>输出质量接近数万条的流水线数据。</p>
+<p>结论不是「1000 条就够」，而是：SFT 主要教形式，知识在预训练里已经有了。<br/>示范对里的知识含量不重要，回答的风格、结构、边界才是它学的东西。</p>
+<p>从业者推论：SFT 数据里混进错误事实，模型学到的不是那条事实，<br/>是「这种错误说法是合格回答」的风格。数据审核的重点在示范质量，不在条数。</p></span><span data-en=""><p>LIMA (arXiv 2305.11206) did SFT on just 1,000 hand-curated samples,<br/>with output quality close to pipeline data of tens of thousands.</p>
+<p>The conclusion is not “1,000 examples are enough” but this: SFT mostly teaches form — the knowledge was already there from pre-training.<br/>How much knowledge sits inside the demonstration pairs does not matter; what the model learns is the style, structure and boundaries of the answers.</p>
+<p>Practitioner corollary: when wrong facts slip into SFT data, what the model learns is not the fact itself<br/>but the style of “this kind of wrong claim is an acceptable answer”. Data review should focus on demonstration quality, not on counts.</p></span>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2><span data-zh="">省显存微调：LoRA 与 QLoRA</span><span data-en="">Memory-savers: LoRA and QLoRA</span></h2>
+<span data-zh=""><p>全参数微调要存全部梯度和优化器状态，显存翻倍不止。</p>
+<p>LoRA（arXiv 2106.09685）冻结基座权重，只训注入的低秩小矩阵。<br/>可训参数降到千分之几，产物只有几十 MB，可以热插拔换装。</p>
+<p>QLoRA（arXiv 2305.14314）把基座压到 4-bit 再挂 LoRA，<br/>单卡微调 30B/65B 成为可能——这里的不少社区微调模型走的就是这条路。</p>
+<p>边界要如实说：LoRA 改「表达与风格」效率高，往模型里灌新知识的效果弱于全参训练。<br/>低秩增量装不下多少新事实。「用 LoRA 把私有知识库训进模型」通常是错的工具，<br/>检索（RAG）才是常规解。</p></span><span data-en=""><p>Full-parameter fine-tuning has to store every gradient and optimiser state — memory more than doubles.</p>
+<p>LoRA (arXiv 2106.09685) freezes the base weights and trains only injected low-rank matrices.<br/>Trainable parameters drop to a fraction of a percent, the artefact is tens of MB, and adapters can be hot-swapped.</p>
+<p>QLoRA (arXiv 2305.14314) squeezes the base to 4-bit before attaching LoRA,<br/>making single-GPU fine-tuning of 30B/65B models possible — quite a few community fine-tunes listed on this site follow exactly this route.</p>
+<p>State the limits honestly: LoRA is efficient at changing “expression and style” but weak at injecting new knowledge compared with full-parameter training.<br/>A low-rank delta cannot hold many new facts. “Training a private knowledge base into the model with LoRA” is usually the wrong tool;<br/>retrieval (RAG) is the standard answer.</p></span>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2><span data-zh="">SFT 之后：对齐另有一步</span><span data-en="">What comes after SFT</span></h2>
+<span data-zh=""><p>SFT 教了形式，但「哪个回答更好」它只会模仿示范，不会判断。<br/>判断好坏交给下一步——奖励模型与偏好优化（RLHF/DPO），见下一篇。</p>
+<p>学 AI 站的 <a href="https://learn.specul.com/term/训练三阶段/" rel="noopener" target="_blank">训练三阶段</a> 词条<br/>把三步的科普版一页讲完；这一篇是每步的从业者深版。</p></span><span data-en=""><p>SFT teaches form, but for “which answer is better” it can only imitate the demonstrations — it cannot judge.<br/>Judging quality belongs to the next step — reward models and preference optimisation (RLHF/DPO), covered in the next guide.</p>
+<p>The Learn site's <a href="https://learn.specul.com/term/训练三阶段/" rel="noopener" target="_blank">three-stage training</a> term page<br/>covers all three steps in one explainer page; this guide is the practitioner deep-dive for each step.</p></span>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2><span data-zh="">和学 AI 站的分工</span><span data-en="">How this differs from the Learn site</span></h2>
+<span data-zh=""><p>使用者视角的一页科普：学 AI 站的 <a href="https://learn.specul.com/term/监督学习/" rel="noopener" target="_blank">监督学习</a><br/>与 <a href="https://learn.specul.com/term/训练三阶段/" rel="noopener" target="_blank">训练三阶段</a>。</p>
+<p>本篇讲数据路线的取舍、LIMA 的口径变化、LoRA 的适用边界——<br/>同一个词，两处深度不同，互链不重复。</p></span><span data-en=""><p>The user-perspective explainers live on the Learn site: <a href="https://learn.specul.com/term/监督学习/" rel="noopener" target="_blank">supervised learning</a><br/>and <a href="https://learn.specul.com/term/训练三阶段/" rel="noopener" target="_blank">three-stage training</a>.</p>
+<p>This guide covers the trade-offs between data routes, how LIMA changed the consensus, and where LoRA applies —<br/>same term, different depth on each side, cross-linked without duplication.</p></span>
+</section>
+<nav aria-label="下一步" class="fam-sec" data-ui-aria-label-en="Next steps" data-ui-aria-label-zh="下一步">
+<h2><span data-zh="">继续做什么</span><span data-en="">What to do next</span></h2>
+<ul><li><a href="gpu-cost-math.html#capacity-workbench"><span data-zh="">填写上下文与并发容量假设</span><span data-en="">Budget context and concurrency</span></a></li>
+<li><a href="https://learn.specul.com/guide/怎么验证%20AI%20的输出/"><span data-zh="">检查输出是否有依据</span><span data-en="">Verify evidence for the output</span></a></li>
+<li><a href="https://tools.specul.com/mcp/guides/failure-library.html#by-symptom"><span data-zh="">按症状排查</span><span data-en="">Troubleshoot by symptom</span></a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2><span data-zh="">出处</span><span data-en="">Sources</span></h2>
+<ul class="fam-src-list">
+<li><span data-zh="">InstructGPT 论文（arXiv 2203.02155，SFT→奖励模型→RL 三阶段的原始流程，2026-10-20 直抓摘要页）</span><span data-en="">InstructGPT paper (arXiv 2203.02155, the original SFT → reward model → RL pipeline; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2203.02155" rel="noopener" target="_blank">https://arxiv.org/abs/2203.02155</a></li>
+<li><span data-zh="">LLaMA 2 论文（arXiv 2307.09288，SFT 数据量与蒸馏（SFT 自举）做法，2026-10-20 直抓摘要页）</span><span data-en="">LLaMA 2 paper (arXiv 2307.09288, SFT data volume and distillation (SFT bootstrapping); abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2307.09288" rel="noopener" target="_blank">https://arxiv.org/abs/2307.09288</a></li>
+<li><span data-zh="">FLAN 论文（arXiv 2109.01652，指令模板池化训练，2026-10-20 直抓摘要页）</span><span data-en="">FLAN paper (arXiv 2109.01652, pooling instruction templates for training; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2109.01652" rel="noopener" target="_blank">https://arxiv.org/abs/2109.01652</a></li>
+<li><span data-zh="">LIMA 论文（arXiv 2305.11206，「1000 条精选样本」的少数据 SFT 实验，2026-10-20 直抓摘要页）</span><span data-en="">LIMA paper (arXiv 2305.11206, the low-data SFT experiment with “1,000 curated samples”; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2305.11206" rel="noopener" target="_blank">https://arxiv.org/abs/2305.11206</a></li>
+<li><span data-zh="">LoRA 论文（arXiv 2106.09685，低秩适配的原始方法，2026-10-20 直抓摘要页）</span><span data-en="">LoRA paper (arXiv 2106.09685, the original low-rank adaptation method; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2106.09685" rel="noopener" target="_blank">https://arxiv.org/abs/2106.09685</a></li>
+<li><span data-zh="">QLoRA 论文（arXiv 2305.14314，4-bit 基座 + LoRA 的微调路线，2026-10-20 直抓摘要页）</span><span data-en="">QLoRA paper (arXiv 2305.14314, fine-tuning route with a 4-bit base + LoRA; abstract page fetched directly 2026-10-20)</span>：<a href="https://arxiv.org/abs/2305.14314" rel="noopener" target="_blank">https://arxiv.org/abs/2305.14314</a></li>
+<li><span data-zh="">OpenAI Cookbook · Finetuning 指南（官方微调教程与数据格式，2026-10-20 直抓 200）</span><span data-en="">OpenAI Cookbook · Finetuning guide (official fine-tuning tutorial and data formats; fetched directly, HTTP 200, 2026-10-20)</span>：<a href="https://cookbook.openai.com/examples/openai_llm_cookbook" rel="noopener" target="_blank">https://cookbook.openai.com/examples/openai_llm_cookbook</a></li>
+</ul>
+<p class="fam-foot"><span data-zh="">基础来源快照：2026-10-20；单项补充与补充范围见正文和来源标签。请回原始说明核对规格、方法与适用条件。</span><span data-en="">Base source snapshot: 2026-10-20; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</span></p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy"><span data-zh="">投机取巧 · specul.com</span><span data-en="">Specul · specul.com</span></span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh="">内容 CC BY 4.0</span><span data-en="">Content CC BY 4.0</span></a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh="">代码 MIT</span><span data-en="">Code MIT</span></a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank"><span data-zh="">源码</span><span data-en="">Source</span></a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/"><span data-zh="">演示</span><span data-en="">Demos</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/"><span data-zh="">开源</span><span data-en="">OSS</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/"><span data-zh="">算力</span><span data-en="">Compute</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/"><span data-zh="">论文</span><span data-en="">Papers</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/"><span data-zh="">导航</span><span data-en="">Directory</span></a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/legal.html"><span data-zh="">法律</span><span data-en="">Legal</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/legal.html#s8"><span data-zh="">隐私</span><span data-en="">Privacy</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/correct.html"><span data-zh="">纠错</span><span data-en="">Corrections</span></a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/"><span aria-hidden="true" class="ti">◎</span><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span aria-hidden="true" class="ti">▤</span><span data-zh="">学AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span aria-hidden="true" class="ti">◈</span><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span aria-hidden="true" class="ti">▦</span><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span aria-hidden="true" class="ti">▷</span><span data-zh="">演示</span><span data-en="">Demos</span></a>
+<a href="https://oss.specul.com/"><span aria-hidden="true" class="ti">▧</span><span data-zh="">开源</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span aria-hidden="true" class="ti">▣</span><span data-zh="">算力</span><span data-en="">Chips</span></a>
+<a href="https://papers.specul.com/"><span aria-hidden="true" class="ti">▥</span><span data-zh="">论文</span><span data-en="">Papers</span></a>
+<a href="https://chain.specul.com/"><span aria-hidden="true" class="ti">◇</span><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a data-nav-group="external" href="https://nav.specul.com/"><span aria-hidden="true" class="ti">↗</span><span data-zh="">导航</span><span data-en="">Nav</span></a>
 </nav>
 </body>
 </html>

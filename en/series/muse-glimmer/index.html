@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Muse Glimmer | Models</title>
+<meta content="Meta's open-weight series, apache-2.0, with quantisation coverage across several major quantisers." name="description"/>
+<link href="https://models.specul.com/en/series/muse-glimmer/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/series/muse-glimmer/" property="og:url"/>
+<meta content="Muse Glimmer | Models" property="og:title"/>
+<meta content="Meta's open-weight series, apache-2.0, with quantisation coverage across several major quantisers." property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Muse Glimmer | Models","description":"Meta's open-weight series, apache-2.0, with quantisation coverage across several major quantisers.","url":"https://models.specul.com/en/series/muse-glimmer/","isAccessibleForFree":true,"temporalCoverage":"2026-10-30"}</script>
+<meta content="Muse Glimmer | Models" name="twitter:title"/><meta content="Meta's open-weight series, apache-2.0, with quantisation coverage across several major quantisers." name="twitter:description"/><link href="https://models.specul.com/series/muse-glimmer/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/series/muse-glimmer/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/series/muse-glimmer/" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/series/muse-glimmer/" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← All series</a></nav>
+<header class="page-head">
+<p class="eyebrow">Meta　·　released 2026-08-09</p>
+<h1>Muse Glimmer</h1>
+<p class="lede">Meta's open-weight series, apache-2.0, with quantisation coverage across several major quantisers.</p>
+<ul class="pos"><li>General chat</li><li>Apache-2.0</li></ul>
+<nav class="member-nav"><a href="#m0">Muse Glimmer 30B</a></nav>
+</header>
+<section class="fam-sec cn-sec">
+<h2>China availability <small>domestic / direct access / CAC filing · snapshot 2026-10-20</small></h2>
+<ul class="fam-claims cn-rows">
+<li><b>Origin</b>　foreign-made　Made by Meta.</li>
+<li><b>Direct access</b>　direct OK　ModelScope carries the official meta-models org mirror (measured 200); Hugging Face direct unreachable.　·　<a href="https://www.modelscope.cn/models/meta-models/Muse-Glimmer-30B" rel="noopener" target="_blank">domestic mirror</a></li>
+<li><b>CAC filing</b>　not in filing list：No Meta / Muse entry found in the public registry (searched 2026-10-20; same-name hits are all unrelated domestic entities).</li>
+</ul>
+<p class="fam-claims-note">Filing status is quoted from the CAC public registry by number. "Direct access" means the page opened once from a mainland network — not a vendor promise.</p>
+<ul class="fam-src-list cn-srcs"><li>CAC · filed generative-AI service information (rolling announcement page, 13 batch attachment PDFs, full download &amp; search on 2026-10-20): <a href="https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm" rel="noopener" target="_blank">https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm</a></li><li>ModelScope mirror under the meta-models org, Muse-Glimmer-30B (200 verified on 2026-10-20): <a href="https://www.modelscope.cn/models/meta-models/Muse-Glimmer-30B" rel="noopener" target="_blank">https://www.modelscope.cn/models/meta-models/Muse-Glimmer-30B</a></li></ul>
+</section>
+<section class="member" id="m0">
+<h3><span class="member-idx">Member 1</span>Muse Glimmer 30B</h3>
+<p class="member-meta">29.78B total params　·　General　·　10 quant sources</p>
+<div class="block" id="a0">
+<h4><span class="blk">A</span>Base model card <small>specs · licence · access · parameter count cross-checked across three sources</small></h4>
+<table class="kv">
+<tr><th>Official release page</th><td><a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" rel="noopener" target="_blank">meta-models/Muse-Glimmer-30B ↗</a><br/><span class="muted small"></span></td></tr>
+<tr><th>Licence</th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td></tr>
+<tr><th>Access</th><td>✅ Public download　<span class="muted">no application needed</span></td></tr>
+<tr><th>Scale</th><td><table class="kv kv-nested">
+<tbody>
+<tr><th>Vendor states</th><td><b>29.78B total params</b></td></tr>
+<tr><th>Official API</th><td><span class="muted">—</span></td></tr>
+<tr><th>This site, measured</th><td><span class="muted">—</span></td></tr>
+</tbody>
+</table></td></tr>
+<tr><th>Precision breakdown</th><td><span class="muted">—</span></td></tr>
+<tr><th>Architecture</th><td><code>muse-glimmer</code></td></tr>
+<tr><th>Context length</th><td><code>131,072</code> tokens</td></tr>
+<tr><th>Base model</th><td><span class="muted">this repo is the base model, not a fine-tune</span></td></tr>
+<tr><th>Task type</th><td><span class="muted">—</span></td></tr>
+<tr><th>Input modality</th><td><b>✓ Supported</b> <a class="lic-src" href="https://huggingface.co/meta-models/Muse-Glimmer-30B" rel="noopener" target="_blank">source ↗</a> <span class="muted small">model card · 2026-10-28</span><br/><span class="muted small">Card "Supported modalities": input text + image, output text; ViT-G/14 perception encoder; audio not supported; video processed frame-by-frame (not optimized for video). Verified via the hf-mirror.com mirror (the origin page is region-blocked).</span></td></tr>
+<tr><th>Tool calling</th><td><b>✓ Supported</b> <a class="lic-src" href="https://huggingface.co/meta-models/Muse-Glimmer-30B" rel="noopener" target="_blank">source ↗</a> <span class="muted small">model card · 2026-10-28</span><br/><span class="muted small">Card: "Reliable Tool Use" — schema-based function calls across extended multi-turn workflows; failed tool calls are diagnosed and retried. Verified via the hf-mirror.com mirror.</span></td></tr>
+<tr><th>Role</th><td>General</td></tr>
+<tr><th>Tags</th><td><span class="muted">—</span></td></tr>
+<tr><th>Downloads</th><td><b>202k</b>　<span class="muted">likes 2k</span></td></tr>
+<tr><th>Released</th><td><span class="muted">—</span></td></tr>
+<tr><th>Last updated</th><td>2026-10-22</td></tr>
+<tr><th>Release-page size</th><td><span class="muted">—</span></td></tr>
+</table>
+<p class="member-note">apache-2.0, 61 GGUF repos (60 third-party), covered by all three of unsloth, LM Studio and bartowski.</p>
+</div>
+<div class="block" id="b0">
+<h4><span class="blk">B</span>Which one to pick <small>work backwards from your VRAM</small></h4>
+<p class="block-lead">An <b>illustrative filter</b> uses published file size × 1.15. Sizes come from release listings, not measured resident memory. The fixed 15% teaching assumption <b>does not replace a context-, architecture- and concurrency-dependent cache budget</b>. Filter candidates, then check capacity.</p>
+<div class="vramtool">
+<div class="vt-row">
+<label class="vt-f"><span class="vt-h">Your VRAM (GB)</span>
+<input class="vt-in" inputmode="numeric" max="1024" min="1" placeholder="12" step="1" type="number"/></label>
+<span class="vt-quick"><button class="vt-preset" data-gb="4" type="button">4</button><button class="vt-preset" data-gb="8" type="button">8</button><button class="vt-preset" data-gb="12" type="button">12</button><button class="vt-preset" data-gb="16" type="button">16</button><button class="vt-preset" data-gb="24" type="button">24</button><button class="vt-preset" data-gb="48" type="button">48</button><button class="vt-preset" data-gb="80" type="button">80</button></span>
+</div>
+<div aria-live="polite" class="vt-out"></div>
+<script class="vt-data" type="application/json">[{"q":"作者标注 4.30bpw","qe":"author-stated 4.30bpw","g":1.39,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF","b":"ddh0","rp":"ddh0/Muse-Glimmer-30B-GGUF"},{"q":"作者标注 4.85bpw","qe":"author-stated 4.85bpw","g":1.56,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF","b":"ddh0","rp":"ddh0/Muse-Glimmer-30B-GGUF"},{"q":"作者标注 5.51bpw","qe":"author-stated 5.51bpw","g":1.77,"t":"保守档","te":"Conservative","u":"https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF","b":"ddh0","rp":"ddh0/Muse-Glimmer-30B-GGUF"},{"q":"Q8_0","qe":"Q8_0","g":2.73,"t":"近似无损","te":"Near lossless","u":"https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF","b":"ddh0","rp":"ddh0/Muse-Glimmer-30B-GGUF"},{"q":"Q1_0","qe":"Q1_0","g":4.85,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"BF16","qe":"BF16","g":5.13,"t":"近似无损","te":"Near lossless","u":"https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF","b":"ddh0","rp":"ddh0/Muse-Glimmer-30B-GGUF"},{"q":"IQ1_S","qe":"IQ1_S","g":6.53,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ1_M","qe":"IQ1_M","g":7.06,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ2_XXS","qe":"IQ2_XXS","g":7.96,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ2_XS","qe":"IQ2_XS","g":8.71,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"Q2_0","qe":"Q2_0","g":8.96,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ2_S","qe":"IQ2_S","g":9.13,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ2_M","qe":"IQ2_M","g":9.85,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF","b":"AtomicChat","rp":"AtomicChat/Muse-Glimmer-30B-GGUF"},{"q":"Q2_K_S","qe":"Q2_K_S","g":10.03,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"Q2_K","qe":"Q2_K","g":10.69,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"UD-IQ2_XXS","qe":"UD-IQ2_XXS","g":10.75,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"IQ3_XXS","qe":"IQ3_XXS","g":11.14,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF","b":"AtomicChat","rp":"AtomicChat/Muse-Glimmer-30B-GGUF"},{"q":"UD-IQ2_XS","qe":"UD-IQ2_XS","g":11.51,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"IQ3_XS","qe":"IQ3_XS","g":11.97,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"UD-IQ2_M","qe":"UD-IQ2_M","g":12.26,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"Q2_K_L","qe":"Q2_K_L","g":12.35,"t":"极限压缩","te":"Extreme compression","u":"https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF","b":"bartowski","rp":"bartowski/Muse-Glimmer-30B-GGUF"},{"q":"UD-Q2_K_XL","qe":"UD-Q2_K_XL","g":12.44,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"Q3_K_S","qe":"Q3_K_S","g":12.51,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ3_S","qe":"IQ3_S","g":12.52,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ3_M","qe":"IQ3_M","g":12.82,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"UD-IQ3_XXS","qe":"UD-IQ3_XXS","g":13.13,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"UD-Q3_K_XL","qe":"UD-Q3_K_XL","g":13.36,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"Q3_K_M","qe":"Q3_K_M","g":13.68,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"UD-IQ3_M","qe":"UD-IQ3_M","g":14.12,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"Q3_K_L","qe":"Q3_K_L","g":14.68,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ4_XS","qe":"IQ4_XS","g":15.22,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF","b":"AtomicChat","rp":"AtomicChat/Muse-Glimmer-30B-GGUF"},{"q":"UD-Q4_K_XL","qe":"UD-Q4_K_XL","g":15.88,"t":"保守档","te":"Conservative","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"Q3_K_XL","qe":"Q3_K_XL","g":15.96,"t":"长上下文优先","te":"Long context first","u":"https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF","b":"bartowski","rp":"bartowski/Muse-Glimmer-30B-GGUF"},{"q":"Q4_0","qe":"Q4_0","g":16.03,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"Q4_K_S","qe":"Q4_K_S","g":16.13,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"IQ4_NL","qe":"IQ4_NL","g":16.14,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"作者标注 4.66bpw","qe":"author-stated 4.66bpw","g":16.25,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF","b":"ddh0","rp":"ddh0/Muse-Glimmer-30B-GGUF"},{"q":"Q4_K_M","qe":"Q4_K_M","g":16.76,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF","b":"meta-models","rp":"meta-models/Muse-Glimmer-30B-GGUF"},{"q":"作者标注 5.03bpw","qe":"author-stated 5.03bpw","g":17.54,"t":"保守档","te":"Conservative","u":"https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF","b":"ddh0","rp":"ddh0/Muse-Glimmer-30B-GGUF"},{"q":"Q4_1","qe":"Q4_1","g":17.69,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"Q4_K_L","qe":"Q4_K_L","g":18.3,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF","b":"bartowski","rp":"bartowski/Muse-Glimmer-30B-GGUF"},{"q":"Q5_K_M","qe":"Q5_K_M","g":19.19,"t":"保守档","te":"Conservative","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"Q5_K_S","qe":"Q5_K_S","g":19.35,"t":"保守档","te":"Conservative","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"Q5_0","qe":"Q5_0","g":19.35,"t":"保守档","te":"Conservative","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"Q4_K","qe":"Q4_K","g":19.65,"t":"平衡档","te":"Balanced","u":"https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF","b":"meta-models","rp":"meta-models/Muse-Glimmer-30B-GGUF"},{"q":"Q5_K_L","qe":"Q5_K_L","g":19.77,"t":"保守档","te":"Conservative","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"Q5_1","qe":"Q5_1","g":21,"t":"保守档","te":"Conservative","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"UD-Q5_K_XL","qe":"UD-Q5_K_XL","g":21.79,"t":"保守档","te":"Conservative","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"Q6_K","qe":"Q6_K","g":22.87,"t":"保守档","te":"Conservative","u":"https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF","b":"NANI-Nithin","rp":"NANI-Nithin/Muse-Glimmer-30B-GGUF"},{"q":"作者标注 6.68bpw","qe":"author-stated 6.68bpw","g":23.28,"t":"保守档","te":"Conservative","u":"https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF","b":"ddh0","rp":"ddh0/Muse-Glimmer-30B-GGUF"},{"q":"UD-Q6_K","qe":"UD-Q6_K","g":26.27,"t":"保守档","te":"Conservative","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"},{"q":"UD-Q8_K_XL","qe":"UD-Q8_K_XL","g":32.3,"t":"近似无损","te":"Near lossless","u":"https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF","b":"unsloth","rp":"unsloth/Muse-Glimmer-30B-GGUF"}]</script>
+</div>
+<p><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context, concurrency and resident memory</a></p>
+<h3 class="budget-h">Initial candidates by file size</h3>
+<table class="budget">
+<caption>Illustrative capacity → file-size candidates (not execution validation)</caption>
+<tbody>
+<tr>
+<th>8 GB illustrative capacity</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
+</td>
+</tr>
+<tr>
+<th>12 GB illustrative capacity</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
+</td>
+</tr>
+<tr>
+<th>16 GB illustrative capacity</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
+</td>
+</tr>
+<tr>
+<th>24 GB illustrative capacity</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
+</td>
+</tr>
+<tr>
+<th>48 GB illustrative capacity</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
+</td>
+</tr>
+<tr>
+<th>80 GB illustrative capacity</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 class="budget-h">System RAM and multiple devices: check separately</h3>
+<p class="muted small">Layer loading, CPU offload and multi-device allocation depend on runtime, model and backend version. Aggregate capacity is not process-available VRAM; this table establishes neither execution nor speed.</p>
+<table class="budget">
+<caption>Aggregate-capacity examples → file-size candidates</caption>
+<tbody>
+<tr>
+<th>64 GB aggregate-capacity example</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
+</td>
+</tr>
+<tr>
+<th>128 GB aggregate-capacity example</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
+</td>
+</tr>
+<tr>
+<th>256 GB aggregate-capacity example</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
+</td>
+</tr>
+<tr>
+<th>640 GB aggregate-capacity example</th>
+<td>
+<b>Q8_0</b>（2.7 GB · Near lossless）
+            <br/><span class="muted">Smaller: author-stated 5.51bpw 1.8 GB / author-stated 4.85bpw 1.6 GB</span>
+<br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="muted small">Tier sizes in this series span 6.5 GB → 5.1 GB.</p>
+        跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。
+<details class="all-quants">
+<summary>Expand: published file sizes（52 tiers）</summary>
+<table class="quant-list">
+<thead><tr><th>Quant</th><th>Min size</th><th>bpw</th><th>Tier</th><th>What this tier means</th><th>Files in tier / size range</th><th>最小体积来源</th></tr></thead>
+<tbody>
+<tr>
+<td><code>IQ1_S</code></td>
+<td><b>6.5 GB</b></td>
+<td>1.62<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q1_0</code></td>
+<td><b>4.8 GB</b></td>
+<td>1.65<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>IQ1_M</code></td>
+<td><b>7.1 GB</b></td>
+<td>1.90<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>UD-IQ2_XXS</code></td>
+<td><b>11 GB</b></td>
+<td>2.13<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>IQ2_XXS</code></td>
+<td><b>8.0 GB</b></td>
+<td>2.13<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">3  · 8.0 GB~9.3 GB</td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>UD-IQ2_XS</code></td>
+<td><b>12 GB</b></td>
+<td>2.31<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>IQ2_XS</code></td>
+<td><b>8.7 GB</b></td>
+<td>2.31<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">2  · 8.7 GB~9.6 GB</td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>UD-IQ2_M</code></td>
+<td><b>12 GB</b></td>
+<td>2.39<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>IQ2_M</code></td>
+<td><b>9.8 GB</b></td>
+<td>2.39<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">4  · 9.8 GB~11 GB</td>
+<td class="muted"><a href="https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">AtomicChat</a></td>
+</tr>
+<tr>
+<td><code>IQ2_S</code></td>
+<td><b>9.1 GB</b></td>
+<td>2.46<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">2  · 9.1 GB~10 GB</td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q2_0</code></td>
+<td><b>9.0 GB</b></td>
+<td>2.62<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q2_K_S</code></td>
+<td><b>10 GB</b></td>
+<td>2.71<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q2_K</code></td>
+<td><b>11 GB</b></td>
+<td>2.80<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">3 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q2_K_L</code></td>
+<td><b>12 GB</b></td>
+<td>2.89<span class="muted"> bpw</span></td>
+<td><span class="tier tier-4">Extreme compression</span></td>
+<td class="muted small">Fit it in at the cost of visibly lower quality</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">bartowski</a></td>
+</tr>
+<tr>
+<td><code>UD-IQ3_XXS</code></td>
+<td><b>13 GB</b></td>
+<td>3.06<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>IQ3_XXS</code></td>
+<td><b>11 GB</b></td>
+<td>3.06<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">5  · 11 GB~12 GB</td>
+<td class="muted"><a href="https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">AtomicChat</a></td>
+</tr>
+<tr>
+<td><code>UD-Q2_K_XL</code></td>
+<td><b>12 GB</b></td>
+<td>3.35<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>IQ3_S</code></td>
+<td><b>13 GB</b></td>
+<td>3.35<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>IQ3_XS</code></td>
+<td><b>12 GB</b></td>
+<td>3.36<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">3 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q3_K_S</code></td>
+<td><b>13 GB</b></td>
+<td>3.50<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">3 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q3_K_M</code></td>
+<td><b>14 GB</b></td>
+<td>3.55<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">4 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q3_K_L</code></td>
+<td><b>15 GB</b></td>
+<td>3.60<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">3 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>UD-IQ3_M</code></td>
+<td><b>14 GB</b></td>
+<td>3.66<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>IQ3_M</code></td>
+<td><b>13 GB</b></td>
+<td>3.66<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">4  · 13 GB~15 GB</td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q3_K_XL</code></td>
+<td><b>16 GB</b></td>
+<td>3.66<span class="muted"> bpw</span></td>
+<td><span class="tier tier-3">Long context first</span></td>
+<td class="muted small">The pick when the KV cache is also tight</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">bartowski</a></td>
+</tr>
+<tr>
+<td><code>IQ4_NL</code></td>
+<td><b>16 GB</b></td>
+<td>4.05<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">3 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>IQ4_XS</code></td>
+<td><b>15 GB</b></td>
+<td>4.25<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">7  · 15 GB~16 GB</td>
+<td class="muted"><a href="https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">AtomicChat</a></td>
+</tr>
+<tr>
+<td><code>author-stated 4.30bpw</code></td>
+<td><b>1.4 GB</b></td>
+<td>4.30<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">ddh0</a></td>
+</tr>
+<tr>
+<td><code>UD-Q3_K_XL</code></td>
+<td><b>13 GB</b></td>
+<td>4.42<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>Q4_0</code></td>
+<td><b>16 GB</b></td>
+<td>4.55<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">2 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>author-stated 4.66bpw</code></td>
+<td><b>16 GB</b></td>
+<td>4.66<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">ddh0</a></td>
+</tr>
+<tr>
+<td><code>Q4_K_S</code></td>
+<td><b>16 GB</b></td>
+<td>4.75<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">3 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q4_1</code></td>
+<td><b>18 GB</b></td>
+<td>4.83<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">2 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q4_K_M</code></td>
+<td><b>17 GB</b></td>
+<td>4.85<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">9  · 17 GB~19 GB</td>
+<td class="muted"><a href="https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">meta-models</a></td>
+</tr>
+<tr>
+<td><code>Q4_K</code></td>
+<td><b>20 GB</b></td>
+<td>4.85<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">meta-models</a></td>
+</tr>
+<tr>
+<td><code>author-stated 4.85bpw</code></td>
+<td><b>1.6 GB</b></td>
+<td>4.85<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">ddh0</a></td>
+</tr>
+<tr>
+<td><code>Q4_K_L</code></td>
+<td><b>18 GB</b></td>
+<td>4.95<span class="muted"> bpw</span></td>
+<td><span class="tier tier-2">Balanced</span></td>
+<td class="muted small">The default recommendation — the compromise between quality and size</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">bartowski</a></td>
+</tr>
+<tr>
+<td><code>author-stated 5.03bpw</code></td>
+<td><b>18 GB</b></td>
+<td>5.03<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">ddh0</a></td>
+</tr>
+<tr>
+<td><code>author-stated 5.51bpw</code></td>
+<td><b>1.8 GB</b></td>
+<td>5.51<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">ddh0</a></td>
+</tr>
+<tr>
+<td><code>Q5_K_S</code></td>
+<td><b>19 GB</b></td>
+<td>5.54<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">3 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q5_0</code></td>
+<td><b>19 GB</b></td>
+<td>5.54<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>UD-Q4_K_XL</code></td>
+<td><b>16 GB</b></td>
+<td>5.62<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>Q5_K_M</code></td>
+<td><b>19 GB</b></td>
+<td>5.69<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">6  · 19 GB~23 GB</td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>Q5_1</code></td>
+<td><b>21 GB</b></td>
+<td>5.69<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>Q5_K_L</code></td>
+<td><b>20 GB</b></td>
+<td>5.84<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">2  · 20 GB~21 GB</td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>UD-Q5_K_XL</code></td>
+<td><b>22 GB</b></td>
+<td>5.84<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>UD-Q6_K</code></td>
+<td><b>26 GB</b></td>
+<td>6.54<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>Q6_K</code></td>
+<td><b>23 GB</b></td>
+<td>6.59<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">6  · 23 GB~28 GB</td>
+<td class="muted"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">NANI-Nithin</a></td>
+</tr>
+<tr>
+<td><code>author-stated 6.68bpw</code></td>
+<td><b>23 GB</b></td>
+<td>6.68<span class="muted"> bpw</span></td>
+<td><span class="tier tier-1">Conservative</span></td>
+<td class="muted small">Almost no quality loss</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">ddh0</a></td>
+</tr>
+<tr>
+<td><code>Q8_0</code></td>
+<td><b>2.7 GB</b></td>
+<td>8.50<span class="muted"> bpw</span></td>
+<td><span class="tier tier-0">Near lossless</span></td>
+<td class="muted small">Size close to the original precision</td>
+<td class="muted small">12  · 2.7 GB~32 GB</td>
+<td class="muted"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">ddh0</a></td>
+</tr>
+<tr>
+<td><code>UD-Q8_K_XL</code></td>
+<td><b>32 GB</b></td>
+<td>8.72<span class="muted"> bpw</span></td>
+<td><span class="tier tier-0">Near lossless</span></td>
+<td class="muted small">Size close to the original precision</td>
+<td class="muted small">1 </td>
+<td class="muted"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">unsloth</a></td>
+</tr>
+<tr>
+<td><code>BF16</code></td>
+<td><b>5.1 GB</b></td>
+<td>16.00<span class="muted"> bpw</span></td>
+<td><span class="tier tier-0">Near lossless</span></td>
+<td class="muted small">Size close to the original precision</td>
+<td class="muted small">8  · 5.1 GB~56 GB</td>
+<td class="muted"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank">ddh0</a></td>
+</tr>
+</tbody>
+</table>
+<p class="muted small">Bits per weight is derived from the filename by llama.cpp’s published naming convention; the real value varies slightly between models at the same tier. This is <b>grade-B derived</b> — not a measured value.</p>
+<p class="muted small"><b>On "smallest size" and "variants":</b>同名档位下可能有多个不同文件
+          （不同量化者的实现差异，或带 <code>-AD-</code> 混合精度、<code>-PLEQ4_0</code> 上下文扩展、
+          <code>-DENSE</code> 等后缀的特殊变体）。上表取的是该档<b>最省的可行体积</b>，
+          「体积跨度」列给出该档实际的体积范围——跨度大说明该档内部差异明显，
+          选具体文件时请以跨度上界为准。</p>
+</details>
+</div>
+<div class="block" id="c0">
+<h4><span class="blk">C</span>Quantisation versions <small>side by side</small></h4>
+<table class="variants">
+<thead>
+<tr>
+<th>Quantiser</th><th>Licence</th><th class="num">Tiers</th><th class="num">Total size</th>
+<th class="num">Context</th><th>Recommended</th><th class="num">Downloads</th><th>Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<span class="badge badge-off">official</span> <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>meta-models</code></a>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td>
+<td class="num">2</td>
+<td class="num">36 GB</td>
+<td class="num">131,072</td>
+<td><code>Q4_K</code><br/><span class="muted small">20 GB</span></td>
+<td class="num">210k</td>
+<td class="muted small">2026-10-20</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>unsloth</code></a>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td>
+<td class="num">15</td>
+<td class="num">308 GB</td>
+<td class="num">131,072</td>
+<td><code>UD-Q3_K_XL</code><br/><span class="muted small">13 GB</span></td>
+<td class="num">789k</td>
+<td class="muted small">2026-08-10</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/lmstudio-community/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>lmstudio-community</code></a>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a><br/><span class="warn-inline small">Inherited from base <code>meta-models/Muse-Glimmer-30B</code> · the quant repo declares no licence of its own</span></td>
+<td class="num">1</td>
+<td class="num">16 GB</td>
+<td class="num">131,072</td>
+<td><code>Q4_K_M</code><br/><span class="muted small">17 GB</span></td>
+<td class="num">113k</td>
+<td class="muted small">2026-08-12</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>bartowski</code></a>
+<span class="badge badge-im" title="Ships an importance matrix, so quality is usually steadier">imatrix</span>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td>
+<td class="num">26</td>
+<td class="num">468 GB</td>
+<td class="num">131,072</td>
+<td><code>Q4_K_L</code><br/><span class="muted small">18 GB</span></td>
+<td class="num">26k</td>
+<td class="muted small">2026-08-13</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>AtomicChat</code></a>
+<span class="badge badge-im" title="Ships an importance matrix, so quality is usually steadier">imatrix</span>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td>
+<td class="num">10</td>
+<td class="num">382 GB</td>
+<td class="num">131,072</td>
+<td><code>Q4_K_M</code><br/><span class="muted small">19 GB</span></td>
+<td class="num">15k</td>
+<td class="muted small">2026-10-28</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>NANI-Nithin</code></a>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td>
+<td class="num">30</td>
+<td class="num">479 GB</td>
+<td class="num">131,072</td>
+<td><code>Q4_1</code><br/><span class="muted small">18 GB</span></td>
+<td class="num">11k</td>
+<td class="muted small">2026-09-07</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/ggml-org/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>ggml-org</code></a>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td>
+<td class="num">3</td>
+<td class="num">105 GB</td>
+<td class="num">131,072</td>
+<td><code>Q4_K_M</code><br/><span class="muted small">19 GB</span></td>
+<td class="num">6k</td>
+<td class="muted small">2026-10-25</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/Abiray/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>Abiray</code></a>
+<span class="badge badge-im" title="Ships an importance matrix, so quality is usually steadier">imatrix</span>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td>
+<td class="num">10</td>
+<td class="num">160 GB</td>
+<td class="num">131,072</td>
+<td><code>Q4_K_M</code><br/><span class="muted small">17 GB</span></td>
+<td class="num">716</td>
+<td class="muted small">2026-08-10</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/mradermacher/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>mradermacher</code></a>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a></td>
+<td class="num">11</td>
+<td class="num">179 GB</td>
+<td class="num">131,072</td>
+<td><code>Q4_K_M</code><br/><span class="muted small">17 GB</span></td>
+<td class="num">655</td>
+<td class="muted small">2026-08-12</td>
+</tr>
+<tr>
+<td>
+<a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>ddh0</code></a>
+<span class="badge badge-im" title="Ships an importance matrix, so quality is usually steadier">imatrix</span>
+<br/><span class="muted small"><code>muse-glimmer</code></span>
+</td>
+<td><a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a><br/><span class="warn-inline small">Inherited from base <code>meta-models/Muse-Glimmer-30B</code> · the quant repo declares no licence of its own</span></td>
+<td class="num">8</td>
+<td class="num">144 GB</td>
+<td class="num">131,072</td>
+<td><code>author-stated 4.66bpw</code><br/><span class="muted small">16 GB</span></td>
+<td class="num">349</td>
+<td class="muted small">2026-08-10</td>
+</tr>
+</tbody>
+</table>
+<p aria-label="Quantisation tier colour scale" class="tier-legend" role="list">
+<span class="tier-legend-h">Colour bar on the left = recommended tier</span>
+<span class="tier-legend-i tier-0">Near lossless</span>
+<span class="tier-legend-i tier-1">Conservative</span>
+<span class="tier-legend-i tier-2">Balanced</span>
+<span class="tier-legend-i tier-3">Long context</span>
+<span class="tier-legend-i tier-4">Extreme compression</span>
+</p>
+<p class="muted small">The recommended tier is picked by rule — smallest size that still lands in the balanced tier — not by a quality ranking. Official quantisations are listed first; repos marked <span class="badge badge-im">imatrix</span> ship an importance matrix.</p>
+</div>
+<div class="block" id="d0">
+<h4><span class="blk">D</span>Every variant in detail <small>seven fields</small></h4>
+<p class="block-lead">Each variant expands along seven fields: what it is → what the quantiser did → how it differs from other variants in this series → why it exists → strengths → why you would pick it → known trade-offs.<b>The last field is the only place this site offers a subjective judgement, and every item is marked as our own reading.</b></p>
+<div class="vwrap">
+<div class="vfilter" role="search">
+<label class="vf-f"><span class="vh">Filter quant repos</span>
+<input autocomplete="off" class="vq" placeholder="unsloth · bartowski · ggml-org" type="search"/></label>
+<label class="vf-f"><span class="vh">Quantiser</span><select class="vsel" data-dim="q"><option value="">All</option><option value="Abiray">Abiray</option><option value="AtomicChat">AtomicChat</option><option value="NANI-Nithin">NANI-Nithin</option><option value="bartowski">bartowski</option><option value="ddh0">ddh0</option><option value="ggml-org">ggml-org</option><option value="lmstudio-community">lmstudio-community</option><option value="meta-models">meta-models</option><option value="mradermacher">mradermacher</option><option value="unsloth">unsloth</option></select></label>
+<label class="vf-f"><span class="vh">Includes tier</span><select class="vsel" data-dim="tier"><option value="">All</option><option value="保守档">Conservative</option><option value="平衡档">Balanced</option><option value="极限压缩">Extreme compression</option><option value="近似无损">Near lossless</option><option value="长上下文优先">Long context first</option></select></label>
+<label class="vf-f"><span class="vh">Licence</span><select class="vsel" data-dim="lic"><option value="">All</option><option value="apache-2.0">apache-2.0</option></select></label>
+<span aria-live="polite" class="vcount"></span>
+</div>
+<article class="vcard vcard-off" data-blob="meta-models meta-models/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="meta-models" data-tier="2" data-tiers="平衡档">
+<header class="vcard-h">
+<h4><span class="badge badge-off">official</span> <code>meta-models</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<span class="muted small">2 tiers · 36 GB · 210k downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>meta-models/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>2</b> GGUF tiers totalling 36 GB. <b>Published by the model authors themselves</b>, not a third party.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Quantised by the model author; third parties are only worth considering for tiers this does not cover；No importance matrix (imatrix); this is pure weight quantisation；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；The release page traces this back to <code>meta-models/Muse-Glimmer-30B</code>；Total weight bytes 36.4 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>unsloth</code> 15 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, among others). This repo has 2 tiers — middling coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Published by the model author, allowing its release notes and provenance to be checked. Official status does not establish quality, speed or compatibility for every task.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Published by the model author; consult its release notes for support scope<br/>· Rule-based candidate: <code>Q4_K</code> (20 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>Q4_K</code> (20 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· The snapshot identifies only 2 tiers; inspect other sources if none fits your budget</span></div>
+</article>
+<article class="vcard" data-blob="unsloth unsloth/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="unsloth" data-tier="2" data-tiers="极限压缩 长上下文优先 平衡档 保守档 近似无损">
+<header class="vcard-h">
+<h4><code>unsloth</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<span class="muted small">15 tiers · 308 GB · 789k downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>unsloth/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>15</b> GGUF tiers totalling 308 GB. Published by <code>unsloth</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；The release page traces this back to <code>meta-models/Muse-Glimmer-30B</code>；Total weight bytes 308.1 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, among others). This repo has 15 tiers — middling coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as UD-Q3_K_XL. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>UD-Q3_K_XL</code> (13 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>UD-Q3_K_XL</code> (13 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· No imatrix recorded; inspect release notes. This missing field alone does not determine quality<br/>· 308 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></div>
+</article>
+<article class="vcard" data-blob="lmstudio-community lmstudio-community/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="lmstudio-community" data-tier="2" data-tiers="平衡档">
+<header class="vcard-h">
+<h4><code>lmstudio-community</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<br/><span class="warn-inline small">Inherited from base <code>meta-models/Muse-Glimmer-30B</code> — the quant repo declares none of its own</span>
+<span class="muted small">1 tiers · 16 GB · 113k downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/lmstudio-community/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>lmstudio-community/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>1</b> GGUF tiers totalling 16 GB. Published by <code>lmstudio-community</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；Total weight bytes 16.8 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>unsloth</code> 15 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, among others). This repo has 1 tiers — the narrowest coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_K_M</code> (17 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>Q4_K_M</code> (17 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· The snapshot identifies only 1 tiers; inspect other sources if none fits your budget<br/>· No imatrix recorded; inspect release notes. This missing field alone does not determine quality<br/>· The quant repo <b>does not fill the licence metadata field</b>. The displayed <code>apache-2.0</code> is inferred from base <code>meta-models/Muse-Glimmer-30B</code>, not an explicit grant by the quantiser. Check the base licence, quantisation-repo files and redistribution conditions together.</span></div>
+</article>
+<article class="vcard" data-blob="bartowski bartowski/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="bartowski" data-tier="2" data-tiers="极限压缩 长上下文优先 平衡档 保守档 近似无损">
+<header class="vcard-h">
+<h4><code>bartowski</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<span class="muted small">26 tiers · 468 GB · 26k downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>bartowski/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>26</b> GGUF tiers totalling 468 GB. Published by <code>bartowski</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/models_out/Muse-Glimmer-30B-GGUF/Muse-Glimmer-30B-imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；The release page traces this back to <code>meta-models/Muse-Glimmer-30B</code>；Total weight bytes 468.0 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>unsloth</code> 15 tiers, <code>lmstudio-community</code> 1 tiers, <code>AtomicChat</code> 10 tiers, among others). This repo has 26 tiers — middling coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_L. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· The snapshot identifies 26 tiers; filter by size and runtime support<br/>· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K_L</code> (18 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>Q4_K_L</code> (18 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· 468 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></div>
+</article>
+<article class="vcard" data-blob="atomicchat atomicchat/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="AtomicChat" data-tier="2" data-tiers="极限压缩 长上下文优先 平衡档 保守档 近似无损">
+<header class="vcard-h">
+<h4><code>AtomicChat</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<span class="muted small">10 tiers · 382 GB · 15k downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>AtomicChat/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>10</b> GGUF tiers totalling 382 GB. Published by <code>AtomicChat</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/workspace/imatrix/muse-glimmer.imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；The release page traces this back to <code>meta-models/Muse-Glimmer-30B</code>；Total weight bytes 382.0 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>unsloth</code> 15 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 26 tiers, among others). This repo has 10 tiers — middling coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K_M</code> (19 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>Q4_K_M</code> (19 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· 382 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></div>
+</article>
+<article class="vcard" data-blob="nani-nithin nani-nithin/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="NANI-Nithin" data-tier="2" data-tiers="极限压缩 长上下文优先 平衡档 保守档 近似无损">
+<header class="vcard-h">
+<h4><code>NANI-Nithin</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<span class="muted small">30 tiers · 479 GB · 11k downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>NANI-Nithin/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>30</b> GGUF tiers totalling 479 GB. Published by <code>NANI-Nithin</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；The release page traces this back to <code>meta-models/Muse-Glimmer-30B</code>；Total weight bytes 514.8 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>unsloth</code> 15 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 26 tiers, among others). This repo has 30 tiers — the broadest coverage coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_1. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· The snapshot identifies 30 tiers; filter by size and runtime support<br/>· Rule-based candidate: <code>Q4_1</code> (18 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>Q4_1</code> (18 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· No imatrix recorded; inspect release notes. This missing field alone does not determine quality<br/>· 479 GB for the whole repo — if disk is tight, download only the one or two tiers you need</span></div>
+</article>
+<article class="vcard" data-blob="ggml-org ggml-org/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="ggml-org" data-tier="2" data-tiers="平衡档 近似无损">
+<header class="vcard-h">
+<h4><code>ggml-org</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<span class="muted small">3 tiers · 105 GB · 6k downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/ggml-org/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>ggml-org/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>3</b> GGUF tiers totalling 105 GB. Published by <code>ggml-org</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；The release page traces this back to <code>meta-models/Muse-Glimmer-30B</code>；Total weight bytes 104.6 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>unsloth</code> 15 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 26 tiers, among others). This repo has 3 tiers — middling coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_K_M</code> (19 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>Q4_K_M</code> (19 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· The snapshot identifies only 3 tiers; inspect other sources if none fits your budget<br/>· No imatrix recorded; inspect release notes. This missing field alone does not determine quality</span></div>
+</article>
+<article class="vcard" data-blob="abiray abiray/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="Abiray" data-tier="2" data-tiers="长上下文优先 平衡档 保守档 近似无损">
+<header class="vcard-h">
+<h4><code>Abiray</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<span class="muted small">10 tiers · 160 GB · 716 downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/Abiray/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>Abiray/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>10</b> GGUF tiers totalling 160 GB. Published by <code>Abiray</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/models_out/Muse-Glimmer-30B-GGUF/Muse-Glimmer-30B-imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；The release page traces this back to <code>meta-models/Muse-Glimmer-30B</code>；Total weight bytes 171.6 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>unsloth</code> 15 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 26 tiers, among others). This repo has 10 tiers — middling coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K_M</code> (17 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>Q4_K_M</code> (17 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· This build’s quality, throughput and complete compatibility have not been evaluated here; complete metadata does not establish suitability for your task</span></div>
+</article>
+<article class="vcard" data-blob="mradermacher mradermacher/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="mradermacher" data-tier="2" data-tiers="极限压缩 长上下文优先 平衡档 保守档 近似无损">
+<header class="vcard-h">
+<h4><code>mradermacher</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<span class="muted small">11 tiers · 179 GB · 655 downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/mradermacher/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>mradermacher/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>11</b> GGUF tiers totalling 179 GB. Published by <code>mradermacher</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；The release page traces this back to <code>meta-models/Muse-Glimmer-30B</code>；Total weight bytes 191.6 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>unsloth</code> 15 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 26 tiers, among others). This repo has 11 tiers — middling coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_K_M</code> (17 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>Q4_K_M</code> (17 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· No imatrix recorded; inspect release notes. This missing field alone does not determine quality</span></div>
+</article>
+<article class="vcard" data-blob="ddh0 ddh0/muse-glimmer-30b-gguf apache-2.0" data-lic="apache-2.0" data-q="ddh0" data-tier="2" data-tiers="平衡档 保守档 近似无损">
+<header class="vcard-h">
+<h4><code>ddh0</code></h4>
+<div class="vcard-meta">
+<a class="lic lic-loose" href="https://huggingface.co/search?license=apache-2.0" rel="noopener" target="_blank">apache-2.0</a>
+<br/><span class="warn-inline small">Inherited from base <code>meta-models/Muse-Glimmer-30B</code> — the quant repo declares none of its own</span>
+<span class="muted small">8 tiers · 144 GB · 349 downloads</span>
+</div>
+</header>
+<div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>ddh0/Muse-Glimmer-30B-GGUF</code> ↗</a>, providing <b>8</b> GGUF tiers totalling 144 GB. Published by <code>ddh0</code>.</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/home/dylan/imatrices/Muse-Glimmer-30B-ddh0_v2-imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>muse-glimmer</code>; check support in your runtime version；Declared context 131,072 tokens；Total weight bytes 155.0 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>meta-models</code> 2 tiers, <code>unsloth</code> 15 tiers, <code>lmstudio-community</code> 1 tiers, <code>bartowski</code> 26 tiers, among others). This repo has 8 tiers — middling coverage in this series.</span></div>
+<div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as author-stated 4.66bpw. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
+<div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>author-stated 4.66bpw</code> (16 GB), not a performance finding</span></div>
+<div class="vf"><span class="vf-k">Why you would pick it / its purpose</span><span class="vf-v">File-size candidate: <code>author-stated 4.66bpw</code> (16 GB, Balanced). Check cache, concurrency and system overhead with the <a href="/en/guides/gpu-cost-math.html">capacity budget</a>, then verify version compatibility in the release notes.</span></div>
+<div class="vf"><span class="vf-k">Known trade-offs</span><span class="vf-v">· The quant repo <b>does not fill the licence metadata field</b>. The displayed <code>apache-2.0</code> is inferred from base <code>meta-models/Muse-Glimmer-30B</code>, not an explicit grant by the quantiser. Check the base licence, quantisation-repo files and redistribution conditions together.</span></div>
+</article>
+</div>
+</div>
+<div class="block" id="e0">
+<h4><span class="blk">E</span>Quantiser profiles <small>what choosing a quantiser means</small></h4>
+<p class="block-lead">The quantiser decides this build's <b>tier coverage, naming convention, whether it ships imatrix, and how fast it follows new models</b>. This section spells out what choosing that quantiser means.</p>
+<article class="qcard">
+<h4><code>meta-models</code></h4>
+<p class="qcard-scope">In this series: 1 repos · 210k downloads · <b>includes the official repo</b></p>
+<div class="qcard-body"><p>&lt;p class="muted"&gt;This publisher ships no description. What follows is the repo’s own metadata (size, licence, file size, last updated) — no editorialising from us.&lt;/p&gt;</p></div>
+<a class="qcard-link" href="https://huggingface.co/meta-models" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>unsloth</code> <span class="muted small">Third-party quantiser; see snapshot coverage and downloads</span></h4>
+<p class="qcard-scope">In this series: 1 repos · 789k downloads</p>
+<div class="qcard-body"><p><b>Position</b>: The broadest quantisation coverage and the highest downloads among third-party quantisers.</p>
+<p><b>What it is good at</b>: publishes GGUF for almost every mainstream base model first, with the most complete tier range — from extreme compression to near lossless. Offers both static and dynamic (the <code>UD-</code> prefix) quantisation.</p>
+<ul>
+<li><b>Why choose the unsloth build</b>:</li>
+<li>Broad coverage → the tier you want is usually there</li>
+<li>Naming discipline → <code>Q4_K_M</code> means <code>Q4_K_M</code>, with no different name for the same tier</li>
+<li>Ships an importance matrix (imatrix) → quality is steadier than plain RTN</li>
+<li>The smoothest path to official tutorials and LM Studio / llama.cpp integration</li>
+</ul>
+<p><b>Note</b>: unsloth's dynamic quantisation (<code>UD-Q4_K_XL</code> and similar) is slightly larger and slightly slower at the same tier, in exchange for usually better quality. Whether that trade is worth it depends on whether your bottleneck is VRAM or speed — <b>this is our reading, not a measurement</b>.</p>
+<p><b>Release page</b>: https://huggingface.co/unsloth</p></div>
+<a class="qcard-link" href="https://huggingface.co/unsloth" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>lmstudio-community</code> <span class="muted small">Powers the LM Studio GUI</span></h4>
+<p class="qcard-scope">In this series: 1 repos · 113k downloads</p>
+<div class="qcard-body"><p><b>Position</b>: The official community organisation behind the LM Studio desktop client, supplying packages for its GUI.</p>
+<ul>
+<li><b>Characteristics</b>:</li>
+<li>Tiers lean conservative and pragmatic, selected for "runs smoothly inside LM Studio"</li>
+<li>File naming lines up with LM Studio's model library index, so downloads are recognised by the client directly</li>
+<li>Also ships special builds related to MTP / speculative sampling</li>
+</ul>
+<p><b>Who it suits</b>: if you use LM Studio rather than driving llama-server yourself, packages from this organisation save the most fuss.</p>
+<p><b>Who it does not suit</b>: if you need fine control over load parameters (tensor split, n_gpu_layers, context allocation) — community packages are usually not tuned to your hardware, so you still tune them yourself.</p>
+<p><b>Release page</b>: https://huggingface.co/lmstudio-community</p></div>
+<a class="qcard-link" href="https://huggingface.co/lmstudio-community" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>bartowski</code> <span class="muted small">Third-party quantiser; check repository notes for tiers and methods</span></h4>
+<p class="qcard-scope">In this series: 1 repos · 26k downloads</p>
+<div class="qcard-body"><p><b>Position</b>: A long-standing quantiser with the most complete tier naming and documentation.</p>
+<ul>
+<li><b>Characteristics</b>:</li>
+<li>Every tier states what scenario it suits, rather than just dumping files</li>
+<li>Naming follows the llama.cpp convention — <code>Q4_K_M</code> is the community's <code>Q4_K_M</code></li>
+<li>The same model often ships both static and imatrix directories</li>
+</ul>
+<p><b>How to choose their builds</b>: read the tier-by-tier README in the repo — it is one of the few places that actually explains *why* one tier loses little quality and another loses more.</p>
+<p><b>Note</b>: repo names often carry a <code>Qwen_</code> or <code>Meta-Llama_</code> prefix (Hugging Face repo names must be unique, so quantisers prefix the organisation name to disambiguate) — do not miss the prefix when searching.</p>
+<p><b>Release page</b>: https://huggingface.co/bartowski</p></div>
+<a class="qcard-link" href="https://huggingface.co/bartowski" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>AtomicChat</code></h4>
+<p class="qcard-scope">In this series: 1 repos · 15k downloads</p>
+<div class="qcard-body"><p>&lt;p class="muted"&gt;This publisher ships no description. What follows is the repo’s own metadata (size, licence, file size, last updated) — no editorialising from us.&lt;/p&gt;</p></div>
+<a class="qcard-link" href="https://huggingface.co/AtomicChat" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>NANI-Nithin</code></h4>
+<p class="qcard-scope">In this series: 1 repos · 11k downloads</p>
+<div class="qcard-body"><p>&lt;p class="muted"&gt;This publisher ships no description. What follows is the repo’s own metadata (size, licence, file size, last updated) — no editorialising from us.&lt;/p&gt;</p></div>
+<a class="qcard-link" href="https://huggingface.co/NANI-Nithin" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>ggml-org</code> <span class="muted small">Official quant builds from the llama.cpp org</span></h4>
+<p class="qcard-scope">In this series: 1 repos · 6k downloads</p>
+<div class="qcard-body"><p><b>Position</b>: The official quantisation release channel of llama.cpp itself.</p>
+<p><b>Why it matters</b>: ggml is llama.cpp's underlying tensor library, and ggml-org's GGUFs are vetted by the project's core authors. When a new architecture appears (a new sparse MoE, say), <b>ggml-org is usually the first to support it and publish a usable GGUF</b>.</p>
+<ul>
+<li><b>Characteristics</b>:</li>
+<li>Tiers lean conservative, prioritising correct loading and inference that does not break</li>
+<li>Coverage is not necessarily complete (limited authorial bandwidth — they track only models they care about)</li>
+<li>Serves as the authoritative reference for "can this architecture run on llama.cpp at all"</li>
+</ul>
+<p><b>Who it suits</b>: people who want to try a new architecture first-hand, or need to confirm whether llama.cpp supports a given model.</p>
+<p><b>Release page</b>: https://huggingface.co/ggml-org</p></div>
+<a class="qcard-link" href="https://huggingface.co/ggml-org" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>Abiray</code></h4>
+<p class="qcard-scope">In this series: 1 repos · 716 downloads</p>
+<div class="qcard-body"><p>&lt;p class="muted"&gt;This publisher ships no description. What follows is the repo’s own metadata (size, licence, file size, last updated) — no editorialising from us.&lt;/p&gt;</p></div>
+<a class="qcard-link" href="https://huggingface.co/Abiray" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>mradermacher</code> <span class="muted small">Publishes low-bit quants; check repository methods and provenance</span></h4>
+<p class="qcard-scope">In this series: 1 repos · 655 downloads</p>
+<div class="qcard-body"><p><b>Position</b>: Author of the Mirostat sampling algorithm, long-running low-bit experimental quantisations.</p>
+<ul>
+<li><b>Characteristics</b>:</li>
+<li>Willing to publish very low-bit tiers others dare not (IQ2_XXS, Q2_K and the like)</li>
+<li>Focused on the quantisation method itself — tries different imatrix files and different sources for the importance matrix</li>
+<li>File names carry suffixes like <code>i1</code> or <code>h2</code>, marking which version of the importance matrix was used</li>
+</ul>
+<p><b>Who it suits</b>: experiments along the lines of "fit the largest possible model into the smallest possible VRAM", or comparisons of how different importance matrices affect quality.</p>
+<p><b>Who it does not suit</b>: everyday use. Quality loss at those very low bits is usually already noticeable — unless you genuinely have no alternative, do not make it your primary build.</p>
+<p><b>Release page</b>: https://huggingface.co/mradermacher</p></div>
+<a class="qcard-link" href="https://huggingface.co/mradermacher" rel="noopener" target="_blank">release page ↗</a>
+</article>
+<article class="qcard">
+<h4><code>ddh0</code></h4>
+<p class="qcard-scope">In this series: 1 repos · 349 downloads</p>
+<div class="qcard-body"><p>&lt;p class="muted"&gt;This publisher ships no description. What follows is the repo’s own metadata (size, licence, file size, last updated) — no editorialising from us.&lt;/p&gt;</p></div>
+<a class="qcard-link" href="https://huggingface.co/ddh0" rel="noopener" target="_blank">release page ↗</a>
+</article>
+</div>
+<div class="block" id="f0">
+<h4><span class="blk">F</span>Update history <small>who is keeping up</small></h4>
+<p class="block-lead">Sorted by most recent update. Frequent updates mean the quantiser is tracking new releases; a long silence means it may have fallen behind the base model.</p>
+<ul class="log">
+<li>
+<span class="log-date">2026-10-28</span>
+<a href="https://huggingface.co/AtomicChat/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>AtomicChat</code></a>
+<span class="muted">updated 10 tiers · with imatrix</span>
+</li>
+<li>
+<span class="log-date">2026-10-25</span>
+<a href="https://huggingface.co/ggml-org/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>ggml-org</code></a>
+<span class="muted">updated 3 tiers</span>
+</li>
+<li>
+<span class="log-date">2026-10-20</span>
+<a href="https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>meta-models</code></a>
+<span class="muted">updated 2 tiers</span>
+</li>
+<li>
+<span class="log-date">2026-09-07</span>
+<a href="https://huggingface.co/NANI-Nithin/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>NANI-Nithin</code></a>
+<span class="muted">updated 30 tiers</span>
+</li>
+<li>
+<span class="log-date">2026-08-13</span>
+<a href="https://huggingface.co/bartowski/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>bartowski</code></a>
+<span class="muted">updated 26 tiers · with imatrix</span>
+</li>
+<li>
+<span class="log-date">2026-08-12</span>
+<a href="https://huggingface.co/lmstudio-community/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>lmstudio-community</code></a>
+<span class="muted">updated 1 tiers</span>
+</li>
+<li>
+<span class="log-date">2026-08-12</span>
+<a href="https://huggingface.co/mradermacher/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>mradermacher</code></a>
+<span class="muted">updated 11 tiers</span>
+</li>
+<li>
+<span class="log-date">2026-08-10</span>
+<a href="https://huggingface.co/ddh0/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>ddh0</code></a>
+<span class="muted">updated 8 tiers · with imatrix</span>
+</li>
+<li>
+<span class="log-date">2026-08-10</span>
+<a href="https://huggingface.co/Abiray/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>Abiray</code></a>
+<span class="muted">updated 10 tiers · with imatrix</span>
+</li>
+<li>
+<span class="log-date">2026-08-10</span>
+<a href="https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF" rel="noopener" target="_blank"><code>unsloth</code></a>
+<span class="muted">updated 15 tiers</span>
+</li>
+</ul>
+<p class="muted small">Base model <code>meta-models/Muse-Glimmer-30B</code> last updated: 2026-10-22　·　data as of: 2026-10-30</p>
+</div>
+</section>
+<section class="companion">
+<h2>What runs it</h2>
+<p class="block-lead">This site only answers which tier to download. Running it is a different problem — the tools below <b>document local-model support in their own docs</b> (Ollama / vLLM / llama.cpp / LM Studio). Follow the link to see how.</p>
+<div class="comp-grid">
+<a class="comp-card" href="https://tools.specul.com/en/coding/crush.html">
+<b>Crush</b>
+<span>Officially supports llamacpp / lmstudio / ollama — it takes local GGUF directly</span>
+</a>
+<a class="comp-card" href="https://tools.specul.com/en/coding/goose.html">
+<b>Goose</b>
+<span>Can run entirely on local models (Ollama / LM Studio / Ramalama), no API bill</span>
+</a>
+<a class="comp-card" href="https://tools.specul.com/en/framework/pydantic-ai.html">
+<b>Pydantic AI</b>
+<span>Docs cover three self-hosted routes: Ollama / vLLM / LiteLLM</span>
+</a>
+<a class="comp-card" href="https://tools.specul.com/en/framework/smolagents.html">
+<b>smolagents</b>
+<span>Local inference via Transformers / mlx-lm / Ollama / vLLM</span>
+</a>
+<a class="comp-card" href="https://tools.specul.com/en/coding/cline.html">
+<b>Cline</b>
+<span>Hooks up to Ollama local models from inside the editor</span>
+</a>
+<a class="comp-card" href="https://tools.specul.com/en/coding/aider-cli.html">
+<b>Aider</b>
+<span>Switches to a local LLM from the terminal, no vendor lock-in</span>
+</a>
+</div>
+<p class="muted small">Local-model support for each entry is evidenced by that project official documentation. This site runs no measurements.</p>
+</section>
+<section class="legal-note">
+<h3>Data and licensing</h3>
+<p>All data here comes from the <a href="https://huggingface.co" rel="noopener" target="_blank">Hugging Face</a> public pages, updated <code>2026-10-30</code>.</p>
+<p>Model weights are not hosted here — only links to release pages. Licence fields are quoted verbatim, <b>the licence text is authoritative, and no legal advice is given here</b> and everything is governed by<a href="https://specul.com/en/legal.html" rel="noopener" target="_blank">the legal page</a>.</p>
+<p>Model names are trademarks of their respective owners and are used here only descriptively. This site is not affiliated with or endorsed by any of the vendors above.</p>
+</section>
+</div>
+<!-- B2：量化仓筛选（脚本在 site-filter.js，读 .vwrap 作用域） -->
+<script>/* 挑对量化版 · 本地部署模型图谱 · 客户端筛选（B2，2026-10-09）
+ *
+ * 为什么单独一个文件而不是塞进 build.mjs 的模板字符串：
+ *   build.mjs 生成页面用的是模板字符串，脚本里任何反引号或 ${} 都会**提前截断/插值**。
+ *   本会话已因「模板字符串里写反引号」踩过三次。独立 .js 文件从根上避开。
+ *
+ * 作用域（两处，各自独立）：
+ *   .vwrap  —— 系列页里每个成员一个「量化仓详解」区块：搜索 + 量化者 / 建议档位 / 许可
+ *   .sfilter —— 索引页的系列列表：搜索 + 许可
+ *
+ * URL 可还原（B2 验收「筛选后 URL 可复制还原状态」）：
+ *   参数写在地址栏（history.replaceState），打开带参 URL 即刻还原同一状态。
+ *
+ * 无依赖、无内联事件；两个作用域都不存在时本脚本什么都不做（所以可以全站注入）。
+ */
+(function () {
+  'use strict';
+
+  /* 与页面内联脚本同口径：语言由 <html lang> 决定（brand.js 只切属性，DOM 不重渲染）。
+   * 本文件里凡是要拼进 innerHTML 的动态文本，都必须在**当前语言**下重新生成一次。 */
+  function IS_EN() { return document.documentElement.lang === 'en'; }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function param(name) {
+    try { return new URLSearchParams(location.search).get(name) || ''; } catch (e) { return ''; }
+  }
+
+  function writeUrl(pairs) {
+    try {
+      var u = new URL(location.href);
+      Object.keys(pairs).forEach(function (k) {
+        if (pairs[k]) u.searchParams.set(k, pairs[k]);
+        else u.searchParams.delete(k);
+      });
+      history.replaceState(null, '', u.toString());
+    } catch (e) { /* file:// 等场景下静默降级：功能可用，只是地址栏不同步 */ }
+  }
+
+  /* ── 系列页：量化仓筛选 ── */
+  var wraps = Array.prototype.slice.call(document.querySelectorAll('.vwrap'));
+  wraps.forEach(function (wrap) {
+    var q = wrap.querySelector('.vq');
+    var sels = Array.prototype.slice.call(wrap.querySelectorAll('.vsel'));
+    var count = wrap.querySelector('.vcount');
+    var cards = Array.prototype.slice.call(wrap.querySelectorAll('.vcard'));
+    if (!q || !cards.length) return;
+
+    function apply() {
+      var term = (q.value || '').trim().toLowerCase();
+      var want = {};
+      sels.forEach(function (s) { want[s.getAttribute('data-dim')] = s.value; });
+      var shown = 0;
+      cards.forEach(function (c) {
+        /* 搜索用 data-blob（量化者 + 仓库名 + 许可）这个**窄口径**，
+         * 不是整张卡的文字 —— 卡里正文会提到别的量化者，用全文搜「unsloth」会命中每一张
+         * （实测 26/26，探针跑出来才发现）。 */
+        var okQ = !term || (c.getAttribute('data-blob') || '').indexOf(term) !== -1;
+        var okQuant = !want.q || c.getAttribute('data-q') === want.q;
+        /* 档位是「**该仓包含**这一档」而不是「推荐档等于它」：
+         * 推荐档实测 118/130 都是「平衡档」，拿它筛等于没筛。 */
+        var okTier = !want.tier || (c.getAttribute('data-tiers') || '').split(' ').indexOf(want.tier) !== -1;
+        var okLic = !want.lic || c.getAttribute('data-lic') === want.lic;
+        var on = okQ && okQuant && okTier && okLic;
+        c.hidden = !on;
+        if (on) shown++;
+      });
+      if (count) {
+        count.textContent = shown + ' / ' + cards.length;
+        count.setAttribute('data-zh', shown + ' / ' + cards.length + ' 个量化仓');
+        count.setAttribute('data-en', shown + ' / ' + cards.length + ' quant repos');
+      }
+    }
+
+    function sync(push) {
+      var vals = { q: q.value.trim() };
+      sels.forEach(function (s) { vals[s.getAttribute('data-dim') === 'q' ? 'quant' : s.getAttribute('data-dim') === 'tier' ? 'tier' : 'lic'] = s.value; });
+      writeUrl(vals);
+    }
+
+    // 首次：用 URL 参数还原
+    q.value = param('q');
+    sels.forEach(function (s) {
+      var dim = s.getAttribute('data-dim');
+      var v = param(dim === 'q' ? 'quant' : dim === 'tier' ? 'tier' : 'lic');
+      if (!v) return;
+      /* ⚠ 不能直接 s.value = v：`<select>` 遇到**选项里没有的值**会**静默忽略**，
+       *   于是「?quant=某人」被当成「没筛选」→ 列出全部。实测阴性对照跑出 26/26 才发现。
+       *   这里把 URL 里的值补成一个选项：筛出来就是 0 条，计数会显示「0 / N」——
+       *   读者看到的是「这个量化者在本系列没有仓」（如实），而不是「我要的筛选被无视了」。
+       *   （nav 站的 ?cat= 不同：那是「切到某个分区」的语义，未知值回退到「全部」是对的；
+       *     这里是「在一张表里筛行」，未知值的正确表现是没有行。） */
+      if (!Array.prototype.some.call(s.options, function (o) { return o.value === v; })) {
+        var extra = document.createElement('option');
+        extra.value = v;
+        extra.textContent = v;
+        s.appendChild(extra);
+      }
+      s.value = v;
+    });
+
+    q.addEventListener('input', function () { apply(); sync(); });
+    sels.forEach(function (s) { s.addEventListener('change', function () { apply(); sync(); }); });
+    apply();
+  });
+
+  /* ═══ B4（2026-10-09）· 显存倒推决策工具 ═══
+   * 按真实实测体积算能装下哪些档位：可装 = sizeGB × 1.15 ≤ 显存。
+   * 15% 余量是页面自己声明的口径（运行时 + KV cache），与静态速查表一致。
+   * 每个答案都带来源（量化者 + HF 发布页链接）—— B4 的验收是「可溯源到具体数据行」。
+   * `?vram=12` 可分享（与 B2 的筛选参数同一套路）。 */
+  var vt = document.querySelector('.vramtool');
+  if (vt) {
+    var vtIn = vt.querySelector('.vt-in');
+    var vtOut = vt.querySelector('.vt-out');
+    var vtDataEl = vt.querySelector('.vt-data');
+    var DATA = [];
+    try { DATA = JSON.parse(vtDataEl.textContent) || []; } catch (e) { DATA = []; }
+    var MARGIN = 1.15;
+
+    function renderVram() {
+      var gb = Number(vtIn.value);
+      if (!vtIn.value || !DATA.length) { vtOut.innerHTML = ''; return; }
+      if (!Number.isFinite(gb) || gb <= 0 || !vtIn.validity.valid) { vtOut.textContent = IS_EN() ? 'Enter an integer from 1 to 1024 GB for the illustrative filter.' : '示意筛选请输入 1–1024 GB 整数。'; return; }
+      var fits = DATA.filter(function (x) { return x.g * MARGIN <= gb; });
+      var need = function (x) { return Math.ceil(x.g * MARGIN); };
+      if (!fits.length) {
+        var smallest = DATA[0];
+        vtOut.innerHTML = '<p class="vt-none">' + esc(IS_EN()
+          ? 'No candidate under this filter. The smallest file is ' + (smallest.qe || smallest.q) + ' at ' + smallest.g + ' GB, needing about ' + need(smallest) + ' GB under file-size × 1.15. This does not establish cache, runtime memory or execution support.'
+          : '此示意筛选没有候选。最小发布文件为 ' + smallest.q + '（' + smallest.g + ' GB），加余量约需 ' + need(smallest) + ' GB（文件 × 1.15）。这不包含已核对的缓存、运行时占用或兼容性。') + '</p>';
+        return;
+      }
+      var best = fits[fits.length - 1];
+      var rest = fits.slice(0, -1).reverse();
+      var link = function (x) {
+        return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(IS_EN() ? (x.qe || x.q) : x.q) + '</a>'
+          + ' <span class="vt-meta">' + x.g + ' GB · ' + esc(IS_EN() ? (x.te || x.t) : x.t) + ' · ' + esc(x.b) + '</span>';
+      };
+      var h = '<p class="vt-best"><b>' + (IS_EN() ? 'File-size candidate: ' : '文件体积候选：') + '</b>' + link(best)
+        + ' <span class="vt-meta">' + (IS_EN() ? 'needs about ' : '加余量约需 ') + need(best) + ' GB</span></p>';
+      if (rest.length) {
+        h += '<p class="vt-rest"><span class="vt-dim">' + (IS_EN() ? 'Other candidates (smaller): ' : '其他较小候选：') + '</span>'
+          + rest.map(link).join(' · ') + '</p>';
+      }
+      h += '<p class="vt-note">' + (IS_EN()
+        ? 'Published file sizes are not resident-memory measurements. File-size × 1.15 is a fixed illustrative filter, not a cache/runtime budget or execution guarantee. Check architecture, context, concurrency and runtime separately.'
+        : '体积来自发布文件列表，不是驻留内存实测。文件 × 1.15 只是固定示意筛选，不是缓存/运行时预算，也不保证可运行。另查架构、上下文、并发与运行器。') + '</p>';
+      vtOut.innerHTML = h;
+    }
+
+    function syncVram() {
+      try {
+        var u = new URL(location.href);
+        if (vtIn.value) u.searchParams.set('vram', vtIn.value); else u.searchParams.delete('vram');
+        history.replaceState(null, '', u.toString());
+      } catch (e) { /* 静默降级：功能可用，地址栏不同步 */ }
+    }
+
+    vtIn.value = param('vram');
+    vtIn.addEventListener('input', function () { renderVram(); syncVram(); });
+    Array.prototype.forEach.call(vt.querySelectorAll('.vt-preset'), function (b) {
+      b.addEventListener('click', function () { vtIn.value = b.getAttribute('data-gb'); renderVram(); syncVram(); });
+    });
+    renderVram();
+    /* 语言切换后要重渲染：工具输出是拼字符串生成的（不是 data-zh/data-en 双节点），
+     * 不重渲染的话切到英文仍显示中文（而其余部分会切走，看起来像坏了）。 */
+    new MutationObserver(function () { renderVram(); })
+      .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+
+  /* ── 索引页：系列筛选 ── */
+  var sf = document.querySelector('.sfilter');  if (sf) {
+    var sq = sf.querySelector('.sq');
+    var ssel = sf.querySelector('.ssel');
+    /* v7 S52：中文生态三个共用筛选（出品属地 / 国内直连 / 备案状态）。
+     * 与许可同一个作用域、同一套 URL 还原逻辑——一套筛选体系，不另造。 */
+    var cnSels = [
+      { el: sf.querySelector('.ssel-cnorigin'), attr: 'data-cn-origin', key: 'cnorigin' },
+      { el: sf.querySelector('.ssel-cndirect'), attr: 'data-cn-direct', key: 'cndirect' },
+      { el: sf.querySelector('.ssel-cnfiling'), attr: 'data-cn-filing', key: 'cnfiling' },
+    ].filter(function (x) { return x.el; });
+    var scount = sf.querySelector('.vcount');
+    var scards = Array.prototype.slice.call(document.querySelectorAll('.scard'));
+    if (sq && scards.length) {
+      var applyS = function () {
+        var term = (sq.value || '').trim().toLowerCase();
+        var lic = ssel ? ssel.value : '';
+        var shown = 0;
+        scards.forEach(function (c) {
+          var okQ = !term || (c.getAttribute('data-blob') || '').indexOf(term) !== -1 || (c.textContent || '').toLowerCase().indexOf(term) !== -1;
+          var okL = !lic || (c.getAttribute('data-lic') || '').split(' ').indexOf(lic) !== -1;
+          var okCn = cnSels.every(function (x) {
+            return !x.el.value || (c.getAttribute(x.attr) || '') === x.el.value;
+          });
+          var on = okQ && okL && okCn;
+          c.hidden = !on;
+          if (on) shown++;
+        });
+        if (scount) {
+          scount.textContent = shown + ' / ' + scards.length;
+          scount.setAttribute('data-zh', shown + ' / ' + scards.length + ' 个系列');
+          scount.setAttribute('data-en', shown + ' / ' + scards.length + ' series');
+        }
+      };
+      var syncS = function () {
+        var pairs = { q: sq.value.trim(), lic: ssel ? ssel.value : '' };
+        cnSels.forEach(function (x) { pairs[x.key] = x.el.value; });
+        writeUrl(pairs);
+      };
+      sq.value = param('q');
+      if (ssel && param('lic')) ssel.value = param('lic');
+      cnSels.forEach(function (x) {
+        var v = param(x.key);
+        if (!v) return;
+        /* 同 .vsel 的教训：select 对选项外的值会静默忽略 → 补成选项，筛出 0 条如实显示。 */
+        if (!Array.prototype.some.call(x.el.options, function (o) { return o.value === v; })) {
+          var extra = document.createElement('option');
+          extra.value = v; extra.textContent = v;
+          x.el.appendChild(extra);
+        }
+        x.el.value = v;
+      });
+      sq.addEventListener('input', function () { applyS(); syncS(); });
+      if (ssel) ssel.addEventListener('change', function () { applyS(); syncS(); });
+      cnSels.forEach(function (x) { x.el.addEventListener('change', function () { applyS(); syncS(); }); });
+      applyS();
+    }
+  }
+})();
+</script>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

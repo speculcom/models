@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Llama model family lineage card | Models</title>
+<meta content="The largest open-weight ecosystem by far — fine-tunes, quantisations and tooling are everywhere — but the licence is a community licence with attribution…" name="description"/>
+<link href="https://models.specul.com/en/families/llama/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/families/llama/" property="og:url"/>
+<meta content="Llama model family lineage card | Models" property="og:title"/>
+<meta content="The largest open-weight ecosystem by far — fine-tunes, quantisations and tooling are everywhere — but the licence is a community licence with attribution…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Llama 家族谱系卡","description":"The largest open-weight ecosystem by far — fine-tunes, quantisations and tooling are everywhere — but the licence is a community licence with attribution…","url":"https://models.specul.com/en/families/llama/","dateModified":"2026-10-30"}</script>
+<meta content="Llama model family lineage card | Models" name="twitter:title"/><meta content="The largest open-weight ecosystem by far — fine-tunes, quantisations and tooling are everywhere — but the licence is a community licence with attribution…" name="twitter:description"/><link href="https://models.specul.com/families/llama/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/families/llama/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/families/llama/" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/families/llama/" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← All families</a></nav>
+<header class="page-head">
+<p class="eyebrow">Meta　·　current generation Llama 4（2025-04）</p>
+<h1>Llama<span class="sub">model family lineage card</span></h1>
+<p class="lede">The largest open-weight ecosystem by far — fine-tunes, quantisations and tooling are everywhere — but the licence is a community licence with attribution ("Built with Llama") and scale (700M MAU) clauses. Read it fully before commercial use.</p>
+<p class="fam-onsite fam-onsite-no">This site does not cover Llama quantisations: Llama-4-Scout's third-party GGUF downloads (~128k, re-measured 2026-10-30) fall below the METHODOLOGY ecosystem threshold (~300k). For quantisation coverage, see the qwen3-8 / gemma-4 series.</p>
+</header>
+<section class="fam-sec cn-sec">
+<h2>China availability <small>domestic / direct access / CAC filing · snapshot 2026-10-20</small></h2>
+<ul class="fam-claims cn-rows">
+<li><b>Origin</b>　foreign-made　Made by Meta.</li>
+<li><b>Direct access</b>　direct unknown　No official Llama mirror found on ModelScope (searched 2026-10-20); Hugging Face direct unreachable — both main routes unreachable, so unknown rather than no (a route we have not found may exist).</li>
+<li><b>CAC filing</b>　not in filing list：No Meta / Llama entry found in the public registry (searched 2026-10-20).</li>
+</ul>
+<p class="fam-claims-note">Filing status is quoted from the CAC public registry by number. "Direct access" means the page opened once from a mainland network — not a vendor promise.</p>
+<ul class="fam-src-list cn-srcs"><li>CAC · filed generative-AI service information (rolling announcement page, 13 batch attachment PDFs, full download &amp; search on 2026-10-20): <a href="https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm" rel="noopener" target="_blank">https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm</a></li></ul>
+</section>
+<section class="fam-sec fam-fit">
+<h2>What it fits / what it does not</h2>
+<div class="fam-fit-grid">
+<article>
+<h3>Start here if</h3>
+<p>The largest open-weight ecosystem by far — fine-tunes, quantisations and tooling are everywhere — but the licence is a community licence with attribution ("Built with Llama") and scale (700M MAU) clauses. Read it fully before commercial use.</p>
+</article>
+<article>
+<h3>Rule it out first if</h3>
+<p>要跑最大档（大杯 405B / 17B-128E MoE：服务器级），显存和预算先按这一档估；小机器别拿最小档的体验代替。 许可含“Llama 4 Community License（license_name: llama4）——需登录接受条款；HF 页可逐条读许可全文”，商用或再分发前先读原文；本页不替你判断。</p>
+</article>
+</div>
+<p class="fam-fit-next">Next: <a href="https://tools.specul.com/en/finder/">narrow to three candidates</a> · <a href="https://models.specul.com/en/license.html">check the licence</a> · <a href="https://tools.specul.com/en/guides/">open task playbooks</a></p>
+</section>
+<section class="fam-sec">
+<h2>Generations</h2>
+<ul class="fam-gens">
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Llama 4</b><span class="fam-gen-date">2025-04</span><span class="fam-gen-cur">current</span></div>
+<p>Current generation. Two MoE builds: Scout (17B-16E) and Maverick (17B-128E), both with image-and-text multimodal input.</p>
+<a class="fam-src" href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Llama 3.3</b><span class="fam-gen-date">2024-11</span></div>
+<p>Previous dense flagship, 70B-Instruct.</p>
+<a class="fam-src" href="https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Llama 3.2 / 3.1</b><span class="fam-gen-date">2024-09</span></div>
+<p>The small vision line (1B / 3B) and the 405B flagship (3.1); the origin of much of today's fine-tune ecosystem.</p>
+<a class="fam-src" href="https://huggingface.co/meta-llama/Llama-3.1-405B" rel="noopener" target="_blank">official page ↗</a>
+</li>
+</ul>
+</section>
+<section class="fam-sec">
+<h2>Size tiers</h2>
+<ul class="fam-tiers"><li>Small 1B / 3B: on-device and vision-small</li><li>Medium 8B / 70B: the common local-deployment tiers</li><li>Large 405B / 17B-128E MoE: server-class</li></ul>
+</section>
+<section class="fam-sec">
+<h2>Licences</h2>
+<ul class="fam-lics"><li><a class="lic lic-tight" href="https://huggingface.co/search?license=other" rel="noopener" target="_blank">other</a><span class="fam-lic-txt">Llama 4 Community License (license_name: llama4) — gated, terms accepted on sign-in; full text readable on the HF page</span> <a class="fam-src" href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" rel="noopener" target="_blank">licence text ↗</a></li></ul>
+</section>
+<section class="fam-sec">
+<h2>Official capability claims (with sources)</h2>
+<ul class="fam-claims">
+<li>HF model-card metadata: both Llama-4 builds are image-text-to-text (image + text input) and list 12 languages (ar/de/en/es/fr/hi/id/it/pt/th/tl/vi).<a class="fam-src" href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" rel="noopener" target="_blank">source ↗</a></li>
+<li>Licence text (gated HF page): derivatives must "prominently display 'Built with Llama'"; products above 700M MAU need a separate licence from Meta (Additional Commercial Terms).<a class="fam-src" href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" rel="noopener" target="_blank">source ↗</a></li>
+<li>Not officially stated (this check): Llama-4 context length was not available on publicly fetchable official pages — the model-card README is gated and llama.com sits behind an identity check. No unverified numbers are repeated here.<a class="fam-src" href="https://www.llama.com/llama4/" rel="noopener" target="_blank">source ↗</a></li>
+</ul>
+<p class="fam-claims-note">The above are quotations of official pages or transcriptions of vendor-run benchmarks; this site does not endorse cross-model conclusions.</p>
+</section>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list"><li>Llama-4-Scout-17B-16E-Instruct model page (includes full gated licence, direct fetch 200 on 2026-10-20): <a href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" rel="noopener" target="_blank">https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct</a></li><li>Llama-4-Maverick-17B-128E-Instruct model page (direct fetch 200 on 2026-10-20): <a href="https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct" rel="noopener" target="_blank">https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct</a></li><li>llama.com/llama4 official page (reachable 2026-10-20 but identity-checks automated fetches; body not retrievable): <a href="https://www.llama.com/llama4/" rel="noopener" target="_blank">https://www.llama.com/llama4/</a></li><li>Llama-3.3-70B-Instruct model page (generation check, direct fetch 200 on 2026-10-20): <a href="https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct" rel="noopener" target="_blank">https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct</a></li><li>Llama-3.1-405B model page (generation check, direct fetch 200 on 2026-10-20): <a href="https://huggingface.co/meta-llama/Llama-3.1-405B" rel="noopener" target="_blank">https://huggingface.co/meta-llama/Llama-3.1-405B</a></li>
+</ul>
+<p class="fam-foot">Data as of 2026-10-30 — fields we did not measure are left blank.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

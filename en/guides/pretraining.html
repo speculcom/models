@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Pre-training: how a model comes to know a bit of…</title>
+<meta content="What pre-training optimises, how corpora reach trillions of tokens, how compute and data are budgeted, and how the scaling-law story changed. The…" name="description"/>
+<link href="https://models.specul.com/en/guides/pretraining.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/guides/pretraining.html" property="og:url"/>
+<meta content="Pre-training: how a model comes to know a bit of…" property="og:title"/>
+<meta content="What pre-training optimises, how corpora reach trillions of tokens, how compute and data are budgeted, and how the scaling-law story changed. The…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Pre-training: how a model comes to know a bit of everything","description":"What pre-training optimises, how corpora reach trillions of tokens, how compute and data are budgeted, and how the scaling-law story changed. The…","url":"https://models.specul.com/en/guides/pretraining.html","dateModified":"2026-10-20"}</script>
+<meta content="Pre-training: how a model comes to know a bit of…" name="twitter:title"/><meta content="What pre-training optimises, how corpora reach trillions of tokens, how compute and data are budgeted, and how the scaling-law story changed. The…" name="twitter:description"/><link href="https://models.specul.com/guides/pretraining.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/pretraining.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/pretraining.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/guides/pretraining.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">How models are made　<span class="t-tag">training pipeline · stage 1</span></p>
+<h1>Pre-training: how a model comes to know a bit of everything<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
+<p class="lede">What pre-training optimises, how corpora reach trillions of tokens, how compute and data are budgeted, and how the scaling-law story changed. The practitioner-depth version; the one-page explainer lives on the Learn site — cross-linked, not duplicated.</p>
+</header>
+<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">What this guide covers</a></li><li><a href="#guide-section-2">The objective: next-token prediction</a></li><li><a href="#guide-section-3">Data: scale, cleaning, deduplication</a></li><li><a href="#guide-section-4">Budgeting compute and data: the scaling-law plot twist</a></li><li><a href="#guide-section-5">The run: learning rate and context extension</a></li><li><a href="#guide-section-6">The vocabulary: how tokenization is set</a></li><li><a href="#guide-section-7">How this differs from the Learn site</a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2>What this guide covers</h2>
+<p><b>Pre-training is making a model learn to continue text on massive amounts of it.</b><br/>The Learn site has an explainer page on “what it is”; this guide is about the decisions practitioners make:<br/>how corpora are assembled, how compute is budgeted, how training volume is set, how vocabularies are cut.</p>
+<p>Every key fact has a public paper or official model card as its source,<br/>listed at the end of the page; this site only transcribes and cross-checks — it runs no benchmarks.</p>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2>The objective: next-token prediction</h2>
+<p>The objective behind mainstream LLMs is boringly single: given the preceding text, predict the probability distribution of the next token.</p>
+<p>The GPT-3 paper (arXiv 2005.14165) pushed this route to 175 billion parameters and<br/>showed that at sufficient scale abilities grow on their own without being taught explicitly.<br/>BERT's “fill-in-the-blank” route (bidirectional masking) lost on generation tasks.<br/>Since then, open-weight families are almost all autoregressive decoder architectures.</p>
+<p>Practitioner corollary: everything a model “knows” is a by-product of continuation statistics.<br/>It was never trained for any specific task. That explains why it is general,<br/>and also why it fabricates with a straight face.</p>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2>Data: scale, cleaning, deduplication</h2>
+<p>Web corpora (Common Crawl) are dirty: duplicates, junk pages and machine-generated text are mixed in.<br/>The T5 paper's C4 appendix set out widely followed cleaning rules:<br/>deduplicate, filter low-quality lines, filter by language.</p>
+<p>The LLaMA paper states plainly that it trained only on publicly available data, treating the “data recipe” itself as a contribution.</p>
+<p>That curation matters more than scale has a controlled experiment behind it.<br/>Princeton's DCLM report (arXiv 2406.11794) held the training budget fixed and changed only the data-filtering method —<br/>model performance varied enormously. Feeding more loses to feeding right.</p>
+<p>Hugging Face's FineWeb (arXiv 2406.17557) turned this cleaning pipeline into an open 15T-token corpus,<br/>with an ablation published for every cleaning step, directly reproducible.</p>
+<p>Deduplication is hard graft: the same web article can appear dozens of times inside Common Crawl.<br/>Duplicates waste compute and make the model memorise training text verbatim —<br/>a major source of benchmark contamination.</p>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2>Budgeting compute and data: the scaling-law plot twist</h2>
+<p>In 2020 Kaplan et al. (arXiv 2001.08361) gave the first scaling laws:<br/>loss falls smoothly with parameters, data and compute — parameters first, spend the money on bigger models.</p>
+<p>In 2022 Chinchilla (arXiv 2203.15556) overturned that budget with finer experiments:<br/>at fixed compute, parameters and data should grow together, optimally about 20 tokens per parameter.<br/>Many big models trained under the old consensus were “under-fed”.</p>
+<p>This result directly rerouted open weights.<br/>The LLaMA line (1.0T tokens for 7B, 1.4T for 70B) is exactly “small model + over-abundant data”.<br/>The Llama 3.1 official model card states 15T tokens — by Chinchilla's yardstick a far-past-optimal “over-training”.</p>
+<p>Why over-train knowingly? Because scaling laws optimise training cost,<br/>while the model will be inferred against repeatedly. Feed a small model more data: training costs a bit more, inference gets much cheaper.<br/>Open-weight models have to run on tens of millions of users' GPUs — the math has to be done this way.</p>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2>The run: learning rate and context extension</h2>
+<p>A pre-training run is not one straight line. The learning rate ramps up then down (cosine annealing is common),<br/>and the final phase often “anneals” on high-quality data. Most families keep their exact recipe private;<br/>this site writes only what has been officially published and leaves the rest unwritten.</p>
+<p>Context length is usually stretched after training — standard practice.<br/>The LLaMA 2 paper states it extended 4K to 32K with position interpolation; the Llama 3.1 model card lists 128K.<br/>Stretching relies on techniques such as changing the frequency base of RoPE positional encoding.</p>
+<p>State the cost honestly: “length seen during training” and “nominal length” are not equal in ability.<br/>A 128K label does not mean needle-in-a-haystack still works accurately at 128K — evaluate by length buckets yourself.</p>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2>The vocabulary: how tokenization is set</h2>
+<p>Models do not see characters, they see tokens. The mainstream splitter is BPE (arXiv 1508.07909):<br/>start from characters and iteratively merge the most co-occurring fragments into subwords.</p>
+<p>Vocabulary size is a trade-off: a big table saves tokens on non-English text like Chinese;<br/>a small table cuts finer and sequences get longer.<br/>Llama uses a 128K vocabulary (official model card); OpenAI's o200k_base reaches 200K (tiktoken official repository).</p>
+<p>The same sentence can differ several-fold in token count across vocabularies.<br/>Before comparing “context length” or “price per token”, check the vocabulary yardstick — otherwise the numbers are not comparable.</p>
+</section>
+<section class="fam-sec" id="guide-section-7">
+<h2>How this differs from the Learn site</h2>
+<p>The Learn site's <a href="https://learn.specul.com/en/term/%E9%A2%84%E8%AE%AD%E7%BB%83/" rel="noopener" target="_blank">pre-training</a> and<br/><a href="https://learn.specul.com/en/term/%E8%AE%AD%E7%BB%83%E4%B8%89%E9%98%B6%E6%AE%B5/" rel="noopener" target="_blank">three-stage training</a> pages are user-perspective explainers;<br/>this guide is the practitioner deep version: decisions, costs, and how the consensus changed.</p>
+<p>Same term, different depth on each side, cross-linked without duplication.<br/>For the cost magnitude of data and compute see this site's [Data and compute guide](data-compute.html);<br/>for the open training stack see [The open training stack](training-stack.html).</p>
+</section>
+<nav aria-label="Next steps" class="fam-sec">
+<h2>What to do next</h2>
+<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
+<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
+<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list">
+<li>GPT-3 paper (arXiv 2005.14165, autoregressive objective at 175B parameters; abstract page re-checked 2026-10-21)：<a href="https://arxiv.org/abs/2005.14165" rel="noopener" target="_blank">https://arxiv.org/abs/2005.14165</a></li>
+<li>Kaplan scaling-laws paper (arXiv 2001.08361; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2001.08361" rel="noopener" target="_blank">https://arxiv.org/abs/2001.08361</a></li>
+<li>Chinchilla paper (arXiv 2203.15556, the compute-optimal result of ~20 tokens per parameter; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2203.15556" rel="noopener" target="_blank">https://arxiv.org/abs/2203.15556</a></li>
+<li>LLaMA paper (arXiv 2302.13971, training 7B–65B on public data; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2302.13971" rel="noopener" target="_blank">https://arxiv.org/abs/2302.13971</a></li>
+<li>LLaMA 2 paper (arXiv 2307.09288, 7T/2T token training and context extension; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2307.09288" rel="noopener" target="_blank">https://arxiv.org/abs/2307.09288</a></li>
+<li>Llama 3 official model card (the official 15T-token, 128K-context figures; fetched directly, HTTP 200, 2026-10-20)：<a href="https://huggingface.co/meta-llama/Llama-3.1-8B" rel="noopener" target="_blank">https://huggingface.co/meta-llama/Llama-3.1-8B</a></li>
+<li>C4 corpus notes (T5 paper arXiv 1910.10683 appendix, web-corpus cleaning rules; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/1910.10683" rel="noopener" target="_blank">https://arxiv.org/abs/1910.10683</a></li>
+<li>FineWeb technical report (arXiv 2406.17557, Hugging Face's open 15T-token corpus reproducing the pipeline; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2406.17557" rel="noopener" target="_blank">https://arxiv.org/abs/2406.17557</a></li>
+<li>DCLM technical report (arXiv 2406.11794, Princeton's experiments showing data curation matters more than scale; abstract page fetched directly 2026-10-21)：<a href="https://arxiv.org/abs/2406.11794" rel="noopener" target="_blank">https://arxiv.org/abs/2406.11794</a></li>
+<li>BPE tokenisation paper (arXiv 1508.07909, the original subword segmentation method; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/1508.07909" rel="noopener" target="_blank">https://arxiv.org/abs/1508.07909</a></li>
+<li>OpenAI tiktoken official repository (the official implementation and docs of the o200k_base vocabulary; fetched directly, HTTP 200, 2026-10-20)：<a href="https://github.com/openai/tiktoken" rel="noopener" target="_blank">https://github.com/openai/tiktoken</a></li>
+</ul>
+<p class="fam-foot">Base source snapshot: 2026-10-20; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

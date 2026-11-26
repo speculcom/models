@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>SFT: teaching a completion machine to answer well…</title>
+<meta content="What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like…" name="description"/>
+<link href="https://models.specul.com/en/guides/sft.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/guides/sft.html" property="og:url"/>
+<meta content="SFT: teaching a completion machine to answer well…" property="og:title"/>
+<meta content="What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SFT: teaching a completion machine to answer well","description":"What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like…","url":"https://models.specul.com/en/guides/sft.html","dateModified":"2026-10-20"}</script>
+<meta content="SFT: teaching a completion machine to answer well…" name="twitter:title"/><meta content="What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like…" name="twitter:description"/><link href="https://models.specul.com/guides/sft.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/guides/sft.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/sft.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/guides/sft.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">How models are made　<span class="t-tag">training pipeline · stage 2</span></p>
+<h1>SFT: teaching a completion machine to answer well<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
+<p class="lede">What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like LoRA. Practitioner depth; the one-page explainer lives on the Learn site.</p>
+</header>
+<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">What this guide covers</a></li><li><a href="#guide-section-2">Where the data comes from</a></li><li><a href="#guide-section-3">Quality beats quantity: the LIMA result</a></li><li><a href="#guide-section-4">Memory-savers: LoRA and QLoRA</a></li><li><a href="#guide-section-5">What comes after SFT</a></li><li><a href="#guide-section-6">How this differs from the Learn site</a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2>What this guide covers</h2>
+<p><b>SFT means continuing to train a pre-trained model on demonstration pairs of “question → good answer”.</b></p>
+<p>A pre-trained model can continue text but cannot hold a conversation: ask it a question<br/>and it may continue the question into “This question has the following answers…” instead of answering directly.<br/>What SFT teaches is form and judgement: answer in conversational format, don't fabricate, refuse when refusal is due.</p>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2>Where the data comes from</h2>
+<p>InstructGPT (arXiv 2203.02155) went with outsourced annotators writing the demonstration answers —<br/>expensive and small-scale (a little over ten thousand examples in the SFT stage).</p>
+<p>FLAN (arXiv 2109.01652) took another route:<br/>rewriting hundreds of classic NLP datasets into instruction templates so the model sees every task shape.</p>
+<p>LLaMA 2 (arXiv 2307.09288) mixes both and adds bootstrapping:<br/>its own models generate candidates, humans filter them, scaling the data volume up.</p>
+<p>Today most open-weight families publish only the quantity of their SFT recipe, not the source breakdown;<br/>this site transcribes what the official statements say and does not guess at what they leave out.</p>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2>Quality beats quantity: the LIMA result</h2>
+<p>LIMA (arXiv 2305.11206) did SFT on just 1,000 hand-curated samples,<br/>with output quality close to pipeline data of tens of thousands.</p>
+<p>The conclusion is not “1,000 examples are enough” but this: SFT mostly teaches form — the knowledge was already there from pre-training.<br/>How much knowledge sits inside the demonstration pairs does not matter; what the model learns is the style, structure and boundaries of the answers.</p>
+<p>Practitioner corollary: when wrong facts slip into SFT data, what the model learns is not the fact itself<br/>but the style of “this kind of wrong claim is an acceptable answer”. Data review should focus on demonstration quality, not on counts.</p>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2>Memory-savers: LoRA and QLoRA</h2>
+<p>Full-parameter fine-tuning has to store every gradient and optimiser state — memory more than doubles.</p>
+<p>LoRA (arXiv 2106.09685) freezes the base weights and trains only injected low-rank matrices.<br/>Trainable parameters drop to a fraction of a percent, the artefact is tens of MB, and adapters can be hot-swapped.</p>
+<p>QLoRA (arXiv 2305.14314) squeezes the base to 4-bit before attaching LoRA,<br/>making single-GPU fine-tuning of 30B/65B models possible — quite a few community fine-tunes listed on this site follow exactly this route.</p>
+<p>State the limits honestly: LoRA is efficient at changing “expression and style” but weak at injecting new knowledge compared with full-parameter training.<br/>A low-rank delta cannot hold many new facts. “Training a private knowledge base into the model with LoRA” is usually the wrong tool;<br/>retrieval (RAG) is the standard answer.</p>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2>What comes after SFT</h2>
+<p>SFT teaches form, but for “which answer is better” it can only imitate the demonstrations — it cannot judge.<br/>Judging quality belongs to the next step — reward models and preference optimisation (RLHF/DPO), covered in the next guide.</p>
+<p>The Learn site's <a href="https://learn.specul.com/en/term/%E8%AE%AD%E7%BB%83%E4%B8%89%E9%98%B6%E6%AE%B5/" rel="noopener" target="_blank">three-stage training</a> term page<br/>covers all three steps in one explainer page; this guide is the practitioner deep-dive for each step.</p>
+</section>
+<section class="fam-sec" id="guide-section-6">
+<h2>How this differs from the Learn site</h2>
+<p>The user-perspective explainers live on the Learn site: <a href="https://learn.specul.com/en/term/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="noopener" target="_blank">supervised learning</a><br/>and <a href="https://learn.specul.com/en/term/%E8%AE%AD%E7%BB%83%E4%B8%89%E9%98%B6%E6%AE%B5/" rel="noopener" target="_blank">three-stage training</a>.</p>
+<p>This guide covers the trade-offs between data routes, how LIMA changed the consensus, and where LoRA applies —<br/>same term, different depth on each side, cross-linked without duplication.</p>
+</section>
+<nav aria-label="Next steps" class="fam-sec">
+<h2>What to do next</h2>
+<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
+<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
+<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list">
+<li>InstructGPT paper (arXiv 2203.02155, the original SFT → reward model → RL pipeline; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2203.02155" rel="noopener" target="_blank">https://arxiv.org/abs/2203.02155</a></li>
+<li>LLaMA 2 paper (arXiv 2307.09288, SFT data volume and distillation (SFT bootstrapping); abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2307.09288" rel="noopener" target="_blank">https://arxiv.org/abs/2307.09288</a></li>
+<li>FLAN paper (arXiv 2109.01652, pooling instruction templates for training; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2109.01652" rel="noopener" target="_blank">https://arxiv.org/abs/2109.01652</a></li>
+<li>LIMA paper (arXiv 2305.11206, the low-data SFT experiment with “1,000 curated samples”; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2305.11206" rel="noopener" target="_blank">https://arxiv.org/abs/2305.11206</a></li>
+<li>LoRA paper (arXiv 2106.09685, the original low-rank adaptation method; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2106.09685" rel="noopener" target="_blank">https://arxiv.org/abs/2106.09685</a></li>
+<li>QLoRA paper (arXiv 2305.14314, fine-tuning route with a 4-bit base + LoRA; abstract page fetched directly 2026-10-20)：<a href="https://arxiv.org/abs/2305.14314" rel="noopener" target="_blank">https://arxiv.org/abs/2305.14314</a></li>
+<li>OpenAI Cookbook · Finetuning guide (official fine-tuning tutorial and data formats; fetched directly, HTTP 200, 2026-10-20)：<a href="https://cookbook.openai.com/examples/openai_llm_cookbook" rel="noopener" target="_blank">https://cookbook.openai.com/examples/openai_llm_cookbook</a></li>
+</ul>
+<p class="fam-foot">Base source snapshot: 2026-10-20; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

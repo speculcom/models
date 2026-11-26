@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>20 open-weight families: a comparison matrix | Models</title>
+<meta content="This table does one thing: put parameters, context, licence, local feasibility and approximate VRAM on one screen so you do not have to open 20 family…" name="description"/>
+<link href="https://models.specul.com/en/matrix.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/matrix.html" property="og:url"/>
+<meta content="20 open-weight families: a comparison matrix | Models" property="og:title"/>
+<meta content="This table does one thing: put parameters, context, licence, local feasibility and approximate VRAM on one screen so you do not have to open 20 family…" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"20 open-weight families: a comparison matrix | Models","description":"This table does one thing: put parameters, context, licence, local feasibility and approximate VRAM on one screen so you do not have to open 20 family…","url":"https://models.specul.com/en/matrix.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/matrix.html"}}</script>
+<meta content="20 open-weight families: a comparison matrix | Models" name="twitter:title"/><meta content="This table does one thing: put parameters, context, licence, local feasibility and approximate VRAM on one screen so you do not have to open 20 family…" name="twitter:description"/><link href="https://models.specul.com/matrix.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/matrix.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/matrix.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/matrix.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container ms-page">
+<p class="fx-crumb"><a href="index.html">← Back to models</a></p>
+<h1>20 open-weight families: a comparison matrix</h1>
+<p>This table does one thing: put parameters, context, licence, local feasibility and approximate VRAM on one screen so you do not have to open 20 family cards. Figures come from the cards and official model cards; VRAM is a rough 4-bit weight estimate and excludes KV cache, vision encoders and concurrency.</p>
+<p class="mx-note">“Single GPU” means the smallest usable tier fits a 24–48 GB consumer card or one 80 GB card; “multi-GPU” means even that exceeds one card. Licences follow the official model card; the table only groups them.</p>
+<p class="mx-note">Licences are more than open/closed: commercial use, attribution and MAU thresholds are broken out in the <a href="/en/license.html"><b>licence checker</b></a>.</p>
+<div class="mx-chips" id="mx-filter">
+<button aria-pressed="true" data-f="all" type="button">All 20</button>
+<button aria-pressed="false" data-f="single" type="button">Single GPU</button>
+<button aria-pressed="false" data-f="multi" type="button">Multi-GPU</button>
+<button aria-pressed="false" data-f="osi" type="button">OSI licence</button>
+</div>
+<div class="mx-wrap">
+<table class="mx-table">
+<thead><tr>
+<th>Family</th><th>Current</th><th>Size tiers</th><th>Context</th><th>Licence</th><th>Reference VRAM (4-bit)</th><th>Positioning</th>
+</tr></thead>
+<tbody><tr data-local="no" data-osi="yes">
+<td><a href="/en/families/command/">Command A</a></td>
+<td>Command A+<br/><span class="mx-dim">2026-05</span></td>
+<td>Flagship 218B MoE (25B active; multi-GPU / large VRAM); Previous r7b (7B-class, single card)</td>
+<td>128K</td>
+<td>Apache-2.0</td>
+<td>Multi-GPU / 120 GB+</td>
+<td>Cohere's enterprise agentic line: A+ opened up under Apache-2.0 (the previous generation was gated), pitched at enterprise and multilingual work. At 218B scale the local-deployment bar is high. This site carries no quantisation comparison (GGUF ecosystem too thin — see below).</td>
+</tr>
+<tr data-local="no" data-osi="yes">
+<td><a href="/en/families/deepseek/">DeepSeek</a></td>
+<td>V4.1-Flash<br/><span class="mx-dim">2026-09</span></td>
+<td>Single MoE tier: 552B backbone plus a 196B Engram conditional-memory table and a vision tower (the official card's components add up to roughly 763B total; the README gives no single total), local runability depends on quantisation and memory</td>
+<td>See model card</td>
+<td>MIT</td>
+<td>Cluster / 400 GB+</td>
+<td>MIT-licensed with a distinctive KV-cache-compression roadmap; an active quantisation ecosystem (antirez, author of Redis and a llama.cpp ecosystem participant, maintains a quantised build; recorded on the series page). For deployers who track the frontier and can host large models.</td>
+</tr>
+<tr data-local="yes" data-osi="no">
+<td><a href="/en/families/falcon/">Falcon</a></td>
+<td>Falcon H1R 7B<br/><span class="mx-dim">2026-01</span></td>
+<td>7B (single GPU); Previous multi-size line (see official page)</td>
+<td>See model card</td>
+<td>Falcon TII</td>
+<td>Single GPU / 6 GB</td>
+<td>TII’s hybrid-architecture family: H1R 7B uses a Transformer-Mamba mix to keep 7B runnable on one GPU, suited to long-sequence and low-VRAM experiments. The licence is not OSI, so read it before commercial use; the ecosystem is smaller than Llama or Qwen.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/gemma/">Gemma</a></td>
+<td>Gemma 4<br/><span class="mx-dim">2026-03</span></td>
+<td>On-device E2B / E4B: phones and browsers; Laptop 12B / 26B-A4B; Server 31B (dense)</td>
+<td>128K (E series: see model card)</td>
+<td>Apache-2.0</td>
+<td>From 2 GB on-device; ~18 GB for 31B</td>
+<td>The family with the widest size spread (E2B to 31B), one line from edge to server. Licensing is Apache-2.0 plus a use policy — read the policy text before download. This site's gemma-4 series covers three of the tiers.</td>
+</tr>
+<tr data-local="no" data-osi="yes">
+<td><a href="/en/families/glm/">GLM (Z.ai)</a></td>
+<td>GLM-5.3<br/><span class="mx-dim">2026-08</span></td>
+<td>Flash tier: MIT-licensed, the first choice for local deployment; Flagship 5.3: 754B MoE, server-class; licence per the release page</td>
+<td>See model card</td>
+<td>MIT / Vendor licence</td>
+<td>Flash ~180 GB; 5.3 cluster</td>
+<td>Strong at Chinese agentic work and code, with a very fast iteration cadence. Flagship and Flash tiers carry different licences — for local deployment, prefer the MIT Flash tier. This site's glm-5 series tracks GLM-5.3.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/gpt-oss/">gpt-oss</a></td>
+<td>gpt-oss<br/><span class="mx-dim">2025-08</span></td>
+<td>Local 20B (21B total / 3.6B active, within 16GB); Single-GPU server 120B (117B total / 5.1B active, 80GB card)</td>
+<td>—</td>
+<td>Apache-2.0</td>
+<td>20B ~12–16 GB; 120B ~70 GB</td>
+<td>OpenAI's first open-weight MoE line: Apache-2.0, designed to ship quantized (MXFP4) from the start, single-GPU operation is its headline scenario. This site covers the gpt-oss quantisation comparison.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/granite/">Granite</a></td>
+<td>Granite 4.2<br/><span class="mx-dim">2026-11</span></td>
+<td>3B (edge / single machine); 8B (single GPU); 30B (multi-GPU / enterprise)</td>
+<td>128K</td>
+<td>Apache-2.0</td>
+<td>3B ~2 GB; 8B ~5 GB; 30B ~18 GB</td>
+<td>IBM’s enterprise-oriented open-weight family: restrained sizes, clean licensing, and an emphasis on workflows and coding, suited to private deployment in compliance-heavy enterprises. It is not a benchmark-maximalist line; its advantage is licensing, auditability and enterprise integration.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/kat/">KAT Coder</a></td>
+<td>KAT-Coder-V2.5<br/><span class="mx-dim">2026-07</span></td>
+<td>Code-focused 35B-A3B (35B total / 3B active)</td>
+<td>See model card</td>
+<td>Apache-2.0</td>
+<td>~20 GB</td>
+<td>Kuaishou Kwaipilot's coding line: the API build stays closed, the Dev build is open-weight. It is this site's representative "derived model" — the vendor itself declares Qwen3.6-35B-A3B as its base, so choosing it means choosing the Qwen lineage plus Kuaishou's code post-training.</td>
+</tr>
+<tr data-local="no" data-osi="no">
+<td><a href="/en/families/kimi/">Kimi</a></td>
+<td>Kimi K3.1 Pro<br/><span class="mx-dim">2026-10</span></td>
+<td>Flagship 2.8T MoE (K3.1 Pro, 104B active, 1M context); Flagship 2.8T MoE (K3; active count not itemised officially); Branch builds 7B–72B (Kimi-Audio / Kimi-Dev etc.)</td>
+<td>1M</td>
+<td>Vendor licence / Vendor licence</td>
+<td>Cluster / 1.4 TB+</td>
+<td>The domestic open-weight flagship: K3.1 Pro pushes K3 post-training to a new tier — 2.8T total / 104B active, 1M context — with weights opened on 2026-11-04 under a custom Kimi K3.1 Pro License. The Kimi chat product sits in the CAC first batch; weights and service filing are separate.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/laguna/">Laguna</a></td>
+<td>Laguna 2.1 / XS.2<br/><span class="mx-dim">2026-08</span></td>
+<td>Local XS (33B total / 3B active; the vendor says a 36GB Mac runs it); Larger S / M builds (official org)</td>
+<td>262K (XS)</td>
+<td>OpenMDW-1.1</td>
+<td>XS ~20 GB; vendor says it runs on a 36 GB Mac</td>
+<td>The most permissively licensed coding line (OpenMDW-1.1, fully permissive); its pitch is agentic coding on a local machine, with 3B active parameters as the source of that locality. This site covers Laguna XS-2.1 quantisations.</td>
+</tr>
+<tr data-local="yes" data-osi="no">
+<td><a href="/en/families/llama/">Llama</a></td>
+<td>Llama 4<br/><span class="mx-dim">2025-04</span></td>
+<td>Small 1B / 3B: on-device and vision-small; Medium 8B / 70B: the common local-deployment tiers; Large 405B / 17B-128E MoE: server-class</td>
+<td>See model card</td>
+<td>Vendor licence</td>
+<td>8B ~6 GB; 70B ~40 GB</td>
+<td>The largest open-weight ecosystem by far — fine-tunes, quantisations and tooling are everywhere — but the licence is a community licence with attribution ("Built with Llama") and scale (700M MAU) clauses. Read it fully before commercial use.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/minicpm/">MiniCPM</a></td>
+<td>MiniCPM5<br/><span class="mx-dim">2026-08</span></td>
+<td>On-device 1B / 2B (MiniCPM5-1B / 2B, dense); Previous 4B–8B (MiniCPM3/4 line)</td>
+<td>See model card</td>
+<td>Apache-2.0</td>
+<td>1B–2B ~1–2 GB</td>
+<td>The domestic on-device small-model family: small sizes plus fully open training data — a Chinese family that gives you for the "train one yourself" route. Alongside Zhipu, another filed domestic line (MiniCPM filing number Beijing-MiniCPM-202503180058).</td>
+</tr>
+<tr data-local="partial" data-osi="no">
+<td><a href="/en/families/mistral/">Mistral</a></td>
+<td>Mistral Large 4<br/><span class="mx-dim">2026-10</span></td>
+<td>Flagship tier: 1.05T total / 49B active (52B including embeddings and output); Small 24B-119B (MoE): the locally runnable open tier; Medium 128B: flagship dense tier</td>
+<td>1M (Large 4)</td>
+<td>Mistral Ecosystem / Apache-2.0 / Vendor licence</td>
+<td>Large 4 cluster; Small 24B ~15 GB</td>
+<td>A European open-weight flagship: 1T-class MoE, 1M context and vision input, under a modified MIT licence (separate MaaS grant needed). For deployers who need open weights, a European compliance story and multilingual coverage; local hosting is extremely demanding, and the official release includes an NVFP4 checkpoint and a DSpark speculative-decoding draft head.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/muse/">Muse</a></td>
+<td>Muse Glimmer<br/><span class="mx-dim">2026-08</span></td>
+<td>30B dense (Glimmer tier)</td>
+<td>See model card</td>
+<td>Apache-2.0</td>
+<td>30B ~18 GB</td>
+<td>Meta's newer open-weight line beside Llama (the meta-models org). Publication is gated: sign in and consent on HF before download — a hard constraint when choosing, stated plainly on the card. This site covers Muse Glimmer 30B quantisations.</td>
+</tr>
+<tr data-local="yes" data-osi="no">
+<td><a href="/en/families/nemotron/">Nemotron</a></td>
+<td>Nemotron 3.5<br/><span class="mx-dim">2026-11</span></td>
+<td>30B-A3B (single machine / low latency); 120B-A12B (multi-GPU); 550B-A55B (cluster)</td>
+<td>1M</td>
+<td>NVIDIA Open Model</td>
+<td>30B-A3B ~18–20 GB; 120B ~70 GB</td>
+<td>NVIDIA’s open-weight agent family: three MoE tiers from a single machine to a cluster, pitched at long context, reasoning and local agents. Its value is not “another open model” but the coupling with NVIDIA’s inference stack, NIM and hardware; without NVIDIA hardware the benefit is smaller.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/olmo/">OLMo</a></td>
+<td>OLMo 3.1<br/><span class="mx-dim">2026-11</span></td>
+<td>7B (single GPU); 32B (multi-GPU)</td>
+<td>65K</td>
+<td>Apache-2.0</td>
+<td>7B ~5 GB; 32B ~20 GB</td>
+<td>Ai2’s fully open research family: it releases data, code, checkpoints and the training recipe together, suited to reproducible experiments and teaching. Its advantage is not a leaderboard score but end-to-end inspectability; the cost is that you bear the training and evaluation burden.</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/ornith/">Ornith</a></td>
+<td>Ornith 1.5<br/><span class="mx-dim">2026-08</span></td>
+<td>Single-card 9B (dense); Workhorse 35B-A3B (35B total / ~3B active); Flagship 397B</td>
+<td>See model card</td>
+<td>MIT</td>
+<td>9B ~6 GB; 35B ~22 GB</td>
+<td>A newcomer (only two generations so far, both 2026): MIT licence plus three tiers from single-card to flagship. The publisher DeepReinforce's jurisdiction of registration is not officially stated; this site treats it as foreign-made and says so in the origin note (S52 convention).</td>
+</tr>
+<tr data-local="yes" data-osi="yes">
+<td><a href="/en/families/phi/">Phi</a></td>
+<td>Phi-4-reasoning line<br/><span class="mx-dim">2026-08</span></td>
+<td>On-device mini 3.8B; Single-card 14B–15B (phi-4 dense / reasoning-vision 15B)</td>
+<td>See model card</td>
+<td>MIT</td>
+<td>15B ~10 GB</td>
+<td>Microsoft's small-but-high-quality line: MIT, sizes concentrated at 4B–15B, and the vendor's pitch is "teach small models with synthetic data". The current line is reasoning-vision (still a phi-4 post-train on the weight lineage). This site carries no quantisation comparison — the current generation's GGUF ecosystem is too thin (see below).</td>
+</tr>
+<tr data-local="partial" data-osi="partial">
+<td><a href="/en/families/qwen/">Qwen</a></td>
+<td>Qwen4-Max<br/><span class="mx-dim">2026-11</span></td>
+<td>Closed Max 2.4T: Qwen4-Max, 71B active, 1M context (API flagship); Small 0.6B-9B: on-device, free tiers, CPU-capable; Medium 14B-35B: the local-deployment workhorse (27B dense leads this generation); Large 180B-2.4T: MoE flagships needing server-class VRAM</td>
+<td>1M (Max / Qwen4)</td>
+<td>Apache-2.0 / Vendor licence</td>
+<td>27B ~16–18 GB; Max cluster</td>
+<td>One of the strongest open-weight families for Chinese and code. Qwen4-Max is the closed-API flagship; the open-weight line remains Qwen3.8, and licence and hardware floor should be read separately.</td>
+</tr>
+<tr data-local="no" data-osi="no">
+<td><a href="/en/families/tencent/">Tencent Hunyuan</a></td>
+<td>Hy4 / Hy4 flash<br/><span class="mx-dim">2026-11</span></td>
+<td>Hy4: 770B total / 49B active (HF model card), 1M context; Hy4 flash: 224B total (64B Engram included, 12B active; model-card components sum to about 220B), 1M context; Hy4 Preview: 770B total / 49B active (comparison figure in the Hy4 flash release); Hy3: 295B total (MoE, 21B active), 256K context. All under the Tencent Hy License, not an OSI-standard licence.</td>
+<td>1M (Hy4 flash)</td>
+<td>Vendor licence</td>
+<td>Hy4 flash ~120 GB+</td>
+<td>An uncommon large-total/high-active Chinese open-weight family: production Hy4 is 770B total / 49B active, targeting visual understanding, long context and long-horizon agents, while Hy4 flash trades 224B total / 12B active for speed and cost. Weights opened on 2026-11-20 under the Tencent Hy License, not an OSI-standard licence; there is no GGUF coverage yet — read the licence text and the hardware floor before choosing.</td>
+</tr>
+<tr data-local="partial" data-osi="no">
+<td><a href="/en/families/thinkingmachines/">Thinking Machines · Inkling</a></td>
+<td>Inkling 2 Small<br/><span class="mx-dim">2026-11</span></td>
+<td>Flagship 594B-A17B: Inkling 2 Small, multimodal, 1M context; the MXFP8 checkpoint needs about 800GB of aggregate VRAM, not a single-machine local tier.; Local 26.4B-A3.4B: Inkling 2 Mini, 24-layer looped MoE, Q4_K_M at 16.61GB, runnable on 24GB-class cards at short-to-medium context.</td>
+<td>—</td>
+<td>Apache-2.0</td>
+<td>—</td>
+<td>Two lines in the same generation: Small is the 594B-class flagship for frontier agent and multimodal work; Mini is the 26B-class local node that trades repeated layers for capacity. Both are Apache-2.0 with 1M context, but their hardware floors differ by an order of magnitude and they do not replace each other.</td>
+</tr></tbody>
+</table>
+</div>
+<p class="mx-note">There is no “best” family, only whether a tier fits, whether the licence works and whether quantisations are maintained. For the selection order see <a href="index.html">models home</a> and <a href="families/">family cards</a>.</p>
+</div>
+<script>(function(){var bar=document.getElementById('mx-filter');if(!bar)return;var btns=bar.querySelectorAll('button'),rows=document.querySelectorAll('.mx-table tbody tr');function apply(f){for(var i=0;i<rows.length;i++){var r=rows[i],show=f==='all'||(f==='single'&&r.dataset.local==='yes')||(f==='multi'&&r.dataset.local==='no')||(f==='osi'&&r.dataset.osi==='yes');r.hidden=!show;}for(var j=0;j<btns.length;j++)btns[j].setAttribute('aria-pressed',btns[j].dataset.f===f?'true':'false');}for(var k=0;k<btns.length;k++)btns[k].addEventListener('click',function(){apply(this.dataset.f);});})();</script>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

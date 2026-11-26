@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Open-weight models</title>
+<meta content="One card per open-weight family: where it comes from, which generation is current, what size tiers exist, whether the licence allows commercial use, and…" name="description"/>
+<link href="https://models.specul.com/en/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/" property="og:url"/>
+<meta content="Open-weight models" property="og:title"/>
+<meta content="One card per open-weight family: where it comes from, which generation is current, what size tiers exist, whether the licence allows commercial use, and…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Open-weight models","url":"https://models.specul.com/en/","description":"One card per open-weight family: where it comes from, which generation is current, what size tiers exist, whether the licence allows commercial use, and…"}</script>
+<meta content="Open-weight models" name="twitter:title"/><meta content="One card per open-weight family: where it comes from, which generation is current, what size tiers exist, whether the licence allows commercial use, and…" name="twitter:description"/><link href="https://models.specul.com/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container">
+<header class="site-hero">
+<h1>Open-weight models</h1>
+<p class="site-hero-deck">21 families, chosen by size, quantisation and licence.</p>
+</header>
+<section class="vz-section" id="lineage">
+<div class="container">
+<div class="vz-head">
+<h2 class="vz-title">Generations and quantisation tiers <span class="vz-title-sub">lineage</span></h2>
+<p class="vz-dek">Generation cadence, model and quant repo counts, plus the models released in 2026.</p>
+</div>
+<div class="vz-grid"><figure class="vz-card vz-span-6">
+<figcaption class="vz-cap"><span class="vz-no">01</span><span><b>When each family's current generation landed</b><small>by current generation date</small></span></figcaption>
+<div class="vz-plot"><svg aria-label="Vertical bar chart" class="vz-svg" role="img" viewbox="0 0 620 260" xmlns="http://www.w3.org/2000/svg"><line class="vz-gridline" x1="42" x2="602" y1="202" y2="202"></line><text class="vz-t-dim" text-anchor="end" x="32" y="207">0</text><line class="vz-gridline" x1="42" x2="602" y1="116" y2="116"></line><text class="vz-t-dim" text-anchor="end" x="32" y="121">3</text><line class="vz-gridline" x1="42" x2="602" y1="30" y2="30"></line><text class="vz-t-dim" text-anchor="end" x="32" y="35">6</text>
+<text class="vz-t-strong" text-anchor="middle" x="70" y="164.33333333333334">1</text>
+<rect class="vz-bar" height="28.666666666666664" rx="8" style="fill:var(--ink-faint)" width="31.360000000000003" x="54.32" y="173.33333333333334"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="70" y="232">25-04</text>
+<text class="vz-t-strong" text-anchor="middle" x="126" y="164.33333333333334">1</text>
+<rect class="vz-bar" height="28.666666666666664" rx="8" style="fill:var(--ink-faint)" width="31.360000000000003" x="110.32" y="173.33333333333334"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="126" y="232">25-08</text>
+<text class="vz-t-strong" text-anchor="middle" x="182" y="164.33333333333334">1</text>
+<rect class="vz-bar" height="28.666666666666664" rx="8" style="fill:var(--brand)" width="31.360000000000003" x="166.32" y="173.33333333333334"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="182" y="232">26-01</text>
+<text class="vz-t-strong" text-anchor="middle" x="238" y="164.33333333333334">1</text>
+<rect class="vz-bar" height="28.666666666666664" rx="8" style="fill:var(--brand)" width="31.360000000000003" x="222.32" y="173.33333333333334"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="238" y="232">26-03</text>
+<text class="vz-t-strong" text-anchor="middle" x="294" y="164.33333333333334">1</text>
+<rect class="vz-bar" height="28.666666666666664" rx="8" style="fill:var(--brand)" width="31.360000000000003" x="278.32" y="173.33333333333334"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="294" y="232">26-05</text>
+<text class="vz-t-strong" text-anchor="middle" x="350" y="164.33333333333334">1</text>
+<rect class="vz-bar" height="28.666666666666664" rx="8" style="fill:var(--brand)" width="31.360000000000003" x="334.32" y="173.33333333333334"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="350" y="232">26-07</text>
+<text class="vz-t-strong" text-anchor="middle" x="406" y="21">6</text>
+<rect class="vz-bar" height="172" rx="8" style="fill:var(--brand)" width="31.360000000000003" x="390.32" y="30"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="406" y="232">26-08</text>
+<text class="vz-t-strong" text-anchor="middle" x="462" y="164.33333333333334">1</text>
+<rect class="vz-bar" height="28.666666666666664" rx="8" style="fill:var(--brand)" width="31.360000000000003" x="446.32" y="173.33333333333334"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="462" y="232">26-09</text>
+<text class="vz-t-strong" text-anchor="middle" x="518" y="135.66666666666669">2</text>
+<rect class="vz-bar" height="57.33333333333333" rx="8" style="fill:var(--brand)" width="31.360000000000003" x="502.32" y="144.66666666666669"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="518" y="232">26-10</text>
+<text class="vz-t-strong" text-anchor="middle" x="574" y="21">6</text>
+<rect class="vz-bar" height="172" rx="8" style="fill:var(--brand)" width="31.360000000000003" x="558.32" y="30"></rect>
+<text class="vz-t-dim" text-anchor="middle" x="574" y="232">26-11</text></svg></div>
+<p class="vz-foot">August 2026 was busy: eight families moved generation that month. Two families still sit on 2025 generations.</p>
+</figure><figure class="vz-card vz-span-3">
+<figcaption class="vz-cap"><span class="vz-no">02</span><span><b>Model repos vs quant repos</b><small>16 vs 129</small></span></figcaption>
+<div class="vz-plot"><svg aria-label="Donut chart" class="vz-svg" role="img" viewbox="0 0 460 240" xmlns="http://www.w3.org/2000/svg"><circle cx="110" cy="118" fill="none" r="84" stroke="var(--cat-violet)" stroke-dasharray="58.23862795068527 469.5489378524" stroke-dashoffset="0" stroke-width="23" transform="rotate(-90 110 118)"></circle><circle cx="110" cy="118" fill="none" r="84" stroke="var(--cat-teal)" stroke-dasharray="469.5489378524 58.23862795068527" stroke-dashoffset="-58.23862795068527" stroke-width="23" transform="rotate(-90 110 118)"></circle><text class="vz-t-big" text-anchor="middle" x="110" y="120">145</text><text class="vz-t-dim" text-anchor="middle" x="110" y="142">repos</text><circle cx="236" cy="39" fill="var(--cat-violet)" r="5"></circle>Model repos<text class="vz-t-strong" text-anchor="end" x="448" y="44">16</text><circle cx="236" cy="70" fill="var(--cat-teal)" r="5"></circle>Quant repos<text class="vz-t-strong" text-anchor="end" x="448" y="75">129</text></svg></div>
+<p class="vz-foot">One model repo maps to roughly eight quant repos; that is why “which file” takes longer than “which model”.</p>
+</figure><figure class="vz-card vz-span-3">
+<figcaption class="vz-cap"><span class="vz-no">03</span><span><b>Quant tiers vs GGUF files</b><small>1262 vs 1337</small></span></figcaption>
+<div class="vz-plot"><svg aria-label="Donut chart" class="vz-svg" role="img" viewbox="0 0 460 240" xmlns="http://www.w3.org/2000/svg"><circle cx="110" cy="118" fill="none" r="84" stroke="var(--cat-amber)" stroke-dasharray="256.2785332987663 271.50903250431895" stroke-dashoffset="0" stroke-width="23" transform="rotate(-90 110 118)"></circle><circle cx="110" cy="118" fill="none" r="84" stroke="var(--cat-blue)" stroke-dasharray="271.50903250431895 256.2785332987663" stroke-dashoffset="-256.2785332987663" stroke-width="23" transform="rotate(-90 110 118)"></circle><text class="vz-t-big" text-anchor="middle" x="110" y="120">1.06×</text><text class="vz-t-dim" text-anchor="middle" x="110" y="142">files/tier</text><circle cx="236" cy="39" fill="var(--cat-amber)" r="5"></circle>Quant tiers<text class="vz-t-strong" text-anchor="end" x="448" y="44">1,262</text><circle cx="236" cy="70" fill="var(--cat-blue)" r="5"></circle>GGUF files<text class="vz-t-strong" text-anchor="end" x="448" y="75">1,337</text></svg></div>
+<p class="vz-foot">Sharding makes files slightly outnumber tiers; choose by tier, not by file count.</p>
+</figure><figure class="vz-card vz-span-12">
+<figcaption class="vz-cap"><span class="vz-no">04</span><span><b>Six new nodes in 2026</b><small>open weights only</small></span></figcaption>
+<div class="vz-plot"><svg aria-label="Timeline" class="vz-svg" role="img" viewbox="0 0 700 288" xmlns="http://www.w3.org/2000/svg">
+<text class="vz-t-dim" text-anchor="end" x="104" y="27">2026-10</text>
+<line class="vz-axis" x1="120" x2="120" y1="10" y2="54"></line>
+<circle cx="120" cy="22" r="6" style="fill:var(--cat-rose)"></circle>
+<text class="vz-t-strong" x="140" y="27">Meta Muse Spark Open</text>
+816B / 42B active, 1M context, Muse Model License
+<text class="vz-t-dim" text-anchor="end" x="104" y="72">2026-10</text>
+<line class="vz-axis" x1="120" x2="120" y1="55" y2="99"></line>
+<circle cx="120" cy="67" r="6" style="fill:var(--cat-lime)"></circle>
+<text class="vz-t-strong" x="140" y="72">Mistral Large 4</text>
+1.05T / 49B active, 128 routed experts, 1M context
+<text class="vz-t-dim" text-anchor="end" x="104" y="117">2026-09</text>
+<line class="vz-axis" x1="120" x2="120" y1="100" y2="144"></line>
+<circle cx="120" cy="112" r="6" style="fill:var(--cat-teal)"></circle>
+<text class="vz-t-strong" x="140" y="117">DeepSeek V4.1 Flash</text>
+552B MoE / 8B prefill / 16B decode, heavily compressed KV cache
+<text class="vz-t-dim" text-anchor="end" x="104" y="162">2026-09</text>
+<line class="vz-axis" x1="120" x2="120" y1="145" y2="189"></line>
+<circle cx="120" cy="157" r="6" style="fill:var(--cat-amber)"></circle>
+Xiaomi MiMo-V2.6
+Pro and Flash lines, native omni-modal, AA Intelligence 46.32
+<text class="vz-t-dim" text-anchor="end" x="104" y="207">2026-08</text>
+<line class="vz-axis" x1="120" x2="120" y1="190" y2="234"></line>
+<circle cx="120" cy="202" r="6" style="fill:var(--cat-blue)"></circle>
+GLM-5.3 and GLM-5.3-Flash
+Post-training scaling on one base; Flash 320B-A18B later open-sourced under MIT
+<text class="vz-t-dim" text-anchor="end" x="104" y="252">2026-07</text>
+<line class="vz-axis" x1="120" x2="120" y1="235" y2="279"></line>
+<circle cx="120" cy="247" r="6" style="fill:var(--cat-violet)"></circle>
+Kimi K3 open weights
+2.8T total / 104B active, 16 of 896 experts, 1M context</svg></div>
+<p class="vz-foot">Mistral Large 4 and Muse Spark use modified MIT / vendor licences, not OSI-approved terms; read the text before commercial use.</p>
+</figure></div>
+<p class="vz-foot vz-foot-wide">Note: family, series, model-repo, quant-repo, tier and GGUF counts come from the current data; they show scale, not a model ranking.</p>
+<p class="vz-more"><a href="/en/2026.html">See the 2026 model patch: Mistral Large 4, Muse Spark, MiMo, Kimi K3, DeepSeek V4.1, GLM-5.3 →</a></p>
+</div>
+</section>
+<section class="family-list">
+<h2>Model families <small>family and size first</small></h2>
+<p class="sec-desc">One card per open-weight family: where it comes from, which generation is current, what size tiers exist, whether the licence allows commercial use, and what the vendor officially claims. Where a generation has quantisation coverage, the card links straight to it.</p>
+<p class="sec-desc"><a href="/en/matrix.html"><b>Do not want to open 21 cards? See the 21-family comparison matrix →</b></a> Parameters, context, licence, on-site quantisation coverage and reference VRAM in one table.</p>
+<div class="famcards">
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/families/command/">
+<div class="m-famcard-h">
+<h3>Command A</h3>
+<span class="m-famcard-vendor">Cohere</span>
+</div>
+<p class="m-famcard-cur">current <b>Command A+</b> · 2026-05</p>
+<p class="m-famcard-sum">Cohere's enterprise agentic line: A+ opened up under Apache-2.0 (the previous generation was gated), pitched at enterprise and multilingual work. At 218B scale the local-deployment bar is high. This site carries no quantisation comparison (GGUF ecosystem too thin — see below).</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="mit" href="/en/families/deepseek/">
+<div class="m-famcard-h">
+<h3>DeepSeek</h3>
+<span class="m-famcard-vendor">DeepSeek</span>
+</div>
+<p class="m-famcard-cur">current <b>V4.1-Flash</b> · 2026-09</p>
+<p class="m-famcard-sum">MIT-licensed with a distinctive KV-cache-compression roadmap; an active quantisation ecosystem (antirez, author of Redis and a llama.cpp ecosystem participant, maintains a quantised build; recorded on the series page). For deployers who track the frontier and can host large models.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>1</b> size tiers</span>
+<span><span class="lic lic-loose">mit</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="m-famcard-go">Quantisation coverage (DeepSeek V4) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="unknown" data-cn-filing="unknown" data-cn-origin="foreign" data-lic="falcon-tii-license" href="/en/families/falcon/">
+<div class="m-famcard-h">
+<h3>Falcon</h3>
+<span class="m-famcard-vendor">TII (Technology Innovation Institute, UAE)</span>
+</div>
+<p class="m-famcard-cur">current <b>Falcon H1R 7B</b> · 2026-01</p>
+<p class="m-famcard-sum">TII’s hybrid-architecture family: H1R 7B uses a Transformer-Mamba mix to keep 7B runnable on one GPU, suited to long-sequence and low-VRAM experiments. The licence is not OSI, so read it before commercial use; the ecosystem is smaller than Llama or Qwen.</p>
+<div class="m-famcard-meta">
+<span><b>2</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-tight">falcon-tii-license</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct unknown</span> <span class="t-state is-warn">filing unknown</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/families/gemma/">
+<div class="m-famcard-h">
+<h3>Gemma</h3>
+<span class="m-famcard-vendor">Google DeepMind</span>
+</div>
+<p class="m-famcard-cur">current <b>Gemma 4</b> · 2026-03</p>
+<p class="m-famcard-sum">The family with the widest size spread (E2B to 31B), one line from edge to server. Licensing is Apache-2.0 plus a use policy — read the policy text before download. This site's gemma-4 series covers three of the tiers.</p>
+<div class="m-famcard-meta">
+<span><b>2</b> generations</span>
+<span><b>3</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Quantisation coverage (Gemma 4) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="mit other" href="/en/families/glm/">
+<div class="m-famcard-h">
+<h3>GLM (Z.ai)</h3>
+<span class="m-famcard-vendor">Z.ai (Zhipu AI)</span>
+</div>
+<p class="m-famcard-cur">current <b>GLM-5.3</b> · 2026-08</p>
+<p class="m-famcard-sum">Strong at Chinese agentic work and code, with a very fast iteration cadence. Flagship and Flash tiers carry different licences — for local deployment, prefer the MIT Flash tier. This site's glm-5 series tracks GLM-5.3.</p>
+<div class="m-famcard-meta">
+<span><b>4</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-loose">mit</span> <span class="lic lic-tight">other</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="m-famcard-go">Quantisation coverage (GLM 5) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="no" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/families/gpt-oss/">
+<div class="m-famcard-h">
+<h3>gpt-oss</h3>
+<span class="m-famcard-vendor">OpenAI</span>
+</div>
+<p class="m-famcard-cur">current <b>gpt-oss</b> · 2025-08</p>
+<p class="m-famcard-sum">OpenAI's first open-weight MoE line: Apache-2.0, designed to ship quantized (MXFP4) from the start, single-GPU operation is its headline scenario. This site covers the gpt-oss quantisation comparison.</p>
+<div class="m-famcard-meta">
+<span><b>1</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct blocked</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Quantisation coverage (gpt-oss) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="unknown" data-cn-filing="unknown" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/families/granite/">
+<div class="m-famcard-h">
+<h3>Granite</h3>
+<span class="m-famcard-vendor">IBM</span>
+</div>
+<p class="m-famcard-cur">current <b>Granite 4.2</b> · 2026-11</p>
+<p class="m-famcard-sum">IBM’s enterprise-oriented open-weight family: restrained sizes, clean licensing, and an emphasis on workflows and coding, suited to private deployment in compliance-heavy enterprises. It is not a benchmark-maximalist line; its advantage is licensing, auditability and enterprise integration.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>3</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct unknown</span> <span class="t-state is-warn">filing unknown</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="domestic" data-lic="apache-2.0" href="/en/families/kat/">
+<div class="m-famcard-h">
+<h3>KAT Coder</h3>
+<span class="m-famcard-vendor">Kwaipilot (Kuaishou)</span>
+</div>
+<p class="m-famcard-cur">current <b>KAT-Coder-V2.5</b> · 2026-07　<span class="t-tag">derived from Qwen3.6-35B-A3B</span></p>
+<p class="m-famcard-sum">Kuaishou Kwaipilot's coding line: the API build stays closed, the Dev build is open-weight. It is this site's representative "derived model" — the vendor itself declares Qwen3.6-35B-A3B as its base, so choosing it means choosing the Qwen lineage plus Kuaishou's code post-training.</p>
+<div class="m-famcard-meta">
+<span><b>2</b> generations</span>
+<span><b>1</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Quantisation coverage (KAT Coder V2.5) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="other other" href="/en/families/kimi/">
+<div class="m-famcard-h">
+<h3>Kimi</h3>
+<span class="m-famcard-vendor">Moonshot AI</span>
+</div>
+<p class="m-famcard-cur">current <b>Kimi K3.1 Pro</b> · 2026-10</p>
+<p class="m-famcard-sum">The domestic open-weight flagship: K3.1 Pro pushes K3 post-training to a new tier — 2.8T total / 104B active, 1M context — with weights opened on 2026-11-04 under a custom Kimi K3.1 Pro License. The Kimi chat product sits in the CAC first batch; weights and service filing are separate.</p>
+<div class="m-famcard-meta">
+<span><b>4</b> generations</span>
+<span><b>3</b> size tiers</span>
+<span><span class="lic lic-tight">other</span> <span class="lic lic-tight">other</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="m-famcard-go">Quantisation coverage (Kimi K3) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="openmdw-1.1" href="/en/families/laguna/">
+<div class="m-famcard-h">
+<h3>Laguna</h3>
+<span class="m-famcard-vendor">Poolside</span>
+</div>
+<p class="m-famcard-cur">current <b>Laguna 2.1 / XS.2</b> · 2026-08</p>
+<p class="m-famcard-sum">The most permissively licensed coding line (OpenMDW-1.1, fully permissive); its pitch is agentic coding on a local machine, with 3B active parameters as the source of that locality. This site covers Laguna XS-2.1 quantisations.</p>
+<div class="m-famcard-meta">
+<span><b>2</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-tight">openmdw-1.1</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Quantisation coverage (Laguna 2.1) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="unknown" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="other" href="/en/families/llama/">
+<div class="m-famcard-h">
+<h3>Llama</h3>
+<span class="m-famcard-vendor">Meta</span>
+</div>
+<p class="m-famcard-cur">current <b>Llama 4</b> · 2025-04</p>
+<p class="m-famcard-sum">The largest open-weight ecosystem by far — fine-tunes, quantisations and tooling are everywhere — but the licence is a community licence with attribution ("Built with Llama") and scale (700M MAU) clauses. Read it fully before commercial use.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>3</b> size tiers</span>
+<span><span class="lic lic-tight">other</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct unknown</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="apache-2.0" href="/en/families/minicpm/">
+<div class="m-famcard-h">
+<h3>MiniCPM</h3>
+<span class="m-famcard-vendor">OpenBMB (ModelBest)</span>
+</div>
+<p class="m-famcard-cur">current <b>MiniCPM5</b> · 2026-08</p>
+<p class="m-famcard-sum">The domestic on-device small-model family: small sizes plus fully open training data — a Chinese family that gives you for the "train one yourself" route. Alongside Zhipu, another filed domestic line (MiniCPM filing number Beijing-MiniCPM-202503180058).</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="m-famcard-go">Quantisation coverage (MiniCPM 5) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="unknown" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="mistral-ecosystem-open-weight apache-2.0 other" href="/en/families/mistral/">
+<div class="m-famcard-h">
+<h3>Mistral</h3>
+<span class="m-famcard-vendor">Mistral AI (France)</span>
+</div>
+<p class="m-famcard-cur">current <b>Mistral Large 4</b> · 2026-10</p>
+<p class="m-famcard-sum">A European open-weight flagship: 1T-class MoE, 1M context and vision input, under a modified MIT licence (separate MaaS grant needed). For deployers who need open weights, a European compliance story and multilingual coverage; local hosting is extremely demanding, and the official release includes an NVFP4 checkpoint and a DSpark speculative-decoding draft head.</p>
+<div class="m-famcard-meta">
+<span><b>5</b> generations</span>
+<span><b>3</b> size tiers</span>
+<span><span class="lic lic-tight">mistral-ecosystem-open-weight</span> <span class="lic lic-loose">apache-2.0</span> <span class="lic lic-tight">other</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct unknown</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/families/muse/">
+<div class="m-famcard-h">
+<h3>Muse</h3>
+<span class="m-famcard-vendor">Meta</span>
+</div>
+<p class="m-famcard-cur">current <b>Muse Glimmer</b> · 2026-08</p>
+<p class="m-famcard-sum">Meta's newer open-weight line beside Llama (the meta-models org). Publication is gated: sign in and consent on HF before download — a hard constraint when choosing, stated plainly on the card. This site covers Muse Glimmer 30B quantisations.</p>
+<div class="m-famcard-meta">
+<span><b>2</b> generations</span>
+<span><b>1</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Quantisation coverage (Muse Glimmer) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="unknown" data-cn-filing="unknown" data-cn-origin="foreign" data-lic="nvidia-open-model-license" href="/en/families/nemotron/">
+<div class="m-famcard-h">
+<h3>Nemotron</h3>
+<span class="m-famcard-vendor">NVIDIA</span>
+</div>
+<p class="m-famcard-cur">current <b>Nemotron 3.5</b> · 2026-11</p>
+<p class="m-famcard-sum">NVIDIA’s open-weight agent family: three MoE tiers from a single machine to a cluster, pitched at long context, reasoning and local agents. Its value is not “another open model” but the coupling with NVIDIA’s inference stack, NIM and hardware; without NVIDIA hardware the benefit is smaller.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>3</b> size tiers</span>
+<span><span class="lic lic-tight">nvidia-open-model-license</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct unknown</span> <span class="t-state is-warn">filing unknown</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="unknown" data-cn-filing="unknown" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/families/olmo/">
+<div class="m-famcard-h">
+<h3>OLMo</h3>
+<span class="m-famcard-vendor">Allen Institute for AI (Ai2)</span>
+</div>
+<p class="m-famcard-cur">current <b>OLMo 3.1</b> · 2026-11</p>
+<p class="m-famcard-sum">Ai2’s fully open research family: it releases data, code, checkpoints and the training recipe together, suited to reproducible experiments and teaching. Its advantage is not a leaderboard score but end-to-end inspectability; the cost is that you bear the training and evaluation burden.</p>
+<div class="m-famcard-meta">
+<span><b>2</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct unknown</span> <span class="t-state is-warn">filing unknown</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="mit" href="/en/families/ornith/">
+<div class="m-famcard-h">
+<h3>Ornith</h3>
+<span class="m-famcard-vendor">Ornith AI (DeepReinforce)</span>
+</div>
+<p class="m-famcard-cur">current <b>Ornith 1.5</b> · 2026-08</p>
+<p class="m-famcard-sum">A newcomer (only two generations so far, both 2026): MIT licence plus three tiers from single-card to flagship. The publisher DeepReinforce's jurisdiction of registration is not officially stated; this site treats it as foreign-made and says so in the origin note (S52 convention).</p>
+<div class="m-famcard-meta">
+<span><b>2</b> generations</span>
+<span><b>3</b> size tiers</span>
+<span><span class="lic lic-loose">mit</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Quantisation coverage (Ornith 1.5) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="mit" href="/en/families/phi/">
+<div class="m-famcard-h">
+<h3>Phi</h3>
+<span class="m-famcard-vendor">Microsoft</span>
+</div>
+<p class="m-famcard-cur">current <b>Phi-4-reasoning line</b> · 2026-08　<span class="t-tag">derived from microsoft/Phi-4-reasoning</span></p>
+<p class="m-famcard-sum">Microsoft's small-but-high-quality line: MIT, sizes concentrated at 4B–15B, and the vendor's pitch is "teach small models with synthetic data". The current line is reasoning-vision (still a phi-4 post-train on the weight lineage). This site carries no quantisation comparison — the current generation's GGUF ecosystem is too thin (see below).</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-loose">mit</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="apache-2.0 other" href="/en/families/qwen/">
+<div class="m-famcard-h">
+<h3>Qwen</h3>
+<span class="m-famcard-vendor">Alibaba · Qwen</span>
+</div>
+<p class="m-famcard-cur">current <b>Qwen4-Max</b> · 2026-11</p>
+<p class="m-famcard-sum">One of the strongest open-weight families for Chinese and code. Qwen4-Max is the closed-API flagship; the open-weight line remains Qwen3.8, and licence and hardware floor should be read separately.</p>
+<div class="m-famcard-meta">
+<span><b>4</b> generations</span>
+<span><b>4</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span> <span class="lic lic-tight">other</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="m-famcard-go">Quantisation coverage (Qwen3.8) →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="unknown" data-cn-origin="domestic" data-lic="other" href="/en/families/tencent/">
+<div class="m-famcard-h">
+<h3>Tencent Hunyuan</h3>
+<span class="m-famcard-vendor">Tencent</span>
+</div>
+<p class="m-famcard-cur">current <b>Hy4 / Hy4 flash</b> · 2026-11</p>
+<p class="m-famcard-sum">An uncommon large-total/high-active Chinese open-weight family: production Hy4 is 770B total / 49B active, targeting visual understanding, long context and long-horizon agents, while Hy4 flash trades 224B total / 12B active for speed and cost. Weights opened on 2026-11-20 under the Tencent Hy License, not an OSI-standard licence; there is no GGUF coverage yet — read the licence text and the hardware floor before choosing.</p>
+<div class="m-famcard-meta">
+<span><b>4</b> generations</span>
+<span><b>4</b> size tiers</span>
+<span><span class="lic lic-tight">other</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-warn">filing unknown</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+<a class="m-famcard" data-cn-direct="unknown" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/families/thinkingmachines/">
+<div class="m-famcard-h">
+<h3>Thinking Machines · Inkling</h3>
+<span class="m-famcard-vendor">Thinking Machines Lab</span>
+</div>
+<p class="m-famcard-cur">current <b>Inkling 2 Small</b> · 2026-11</p>
+<p class="m-famcard-sum">Two lines in the same generation: Small is the 594B-class flagship for frontier agent and multimodal work; Mini is the 26B-class local node that trades repeated layers for capacity. Both are Apache-2.0 with 1M context, but their hardware floors differ by an order of magnitude and they do not replace each other.</p>
+<div class="m-famcard-meta">
+<span><b>2</b> generations</span>
+<span><b>2</b> size tiers</span>
+<span><span class="lic lic-loose">apache-2.0</span></span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct unknown</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">No quantisation coverage — see the card →</p>
+</a>
+</div>
+</section>
+<section class="closed-list">
+<h2>Closed models, for comparison <small>official specs and licences, enough for a decision</small></h2>
+<p class="sec-desc">When choosing open weights, a closed API is often the other path. Each card records three things: which generation is current, what the vendor officially claims, and when the card was last updated. Vendors change specs without notice, so the card says when to look again. No price figures; pricing lives on the official page.</p>
+<div class="famcards">
+<a class="m-famcard" data-cn-direct="no" data-cn-filing="not-filed" data-cn-origin="foreign" href="/en/closed/claude/">
+<div class="m-famcard-h">
+<h3>Claude (closed API)</h3>
+<span class="m-famcard-vendor">Anthropic</span>
+</div>
+<p class="m-famcard-cur">current <b>Claude 5.2 generation (Fable 5.2 / Mythos 5.2)</b> · 2026-11</p>
+<p class="m-famcard-sum">A closed flagship line (agentic coding and enterprise): the official model overview is the spec source of truth; model IDs are pinned snapshots, not evergreen pointers (stated in official docs) — match versions by ID.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>5</b> official facts</span>
+<span class="t-state is-ok">data as of 2026-11-19</span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct blocked</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Official spec snapshot →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" href="/en/closed/doubao/">
+<div class="m-famcard-h">
+<h3>Doubao (closed API)</h3>
+<span class="m-famcard-vendor">ByteDance · Volcengine</span>
+</div>
+<p class="m-famcard-cur">current <b>Doubao-Seed 2.1 line (Pro / Lite / Seed-Evolving) + SeedRealtime 1.0</b> · 2026-11</p>
+<p class="m-famcard-sum">The domestic closed flagship: the Doubao consumer app and the Doubao-Seed API are two lines of one family; the service is CAC-filed (Beijing-YunQue-20230821 — Doubao LLM is the renamed YunQue, confirmed on the official filing-disclosure page). Generations churn fast, so the card carries a check date and review interval.</p>
+<div class="m-famcard-meta">
+<span><b>5</b> generations</span>
+<span><b>6</b> official facts</span>
+<span class="t-state is-ok">data as of 2026-11-25</span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="m-famcard-go">Official spec snapshot →</p>
+</a>
+<a class="m-famcard" data-cn-direct="no" data-cn-filing="not-filed" data-cn-origin="foreign" href="/en/closed/gemini/">
+<div class="m-famcard-h">
+<h3>Gemini (closed API)</h3>
+<span class="m-famcard-vendor">Google DeepMind</span>
+</div>
+<p class="m-famcard-cur">current <b>Gemini 4 line (Carbon / Argon / Neon / Hydrogen)</b> · 2026-11</p>
+<p class="m-famcard-sum">Google's closed flagship line; distinct from the open-weight Gemma line — do not conflate them. Note the official "preview" labels: preview means specs and prices may change; this site only snapshots.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>6</b> official facts</span>
+<span class="t-state is-ok">data as of 2026-11-20</span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct blocked</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Official spec snapshot →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" href="/en/closed/glm/">
+<div class="m-famcard-h">
+<h3>GLM (closed API)</h3>
+<span class="m-famcard-vendor">Z.ai (Zhipu AI)</span>
+</div>
+<p class="m-famcard-cur">current <b>GLM-5.4 (750B base, vendor-claimed 2–3T-class intelligence)</b> · 2026-11</p>
+<p class="m-famcard-sum">GLM-5.4 is a closed-first release with open weights pending. Coding Plan users can use it in supported tools now, while the public API and weights are still pending; for local deployment, still use 5.3 and the MIT-licensed Flash tier.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>3</b> official facts</span>
+<span class="t-state is-ok">data as of 2026-11-25</span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="m-famcard-go">Official spec snapshot →</p>
+</a>
+<a class="m-famcard" data-cn-direct="no" data-cn-filing="not-filed" data-cn-origin="foreign" href="/en/closed/gpt/">
+<div class="m-famcard-h">
+<h3>GPT (closed API)</h3>
+<span class="m-famcard-vendor">OpenAI</span>
+</div>
+<p class="m-famcard-cur">current <b>GPT-6.2 generation (Astra / Sol)</b> · 2026-11</p>
+<p class="m-famcard-sum">The closed flagship line: capability claims follow the official release pages; this site copies specs without endorsing comparisons. Note OpenAI also runs an open-weight line (gpt-oss) — a different thing from this API line; this site cards both.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>5</b> official facts</span>
+<span class="t-state is-ok">data as of 2026-11-19</span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct blocked</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Official spec snapshot →</p>
+</a>
+<a class="m-famcard" data-cn-direct="no" data-cn-filing="not-filed" data-cn-origin="foreign" href="/en/closed/grok/">
+<div class="m-famcard-h">
+<h3>Grok (closed API)</h3>
+<span class="m-famcard-vendor">xAI (official docs self-brand as SpaceXSI, Oct 2026)</span>
+</div>
+<p class="m-famcard-cur">current <b>Grok 4.7</b> · 2026-08</p>
+<p class="m-famcard-sum">A closed flagship line (code and agentic focus): specs copied from official docs. Honest note: in the 2026-10-20 snapshot the official docs self-brand as SpaceXSI (Memphis data-center wording); this site records the page text without speculating on brand changes.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>4</b> official facts</span>
+<span class="t-state is-ok">data as of 2026-11-19</span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct blocked</span> <span class="t-state">not in filing list</span></div>
+<p class="m-famcard-go">Official spec snapshot →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" href="/en/closed/kimi/">
+<div class="m-famcard-h">
+<h3>Kimi (closed API)</h3>
+<span class="m-famcard-vendor">Moonshot AI</span>
+</div>
+<p class="m-famcard-cur">current <b>Kimi K3.1 Pro (3T-class, 1M context)</b> · 2026-10</p>
+<p class="m-famcard-sum">The domestic closed flagship — yet the only family here with dual tracks: K3 weights are open on Hugging Face / ModelScope (custom Kimi K3 License) while the API runs on platform.kimi.com. Licences and data terms differ between the two paths — read them separately.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>5</b> official facts</span>
+<span class="t-state is-ok">data as of 2026-11-19</span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="m-famcard-go">Official spec snapshot →</p>
+</a>
+<a class="m-famcard" data-cn-direct="yes" data-cn-filing="unknown" data-cn-origin="domestic" href="/en/closed/qwen/">
+<div class="m-famcard-h">
+<h3>Qwen (closed API)</h3>
+<span class="m-famcard-vendor">Alibaba Cloud / Alibaba</span>
+</div>
+<p class="m-famcard-cur">current <b>Qwen4-Max (2.4T, 1M context, native vision)</b> · 2026-11</p>
+<p class="m-famcard-sum">The largest domestic closed flagship by parameter count, running in parallel with an open-weight line: Max stays on the API while smaller Qwen4 models are promised for open source. Read API terms and the future open-weight licence separately; they are not one model.</p>
+<div class="m-famcard-meta">
+<span><b>3</b> generations</span>
+<span><b>6</b> official facts</span>
+<span class="t-state is-ok">data as of 2026-11-20</span>
+</div>
+<div class="m-famcard-cn"><span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-warn">filing unknown</span></div>
+<p class="m-famcard-go">Official spec snapshot →</p>
+</a>
+</div>
+</section>
+<section class="guide-list">
+<h2>How models are made <small>from training to serving</small></h2>
+<p class="sec-desc">This section answers how models are built and how they run. Learn covers the user-facing basics; here we go into the decisions and costs practitioners face. Key facts link to papers or official model cards, and open questions are stated as such.</p>
+<div class="famcards">
+<a class="m-famcard" href="/en/guides/pretraining.html">
+<div class="m-famcard-h">
+<h3>Pre-training: how a model comes to know a bit of everything</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 1</span></p>
+<p class="m-famcard-sum">What pre-training optimises, how corpora reach trillions of tokens, how compute and data are budgeted, and how the scaling-law story changed. The practitioner-depth version; the one-page explainer lives on the Learn site — cross-linked, not duplicated.</p>
+<div class="m-famcard-meta">
+<span><b>8</b> sections</span>
+<span><b>11</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-10-20</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/sft.html">
+<div class="m-famcard-h">
+<h3>SFT: teaching a completion machine to answer well</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 2</span></p>
+<p class="m-famcard-sum">What supervised fine-tuning adds after pre-training — where instruction data comes from, why quality beats quantity, and the limits of memory-savers like LoRA. Practitioner depth; the one-page explainer lives on the Learn site.</p>
+<div class="m-famcard-meta">
+<span><b>7</b> sections</span>
+<span><b>7</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-10-20</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/alignment.html">
+<div class="m-famcard-h">
+<h3>Preference alignment: what RLHF and DPO actually solve</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 3</span></p>
+<p class="m-famcard-sum">How reward models are distilled from human rankings, why the PPO step is expensive, why DPO skips reinforcement learning, and the costs — alignment tax and sycophancy. Practitioner depth; the one-page explainer lives on the Learn site.</p>
+<div class="m-famcard-meta">
+<span><b>8</b> sections</span>
+<span><b>6</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-10-20</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/distillation.html">
+<div class="m-famcard-h">
+<h3>Distillation: how small models learn from big ones</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 4</span></p>
+<p class="m-famcard-sum">Logit distillation versus data distillation, why nearly every open-weight family distils, and what the "distilled" label means when choosing a model. Practitioner depth; the one-page explainer lives on the Learn site.</p>
+<div class="m-famcard-meta">
+<span><b>7</b> sections</span>
+<span><b>8</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-10-20</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/data-compute.html">
+<div class="m-famcard-h">
+<h3>Data and compute: the two big bills of making a model</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 5</span></p>
+<p class="m-famcard-sum">Where corpora come from and how they get washed down to trillions of tokens; how compute is booked in GPU-hours and MFU; how to estimate cost magnitude — method only, no unit prices stored. Practitioner view; the term pages live on the Learn site, cross-linked, not duplicated.</p>
+<div class="m-famcard-meta">
+<span><b>8</b> sections</span>
+<span><b>9</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-10-21</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/long-context.html">
+<div class="m-famcard-h">
+<h3>Long context: window size, effective use and cost</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 6</span></p>
+<p class="m-famcard-sum">“Supports 128K” is an upper bound, not a guarantee that information in the middle will be found. Long-context selection must consider position robustness, attention cost, KV-cache memory and task-level acceptance.</p>
+<div class="m-famcard-meta">
+<span><b>7</b> sections</span>
+<span><b>3</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-17</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/moe-selection.html">
+<div class="m-famcard-h">
+<h3>Choosing an MoE model: total parameters, active parameters and real cost</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 6</span></p>
+<p class="m-famcard-sum">An MoE splits “parameter count” into total and active parameters. Selection must budget memory, bandwidth, communication and batch size together, not just total parameters or leaderboard scores.</p>
+<div class="m-famcard-meta">
+<span><b>6</b> sections</span>
+<span><b>3</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-17</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/training-stack.html">
+<div class="m-famcard-h">
+<h3>The open training stack: the toolchain behind multi-GPU training</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 6</span></p>
+<p class="m-famcard-sum">Once a model stops fitting on one GPU: how data parallelism, ZeRO, tensor and pipeline parallelism compose, and which layer DeepSpeed, Megatron-LM, torchtitan, nanotron and TRL each sit at. A practitioner's selection map; term pages live on the Learn site, cross-linked, not duplicated.</p>
+<div class="m-famcard-meta">
+<span><b>6</b> sections</span>
+<span><b>8</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-10-21</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/serving-deep-dive.html">
+<div class="m-famcard-h">
+<h3>Serving deep dive: KV cache, batching, and inference engines</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 7</span></p>
+<p class="m-famcard-sum">Why serving throughput is bottlenecked by KV-cache memory; what PagedAttention, continuous batching and RadixAttention each solve; where vLLM and SGLang sit. Practitioner view; the one-page explainers live on the Learn site, cross-linked, not duplicated.</p>
+<div class="m-famcard-meta">
+<span><b>7</b> sections</span>
+<span><b>8</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-10-21</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/edge-deployment.html">
+<div class="m-famcard-h">
+<h3>Edge deployment: bandwidth, quantisation and power</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 8</span></p>
+<p class="m-famcard-sum">An edge device is not a small server: memory bandwidth, power and cooling become the ceiling before compute does. Accept on tokens per second, peak memory and sustained power.</p>
+<div class="m-famcard-meta">
+<span><b>6</b> sections</span>
+<span><b>3</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-17</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/gpu-cost-math.html">
+<div class="m-famcard-h">
+<h3>GPU facts and cost math: the hardware bill for running a model</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 8</span></p>
+<p class="m-famcard-sum">Separate resident weights, context cache, concurrency and runtime; distinguish idealized bandwidth arithmetic from actual throughput, with an editable budget and no stored prices or purchase advice.</p>
+<div class="m-famcard-meta">
+<span><b>8</b> sections</span>
+<span><b>8</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-10-21</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/task-models.html">
+<div class="m-famcard-h">
+<h3>Task models: embedding, reranking, OCR and ASR</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 9</span></p>
+<p class="m-famcard-sum">Distinguish four task contracts by input, output, runtime and acceptance; record platform/format compatibility by layer, retain untested combinations as unknown, and follow practice and troubleshooting links.</p>
+<div class="m-famcard-meta">
+<span><b>8</b> sections</span>
+<span><b>6</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-04</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/vision-language-selection.html">
+<div class="m-famcard-h">
+<h3>Choosing a vision-language model: resolution, grounding and text reading</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"><span class="t-tag">pipeline · stage 9</span></p>
+<p class="m-famcard-sum">VLMs differ most across three task families: description, grounding and text reading. Selection should test them separately and include the cost of image tokens.</p>
+<div class="m-famcard-meta">
+<span><b>6</b> sections</span>
+<span><b>3</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-17</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/local-log-retention.html">
+<div class="m-famcard-h">
+<h3>What keeping logs on your own machine actually means</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"></p>
+<p class="m-famcard-sum">Unpack "logs stay local" into three lines: where they are written, who can read them, and how long they persist. Each item points at the runner's own documentation, and explains why disk encryption, backup sync and bind address are not contained in those four words.</p>
+<div class="m-famcard-meta">
+<span><b>10</b> sections</span>
+<span><b>5</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-06</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/multimodal-memory.html">
+<div class="m-famcard-h">
+<h3>Counting memory for a multimodal model</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"></p>
+<p class="m-famcard-sum">Split multimodal occupancy into three bills — encoder, projector files and decoder cache — with the source, unit (GiB) and scope stated for each. The KV formula covers only a standard same-layer full-attention decoder; it does not extend to encoders or to MLA, hybrid and sliding-window designs.</p>
+<div class="m-famcard-meta">
+<span><b>9</b> sections</span>
+<span><b>5</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-06</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/pre-flight-checks.html">
+<div class="m-famcard-h">
+<h3>Seven checks before a local run starts</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"></p>
+<p class="m-famcard-sum">Seven checkpoints between power-on and the first token: available capacity, resident size, file and runner support, cache scope, licence, output acceptance and where logs go. Each states what to check, what counts as evidence and the next step on failure.</p>
+<div class="m-famcard-meta">
+<span><b>9</b> sections</span>
+<span><b>4</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-06</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/quant-tier-precision.html">
+<div class="m-famcard-h">
+<h3>Quantisation tiers and accuracy loss: what can be said, and what cannot</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"></p>
+<p class="m-famcard-sum">Split tier names, bits per weight and accuracy loss into three layers: publishing-page facts, this site's derivation from the public naming standard, and what must stay blank. It also states which line in the memory bill actually moves when a tier changes.</p>
+<div class="m-famcard-meta">
+<span><b>9</b> sections</span>
+<span><b>5</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-06</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+<a class="m-famcard" href="/en/guides/read-official-evals.html">
+<div class="m-famcard-h">
+<h3>How to read a model's evaluation write-up on its official terms</h3>
+<span class="m-famcard-vendor">how models are made</span>
+</div>
+<p class="m-famcard-cur"></p>
+<p class="m-famcard-sum">The four things to fill in when reading an official evaluation write-up: task-set scope, metric definition, comparison and version, and where the claim comes from. What can be stated, what must stay blank, and what separates a self-reported number from your task.</p>
+<div class="m-famcard-meta">
+<span><b>9</b> sections</span>
+<span><b>4</b> official sources</span>
+<span class="t-state is-ok">data as of 2026-11-06</span>
+</div>
+<p class="m-famcard-go">Read this guide →</p>
+</a>
+</div>
+</section>
+<section class="howto">
+<h2>How to use this site</h2>
+<ol class="steps">
+<li><b>Start with how much VRAM you have.</b> It is the only hard constraint — the tiers that fit in 8GB and 24GB are entirely different. If VRAM is the limit, look at the "system memory / multi-GPU" columns in the same table — CPU-only or multi-GPU tensor parallel are viable routes.</li>
+<li><b>Use block B to filter file-size candidates.</b> Then budget cache, concurrency and runtime; it is not an execution guarantee.</li>
+<li><b>Compare quantisers side by side in block C.</b> See who covers the most tiers, who ships imatrix, and who is keeping up with releases.</li>
+<li><b>Read the per-tier detail in block D.</b> Seven fields spell out what each variant is, how it differs, and when to pick it.</li>
+<li><b>Read the licence before downloading.</b> Non-permissive licences are flagged; where a quant repo declares none, the page says "inherited from base" with the original link right beside it.</li>
+</ol>
+</section>
+<section class="series-list">
+<h2>Series covered <small>layer two: which quantisation of the same model · ranked by measured GGUF download volume</small></h2>
+<!-- B2：系列筛选（搜索 + 许可）。选项来自数据，许可用全站并集。 -->
+<div class="sfilter" role="search">
+<label class="vf-f"><span class="vh">Filter series</span>
+<input autocomplete="off" class="sq" placeholder="Qwen · gemma · GLM · DeepSeek" type="search"/></label>
+<label class="vf-f"><span class="vh">Licence</span><select class="ssel"><option value="">All</option><option value="apache-2.0">apache-2.0</option><option value="mit">mit</option><option value="openmdw-1.1">openmdw-1.1</option><option value="other">other</option></select></label>
+<label class="vf-f"><span class="vh">Origin</span><select class="ssel-cnorigin"><option value="">All</option><option value="domestic">domestic</option><option value="foreign">foreign-made</option></select></label>
+<label class="vf-f"><span class="vh">Direct access</span><select class="ssel-cndirect"><option value="">All</option><option value="yes">direct OK</option><option value="no">direct blocked</option></select></label>
+<label class="vf-f"><span class="vh">CAC filing</span><select class="ssel-cnfiling"><option value="">All</option><option value="filed">filed</option><option value="not-filed">not in filing list</option></select></label>
+<span aria-live="polite" class="vcount"></span>
+</div>
+<div class="scards">
+<a class="scard scard-loose" data-blob="deepseek v4 deepseek v4 deepseek deepseek mit 许可，量化生态活跃，antirez（redis 作者、llama.cpp 生态参与者）维护量化版。 通用对话 mit 许可 推理" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="mit" href="/en/series/deepseek-v4/">
+<div class="scard-h">
+<h3>DeepSeek V4</h3>
+<span class="scard-vendor">DeepSeek</span>
+</div>
+<p class="scard-sum">MIT licensed with an active quantisation ecosystem — the quantisations are maintained by antirez (author of Redis, a participant in the llama.cpp ecosystem) himself.</p>
+<ul class="scard-pos"><li>General chat</li><li>MIT licence</li><li>Reasoning</li></ul>
+<div class="scard-stats">
+<span><b>1</b> sizes</span>
+<span><b>5</b> quant repos</span>
+<span><b>13</b> tiers</span>
+<span><b>5</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-loose">mit</span> <span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard scard-loose" data-blob="gemma 4 gemma 4 google google google 开放权重系列，三种规格各自都有量化覆盖。 通用对话 moe 稀疏 小尺寸可跑" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/series/gemma-4/">
+<div class="scard-h">
+<h3>Gemma 4</h3>
+<span class="scard-vendor">Google</span>
+</div>
+<p class="scard-sum">Google's open-weight series; the three sizes listed here each have quantisation coverage.</p>
+<ul class="scard-pos"><li>General chat</li><li>Sparse MoE</li><li>Runnable at small sizes</li></ul>
+<div class="scard-stats">
+<span><b>3</b> sizes</span>
+<span><b>26</b> quant repos</span>
+<span><b>340</b> tiers</span>
+<span><b>11</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="lic lic-loose">apache-2.0</span> <span class="lic lic-loose">apache-2.0</span> <span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard" data-blob="glm 5 glm 5 智谱 ai zhipu ai 智谱开放权重系列；不同规格的许可分别标注，部署前核对对应版本与容量需求。 通用对话 工具调用 mit 许可" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="other mit" href="/en/series/glm-5/">
+<div class="scard-h">
+<h3>GLM 5</h3>
+<span class="scard-vendor">Zhipu AI</span>
+</div>
+<p class="scard-sum">Zhipu's open-weight series. Licences are listed per variant; check the specific version and capacity requirements before deployment.</p>
+<ul class="scard-pos"><li>General chat</li><li>Tool use</li><li>MIT licence</li></ul>
+<div class="scard-stats">
+<span><b>2</b> sizes</span>
+<span><b>13</b> quant repos</span>
+<span><b>79</b> tiers</span>
+<span><b>11</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-tight">other</span> <span class="lic lic-loose">mit</span> <span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard scard-loose" data-blob="gpt-oss gpt-oss openai openai openai 开放权重系列，这里有 20b 规格的量化信息；能不能单卡跑，取决于可用内存、量化和上下文配置。 推理 moe 稀疏 apache-2.0" data-cn-direct="no" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/series/gpt-oss/">
+<div class="scard-h">
+<h3>gpt-oss</h3>
+<span class="scard-vendor">OpenAI</span>
+</div>
+<p class="scard-sum">OpenAI's open-weight series, with quantisation information for the 20B variant. Single-GPU suitability depends on available memory, quantisation and context settings.</p>
+<ul class="scard-pos"><li>Reasoning</li><li>Sparse MoE</li><li>Apache-2.0</li></ul>
+<div class="scard-stats">
+<span><b>1</b> sizes</span>
+<span><b>6</b> quant repos</span>
+<span><b>57</b> tiers</span>
+<span><b>6</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="t-tag is-cyan">foreign-made</span> <span class="t-tag">direct blocked</span> <span class="t-state">not in filing list</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard scard-loose" data-blob="kat coder v2.5 kat coder v2.5 kwaipilot kwaipilot 面向代码的开放权重系列，apache-2.0，34 个第三方量化仓。 工具调用 长上下文 apache-2.0" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="domestic" data-lic="apache-2.0" href="/en/series/kat-coder/">
+<div class="scard-h">
+<h3>KAT Coder V2.5</h3>
+<span class="scard-vendor">Kwaipilot</span>
+</div>
+<p class="scard-sum">An open-weight series aimed at code, apache-2.0, with 34 third-party quantisation repos.</p>
+<ul class="scard-pos"><li>Tool use</li><li>Long context</li><li>Apache-2.0</li></ul>
+<div class="scard-stats">
+<span><b>1</b> sizes</span>
+<span><b>6</b> quant repos</span>
+<span><b>57</b> tiers</span>
+<span><b>6</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard" data-blob="kimi k3 kimi k3 月之暗面 moonshot ai 月之暗面开放权重系列，快照收录 41 家量化仓；数量不代表模型质量或运行兼容性。 通用对话 长上下文" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="other" href="/en/series/kimi-k3/">
+<div class="scard-h">
+<h3>Kimi K3</h3>
+<span class="scard-vendor">Moonshot AI</span>
+</div>
+<p class="scard-sum">Moonshot's open-weight series, with 41 quantisation repos in the snapshot. Counts do not establish quality or runtime compatibility.</p>
+<ul class="scard-pos"><li>General chat</li><li>Long context</li></ul>
+<div class="scard-stats">
+<span><b>1</b> sizes</span>
+<span><b>10</b> quant repos</span>
+<span><b>31</b> tiers</span>
+<span><b>10</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-tight">other</span> <span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard" data-blob="laguna 2.1 laguna 2.1 poolside poolside 代码方向的开放权重系列，许可为 openmdw-1.1（使用前须读原文）。 工具调用 长上下文" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="openmdw-1.1" href="/en/series/laguna/">
+<div class="scard-h">
+<h3>Laguna 2.1</h3>
+<span class="scard-vendor">Poolside</span>
+</div>
+<p class="scard-sum">An open-weight series in the coding direction; licensed OpenMDW-1.1 (read the original terms before use).</p>
+<ul class="scard-pos"><li>Tool use</li><li>Long context</li></ul>
+<div class="scard-stats">
+<span><b>1</b> sizes</span>
+<span><b>6</b> quant repos</span>
+<span><b>50</b> tiers</span>
+<span><b>6</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-tight">openmdw-1.1</span> <span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard scard-loose" data-blob="minicpm 5 minicpm 5 面壁智能 · openbmb openbmb 国产小尺寸代表，2b 规模适合低显存与端侧。 端侧 小尺寸 中文强项" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="apache-2.0" href="/en/series/minicpm5/">
+<div class="scard-h">
+<h3>MiniCPM 5</h3>
+<span class="scard-vendor">OpenBMB</span>
+</div>
+<p class="scard-sum">A representative Chinese small-size model; the 2B scale suits low VRAM and on-device use.</p>
+<ul class="scard-pos"><li>On-device</li><li>Small sizes</li><li>Strong Chinese</li></ul>
+<div class="scard-stats">
+<span><b>1</b> sizes</span>
+<span><b>10</b> quant repos</span>
+<span><b>139</b> tiers</span>
+<span><b>10</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard scard-loose" data-blob="muse glimmer muse glimmer meta meta meta 的开放权重系列，apache-2.0，量化覆盖横跨多家主力量化者。 通用对话 apache-2.0" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="apache-2.0" href="/en/series/muse-glimmer/">
+<div class="scard-h">
+<h3>Muse Glimmer</h3>
+<span class="scard-vendor">Meta</span>
+</div>
+<p class="scard-sum">Meta's open-weight series, apache-2.0, with quantisation coverage across several major quantisers.</p>
+<ul class="scard-pos"><li>General chat</li><li>Apache-2.0</li></ul>
+<div class="scard-stats">
+<span><b>1</b> sizes</span>
+<span><b>10</b> quant repos</span>
+<span><b>116</b> tiers</span>
+<span><b>10</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard scard-loose" data-blob="ornith 1.5 ornith 1.5 ornith ai ornith ai 模型卡标注 mit 许可，两个规格都有 gguf 量化覆盖；具体文件与版本见下表。 通用对话 mit 许可 moe 稀疏" data-cn-direct="yes" data-cn-filing="not-filed" data-cn-origin="foreign" data-lic="mit" href="/en/series/ornith-1-5/">
+<div class="scard-h">
+<h3>Ornith 1.5</h3>
+<span class="scard-vendor">Ornith AI</span>
+</div>
+<p class="scard-sum">The model cards list MIT; both sizes have GGUF coverage. See the tables for individual files and versions.</p>
+<ul class="scard-pos"><li>General chat</li><li>MIT licence</li><li>Sparse MoE</li></ul>
+<div class="scard-stats">
+<span><b>2</b> sizes</span>
+<span><b>20</b> quant repos</span>
+<span><b>208</b> tiers</span>
+<span><b>14</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-loose">mit</span> <span class="lic lic-loose">mit</span> <span class="t-tag is-cyan">foreign-made</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state">not in filing list</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+<a class="scard" data-blob="千问 3.8 qwen3.8 阿里 · 通义千问 alibaba qwen 阿里千问系列，这里有 27b 密集模型与 flash-next 的量化信息；有覆盖不代表性能排名。 通用对话 工具调用 长上下文 中文强项" data-cn-direct="yes" data-cn-filing="filed" data-cn-origin="domestic" data-lic="apache-2.0 other" href="/en/series/qwen3-8/">
+<div class="scard-h">
+<h3>Qwen3.8</h3>
+<span class="scard-vendor">Alibaba Qwen</span>
+</div>
+<p class="scard-sum">Alibaba's Qwen series, with quantisation information for the dense 27B model and Flash-Next. Inclusion is not a performance ranking.</p>
+<ul class="scard-pos"><li>General chat</li><li>Tool use</li><li>Long context</li><li>Strong Chinese</li></ul>
+<div class="scard-stats">
+<span><b>2</b> sizes</span>
+<span><b>17</b> quant repos</span>
+<span><b>172</b> tiers</span>
+<span><b>12</b> quantisers</span>
+</div>
+<div class="scard-lic"><span class="lic lic-loose">apache-2.0</span> <span class="lic lic-tight">other</span> <span class="t-tag">domestic</span> <span class="t-tag is-cyan">direct OK</span> <span class="t-state is-ok">filed</span></div>
+<p class="scard-go">Which tier to pick →</p>
+</a>
+</div>
+</section>
+<section class="quantizer-index">
+<h2>Quantisers covered <small>54 of them</small></h2>
+<div class="qchips">
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>6block</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>Abiray</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>AesSedai</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>Amynnnn</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>AtomicChat</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>Coder40-95</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>DhruvalLabs</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>GrEarl</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>JigSawPT</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>KikoCis</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>Kremon96</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>Kuberwastaken</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>LemesoftNostalgic</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>Mungert</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>NANI-Nithin</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>Ninnix96</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>RemySkye</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>SandLogicTechnologies</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>Solstice-AI</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>TheStageAI</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>WhiskyAKM</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>abenzerps</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>aj9o9</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>apetersson</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>aria220</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>bartowski</code>Third-party quantiser; check repository notes for tiers and methods</a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>batiai</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>byteshape</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>ddh0</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>dinerburger</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>eaddario</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>ggml-org</code>Official quant builds from the llama.cpp org</a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>gguf</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>giladgd</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>hudabey</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>kizzlah</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>lausannequants</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>lmstudio-community</code>Powers the LM Studio GUI</a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>meta-models</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>mradermacher</code>Publishes low-bit quants; check repository methods and provenance</a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>mxxm-t</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>na0x2c6</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>ngquocvinh</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>oki0ki</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>openbmb</code>Published by the model authors themselves</a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>ornith-ai</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>poolside</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>prithivMLmods</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>qtum</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>robertxxiv</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>smalinin</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>unsloth</code>Third-party quantiser; see snapshot coverage and downloads</a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>vcruz305</code></a>
+<a class="qchip" href="/en/series/qwen3-8/#e0"><code>vultr</code></a>
+</div>
+</section>
+<section class="legal-note">
+<h3>Sources and licences</h3>
+<p>Data comes from the <a href="https://huggingface.co" rel="noopener" target="_blank">Hugging Face</a> public pages, updated <code>2026-10-30</code>. Licences and file sizes follow the release pages.</p>
+<p>Model weights are not hosted here — download from the release pages.</p>
+</section>
+</div>
+<!-- B2：系列筛选（脚本在 site-filter.js，读 .sfilter 作用域） -->
+<script>/* 挑对量化版 · 本地部署模型图谱 · 客户端筛选（B2，2026-10-09）
+ *
+ * 为什么单独一个文件而不是塞进 build.mjs 的模板字符串：
+ *   build.mjs 生成页面用的是模板字符串，脚本里任何反引号或 ${} 都会**提前截断/插值**。
+ *   本会话已因「模板字符串里写反引号」踩过三次。独立 .js 文件从根上避开。
+ *
+ * 作用域（两处，各自独立）：
+ *   .vwrap  —— 系列页里每个成员一个「量化仓详解」区块：搜索 + 量化者 / 建议档位 / 许可
+ *   .sfilter —— 索引页的系列列表：搜索 + 许可
+ *
+ * URL 可还原（B2 验收「筛选后 URL 可复制还原状态」）：
+ *   参数写在地址栏（history.replaceState），打开带参 URL 即刻还原同一状态。
+ *
+ * 无依赖、无内联事件；两个作用域都不存在时本脚本什么都不做（所以可以全站注入）。
+ */
+(function () {
+  'use strict';
+
+  /* 与页面内联脚本同口径：语言由 <html lang> 决定（brand.js 只切属性，DOM 不重渲染）。
+   * 本文件里凡是要拼进 innerHTML 的动态文本，都必须在**当前语言**下重新生成一次。 */
+  function IS_EN() { return document.documentElement.lang === 'en'; }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function param(name) {
+    try { return new URLSearchParams(location.search).get(name) || ''; } catch (e) { return ''; }
+  }
+
+  function writeUrl(pairs) {
+    try {
+      var u = new URL(location.href);
+      Object.keys(pairs).forEach(function (k) {
+        if (pairs[k]) u.searchParams.set(k, pairs[k]);
+        else u.searchParams.delete(k);
+      });
+      history.replaceState(null, '', u.toString());
+    } catch (e) { /* file:// 等场景下静默降级：功能可用，只是地址栏不同步 */ }
+  }
+
+  /* ── 系列页：量化仓筛选 ── */
+  var wraps = Array.prototype.slice.call(document.querySelectorAll('.vwrap'));
+  wraps.forEach(function (wrap) {
+    var q = wrap.querySelector('.vq');
+    var sels = Array.prototype.slice.call(wrap.querySelectorAll('.vsel'));
+    var count = wrap.querySelector('.vcount');
+    var cards = Array.prototype.slice.call(wrap.querySelectorAll('.vcard'));
+    if (!q || !cards.length) return;
+
+    function apply() {
+      var term = (q.value || '').trim().toLowerCase();
+      var want = {};
+      sels.forEach(function (s) { want[s.getAttribute('data-dim')] = s.value; });
+      var shown = 0;
+      cards.forEach(function (c) {
+        /* 搜索用 data-blob（量化者 + 仓库名 + 许可）这个**窄口径**，
+         * 不是整张卡的文字 —— 卡里正文会提到别的量化者，用全文搜「unsloth」会命中每一张
+         * （实测 26/26，探针跑出来才发现）。 */
+        var okQ = !term || (c.getAttribute('data-blob') || '').indexOf(term) !== -1;
+        var okQuant = !want.q || c.getAttribute('data-q') === want.q;
+        /* 档位是「**该仓包含**这一档」而不是「推荐档等于它」：
+         * 推荐档实测 118/130 都是「平衡档」，拿它筛等于没筛。 */
+        var okTier = !want.tier || (c.getAttribute('data-tiers') || '').split(' ').indexOf(want.tier) !== -1;
+        var okLic = !want.lic || c.getAttribute('data-lic') === want.lic;
+        var on = okQ && okQuant && okTier && okLic;
+        c.hidden = !on;
+        if (on) shown++;
+      });
+      if (count) {
+        count.textContent = shown + ' / ' + cards.length;
+        count.setAttribute('data-zh', shown + ' / ' + cards.length + ' 个量化仓');
+        count.setAttribute('data-en', shown + ' / ' + cards.length + ' quant repos');
+      }
+    }
+
+    function sync(push) {
+      var vals = { q: q.value.trim() };
+      sels.forEach(function (s) { vals[s.getAttribute('data-dim') === 'q' ? 'quant' : s.getAttribute('data-dim') === 'tier' ? 'tier' : 'lic'] = s.value; });
+      writeUrl(vals);
+    }
+
+    // 首次：用 URL 参数还原
+    q.value = param('q');
+    sels.forEach(function (s) {
+      var dim = s.getAttribute('data-dim');
+      var v = param(dim === 'q' ? 'quant' : dim === 'tier' ? 'tier' : 'lic');
+      if (!v) return;
+      /* ⚠ 不能直接 s.value = v：`<select>` 遇到**选项里没有的值**会**静默忽略**，
+       *   于是「?quant=某人」被当成「没筛选」→ 列出全部。实测阴性对照跑出 26/26 才发现。
+       *   这里把 URL 里的值补成一个选项：筛出来就是 0 条，计数会显示「0 / N」——
+       *   读者看到的是「这个量化者在本系列没有仓」（如实），而不是「我要的筛选被无视了」。
+       *   （nav 站的 ?cat= 不同：那是「切到某个分区」的语义，未知值回退到「全部」是对的；
+       *     这里是「在一张表里筛行」，未知值的正确表现是没有行。） */
+      if (!Array.prototype.some.call(s.options, function (o) { return o.value === v; })) {
+        var extra = document.createElement('option');
+        extra.value = v;
+        extra.textContent = v;
+        s.appendChild(extra);
+      }
+      s.value = v;
+    });
+
+    q.addEventListener('input', function () { apply(); sync(); });
+    sels.forEach(function (s) { s.addEventListener('change', function () { apply(); sync(); }); });
+    apply();
+  });
+
+  /* ═══ B4（2026-10-09）· 显存倒推决策工具 ═══
+   * 按真实实测体积算能装下哪些档位：可装 = sizeGB × 1.15 ≤ 显存。
+   * 15% 余量是页面自己声明的口径（运行时 + KV cache），与静态速查表一致。
+   * 每个答案都带来源（量化者 + HF 发布页链接）—— B4 的验收是「可溯源到具体数据行」。
+   * `?vram=12` 可分享（与 B2 的筛选参数同一套路）。 */
+  var vt = document.querySelector('.vramtool');
+  if (vt) {
+    var vtIn = vt.querySelector('.vt-in');
+    var vtOut = vt.querySelector('.vt-out');
+    var vtDataEl = vt.querySelector('.vt-data');
+    var DATA = [];
+    try { DATA = JSON.parse(vtDataEl.textContent) || []; } catch (e) { DATA = []; }
+    var MARGIN = 1.15;
+
+    function renderVram() {
+      var gb = Number(vtIn.value);
+      if (!vtIn.value || !DATA.length) { vtOut.innerHTML = ''; return; }
+      if (!Number.isFinite(gb) || gb <= 0 || !vtIn.validity.valid) { vtOut.textContent = IS_EN() ? 'Enter an integer from 1 to 1024 GB for the illustrative filter.' : '示意筛选请输入 1–1024 GB 整数。'; return; }
+      var fits = DATA.filter(function (x) { return x.g * MARGIN <= gb; });
+      var need = function (x) { return Math.ceil(x.g * MARGIN); };
+      if (!fits.length) {
+        var smallest = DATA[0];
+        vtOut.innerHTML = '<p class="vt-none">' + esc(IS_EN()
+          ? 'No candidate under this filter. The smallest file is ' + (smallest.qe || smallest.q) + ' at ' + smallest.g + ' GB, needing about ' + need(smallest) + ' GB under file-size × 1.15. This does not establish cache, runtime memory or execution support.'
+          : '此示意筛选没有候选。最小发布文件为 ' + smallest.q + '（' + smallest.g + ' GB），加余量约需 ' + need(smallest) + ' GB（文件 × 1.15）。这不包含已核对的缓存、运行时占用或兼容性。') + '</p>';
+        return;
+      }
+      var best = fits[fits.length - 1];
+      var rest = fits.slice(0, -1).reverse();
+      var link = function (x) {
+        return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(IS_EN() ? (x.qe || x.q) : x.q) + '</a>'
+          + ' <span class="vt-meta">' + x.g + ' GB · ' + esc(IS_EN() ? (x.te || x.t) : x.t) + ' · ' + esc(x.b) + '</span>';
+      };
+      var h = '<p class="vt-best"><b>' + (IS_EN() ? 'File-size candidate: ' : '文件体积候选：') + '</b>' + link(best)
+        + ' <span class="vt-meta">' + (IS_EN() ? 'needs about ' : '加余量约需 ') + need(best) + ' GB</span></p>';
+      if (rest.length) {
+        h += '<p class="vt-rest"><span class="vt-dim">' + (IS_EN() ? 'Other candidates (smaller): ' : '其他较小候选：') + '</span>'
+          + rest.map(link).join(' · ') + '</p>';
+      }
+      h += '<p class="vt-note">' + (IS_EN()
+        ? 'Published file sizes are not resident-memory measurements. File-size × 1.15 is a fixed illustrative filter, not a cache/runtime budget or execution guarantee. Check architecture, context, concurrency and runtime separately.'
+        : '体积来自发布文件列表，不是驻留内存实测。文件 × 1.15 只是固定示意筛选，不是缓存/运行时预算，也不保证可运行。另查架构、上下文、并发与运行器。') + '</p>';
+      vtOut.innerHTML = h;
+    }
+
+    function syncVram() {
+      try {
+        var u = new URL(location.href);
+        if (vtIn.value) u.searchParams.set('vram', vtIn.value); else u.searchParams.delete('vram');
+        history.replaceState(null, '', u.toString());
+      } catch (e) { /* 静默降级：功能可用，地址栏不同步 */ }
+    }
+
+    vtIn.value = param('vram');
+    vtIn.addEventListener('input', function () { renderVram(); syncVram(); });
+    Array.prototype.forEach.call(vt.querySelectorAll('.vt-preset'), function (b) {
+      b.addEventListener('click', function () { vtIn.value = b.getAttribute('data-gb'); renderVram(); syncVram(); });
+    });
+    renderVram();
+    /* 语言切换后要重渲染：工具输出是拼字符串生成的（不是 data-zh/data-en 双节点），
+     * 不重渲染的话切到英文仍显示中文（而其余部分会切走，看起来像坏了）。 */
+    new MutationObserver(function () { renderVram(); })
+      .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+
+  /* ── 索引页：系列筛选 ── */
+  var sf = document.querySelector('.sfilter');  if (sf) {
+    var sq = sf.querySelector('.sq');
+    var ssel = sf.querySelector('.ssel');
+    /* v7 S52：中文生态三个共用筛选（出品属地 / 国内直连 / 备案状态）。
+     * 与许可同一个作用域、同一套 URL 还原逻辑——一套筛选体系，不另造。 */
+    var cnSels = [
+      { el: sf.querySelector('.ssel-cnorigin'), attr: 'data-cn-origin', key: 'cnorigin' },
+      { el: sf.querySelector('.ssel-cndirect'), attr: 'data-cn-direct', key: 'cndirect' },
+      { el: sf.querySelector('.ssel-cnfiling'), attr: 'data-cn-filing', key: 'cnfiling' },
+    ].filter(function (x) { return x.el; });
+    var scount = sf.querySelector('.vcount');
+    var scards = Array.prototype.slice.call(document.querySelectorAll('.scard'));
+    if (sq && scards.length) {
+      var applyS = function () {
+        var term = (sq.value || '').trim().toLowerCase();
+        var lic = ssel ? ssel.value : '';
+        var shown = 0;
+        scards.forEach(function (c) {
+          var okQ = !term || (c.getAttribute('data-blob') || '').indexOf(term) !== -1 || (c.textContent || '').toLowerCase().indexOf(term) !== -1;
+          var okL = !lic || (c.getAttribute('data-lic') || '').split(' ').indexOf(lic) !== -1;
+          var okCn = cnSels.every(function (x) {
+            return !x.el.value || (c.getAttribute(x.attr) || '') === x.el.value;
+          });
+          var on = okQ && okL && okCn;
+          c.hidden = !on;
+          if (on) shown++;
+        });
+        if (scount) {
+          scount.textContent = shown + ' / ' + scards.length;
+          scount.setAttribute('data-zh', shown + ' / ' + scards.length + ' 个系列');
+          scount.setAttribute('data-en', shown + ' / ' + scards.length + ' series');
+        }
+      };
+      var syncS = function () {
+        var pairs = { q: sq.value.trim(), lic: ssel ? ssel.value : '' };
+        cnSels.forEach(function (x) { pairs[x.key] = x.el.value; });
+        writeUrl(pairs);
+      };
+      sq.value = param('q');
+      if (ssel && param('lic')) ssel.value = param('lic');
+      cnSels.forEach(function (x) {
+        var v = param(x.key);
+        if (!v) return;
+        /* 同 .vsel 的教训：select 对选项外的值会静默忽略 → 补成选项，筛出 0 条如实显示。 */
+        if (!Array.prototype.some.call(x.el.options, function (o) { return o.value === v; })) {
+          var extra = document.createElement('option');
+          extra.value = v; extra.textContent = v;
+          x.el.appendChild(extra);
+        }
+        x.el.value = v;
+      });
+      sq.addEventListener('input', function () { applyS(); syncS(); });
+      if (ssel) ssel.addEventListener('change', function () { applyS(); syncS(); });
+      cnSels.forEach(function (x) { x.el.addEventListener('change', function () { applyS(); syncS(); }); });
+      applyS();
+    }
+  }
+})();
+</script>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

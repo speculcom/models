@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Edge deployment: bandwidth, quantisation and power…</title>
+<meta content="An edge device is not a small server: memory bandwidth, power and cooling become the ceiling before compute does. Accept on tokens per second, peak…" name="description"/>
+<link href="https://models.specul.com/en/guides/edge-deployment.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/guides/edge-deployment.html" property="og:url"/>
+<meta content="Edge deployment: bandwidth, quantisation and power…" property="og:title"/>
+<meta content="An edge device is not a small server: memory bandwidth, power and cooling become the ceiling before compute does. Accept on tokens per second, peak…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Edge deployment: bandwidth, quantisation and power","description":"An edge device is not a small server: memory bandwidth, power and cooling become the ceiling before compute does. Accept on tokens per second, peak…","url":"https://models.specul.com/en/guides/edge-deployment.html","dateModified":"2026-11-17"}</script>
+<meta content="Edge deployment: bandwidth, quantisation and power…" name="twitter:title"/><meta content="An edge device is not a small server: memory bandwidth, power and cooling become the ceiling before compute does. Accept on tokens per second, peak…" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/guides/edge-deployment.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head">
+<p class="eyebrow">How models are made　<span class="t-tag">training pipeline · stage 8</span></p>
+<h1>Edge deployment: bandwidth, quantisation and power<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
+<p class="lede">An edge device is not a small server: memory bandwidth, power and cooling become the ceiling before compute does. Accept on tokens per second, peak memory and sustained power.</p>
+</header>
+<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">Bandwidth hits first</a></li><li><a href="#guide-section-2">Quantisation decides fit</a></li><li><a href="#guide-section-3">Unified vs discrete memory</a></li><li><a href="#guide-section-4">Power and cooling</a></li><li><a href="#guide-section-5">Acceptance checklist</a></li></ul></nav>
+<section class="fam-sec" id="guide-section-0">
+<h2></h2>
+<ul>
+</ul>
+</section>
+<section class="fam-sec" id="guide-section-1">
+<h2>Bandwidth hits first</h2>
+<p>解码每生成一个 token 都要把激活的权重读一遍。端侧常见瓶颈是内存带宽，而不是峰值算力。</p>
+<p>以 Jetson AGX Thor 为例。128GB LPDDR5X、273 GB/s、40–130W。</p>
+<p>粗算：7B 模型 4-bit 约 3.5GB 权重。理想情况下每 token 至少读一遍。273 GB/s 给出一个很粗的上界。</p>
+<p>实际还要加上 KV cache、采样与框架开销，达不到纸面上限。</p>
+</section>
+<section class="fam-sec" id="guide-section-2">
+<h2>Quantisation decides fit</h2>
+<p>端侧优先看 4-bit 与混合精度。Q4 通常比 FP16 小 3–4 倍，质量损失要在自己的任务上测。<br/>低于 4-bit 时，质量下降与算子支持问题都会变多。不是所有推理框架都支持同一套量化格式。</p>
+<p>先确认框架支持的格式（GGUF、ONNX、MLX 等），再谈模型。</p>
+</section>
+<section class="fam-sec" id="guide-section-3">
+<h2>Unified vs discrete memory</h2>
+<p>统一内存（CPU/GPU 共享）能把更大的模型装进同一池，但带宽通常低于独立显存。<br/>独立显存快，但容量固定，装不下就要卸载到内存或闪存。</p>
+<p>LLM in a Flash 的思路是把权重放在闪存，按需换入 DRAM。这样能跑约两倍于 DRAM 的模型。速度取决于闪存带宽与读取连续性。</p>
+</section>
+<section class="fam-sec" id="guide-section-4">
+<h2>Power and cooling</h2>
+<p>端侧设备常有 40–130W 的功耗窗口，持续推理会触发降频。<br/>验收要测「连续跑 30 分钟后的 token/s」，而不是开机第一分钟。<br/>风扇与外壳设计会改变可持续功耗，进而改变真实吞吐。</p>
+</section>
+<section class="fam-sec" id="guide-section-5">
+<h2>Acceptance checklist</h2>
+<ul>
+<li>目标模型 + 目标量化格式，能否在设备上加载并跑满上下文。</li>
+<li>batch=1 的首字延迟与 decode token/s。连续 30 分钟后的衰减。</li>
+<li>内存峰值与是否触发交换/卸载。</li>
+<li>断电重启后的冷启动时间。</li>
+<li>真实任务的答案质量，不只看困惑度。</li>
+</ul>
+<p><b>边界</b></p>
+<p>端侧数字高度依赖具体设备、量化格式与推理框架。本文只给估算方法，不给跨设备排名。</p>
+<p><b>先补概念</b></p>
+<p><a href="https://learn.specul.com/en/term/%E9%87%8F%E5%8C%96/" rel="noopener" target="_blank">量化</a> 是学 AI 站的相关科普。</p>
+</section>
+<nav aria-label="Next steps" class="fam-sec">
+<h2>What to do next</h2>
+<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
+<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
+<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
+</nav>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list">
+<li>NVIDIA Jetson Thor（128GB LPDDR5X、273 GB/s、40–130W、2070 FP4 TFLOPS，2026-11-17 直抓官方规格页）：<a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-thor/" rel="noopener" target="_blank">https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-thor/</a></li>
+<li>ONNX Runtime 文档（跨平台推理引擎与执行提供器，2026-11-17 直抓官方文档）：<a href="https://onnxruntime.ai/docs/" rel="noopener" target="_blank">https://onnxruntime.ai/docs/</a></li>
+<li>LLM in a Flash（arXiv 2312.11514，有限 DRAM 下从闪存按需加载权重，2026-11-17 直抓摘要页）：<a href="https://arxiv.org/abs/2312.11514" rel="noopener" target="_blank">https://arxiv.org/abs/2312.11514</a></li>
+</ul>
+<p class="fam-foot">Base source snapshot: 2026-11-17; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

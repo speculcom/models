@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Kimi（闭源 API） · 闭源谱系卡</title>
-  <meta name="description" content="Kimi（闭源 API）（月之暗面（Moonshot AI））的闭源谱系卡：当前代 Kimi K3.1 Pro（3T 级，1M 上下文）、官方规格事实全部挂出处、30 天复核周期。资料更新到 2026-11-19。" />
-  <link rel="canonical" href="https://models.specul.com/closed/kimi/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Kimi（闭源 API） · 闭源谱系卡" />
-  <meta property="og:url" content="https://models.specul.com/closed/kimi/" />
-  <meta property="og:title" content="Kimi（闭源 API） · 闭源谱系卡" />
-  <meta property="og:description" content="Kimi（闭源 API）（月之暗面（Moonshot AI））的闭源谱系卡：当前代 Kimi K3.1 Pro（3T 级，1M 上下文）、官方规格事实全部挂出处、30 天复核周期。资料更新到 2026-11-19。" />
-  <meta property="og:image" content="https://specul.com/home-shots/og-home.jpg?v=20261123d" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="zh_CN" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta name="theme-color" content="#16121f" />
-  <link rel="icon" type="image/png" href="../../assets/brand/dandelion-favicon-site.png" />
-  <link rel="apple-touch-icon" href="../../assets/brand/dandelion-apple-touch-site.png" />
-  <script src="../../brand.js?v=37d1072be69b"></script>
-  <link rel="stylesheet" href="../../brand.css?v=37d1072be69b" />
-  <link rel="stylesheet" href="../../site.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Kimi（闭源 API） 闭源谱系卡","description":"国产闭源旗舰，但它是这里唯一「API 与开放权重双轨」的家族：K3 权重在 Hugging Face / ModelScope 开放（自定义 Kimi K3 License），API 走 platform.kimi.com。选型时两条路径的许可与数据条款不同，分开读。","url":"https://models.specul.com/closed/kimi/","dateModified":"2026-11-19"}</script>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Kimi（闭源 API） · 闭源谱系卡</title>
+<meta content="Kimi（闭源 API）（月之暗面（Moonshot AI））的闭源谱系卡：当前代 Kimi K3.1 Pro（3T 级，1M 上下文）、官方规格事实全部挂出处、30 天复核周期。资料更新到 2026-11-19。" name="description"/>
+<link href="https://models.specul.com/closed/kimi/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Kimi（闭源 API） · 闭源谱系卡" property="og:site_name"/>
+<meta content="https://models.specul.com/closed/kimi/" property="og:url"/>
+<meta content="Kimi（闭源 API） · 闭源谱系卡" property="og:title"/>
+<meta content="Kimi（闭源 API）（月之暗面（Moonshot AI））的闭源谱系卡：当前代 Kimi K3.1 Pro（3T 级，1M 上下文）、官方规格事实全部挂出处、30 天复核周期。资料更新到 2026-11-19。" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="en_US" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="../../assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="../../assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="../../brand.js?v=37d1072be69b"></script>
+<link href="../../brand.css?v=37d1072be69b" rel="stylesheet"/>
+<link href="../../site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Kimi（闭源 API） 闭源谱系卡","description":"国产闭源旗舰，但它是这里唯一「API 与开放权重双轨」的家族：K3 权重在 Hugging Face / ModelScope 开放（自定义 Kimi K3 License），API 走 platform.kimi.com。选型时两条路径的许可与数据条款不同，分开读。","url":"https://models.specul.com/closed/kimi/","dateModified":"2026-11-19"}</script>
+<link href="https://models.specul.com/closed/kimi/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/closed/kimi/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/closed/kimi/" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -32,173 +32,168 @@
      ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
      （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
 <body class="brand-ambient has-tabbar has-tabbar-1row">
-  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
-  <header class="site-header">
-    <div class="container site-bar">
-      <a class="brand" href="https://specul.com/" title="投机取巧">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
-          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="站点导航">
-        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
-        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
-        <a href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a>
-        <a href="https://models.specul.com/" aria-current="page"><span data-zh>模型</span><span data-en>Models</span></a>
-        <a href="https://demos.specul.com/"><span data-zh>作品演示</span><span data-en>Playground</span></a>
-        <a href="https://oss.specul.com/"><span data-zh>开源库</span><span data-en>OSS</span></a>
-        <a href="https://hardware.specul.com/"><span data-zh>硬件算力</span><span data-en>Compute</span></a>
-        <a href="https://papers.specul.com/"><span data-zh>AI 论文</span><span data-en>AI Papers</span></a>
-        <a href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a>
-        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
-      </nav>
-      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+<a class="t-skip" href="#main"><span data-zh="">跳到主要内容</span><span data-en="">Skip to main content</span></a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" data-en-name="Speculative Speculation" data-zh-name="投机取巧" id="markName">投机取巧</span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation" id="markSub">Speculative Speculation</span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span data-zh="">作品演示</span><span data-en="">Playground</span></a>
+<a href="https://oss.specul.com/"><span data-zh="">开源库</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span data-zh="">硬件算力</span><span data-en="">Compute</span></a>
+<a href="https://papers.specul.com/"><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></a>
+<a href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a href="https://nav.specul.com/"><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
            放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
            （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
            链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
-      <span class="nav-tools">
-        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
-        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
-      </span>
-      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+<span class="nav-tools">
+<a aria-label="搜索" class="icon-btn" data-ui-aria-label-en="Search" data-ui-aria-label-zh="搜索" data-ui-title-en="Search all sites" data-ui-title-zh="搜索全站" href="https://specul.com/search.html" title="搜索全站"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="Switch to English" class="icon-btn" href="/en/closed/kimi/" hreflang="en" id="langBtn" lang="en" title="Switch to English">EN</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
            行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
            无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
            「导航被藏进一个点了没反应的按钮」。 -->
-      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
-        <i></i><i></i><i></i>
-      </button>
-    </div>
-  </header>
-  <div class="nav-scrim"></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
-    <div class="nav-drawer-h">
-      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
-      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
-    </div>
-    <nav class="nav-drawer-list">
-      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://tools.specul.com/"><span><span data-zh>工具</span><span data-en>Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://models.specul.com/" aria-current="page"><span><span data-zh>模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://demos.specul.com/"><span><span data-zh>作品演示</span><span data-en>Playground</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://oss.specul.com/"><span><span data-zh>开源库</span><span data-en>OSS</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://hardware.specul.com/" class="nav-group-start"><span><span data-zh>硬件算力</span><span data-en>Compute</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://papers.specul.com/"><span><span data-zh>AI 论文</span><span data-en>AI Papers</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://chain.specul.com/"><span><span data-zh>链</span><span data-en>Chain</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://nav.specul.com/" class="nav-group-start" data-nav-group="external"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="nav-drawer-foot">
-      <p><span data-zh>内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
-      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
-    </div>
-  </aside>
-  <main id="main">
-  <div class="container">
-    <nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh>回开放权重图谱</span><span data-en>Back to the open-weight map</span></a></nav>
-    <header class="page-head">
-      <p class="eyebrow"><span data-zh>月之暗面（Moonshot AI）</span><span data-en>Moonshot AI</span>　·　<span data-zh>闭源谱系卡</span><span data-en>closed model lineage card</span>　·　<span data-zh>当前代</span><span data-en>current generation</span> <span data-zh>Kimi K3.1 Pro（3T 级，1M 上下文）</span><span data-en>Kimi K3.1 Pro (3T-class, 1M context)</span>（2026-10）</p>
-      <h1><span data-zh>Kimi（闭源 API）</span><span data-en>Kimi (closed API)</span><span class="sub"><span data-zh>闭源模型 · 官方规格快照 · 带复核周期</span><span data-en>closed model · official spec snapshot · with review cycle</span></span></h1>
-      <p class="lede"><span data-zh>国产闭源旗舰，但它是这里唯一「API 与开放权重双轨」的家族：K3 权重在 Hugging Face / ModelScope 开放（自定义 Kimi K3 License），API 走 platform.kimi.com。选型时两条路径的许可与数据条款不同，分开读。</span><span data-en>The domestic closed flagship — yet the only family here with dual tracks: K3 weights are open on Hugging Face / ModelScope (custom Kimi K3 License) while the API runs on platform.kimi.com. Licences and data terms differ between the two paths — read them separately.</span></p>
-      <p class="closed-access"><b><span data-zh>怎么用得到</span><span data-en>How you can use it</span>：</b><span data-zh>platform.kimi.com API 与 Kimi 应用；K3 权重同时开放（见这里开放权重侧的 kimi 谱系卡）——API 与开放权重是同一模型的两条使用路径。</span><span data-en>platform.kimi.com API and the Kimi app; K3 weights are also open (see the kimi family card on the open-weight side) — API and open weights are two usage paths to the same model.</span></p>
-      <p class="fam-onsite"><span data-zh>开放权重侧这里有 kimi-k3 系列（谱系卡 + 量化对比）；对话产品轻档案在 AI 工具站。</span><span data-en>On the open-weight side this site covers the kimi-k3 series (family card + quantisation); the chat light entry lives on the tools site.</span></p>
-    </header>
-
-
-    <section class="fam-sec cn-sec">
-      <h2><span data-zh>中文生态</span><span data-en>China availability</span> <small><span data-zh>国产 / 国内可直接用 / 备案状态 · 快照</span><span data-en>domestic / direct access / CAC filing · snapshot</span> 2026-10-20</small></h2>
-      <ul class="fam-claims cn-rows">
-        <li><b><span data-zh>出品属地</span><span data-en>Origin</span></b>　<span data-zh>国产</span><span data-en>domestic</span>　<span data-zh>出品方为月之暗面（北京）。</span><span data-en>Made by Moonshot AI (Beijing).</span></li>
-        <li><b><span data-zh>国内下载</span><span data-en>Direct access</span></b>　<span data-zh>国内可直连</span><span data-en>direct OK</span>　<span data-zh>platform.kimi.com 大陆直连可达（2026-10-30 复测 200）。</span><span data-en>platform.kimi.com reachable direct from the mainland (measured 200 on 2026-10-30).</span></li>
-        <li><b><span data-zh>备案状态</span><span data-en>CAC filing</span></b>　<span data-zh>已备案</span><span data-en>Filed</span>：<code>Beijing-MoonShot-20231016</code>　<span data-zh>公示名称</span><span data-en>listed as</span><span lang="zh-CN" data-source-name>「Moonshot」</span>　·　<span data-zh>备案时间</span><span data-en>filed</span> 2023-11-03　·　<span data-zh>首批第 16 行（月之暗面科技）。</span><span data-en>Row 16 of the first batch (Moonshot AI).</span></li>
-      </ul>
-      <p class="fam-claims-note"><span data-zh>备案信息按网信办《生成式人工智能服务已备案信息》公示名单抄编号；「国内可直连」是在本地网络实际打开过一次的记录，不是厂商承诺。</span><span data-en>Filing status is quoted from the CAC public registry by number. "Direct access" means the page opened once from a mainland network — not a vendor promise.</span></p>
-      <ul class="fam-src-list cn-srcs"><li><span data-zh>网信办《生成式人工智能服务已备案信息》滚动公告页（13 个批次附件 PDF，2026-10-20 全量下载检索）：</span><span data-en>CAC · filed generative-AI service information (rolling announcement page, 13 batch attachment PDFs, full download &amp; search on 2026-10-20): </span><a href="https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm" target="_blank" rel="noopener">https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm</a></li></ul>
-    </section>
-
-    <section class="fam-sec">
-      <h2><span data-zh>代次</span><span data-en>Generations</span> <small><span data-zh>按官方发布/文档页记录</span><span data-en>as recorded by official releases and docs</span></small></h2>
-      <ul class="fam-gens">
-        <li class="fam-gen">
-          <div class="fam-gen-head"><b><span data-zh>Kimi K3.1 Pro / Highspeed</span><span data-en>Kimi K3.1 Pro / Highspeed</span></b><span class="fam-gen-date">2026-10</span></div>
-          <p><span data-zh>K3.1 Pro / Highspeed 2026-10-24 上线：3T 级参数、1M 上下文、仅思考模式；Highspeed 为低延迟档（官方发布页）。</span><span data-en>K3.1 Pro / Highspeed launched on 2026-10-24: 3T-class parameters, 1M context, thinking mode only; Highspeed is the low-latency tier (official announcement).</span></p>
-          <a class="fam-src" href="https://www.kimi.com/news/kimi-k3-1-pro" target="_blank" rel="noopener"><span data-zh>官方页面 ↗</span><span data-en>official page ↗</span></a>
-        </li>
-        <li class="fam-gen">
-          <div class="fam-gen-head"><b><span data-zh>Kimi K3</span><span data-en>Kimi K3</span></b><span class="fam-gen-date">2026-06</span></div>
-          <p><span data-zh>当前代：官方 API 文档 1M token 上下文（max_completion_tokens 默认 131072、最大 1048576）、始终启用思考（Preserved Thinking，推理强度 low/high/max 默认 max）、多模态；平台横幅「Kimi K3 旗舰模型已正式发布」。</span><span data-en>Current generation: official API docs list a 1M-token context (max_completion_tokens default 131072, max 1048576), always-on thinking (Preserved Thinking; reasoning effort low/high/max, default max), multimodal; the platform banner reads &quot;Kimi K3 flagship officially released&quot;.</span></p>
-          <a class="fam-src" href="https://platform.kimi.com/docs/api/chat" target="_blank" rel="noopener"><span data-zh>官方页面 ↗</span><span data-en>official page ↗</span></a>
-        </li>
-        <li class="fam-gen">
-          <div class="fam-gen-head"><b><span data-zh>Kimi K2.7 Code / K2.6</span><span data-en>Kimi K2.7 Code / K2.6</span></b><span class="fam-gen-date">2026-04–06</span></div>
-          <p><span data-zh>上一档：API 文档同页列 kimi-k2.7-code 与 kimi-k2.6 模型对象。</span><span data-en>Previous step: the same API docs page lists kimi-k2.7-code and kimi-k2.6 model objects.</span></p>
-          <a class="fam-src" href="https://platform.kimi.com/docs/api/chat" target="_blank" rel="noopener"><span data-zh>官方页面 ↗</span><span data-en>official page ↗</span></a>
-        </li>
-      </ul>
-    </section>
-
-    <section class="fam-sec">
-      <h2><span data-zh>官方怎么说（每条带出处）</span><span data-en>Official spec facts (each with a source)</span> <small><span data-zh>资料时间</span><span data-en>as of</span></small></h2>
-      <ul class="fam-claims cn-rows">
-        <li><b><span data-zh>参数与上下文</span><span data-en>Scale and context</span></b>　<span data-zh>3 万亿级参数；1,048,576 tokens 上下文；仅支持思考模式（Kimi 官方发布页与 Kimi Code 文档）</span><span data-en>3T-class parameters; 1,048,576-token context; thinking mode only (official Kimi announcement and Kimi Code docs)</span><a class="fam-src" href="https://www.kimi.com/news/kimi-k3-1-pro" target="_blank" rel="noopener"><span data-zh>出处 ↗</span><span data-en>source ↗</span></a></li>
-        <li><b><span data-zh>思考强度</span><span data-en>Thinking effort</span></b>　<span data-zh>reasoning_effort 支持 low / high / max，默认 high；关闭思考返回 400（Kimi Code 文档）</span><span data-en>reasoning_effort supports low / high / max, default high; disabling thinking returns 400 (Kimi Code docs)</span><a class="fam-src" href="https://www.kimi.com/code/docs/kimi-code/models.html" target="_blank" rel="noopener"><span data-zh>出处 ↗</span><span data-en>source ↗</span></a></li>
-        <li><b><span data-zh>权重开放</span><span data-en>Weight release</span></b>　<span data-zh>完整模型权重最迟 2026-11-04 发布（官方发布页；10-24 发布时点为“最迟 11-04”）</span><span data-en>Full model weights to be released by 2026-11-04 (official announcement; at launch on 10-24 the date was stated as “by Nov 4”)</span><a class="fam-src" href="https://www.kimi.com/news/kimi-k3-1-pro" target="_blank" rel="noopener"><span data-zh>出处 ↗</span><span data-en>source ↗</span></a></li>
-        <li><b><span data-zh>官方评测</span><span data-en>Official benchmarks</span></b>　<span data-zh>Terminal-Bench 4.0 65.7%，高于 GPT-6 Astra 的 58.2%，略低于 Claude Opus 5.5 的 66.4%；Kimi Code Bench 3.0 Long-horizon 61.2%（官方技术博客，厂商口径）</span><span data-en>Terminal-Bench 4.0 65.7%, above GPT-6 Astra at 58.2% and slightly below Claude Opus 5.5 at 66.4%; Kimi Code Bench 3.0 Long-horizon 61.2% (official tech blog, vendor-reported)</span><a class="fam-src" href="https://www.kimi.ai/blog/kimi-k3-1-pro" target="_blank" rel="noopener"><span data-zh>出处 ↗</span><span data-en>source ↗</span></a></li>
-        <li><b><span data-zh>高速版</span><span data-en>Highspeed variant</span></b>　<span data-zh>K3.1 Pro Highspeed 同等智能，输出速度约 2–3 倍，消耗约为普速版两倍（官方发布页）</span><span data-en>K3.1 Pro Highspeed keeps the same intelligence at roughly 2–3x output speed and about 2x the token consumption (official announcement)</span><a class="fam-src" href="https://www.kimi.com/news/kimi-k3-1-pro" target="_blank" rel="noopener"><span data-zh>出处 ↗</span><span data-en>source ↗</span></a></li>
-      </ul>
-      <p class="fam-claims-note"><span data-zh>以上转述官方文档和发布页；资料时间之后厂商可能改规格。价格看官方定价页，链接在下面。</span><span data-en>The above transcribe official docs and release pages; vendors may have changed specs since. For pricing, use the official pricing page linked below.</span></p>
-    </section>
-
-    <section class="fam-sec fam-sources">
-      <h2><span data-zh>出处</span><span data-en>Sources</span></h2>
-      <ul class="fam-src-list"><li><span data-zh>Kimi 官方发布页：Kimi K3.1 Pro（2026-10-24）：</span><span data-en>Kimi official announcement: Kimi K3.1 Pro (2026-10-24): </span><a href="https://www.kimi.com/news/kimi-k3-1-pro" target="_blank" rel="noopener">https://www.kimi.com/news/kimi-k3-1-pro</a></li><li><span data-zh>Kimi 技术博客：Kimi K3.1 Pro（英文，含 Terminal-Bench 4.0 数据）：</span><span data-en>Kimi tech blog: Kimi K3.1 Pro (English, with Terminal-Bench 4.0 figures): </span><a href="https://www.kimi.ai/blog/kimi-k3-1-pro" target="_blank" rel="noopener">https://www.kimi.ai/blog/kimi-k3-1-pro</a></li><li><span data-zh>Kimi Code 文档：K3.1 Pro 模型配置（1M 上下文 / 思考强度）：</span><span data-en>Kimi Code docs: K3.1 Pro model configuration (1M context / thinking effort): </span><a href="https://www.kimi.com/code/docs/kimi-code/models.html" target="_blank" rel="noopener">https://www.kimi.com/code/docs/kimi-code/models.html</a></li><li><span data-zh>Kimi 开放平台 API 文档（2026-10-30 直抓 200：K3 上下文/思考/推理强度参数）：</span><span data-en>Kimi open-platform API docs (direct fetch 200 on 2026-10-30: K3 context/thinking/reasoning-effort parameters): </span><a href="https://platform.kimi.com/docs/api/chat" target="_blank" rel="noopener">https://platform.kimi.com/docs/api/chat</a></li>
-      </ul>
-      <p class="fam-foot"><span data-zh>资料时间：2026-11-19 · 复核周期 30 天 · 下次再看一遍：2026-12-19 前。</span><span data-en>Data as of 2026-11-19 · 30-day review cycle · next look by 2026-12-19.</span></p>
-    </section>
-  </div>
-  </main>
-  <footer class="site-footer foot-single">
-    <div class="container foot-line">
-      <div class="foot-brand">
-        <span class="foot-brand-main">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span class="foot-copy"><span data-zh>投机取巧 · specul.com</span><span data-en>Specul · specul.com</span></span>
-        </span>
-        <span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh>内容 CC BY 4.0</span><span data-en>Content CC BY 4.0</span></a><span class="sep" aria-hidden="true">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh>代码 MIT</span><span data-en>Code MIT</span></a><span class="sep" aria-hidden="true">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" target="_blank" rel="noopener"><span data-zh>源码</span><span data-en>Source</span></a></span>
-      </div>
-      <nav class="foot-sites" aria-label="Footer site links">
-        <a class="site-link" href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://demos.specul.com/"><span data-zh>演示</span><span data-en>Demos</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://oss.specul.com/"><span data-zh>开源</span><span data-en>OSS</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://hardware.specul.com/"><span data-zh>算力</span><span data-en>Compute</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://papers.specul.com/"><span data-zh>论文</span><span data-en>Papers</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-      </nav>
-      <nav class="foot-legal" aria-label="Legal and corrections">
-        <a href="https://specul.com/legal.html"><span data-zh>法律</span><span data-en>Legal</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私</span><span data-en>Privacy</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/correct.html"><span data-zh>纠错</span><span data-en>Corrections</span></a>
-      </nav>
-    </div>
-  </footer>
-<nav class="nav-tabbar nav-tabbar-1row" aria-label="快捷导航">
-    <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
-    <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学AI</span><span data-en>Learn</span></a>
-    <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
-    <a href="https://models.specul.com/" aria-current="page"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
-    <a href="https://demos.specul.com/"><span class="ti" aria-hidden="true">▷</span><span data-zh>演示</span><span data-en>Demos</span></a>
-    <a href="https://oss.specul.com/"><span class="ti" aria-hidden="true">▧</span><span data-zh>开源</span><span data-en>OSS</span></a>
-    <a href="https://hardware.specul.com/"><span class="ti" aria-hidden="true">▣</span><span data-zh>算力</span><span data-en>Chips</span></a>
-    <a href="https://papers.specul.com/"><span class="ti" aria-hidden="true">▥</span><span data-zh>论文</span><span data-en>Papers</span></a>
-    <a href="https://chain.specul.com/"><span class="ti" aria-hidden="true">◇</span><span data-zh>链</span><span data-en>Chain</span></a>
-    <a href="https://nav.specul.com/" data-nav-group="external"><span class="ti" aria-hidden="true">↗</span><span data-zh>导航</span><span data-en>Nav</span></a>
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name"><span data-zh="">投机取巧</span><span data-en="">Speculative Speculation</span></span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation">Speculative Speculation</span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/"><span><span data-zh="">首页</span><span data-en="">Home</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/"><span><span data-zh="">学 AI</span><span data-en="">Learn</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/"><span><span data-zh="">工具</span><span data-en="">Tools</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span><span data-zh="">模型</span><span data-en="">Models</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/"><span><span data-zh="">作品演示</span><span data-en="">Playground</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/"><span><span data-zh="">开源库</span><span data-en="">OSS</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/"><span><span data-zh="">硬件算力</span><span data-en="">Compute</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/"><span><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/"><span><span data-zh="">链</span><span data-en="">Chain</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/"><span><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p><span data-zh="">内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en="">Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
+<nav><a href="https://specul.com/legal.html"><span data-zh="">法律条款</span><span data-en="">Legal terms</span></a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container">
+<nav class="crumbs"><a href="https://models.specul.com/">← <span data-zh="">回开放权重图谱</span><span data-en="">Back to the open-weight map</span></a></nav>
+<header class="page-head">
+<p class="eyebrow"><span data-zh="">月之暗面（Moonshot AI）</span><span data-en="">Moonshot AI</span>　·　<span data-zh="">闭源谱系卡</span><span data-en="">closed model lineage card</span>　·　<span data-zh="">当前代</span><span data-en="">current generation</span> <span data-zh="">Kimi K3.1 Pro（3T 级，1M 上下文）</span><span data-en="">Kimi K3.1 Pro (3T-class, 1M context)</span>（2026-10）</p>
+<h1><span data-zh="">Kimi（闭源 API）</span><span data-en="">Kimi (closed API)</span><span class="sub"><span data-zh="">闭源模型 · 官方规格快照 · 带复核周期</span><span data-en="">closed model · official spec snapshot · with review cycle</span></span></h1>
+<p class="lede"><span data-zh="">国产闭源旗舰，但它是这里唯一「API 与开放权重双轨」的家族：K3 权重在 Hugging Face / ModelScope 开放（自定义 Kimi K3 License），API 走 platform.kimi.com。选型时两条路径的许可与数据条款不同，分开读。</span><span data-en="">The domestic closed flagship — yet the only family here with dual tracks: K3 weights are open on Hugging Face / ModelScope (custom Kimi K3 License) while the API runs on platform.kimi.com. Licences and data terms differ between the two paths — read them separately.</span></p>
+<p class="closed-access"><b><span data-zh="">怎么用得到</span><span data-en="">How you can use it</span>：</b><span data-zh="">platform.kimi.com API 与 Kimi 应用；K3 权重同时开放（见这里开放权重侧的 kimi 谱系卡）——API 与开放权重是同一模型的两条使用路径。</span><span data-en="">platform.kimi.com API and the Kimi app; K3 weights are also open (see the kimi family card on the open-weight side) — API and open weights are two usage paths to the same model.</span></p>
+<p class="fam-onsite"><span data-zh="">开放权重侧这里有 kimi-k3 系列（谱系卡 + 量化对比）；对话产品轻档案在 AI 工具站。</span><span data-en="">On the open-weight side this site covers the kimi-k3 series (family card + quantisation); the chat light entry lives on the tools site.</span></p>
+</header>
+<section class="fam-sec cn-sec">
+<h2><span data-zh="">中文生态</span><span data-en="">China availability</span> <small><span data-zh="">国产 / 国内可直接用 / 备案状态 · 快照</span><span data-en="">domestic / direct access / CAC filing · snapshot</span> 2026-10-20</small></h2>
+<ul class="fam-claims cn-rows">
+<li><b><span data-zh="">出品属地</span><span data-en="">Origin</span></b>　<span data-zh="">国产</span><span data-en="">domestic</span>　<span data-zh="">出品方为月之暗面（北京）。</span><span data-en="">Made by Moonshot AI (Beijing).</span></li>
+<li><b><span data-zh="">国内下载</span><span data-en="">Direct access</span></b>　<span data-zh="">国内可直连</span><span data-en="">direct OK</span>　<span data-zh="">platform.kimi.com 大陆直连可达（2026-10-30 复测 200）。</span><span data-en="">platform.kimi.com reachable direct from the mainland (measured 200 on 2026-10-30).</span></li>
+<li><b><span data-zh="">备案状态</span><span data-en="">CAC filing</span></b>　<span data-zh="">已备案</span><span data-en="">Filed</span>：<code>Beijing-MoonShot-20231016</code>　<span data-zh="">公示名称</span><span data-en="">listed as</span><span data-source-name="" lang="zh-CN">「Moonshot」</span>　·　<span data-zh="">备案时间</span><span data-en="">filed</span> 2023-11-03　·　<span data-zh="">首批第 16 行（月之暗面科技）。</span><span data-en="">Row 16 of the first batch (Moonshot AI).</span></li>
+</ul>
+<p class="fam-claims-note"><span data-zh="">备案信息按网信办《生成式人工智能服务已备案信息》公示名单抄编号；「国内可直连」是在本地网络实际打开过一次的记录，不是厂商承诺。</span><span data-en="">Filing status is quoted from the CAC public registry by number. "Direct access" means the page opened once from a mainland network — not a vendor promise.</span></p>
+<ul class="fam-src-list cn-srcs"><li><span data-zh="">网信办《生成式人工智能服务已备案信息》滚动公告页（13 个批次附件 PDF，2026-10-20 全量下载检索）：</span><span data-en="">CAC · filed generative-AI service information (rolling announcement page, 13 batch attachment PDFs, full download &amp; search on 2026-10-20): </span><a href="https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm" rel="noopener" target="_blank">https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm</a></li></ul>
+</section>
+<section class="fam-sec">
+<h2><span data-zh="">代次</span><span data-en="">Generations</span> <small><span data-zh="">按官方发布/文档页记录</span><span data-en="">as recorded by official releases and docs</span></small></h2>
+<ul class="fam-gens">
+<li class="fam-gen">
+<div class="fam-gen-head"><b><span data-zh="">Kimi K3.1 Pro / Highspeed</span><span data-en="">Kimi K3.1 Pro / Highspeed</span></b><span class="fam-gen-date">2026-10</span></div>
+<p><span data-zh="">K3.1 Pro / Highspeed 2026-10-24 上线：3T 级参数、1M 上下文、仅思考模式；Highspeed 为低延迟档（官方发布页）。</span><span data-en="">K3.1 Pro / Highspeed launched on 2026-10-24: 3T-class parameters, 1M context, thinking mode only; Highspeed is the low-latency tier (official announcement).</span></p>
+<a class="fam-src" href="https://www.kimi.com/news/kimi-k3-1-pro" rel="noopener" target="_blank"><span data-zh="">官方页面 ↗</span><span data-en="">official page ↗</span></a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b><span data-zh="">Kimi K3</span><span data-en="">Kimi K3</span></b><span class="fam-gen-date">2026-06</span></div>
+<p><span data-zh="">当前代：官方 API 文档 1M token 上下文（max_completion_tokens 默认 131072、最大 1048576）、始终启用思考（Preserved Thinking，推理强度 low/high/max 默认 max）、多模态；平台横幅「Kimi K3 旗舰模型已正式发布」。</span><span data-en="">Current generation: official API docs list a 1M-token context (max_completion_tokens default 131072, max 1048576), always-on thinking (Preserved Thinking; reasoning effort low/high/max, default max), multimodal; the platform banner reads "Kimi K3 flagship officially released".</span></p>
+<a class="fam-src" href="https://platform.kimi.com/docs/api/chat" rel="noopener" target="_blank"><span data-zh="">官方页面 ↗</span><span data-en="">official page ↗</span></a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b><span data-zh="">Kimi K2.7 Code / K2.6</span><span data-en="">Kimi K2.7 Code / K2.6</span></b><span class="fam-gen-date">2026-04–06</span></div>
+<p><span data-zh="">上一档：API 文档同页列 kimi-k2.7-code 与 kimi-k2.6 模型对象。</span><span data-en="">Previous step: the same API docs page lists kimi-k2.7-code and kimi-k2.6 model objects.</span></p>
+<a class="fam-src" href="https://platform.kimi.com/docs/api/chat" rel="noopener" target="_blank"><span data-zh="">官方页面 ↗</span><span data-en="">official page ↗</span></a>
+</li>
+</ul>
+</section>
+<section class="fam-sec">
+<h2><span data-zh="">官方怎么说（每条带出处）</span><span data-en="">Official spec facts (each with a source)</span> <small><span data-zh="">资料时间</span><span data-en="">as of</span></small></h2>
+<ul class="fam-claims cn-rows">
+<li><b><span data-zh="">参数与上下文</span><span data-en="">Scale and context</span></b>　<span data-zh="">3 万亿级参数；1,048,576 tokens 上下文；仅支持思考模式（Kimi 官方发布页与 Kimi Code 文档）</span><span data-en="">3T-class parameters; 1,048,576-token context; thinking mode only (official Kimi announcement and Kimi Code docs)</span><a class="fam-src" href="https://www.kimi.com/news/kimi-k3-1-pro" rel="noopener" target="_blank"><span data-zh="">出处 ↗</span><span data-en="">source ↗</span></a></li>
+<li><b><span data-zh="">思考强度</span><span data-en="">Thinking effort</span></b>　<span data-zh="">reasoning_effort 支持 low / high / max，默认 high；关闭思考返回 400（Kimi Code 文档）</span><span data-en="">reasoning_effort supports low / high / max, default high; disabling thinking returns 400 (Kimi Code docs)</span><a class="fam-src" href="https://www.kimi.com/code/docs/kimi-code/models.html" rel="noopener" target="_blank"><span data-zh="">出处 ↗</span><span data-en="">source ↗</span></a></li>
+<li><b><span data-zh="">权重开放</span><span data-en="">Weight release</span></b>　<span data-zh="">完整模型权重最迟 2026-11-04 发布（官方发布页；10-24 发布时点为“最迟 11-04”）</span><span data-en="">Full model weights to be released by 2026-11-04 (official announcement; at launch on 10-24 the date was stated as “by Nov 4”)</span><a class="fam-src" href="https://www.kimi.com/news/kimi-k3-1-pro" rel="noopener" target="_blank"><span data-zh="">出处 ↗</span><span data-en="">source ↗</span></a></li>
+<li><b><span data-zh="">官方评测</span><span data-en="">Official benchmarks</span></b>　<span data-zh="">Terminal-Bench 4.0 65.7%，高于 GPT-6 Astra 的 58.2%，略低于 Claude Opus 5.5 的 66.4%；Kimi Code Bench 3.0 Long-horizon 61.2%（官方技术博客，厂商口径）</span><span data-en="">Terminal-Bench 4.0 65.7%, above GPT-6 Astra at 58.2% and slightly below Claude Opus 5.5 at 66.4%; Kimi Code Bench 3.0 Long-horizon 61.2% (official tech blog, vendor-reported)</span><a class="fam-src" href="https://www.kimi.ai/blog/kimi-k3-1-pro" rel="noopener" target="_blank"><span data-zh="">出处 ↗</span><span data-en="">source ↗</span></a></li>
+<li><b><span data-zh="">高速版</span><span data-en="">Highspeed variant</span></b>　<span data-zh="">K3.1 Pro Highspeed 同等智能，输出速度约 2–3 倍，消耗约为普速版两倍（官方发布页）</span><span data-en="">K3.1 Pro Highspeed keeps the same intelligence at roughly 2–3x output speed and about 2x the token consumption (official announcement)</span><a class="fam-src" href="https://www.kimi.com/news/kimi-k3-1-pro" rel="noopener" target="_blank"><span data-zh="">出处 ↗</span><span data-en="">source ↗</span></a></li>
+</ul>
+<p class="fam-claims-note"><span data-zh="">以上转述官方文档和发布页；资料时间之后厂商可能改规格。价格看官方定价页，链接在下面。</span><span data-en="">The above transcribe official docs and release pages; vendors may have changed specs since. For pricing, use the official pricing page linked below.</span></p>
+</section>
+<section class="fam-sec fam-sources">
+<h2><span data-zh="">出处</span><span data-en="">Sources</span></h2>
+<ul class="fam-src-list"><li><span data-zh="">Kimi 官方发布页：Kimi K3.1 Pro（2026-10-24）：</span><span data-en="">Kimi official announcement: Kimi K3.1 Pro (2026-10-24): </span><a href="https://www.kimi.com/news/kimi-k3-1-pro" rel="noopener" target="_blank">https://www.kimi.com/news/kimi-k3-1-pro</a></li><li><span data-zh="">Kimi 技术博客：Kimi K3.1 Pro（英文，含 Terminal-Bench 4.0 数据）：</span><span data-en="">Kimi tech blog: Kimi K3.1 Pro (English, with Terminal-Bench 4.0 figures): </span><a href="https://www.kimi.ai/blog/kimi-k3-1-pro" rel="noopener" target="_blank">https://www.kimi.ai/blog/kimi-k3-1-pro</a></li><li><span data-zh="">Kimi Code 文档：K3.1 Pro 模型配置（1M 上下文 / 思考强度）：</span><span data-en="">Kimi Code docs: K3.1 Pro model configuration (1M context / thinking effort): </span><a href="https://www.kimi.com/code/docs/kimi-code/models.html" rel="noopener" target="_blank">https://www.kimi.com/code/docs/kimi-code/models.html</a></li><li><span data-zh="">Kimi 开放平台 API 文档（2026-10-30 直抓 200：K3 上下文/思考/推理强度参数）：</span><span data-en="">Kimi open-platform API docs (direct fetch 200 on 2026-10-30: K3 context/thinking/reasoning-effort parameters): </span><a href="https://platform.kimi.com/docs/api/chat" rel="noopener" target="_blank">https://platform.kimi.com/docs/api/chat</a></li>
+</ul>
+<p class="fam-foot"><span data-zh="">资料时间：2026-11-19 · 复核周期 30 天 · 下次再看一遍：2026-12-19 前。</span><span data-en="">Data as of 2026-11-19 · 30-day review cycle · next look by 2026-12-19.</span></p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy"><span data-zh="">投机取巧 · specul.com</span><span data-en="">Specul · specul.com</span></span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh="">内容 CC BY 4.0</span><span data-en="">Content CC BY 4.0</span></a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh="">代码 MIT</span><span data-en="">Code MIT</span></a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank"><span data-zh="">源码</span><span data-en="">Source</span></a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/"><span data-zh="">演示</span><span data-en="">Demos</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/"><span data-zh="">开源</span><span data-en="">OSS</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/"><span data-zh="">算力</span><span data-en="">Compute</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/"><span data-zh="">论文</span><span data-en="">Papers</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/"><span data-zh="">导航</span><span data-en="">Directory</span></a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/legal.html"><span data-zh="">法律</span><span data-en="">Legal</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/legal.html#s8"><span data-zh="">隐私</span><span data-en="">Privacy</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/correct.html"><span data-zh="">纠错</span><span data-en="">Corrections</span></a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/"><span aria-hidden="true" class="ti">◎</span><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span aria-hidden="true" class="ti">▤</span><span data-zh="">学AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span aria-hidden="true" class="ti">◈</span><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a aria-current="page" href="https://models.specul.com/"><span aria-hidden="true" class="ti">▦</span><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span aria-hidden="true" class="ti">▷</span><span data-zh="">演示</span><span data-en="">Demos</span></a>
+<a href="https://oss.specul.com/"><span aria-hidden="true" class="ti">▧</span><span data-zh="">开源</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span aria-hidden="true" class="ti">▣</span><span data-zh="">算力</span><span data-en="">Chips</span></a>
+<a href="https://papers.specul.com/"><span aria-hidden="true" class="ti">▥</span><span data-zh="">论文</span><span data-en="">Papers</span></a>
+<a href="https://chain.specul.com/"><span aria-hidden="true" class="ti">◇</span><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a data-nav-group="external" href="https://nav.specul.com/"><span aria-hidden="true" class="ti">↗</span><span data-zh="">导航</span><span data-en="">Nav</span></a>
 </nav>
 </body>
 </html>

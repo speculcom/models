@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Kimi model family lineage card | Models</title>
+<meta content="The domestic open-weight flagship: K3.1 Pro pushes K3 post-training to a new tier — 2.8T total / 104B active, 1M context — with weights opened on…" name="description"/>
+<link href="https://models.specul.com/en/families/kimi/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Models" property="og:site_name"/>
+<meta content="https://models.specul.com/en/families/kimi/" property="og:url"/>
+<meta content="Kimi model family lineage card | Models" property="og:title"/>
+<meta content="The domestic open-weight flagship: K3.1 Pro pushes K3 post-training to a new tier — 2.8T total / 104B active, 1M context — with weights opened on…" property="og:description"/>
+<meta content="https://specul.com/home-shots/og-home.jpg?v=20261123d" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Kimi 家族谱系卡","description":"The domestic open-weight flagship: K3.1 Pro pushes K3 post-training to a new tier — 2.8T total / 104B active, 1M context — with weights opened on…","url":"https://models.specul.com/en/families/kimi/","dateModified":"2026-11-20"}</script>
+<meta content="Kimi model family lineage card | Models" name="twitter:title"/><meta content="The domestic open-weight flagship: K3.1 Pro pushes K3 post-training to a new tier — 2.8T total / 104B active, 1M context — with weights opened on…" name="twitter:description"/><link href="https://models.specul.com/families/kimi/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/en/families/kimi/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/families/kimi/" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/families/kimi/" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← All families</a></nav>
+<header class="page-head">
+<p class="eyebrow">Moonshot AI　·　current generation Kimi K3.1 Pro（2026-10）</p>
+<h1>Kimi<span class="sub">model family lineage card</span></h1>
+<p class="lede">The domestic open-weight flagship: K3.1 Pro pushes K3 post-training to a new tier — 2.8T total / 104B active, 1M context — with weights opened on 2026-11-04 under a custom Kimi K3.1 Pro License. The Kimi chat product sits in the CAC first batch; weights and service filing are separate.</p>
+<p class="fam-onsite">This site covers this family's quantisations: <a href="../series/kimi-k3/">Kimi K3</a></p>
+</header>
+<section class="fam-sec cn-sec">
+<h2>China availability <small>domestic / direct access / CAC filing · snapshot 2026-10-20</small></h2>
+<ul class="fam-claims cn-rows">
+<li><b>Origin</b>　domestic　Made by Moonshot AI (Beijing).</li>
+<li><b>Direct access</b>　direct OK　Official ModelScope mirror reachable (measured 200); Hugging Face direct unreachable.　·　<a href="https://www.modelscope.cn/models/moonshotai/Kimi-K3" rel="noopener" target="_blank">domestic mirror</a></li>
+<li><b>CAC filing</b>　Filed：<code>Beijing-MoonShot-20231016</code>　listed as<span data-source-name="" lang="zh-CN">「Moonshot」</span>　·　filed 2023-11-03　·　Row 16 of the first batch (Moonshot AI).</li>
+</ul>
+<p class="fam-claims-note">Filing status is quoted from the CAC public registry by number. "Direct access" means the page opened once from a mainland network — not a vendor promise.</p>
+<ul class="fam-src-list cn-srcs"><li>CAC · filed generative-AI service information (rolling announcement page, 13 batch attachment PDFs, full download &amp; search on 2026-10-20): <a href="https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm" rel="noopener" target="_blank">https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm</a></li><li>ModelScope official mirror moonshotai/Kimi-K3 (200 verified on 2026-10-20): <a href="https://www.modelscope.cn/models/moonshotai/Kimi-K3" rel="noopener" target="_blank">https://www.modelscope.cn/models/moonshotai/Kimi-K3</a></li></ul>
+</section>
+<section class="fam-sec fam-fit">
+<h2>What it fits / what it does not</h2>
+<div class="fam-fit-grid">
+<article>
+<h3>Start here if</h3>
+<p>The domestic open-weight flagship: K3.1 Pro pushes K3 post-training to a new tier — 2.8T total / 104B active, 1M context — with weights opened on 2026-11-04 under a custom Kimi K3.1 Pro License. The Kimi chat product sits in the CAC first batch; weights and service filing are separate.</p>
+</article>
+<article>
+<h3>Rule it out first if</h3>
+<p>要跑最大档（支线 7B–72B（Kimi-Audio / Kimi-Dev 等）），显存和预算先按这一档估；小机器别拿最小档的体验代替。 许可含“Kimi K3 License（模型卡 license_name: "kimi-k3"，非 OSI 标准许可，下载前读原文）”，商用或再分发前先读原文；本页不替你判断。</p>
+</article>
+</div>
+<p class="fam-fit-next">Next: <a href="https://tools.specul.com/en/finder/">narrow to three candidates</a> · <a href="https://models.specul.com/en/license.html">check the licence</a> · <a href="https://tools.specul.com/en/guides/">open task playbooks</a></p>
+</section>
+<section class="fam-sec">
+<h2>Generations</h2>
+<ul class="fam-gens">
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Kimi K3.1 Pro</b><span class="fam-gen-date">2026-10</span><span class="fam-gen-cur">current</span></div>
+<p>Post-trained from K3 (launched 2026-10-23, weights opened 2026-11-04): a 2.8T-parameter MoE with 104B active, 1M-token context and native multimodality; the vendor reports clear gains in coding, 3D creation, financial research and long-horizon agents, with a Highspeed variant.</p>
+<a class="fam-src" href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Kimi K3</b><span class="fam-gen-date">2026-07</span></div>
+<p>Current generation (open-weights day 2026-07-27). Official README: a 2.8T-parameter MoE (Stable LatentMoE, 16 of 896 experts active), KDA + AttnRes architecture, native multimodality (text/image/video), 1M-token context; "world's first open 3T-class model" is vendor-run wording.</p>
+<a class="fam-src" href="https://huggingface.co/moonshotai/Kimi-K3" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Kimi K2 line</b><span class="fam-gen-date">2025–2026</span></div>
+<p>Previous line: K2 / K2-Instruct / K2-Thinking / K2.5 / K2.6 / K2.7-Code listed in the official org (from July 2025).</p>
+<a class="fam-src" href="https://huggingface.co/moonshotai/Kimi-K2.5" rel="noopener" target="_blank">official page ↗</a>
+</li>
+<li class="fam-gen">
+<div class="fam-gen-head"><b>Kimi-VL / Kimi-Linear</b><span class="fam-gen-date">2025</span></div>
+<p>Parallel branches: the vision-language Kimi-VL-A3B line and the linear-attention Kimi-Linear-48B-A3B (official org).</p>
+<a class="fam-src" href="https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Instruct" rel="noopener" target="_blank">official page ↗</a>
+</li>
+</ul>
+</section>
+<section class="fam-sec">
+<h2>Size tiers</h2>
+<ul class="fam-tiers"><li>Flagship 2.8T MoE (K3.1 Pro, 104B active, 1M context)</li><li>Flagship 2.8T MoE (K3; active count not itemised officially)</li><li>Branch builds 7B–72B (Kimi-Audio / Kimi-Dev etc.)</li></ul>
+</section>
+<section class="fam-sec">
+<h2>Licences</h2>
+<ul class="fam-lics"><li><a class="lic lic-tight" href="https://huggingface.co/search?license=other" rel="noopener" target="_blank">other</a><span class="fam-lic-txt">Kimi K3 License (model-card license_name "kimi-k3"; not an OSI-standard licence — read the text before download)</span> <a class="fam-src" href="https://huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE" rel="noopener" target="_blank">licence text ↗</a></li><li><a class="lic lic-tight" href="https://huggingface.co/search?license=other" rel="noopener" target="_blank">other</a><span class="fam-lic-txt">Kimi K3.1 Pro License (model-card license: kimi-k3.1-pro; custom, not OSI-standard — read the text before commercial use)</span> <a class="fam-src" href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE" rel="noopener" target="_blank">licence text ↗</a></li></ul>
+</section>
+<section class="fam-sec">
+<h2>Official capability claims (with sources)</h2>
+<ul class="fam-claims">
+<li>Official model card: Kimi K3.1 Pro is an "open-weight, natively multimodal agentic model" with 2.8T total parameters, 104B active and a 1,048,576-token context; the first K3.1 model, post-trained from K3.<a class="fam-src" href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" rel="noopener" target="_blank">source ↗</a></li>
+<li>Official README: "a 2.8T-parameter model built on Kimi Delta Attention (KDA) and Attention Residuals (AttnRes), with native vision capabilities and a 1-million-token context window"; "activates 16 out of 896 experts — yielding an approximate 2.5× improvement in overall scaling efficiency over Kimi K2" (the 2.5× figure is vendor-run wording).<a class="fam-src" href="https://huggingface.co/moonshotai/Kimi-K3" rel="noopener" target="_blank">source ↗</a></li>
+</ul>
+<p class="fam-claims-note">The above are quotations of official pages or transcriptions of vendor-run benchmarks; this site does not endorse cross-model conclusions.</p>
+</section>
+<section class="fam-sec fam-sources">
+<h2>Sources</h2>
+<ul class="fam-src-list"><li>Kimi-K3 model page &amp; README (direct fetch 200 on 2026-10-20): <a href="https://huggingface.co/moonshotai/Kimi-K3" rel="noopener" target="_blank">https://huggingface.co/moonshotai/Kimi-K3</a></li><li>moonshotai official org model list (HF API 2026-10-20, 19 repos listed): <a href="https://huggingface.co/moonshotai" rel="noopener" target="_blank">https://huggingface.co/moonshotai</a></li><li>moonshotai/Kimi-K3.1-Pro model card (direct fetch 200 on 2026-11-20): <a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" rel="noopener" target="_blank">https://huggingface.co/moonshotai/Kimi-K3.1-Pro</a></li><li>Kimi official release · Kimi K3.1 Pro (updated 2026-10-24): <a href="https://www.kimi.com/news/kimi-k3-1-pro" rel="noopener" target="_blank">https://www.kimi.com/news/kimi-k3-1-pro</a></li>
+</ul>
+<p class="fam-foot">Data as of 2026-11-20 — fields we did not measure are left blank.</p>
+</section>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a aria-current="page" href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>
