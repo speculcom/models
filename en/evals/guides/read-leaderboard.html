@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>How to read a leaderboard: what it measures, then who runs…</title>
-<meta content="How to read a leaderboard: what it measures, then who runs it" name="description"/>
+<meta content="A leaderboard is not a model ranking. First ask what it measures, when the items were released, who judges and how the score is computed; then decide whether it" name="description"/>
 <link href="https://models.specul.com/en/evals/guides/read-leaderboard.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How to read a leaderboard: what it measures, then who runs…","description":"How to read a leaderboard: what it measures, then who runs it","url":"https://models.specul.com/en/evals/guides/read-leaderboard.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/evals/guides/read-leaderboard.html"}}</script>
-<meta content="How to read a leaderboard: what it measures, then who runs…" name="twitter:title"/><meta content="How to read a leaderboard: what it measures, then who runs it" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="How to read a leaderboard: what it measures, then who runs…" name="twitter:title"/><meta content="How to read a leaderboard: what it measures, then who runs it" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/evals/guides/read-leaderboard.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/evals/guides/read-leaderboard.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/evals/guides/read-leaderboard.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -96,23 +97,13 @@
 </div>
 </aside>
 <!-- SPECUL:HEADER:END -->
-<main id="main">
-<div class="container">
-<header class="sec-detail">
-<p class="eyebrow">Models · Evals · Guide</p>
-<h1>How to read a leaderboard: what it measures, then who runs it</h1>
-<p class="sub">榜单不是模型排行榜。先看它测什么、题集什么时候发布、评委是谁、分数怎么算，再决定这个分数对你的选型有没有意义。</p>
-</header>
-<div class="sec-nav"><a href="../index.html">← 全部评测</a><a href="../../index.html">模型站</a></div>
-<div class="sec-body">
-<h2>第一问：测的是知识、推理，还是任务完成</h2><p>MMLU 这类多选题测知识面；GSM8K 测小学应用题；SWE-bench 测真实仓库修 bug；Chatbot Arena 测人类偏好。它们不是同一件事，不能相加成一个“综合能力”。</p><p>先把你的使用场景写成一句话，再找最接近的基准。找不到接近的，就自己建 50–100 条内部评测，不要硬套公开榜单。</p>
-<h2>第二问：题目有没有被见过</h2><p>公开题集会被写进训练数据。看模型发布时间、训练数据声明、榜单有没有做时间切分。LiveCodeBench、LiveBench 这类持续更新题集的污染风险低一些，但题量分布会变。</p><p>如果榜单只给一个分数，不给题集版本和提交日期，就把它当宣传材料，不当评测证据。</p>
-<h2>第三问：评委是谁，分数怎么算</h2><p>模型评委会有长度偏好、风格偏好和位置偏差；人类投票也会有用户分布偏差。看榜单有没有报告评委模型、prompt 模板、置信区间与样本量。</p><p>胜率 60% 不等于能力高 60%。要看对手是谁、题集是什么、置信区间多宽。小样本上的几个百分点差异，可能只是噪声。</p>
-<h2>第四问：能不能复现，成本多少</h2><p>能复现的榜单会给出代码、prompt、版本与运行环境。不能复现的，只能当参考。还要看成本：SWE-bench 要跑容器与测试，Chatbot Arena 无法自建同等规模。</p><p>最后把榜单结论写成“在什么条件下、对什么问题、有多大参考价值”，不要写“某模型最强”。</p>
-</div>
-<div class="sec-sources">参考：<a href="https://crfm.stanford.edu/helm/" rel="noopener" target="_blank">HELM</a> · <a href="https://livebench.ai/" rel="noopener" target="_blank">LiveBench</a> · <a href="https://lmarena.ai/" rel="noopener" target="_blank">Chatbot Arena</a> · <a href="https://www.swebench.com/" rel="noopener" target="_blank">SWE-bench</a></div>
-</div>
-</main>
+<main id="main"><div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>How to read a leaderboard: what it measures, then who runs it</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">A leaderboard is not a model ranking. First ask what it measures, when the items were released, who judges and how the score is computed; then decide whether it matters for your selection.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>What is measured: knowledge, reasoning or task completion</h2><p>MMLU measures multiple-choice knowledge; GSM8K measures grade-school word problems; SWE-bench measures bug fixing in real repositories; Chatbot Arena measures human preference. They are not the same thing and cannot be summed into one “general capability”. Write your use case in one sentence and find the closest benchmark; if none is close, build 50–100 internal cases instead of forcing a public leaderboard.</p><h2>Have the items been seen?</h2><p>Public benchmark items end up in training data. Check model release date, training-data statement and whether the leaderboard uses a time split. Continuously refreshed sets such as LiveCodeBench and LiveBench have lower contamination risk, but their item distribution changes. A score without a benchmark version and submission date is marketing, not evidence.</p><h2>Who judges, and how is the score computed?</h2><p>LLM judges have length, style and position bias; human votes have user-distribution bias. Check whether the leaderboard reports judge models, prompt templates, confidence intervals and sample size. A 60% win rate does not mean 60% more capability. Ask who the opponents were, what the items were and how wide the interval is; a few points on a small sample can be noise.</p><h2>Can it be reproduced, and at what cost?</h2><p>A reproducible leaderboard publishes code, prompts, versions and runtime. If it cannot be reproduced, treat it as reference only. Also count the cost: SWE-bench needs containers and tests; arena-style evaluations need many human votes. A benchmark that costs more than the decision is not worth running.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <!-- SPECUL:FOOTER:START -->
 <footer class="site-footer foot-single">
 <div class="container foot-line">

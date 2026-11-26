@@ -300,4 +300,24 @@
   <url><loc>https://models.specul.com/en/series/minicpm5/</loc></url>
   <url><loc>https://models.specul.com/en/series/muse-glimmer/</loc></url>
   <url><loc>https://models.specul.com/en/evals/agent-arena-index.html</loc></url>
+  <url><loc>https://models.specul.com/en/2026.html</loc></url>
+  <url><loc>https://models.specul.com/en/data/guides/license-commercial.html</loc></url>
+  <url><loc>https://models.specul.com/en/data/guides/rag-corpus.html</loc></url>
+  <url><loc>https://models.specul.com/en/data/guides/read-dataset-card.html</loc></url>
+  <url><loc>https://models.specul.com/en/data/guides/sft-data-mix.html</loc></url>
+  <url><loc>https://models.specul.com/en/data/</loc></url>
+  <url><loc>https://models.specul.com/en/evals/guides/agent-eval.html</loc></url>
+  <url><loc>https://models.specul.com/en/evals/guides/eval-contamination.html</loc></url>
+  <url><loc>https://models.specul.com/en/evals/guides/multimodal-eval.html</loc></url>
+  <url><loc>https://models.specul.com/en/evals/guides/read-leaderboard.html</loc></url>
+  <url><loc>https://models.specul.com/en/evals/</loc></url>
+  <url><loc>https://models.specul.com/en/guides/edge-deployment.html</loc></url>
+  <url><loc>https://models.specul.com/en/guides/long-context.html</loc></url>
+  <url><loc>https://models.specul.com/en/guides/moe-selection.html</loc></url>
+  <url><loc>https://models.specul.com/en/guides/vision-language-selection.html</loc></url>
+  <url><loc>https://models.specul.com/en/license.html</loc></url>
+  <url><loc>https://models.specul.com/en/series/gemma-4/</loc></url>
+  <url><loc>https://models.specul.com/en/series/glm-5/</loc></url>
+  <url><loc>https://models.specul.com/en/series/ornith-1-5/</loc></url>
+  <url><loc>https://models.specul.com/en/series/qwen3-8/</loc></url>
 </urlset>

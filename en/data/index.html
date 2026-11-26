@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Data and training corpora | Models","description":"Cleaned from 96 Common Crawl dumps, with an education-oriented FineWeb-Edu subset; the cleaning pipeline has a public report.","url":"https://models.specul.com/en/data/","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/data/"}}</script>
-<meta content="Data and training corpora | Models" name="twitter:title"/><meta content="Cleaned from 96 Common Crawl dumps, with an education-oriented FineWeb-Edu subset; the cleaning pipeline has a public report." name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Data and training corpora | Models" name="twitter:title"/><meta content="Cleaned from 96 Common Crawl dumps, with an education-oriented FineWeb-Edu subset; the cleaning pipeline has a public report." name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/data/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/data/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/data/" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -99,17 +100,16 @@
 <header class="sec-head">
 <p class="eyebrow">Models · Data</p>
 <h1>Data and training corpora</h1>
-<p class="lede">数据集不是越大越好。先看许可与商用边界，再看规模口径、语言、质量与任务适配；这里收 40 张数据卡，按 8 类放，每张都写清“能做什么、不能做什么”。</p>
+<p class="lede">Datasets are not automatically better when bigger. Start with the licence and commercial boundary, then the scale definition, language, quality and task fit. 40 dataset cards in 8 categories; each states what it can and cannot do.</p>
 </header>
-<div class="sec-nav"><a href="../index.html">← 回模型站</a><a href="../evals/index.html">评测与榜单 →</a></div>
+<div class="sec-nav"><a href="../index.html">← Models home</a><a href="../evals/index.html">Evaluation benchmarks →</a></div>
 <div class="home-stats">
-<div><b>40</b><span>张数据卡</span></div>
-<div><b>8</b><span>个类别</span></div>
-<div><b>4</b><span>篇选数据指南</span></div>
+<div><b>40</b><span>datasets</span></div>
+<div><b>8</b><span>categories</span></div>
+<div><b>4</b><span>selection guides</span></div>
 </div>
-<div class="sec-note"><b>使用前先做三件事：</b>核对许可与商用边界；确认规模口径（token / 样本 / 原始网页）；把评测集从训练集里剔除。数据卡只做索引与风险提示，不代替法务意见。</div>
-<h2>预训练语料 <span class="sec-tag">5</span></h2>
-<p>从网页、书籍、代码里洗出来的底座语料；先看许可、去重与语言分布。</p>
+<div class="sec-note">Before use, check three things: the licence and commercial boundary; the scale definition (tokens / samples / raw pages); and remove evaluation sets from training data. Cards are an index and risk note, not legal advice.</div>
+<h2>Pretraining corpora</h2>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">Pretraining corpora</span></div>
 <h3><a href="/en/data/fineweb.html">FineWeb</a></h3>
@@ -166,8 +166,7 @@
 <p class="sec-caveat">Built in 2020, so web and code data are dated; several subsets have separate licences and provenance that need review.</p>
 <a class="sec-link" href="/en/data/pile.html">Open dataset card →</a>
 </article></div>
-<h2>指令与 SFT <span class="sec-tag">5</span></h2>
-<p>把任务写成指令-回答对，用来教模型按格式做事。</p>
+<h2>SFT<span class="sec-tag">5</span></h2>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">Instruction &amp; SFT</span></div>
 <h3><a href="/en/data/oasst1.html">OpenAssistant OASST1</a></h3>
@@ -224,8 +223,8 @@
 <p class="sec-caveat">Mostly English everyday dialogue with limited specialist and Chinese coverage; synthetic or rewritten samples can amplify model style.</p>
 <a class="sec-link" href="/en/data/smoltalk.html">Open dataset card →</a>
 </article></div>
-<h2>偏好与 RLHF <span class="sec-tag">5</span></h2>
-<p>人类或模型对回答排序，用来做偏好对齐与 DPO。</p>
+<h2>RLHF<span class="sec-tag">5</span></h2>
+<p>DPO</p>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">Preference &amp; RLHF</span></div>
 <h3><a href="/en/data/hh-rlhf.html">Anthropic HH-RLHF</a></h3>
@@ -282,8 +281,7 @@
 <p class="sec-caveat">The set is small and subset difficulty varies. A high score does not guarantee better downstream DPO.</p>
 <a class="sec-link" href="/en/data/reward-bench.html">Open dataset card →</a>
 </article></div>
-<h2>评测集 <span class="sec-tag">5</span></h2>
-<p>用来量分数的题集；注意污染与版本，不要混进训练。</p>
+<h2><span class="sec-tag">5</span></h2>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">Evaluation sets</span></div>
 <h3><a href="/en/data/mmlu.html">MMLU</a></h3>
@@ -340,8 +338,8 @@
 <p class="sec-caveat">Very few problems, so a single item swings the score; contamination risk rises after public release.</p>
 <a class="sec-link" href="/en/data/aime-2024.html">Open dataset card →</a>
 </article></div>
-<h2>RAG 文档 <span class="sec-tag">5</span></h2>
-<p>检索问答的证据库；质量、更新与权限比 chunk size 更重要。</p>
+<h2>RAG<span class="sec-tag">5</span></h2>
+<p>chunk size</p>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">RAG corpora</span></div>
 <h3><a href="/en/data/natural-questions.html">Natural Questions</a></h3>
@@ -398,8 +396,7 @@
 <p class="sec-caveat">Questions and evidence skew English Wikipedia and web pages; some answers have aliases and time-sensitive facts.</p>
 <a class="sec-link" href="/en/data/triviaqa.html">Open dataset card →</a>
 </article></div>
-<h2>多模态 <span class="sec-tag">5</span></h2>
-<p>图文、视频与音频对；图像版权随源站，不能默认可商用。</p>
+<h2><span class="sec-tag">5</span></h2>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">Multimodal</span></div>
 <h3><a href="/en/data/laion5b.html">LAION-5B</a></h3>
@@ -456,8 +453,7 @@
 <p class="sec-caveat">Video sources and copyright need item-by-item review; contamination risk rises after public release.</p>
 <a class="sec-link" href="/en/data/video-mme.html">Open dataset card →</a>
 </article></div>
-<h2>代码与领域 <span class="sec-tag">5</span></h2>
-<p>代码、医学、法律等专业语料；逐仓/逐篇核对许可。</p>
+<h2><span class="sec-tag">5</span></h2>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">Code &amp; domain</span></div>
 <h3><a href="/en/data/the-stack.html">The Stack</a></h3>
@@ -514,8 +510,7 @@
 <p class="sec-caveat">Statements and tests have been public for years, so contamination risk is high; some tests are incomplete.</p>
 <a class="sec-link" href="/en/data/apps.html">Open dataset card →</a>
 </article></div>
-<h2>合成数据 <span class="sec-tag">5</span></h2>
-<p>模型生成或改写的样本；补长尾，但会放大模型风格与错误。</p>
+<h2><span class="sec-tag">5</span></h2>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">Synthetic data</span></div>
 <h3><a href="/en/data/ultrachat-200k.html">UltraChat 200k</a></h3>
@@ -572,27 +567,25 @@
 <p class="sec-caveat">Synthetic text amplifies the generator’s biases and factual errors; it cannot replace real web corpora.</p>
 <a class="sec-link" href="/en/data/cosmopedia.html">Open dataset card →</a>
 </article></div>
-<h2>怎么选数据</h2>
 <div class="sec-grid"><article class="sec-card">
-<div class="sec-card-top"><span class="sec-tag">指南</span></div>
-<h3><a href="/en/data/guides/read-dataset-card.html">怎么读一张数据集卡</a></h3>
-<p>数据集卡不是广告页。先看许可、规模口径、语言与获取方式，再看它适合什么任务；四件事缺一件，就不要直接拿来做训练。</p>
-<a class="sec-link" href="/en/data/guides/read-dataset-card.html">读指南 →</a>
+<div class="sec-card-top"><span class="sec-tag">Guide</span></div>
+<h3><a href="/en/data/guides/read-dataset-card.html">How to read a dataset card</a></h3><p>Licence, scale definition, collection date and filtering. Read these before trusting the token count.</p>
+<a class="sec-link" href="/en/data/guides/read-dataset-card.html">Read guide →</a>
 </article><article class="sec-card">
-<div class="sec-card-top"><span class="sec-tag">指南</span></div>
-<h3><a href="/en/data/guides/license-commercial.html">数据集许可与商用：先分清三层权利</a></h3>
-<p>数据集许可、原始内容许可、模型产出许可，是三层不同的权利。数据集卡写“Apache-2.0”不代表里面的图片、代码、网页文本都能商用。</p>
-<a class="sec-link" href="/en/data/guides/license-commercial.html">读指南 →</a>
+<div class="sec-card-top"><span class="sec-tag">Guide</span></div>
+<h3><a href="/en/data/guides/license-commercial.html">Dataset licences and commercial use: separate three layers</a></h3>
+<p>Apache-2.0 is common for datasets, but the dataset card, the source corpus and the model weights can carry different terms.</p>
+<a class="sec-link" href="/en/data/guides/license-commercial.html">Read guide →</a>
 </article><article class="sec-card">
-<div class="sec-card-top"><span class="sec-tag">指南</span></div>
-<h3><a href="/en/data/guides/rag-corpus.html">RAG 语料怎么选：先定问题，再定文档</a></h3>
-<p>RAG 的语料不是“越多越好”。先写清用户会问什么、答案应该来自哪类文档、文档会不会更新，再决定收什么、切多大、怎么评。</p>
-<a class="sec-link" href="/en/data/guides/rag-corpus.html">读指南 →</a>
+<div class="sec-card-top"></div>
+<h3><a href="/en/data/guides/rag-corpus.html">RAG</a></h3>
+<p>RAG</p>
+<a class="sec-link" href="/en/data/guides/rag-corpus.html">Read guide →</a>
 </article><article class="sec-card">
-<div class="sec-card-top"><span class="sec-tag">指南</span></div>
-<h3><a href="/en/data/guides/sft-data-mix.html">SFT 数据怎么配比：先定行为，再定数量</a></h3>
-<p>SFT 不是把能找到的指令数据全混在一起。先定你要模型学会哪几种行为，再按行为分层配比，最后用留出集检查有没有学偏。</p>
-<a class="sec-link" href="/en/data/guides/sft-data-mix.html">读指南 →</a>
+<div class="sec-card-top"></div>
+<h3><a href="/en/data/guides/sft-data-mix.html">SFT</a></h3>
+<p>SFT</p>
+<a class="sec-link" href="/en/data/guides/sft-data-mix.html">Read guide →</a>
 </article></div>
 </div>
 </main>

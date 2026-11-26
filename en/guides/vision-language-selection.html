@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Choosing a vision-language model: resolution, grounding…</title>
-<meta content="VLMs differ most across three task families: description, grounding and text reading. Selection should test them separately and include the cost of image…" name="description"/>
+<meta content="VLMs differ most across three task families: description, grounding and text reading. Selection should test them separately and include the cost of image tokens" name="description"/>
 <link href="https://models.specul.com/en/guides/vision-language-selection.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -23,7 +24,7 @@
 <link href="/brand.css" rel="stylesheet"/>
 <link href="/site.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Choosing a vision-language model: resolution, grounding and text reading","description":"VLMs differ most across three task families: description, grounding and text reading. Selection should test them separately and include the cost of image…","url":"https://models.specul.com/en/guides/vision-language-selection.html","dateModified":"2026-11-17"}</script>
-<meta content="Choosing a vision-language model: resolution, grounding…" name="twitter:title"/><meta content="VLMs differ most across three task families: description, grounding and text reading. Selection should test them separately and include the cost of image…" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Choosing a vision-language model: resolution, grounding…" name="twitter:title"/><meta content="VLMs differ most across three task families: description, grounding and text reading. Selection should test them separately and include the cost of image…" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/guides/vision-language-selection.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/vision-language-selection.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/guides/vision-language-selection.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -96,61 +97,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container guide-body">
+<main id="main"><div class="container guide-body">
 <nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
-<header class="page-head">
-<p class="eyebrow">How models are made　<span class="t-tag">training pipeline · stage 9</span></p>
-<h1>Choosing a vision-language model: resolution, grounding and text reading<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
-<p class="lede">VLMs differ most across three task families: description, grounding and text reading. Selection should test them separately and include the cost of image tokens.</p>
-</header>
-<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">Split by task first</a></li><li><a href="#guide-section-2">Resolution is information</a></li><li><a href="#guide-section-3">Grounding and coordinates</a></li><li><a href="#guide-section-4">Text and tables</a></li><li><a href="#guide-section-5">Evaluation and cost</a></li></ul></nav>
-<section class="fam-sec" id="guide-section-0">
-<h2></h2>
-<ul>
-</ul>
-</section>
-<section class="fam-sec" id="guide-section-1">
-<h2>Split by task first</h2>
-<p>把「看图」拆成五类：描述、信息抽取、计数、定位坐标、读小字。<br/>VLM 通常在描述与抽取上表现好，在计数、精确定位和小字读取上明显弱。<br/>如果业务主要是票据与表单读字，OCR 加文本模型往往比纯 VLM 更稳、更便宜。</p>
-</section>
-<section class="fam-sec" id="guide-section-2">
-<h2>Resolution is information</h2>
-<p>Qwen2-VL 用动态分辨率把不同尺寸的图片映射成不同数量的视觉 token。<br/>这比固定切图更贴近人类感知，但也意味着大图会消耗更多 token。<br/>选型时先确认：输入图会被缩到多大、切几块、每块多少 token。</p>
-<p>一张 A4 扫描件缩到 1024 长边后，小字可能已经不可读。这时换更大的模型也救不回来。</p>
-</section>
-<section class="fam-sec" id="guide-section-3">
-<h2>Grounding and coordinates</h2>
-<p>普通 VLM 输出文字描述，不输出框或点。<br/>需要「指出在哪里」时，要选支持 grounding 的模型或额外的检测模块；<br/>同时确认坐标口径：原图像素、归一化到 0–1，还是模型内部的网格坐标。<br/>坐标口径弄错，比模型选错更常见。</p>
-</section>
-<section class="fam-sec" id="guide-section-4">
-<h2>Text and tables</h2>
-<p>VLM 的 OCR 能力不等于文档理解。<br/>表格需要行列结构，票据需要字段对齐，这些都要单独的版面分析与后处理。<br/>验收时不要只看「识别出了几个字」，要看「字段值是否正确、表格行列是否还原」。</p>
-</section>
-<section class="fam-sec" id="guide-section-5">
-<h2>Evaluation and cost</h2>
-<p>用 30–50 张真实业务图做盲测，分「答对 / 部分对 / 编造」三档；<br/>编造要单列，因为它在业务里最贵。<br/>成本按「图像 token × 单价 + 输出 token」估算。高分辨率与多图输入会把成本抬得很快。</p>
-<p>Qwen2-VL 论文报告 72B 在多模态基准上接近当时的 GPT-4o 与 Claude 3.5 Sonnet。这是论文口径，不等于你的票据任务也同样接近。</p>
-<p><b>边界</b>：论文里的基准分数与具体业务图分布不同；上线前必须用自有样本复测。</p>
-<p><b>先补概念</b>：<a href="https://learn.specul.com/en/term/%E8%A7%86%E8%A7%89%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" rel="noopener" target="_blank">视觉语言模型</a> 是学 AI 站的相关科普。</p>
-</section>
-<nav aria-label="Next steps" class="fam-sec">
-<h2>What to do next</h2>
-<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
-<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
-<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
-</nav>
-<section class="fam-sec fam-sources">
-<h2>Sources</h2>
-<ul class="fam-src-list">
-<li>CLIP（arXiv 2103.00020，4 亿图文对对比学习与零样本迁移，2026-11-17 直抓摘要页）：<a href="https://arxiv.org/abs/2103.00020" rel="noopener" target="_blank">https://arxiv.org/abs/2103.00020</a></li>
-<li>LLaVA（arXiv 2304.08485，视觉编码器 + LLM 的端到端多模态模型，2026-11-17 直抓摘要页）：<a href="https://arxiv.org/abs/2304.08485" rel="noopener" target="_blank">https://arxiv.org/abs/2304.08485</a></li>
-<li>Qwen2-VL（arXiv 2409.12191，动态分辨率与 M-RoPE，2B/8B/72B 三档，2026-11-17 直抓摘要页）：<a href="https://arxiv.org/abs/2409.12191" rel="noopener" target="_blank">https://arxiv.org/abs/2409.12191</a></li>
-</ul>
-<p class="fam-foot">Base source snapshot: 2026-11-17; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
-</section>
-</div>
-</main>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>Choosing a vision-language model: resolution, grounding and text reading</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">VLMs differ most across three task families: description, grounding and text reading. Selection should test them separately and include the cost of image tokens.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>Split by task first</h2><p>A model that describes an image well may fail at pointing to a small object. Separate description, visual question answering, grounding (boxes or points), OCR and document understanding. Use a task-specific held-out set for each family.</p><h2>Resolution is information</h2><p>Downscaling an image removes small text and fine detail before the model sees it. Test native resolution, a long-edge cap (for example 1024) and tiling. Record the preprocessing recipe; a score without it is not reproducible.</p><h2>Grounding and coordinates</h2><p>Grounding requires the model to output coordinates in a defined frame. Check whether coordinates are normalized, absolute pixels or a grid, and whether the output format is stable. Evaluate intersection-over-union and not just “mentions the right object”.</p><h2>Text and tables</h2><p>OCR-heavy documents need layout awareness. Test merged table cells, footnotes and multi-column pages. Compare exact-match and ANLS; a model that reads the right number but the wrong unit is not correct. Include image-token cost in the total price per page.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">

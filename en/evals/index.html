@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Benchmarks and evaluations | Models","description":"Very high: the test set has been public for years, so assume some models have seen it.","url":"https://models.specul.com/en/evals/","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/evals/"}}</script>
-<meta content="Benchmarks and evaluations | Models" name="twitter:title"/><meta content="Very high: the test set has been public for years, so assume some models have seen it." name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Benchmarks and evaluations | Models" name="twitter:title"/><meta content="Very high: the test set has been public for years, so assume some models have seen it." name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/evals/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/evals/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/evals/" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -99,15 +100,15 @@
 <header class="sec-head">
 <p class="eyebrow">Models · Evals</p>
 <h1>Benchmarks and evaluations</h1>
-<p class="lede">榜单不是模型排行榜。先看它测什么、题集什么时候发布、评委是谁、分数怎么算，再决定这个分数对你的选型有没有意义。这里收 40 个常用基准，只写“测什么、怎么读”，不做总分与“最强”排名。</p>
+<p class="lede">Leaderboards are not model rankings. Ask what a benchmark measures, when its items were released, who judges and how the score is computed before using it for selection. 40 common benchmarks; each states what it measures and how to read it, with no aggregate score or “best” ranking.</p>
 </header>
-<div class="sec-nav"><a href="../index.html">← 回模型站</a><a href="../data/index.html">数据与语料 →</a></div>
+<div class="sec-nav"><a href="../index.html">← Models home</a><a href="../data/index.html">Data and corpora →</a></div>
 <div class="home-stats">
-<div><b>40</b><span>个基准卡</span></div>
-<div><b>4</b><span>篇读榜 / 评测指南</span></div>
-<div><b>0</b><span>个总分排名</span></div>
+<div><b>40</b><span>benchmarks</span></div>
+<div><b>4</b><span>reading guides</span></div>
+<div><b>0</b><span>aggregate rankings</span></div>
 </div>
-<div class="sec-note"><b>读榜四问：</b>测的是知识、推理还是任务完成？题目有没有被训练集见过？评委是谁、分数怎么算？能不能复现、成本多少？四问缺一，分数只能当参考。</div>
+<div class="sec-note">Four questions before reading a score: does it measure knowledge, reasoning or task completion? Could the training set have seen the items? Who judges, and how is the score computed? Can you reproduce it, and at what cost? If one answer is missing, treat the score as a hint.</div>
 <div class="sec-grid"><article class="sec-card">
 <div class="sec-card-top"><span class="sec-tag">Benchmark</span></div>
 <h3><a href="/en/evals/mmlu.html">MMLU</a></h3>
@@ -335,7 +336,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Success rate / task completion rate</dd></div>
 <div><dt>Cost</dt><dd>Medium to high; multi-environment containers and API calls.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; environments and tasks are public but interaction traces are harder to memorise.</p>
 <a class="sec-link" href="/en/evals/agentbench.html">Open benchmark card →</a>
@@ -346,7 +347,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Task success rate / pass^k</dd></div>
 <div><dt>Cost</dt><dd>Medium; LLM user simulator calls.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; domains and tools are public, but successful trajectories are harder to memorise.</p>
 <a class="sec-link" href="/en/evals/tau-bench.html">Open benchmark card →</a>
@@ -357,7 +358,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Accuracy (exact match)</dd></div>
 <div><dt>Cost</dt><dd>Medium; browser/search and file tools.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; questions are public, so check for leakage in training data.</p>
 <a class="sec-link" href="/en/evals/gaia.html">Open benchmark card →</a>
@@ -368,7 +369,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Success rate</dd></div>
 <div><dt>Cost</dt><dd>Medium to high; browser and containers.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; environments are public but state changes complicate memorisation.</p>
 <a class="sec-link" href="/en/evals/webarena.html">Open benchmark card →</a>
@@ -379,7 +380,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Success rate / partial completion</dd></div>
 <div><dt>Cost</dt><dd>High; VMs and vision models.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; tasks are public but VM interaction is hard to memorise.</p>
 <a class="sec-link" href="/en/evals/osworld.html">Open benchmark card →</a>
@@ -390,7 +391,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>AST accuracy / execution accuracy</dd></div>
 <div><dt>Cost</dt><dd>Low to medium; mainly API calls.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; test cases are public and widely used.</p>
 <a class="sec-link" href="/en/evals/bfcl.html">Open benchmark card →</a>
@@ -401,7 +402,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Accuracy</dd></div>
 <div><dt>Cost</dt><dd>Medium; vision model calls.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">High; public and widely used in multimodal training.</p>
 <a class="sec-link" href="/en/evals/mmmu.html">Open benchmark card →</a>
@@ -412,7 +413,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Accuracy</dd></div>
 <div><dt>Cost</dt><dd>High; video decoding and long context.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; videos and questions are public.</p>
 <a class="sec-link" href="/en/evals/video-mme-eval.html">Open benchmark card →</a>
@@ -423,7 +424,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>ANLS / accuracy</dd></div>
 <div><dt>Cost</dt><dd>Medium; OCR or vision.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">High; public and widely used.</p>
 <a class="sec-link" href="/en/evals/docvqa.html">Open benchmark card →</a>
@@ -434,7 +435,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Accuracy / relaxed accuracy</dd></div>
 <div><dt>Cost</dt><dd>Low to medium; vision model.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">High; public and widely used.</p>
 <a class="sec-link" href="/en/evals/chartqa.html">Open benchmark card →</a>
@@ -445,7 +446,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Attack success rate / refusal rate</dd></div>
 <div><dt>Cost</dt><dd>Medium; judge and multiple samples.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; behaviours and attacks are public.</p>
 <a class="sec-link" href="/en/evals/harmbench.html">Open benchmark card →</a>
@@ -456,7 +457,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Toxicity classification F1 / accuracy</dd></div>
 <div><dt>Cost</dt><dd>Low.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; the dataset is public and used in safety training.</p>
 <a class="sec-link" href="/en/evals/toxigen.html">Open benchmark card →</a>
@@ -467,7 +468,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Accuracy / bias score</dd></div>
 <div><dt>Cost</dt><dd>Low.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">High; public and widely used.</p>
 <a class="sec-link" href="/en/evals/bbq.html">Open benchmark card →</a>
@@ -478,7 +479,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Accuracy</dd></div>
 <div><dt>Cost</dt><dd>Medium to high; long-context inference.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; synthetic tasks are less likely to leak but templates are public.</p>
 <a class="sec-link" href="/en/evals/ruler.html">Open benchmark card →</a>
@@ -489,7 +490,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Accuracy / task metrics</dd></div>
 <div><dt>Cost</dt><dd>High; long context.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">Medium; source texts are public but context lengths are expensive to memorise.</p>
 <a class="sec-link" href="/en/evals/infinitebench.html">Open benchmark card →</a>
@@ -500,7 +501,7 @@
 <dl class="sec-facts">
 <div><dt>Metric</dt><dd>Strict accuracy / loose accuracy</dd></div>
 <div><dt>Cost</dt><dd>Low.</dd></div>
-<div><dt>Snapshot</dt><dd>2026-11-19（本站快照；上游版本以仓库为准）</dd></div>
+<div><dt>Snapshot</dt><dd>2026-11-19</dd></div>
 </dl>
 <p class="sec-caveat">High; prompts and constraints are public.</p>
 <a class="sec-link" href="/en/evals/ifeval.html">Open benchmark card →</a>
@@ -550,25 +551,23 @@
 <a class="sec-link" href="/en/evals/agent-arena-index.html">Open benchmark card →</a>
 </article></div>
 <div class="sec-grid"><article class="sec-card">
-<div class="sec-card-top"><span class="sec-tag">指南</span></div>
-<h3><a href="/en/evals/guides/read-leaderboard.html">怎么读榜单：先看测什么，再看谁在测</a></h3>
-<p>榜单不是模型排行榜。先看它测什么、题集什么时候发布、评委是谁、分数怎么算，再决定这个分数对你的选型有没有意义。</p>
-<a class="sec-link" href="/en/evals/guides/read-leaderboard.html">读指南 →</a>
+<div class="sec-card-top"><span class="sec-tag">Guide</span></div>
+<h3><a href="/en/evals/guides/read-leaderboard.html">How to read a leaderboard: what it measures, then who runs it</a></h3><p>Check the task, the item release date, the judge and the aggregation before using a rank.</p>
+<a class="sec-link" href="/en/evals/guides/read-leaderboard.html">Read guide →</a>
 </article><article class="sec-card">
-<div class="sec-card-top"><span class="sec-tag">指南</span></div>
-<h3><a href="/en/evals/guides/eval-contamination.html">评测污染怎么查：先看题集时间，再做检索</a></h3>
-<p>模型分数高，不一定是能力强，可能是题目见过。污染检查不是一句“我们做了去重”，而是可复现的题集时间线 + 检索证据。</p>
-<a class="sec-link" href="/en/evals/guides/eval-contamination.html">读指南 →</a>
+<div class="sec-card-top"><span class="sec-tag">Guide</span></div>
+<h3><a href="/en/evals/guides/eval-contamination.html">Checking benchmark contamination: dataset dates, then training overlap</a></h3><p>A high score on a public test set is not evidence if the items could have entered training.</p>
+<a class="sec-link" href="/en/evals/guides/eval-contamination.html">Read guide →</a>
 </article><article class="sec-card">
-<div class="sec-card-top"><span class="sec-tag">指南</span></div>
-<h3><a href="/en/evals/guides/agent-eval.html">Agent 与工具调用怎么评：环境、工具、步数、评分</a></h3>
-<p>Agent 分数不是“模型会不会用工具”，而是“在给定环境、工具集、步数上限和评分器下，任务能不能完成”。四件事缺一件，分数就不可比。</p>
-<a class="sec-link" href="/en/evals/guides/agent-eval.html">读指南 →</a>
+<div class="sec-card-top"></div>
+<h3><a href="/en/evals/guides/agent-eval.html">Agent</a></h3>
+<p>Agent</p>
+<a class="sec-link" href="/en/evals/guides/agent-eval.html">Read guide →</a>
 </article><article class="sec-card">
-<div class="sec-card-top"><span class="sec-tag">指南</span></div>
-<h3><a href="/en/evals/guides/multimodal-eval.html">多模态评测怎么读：图像、视频、文档三套口径</a></h3>
-<p>多模态分数受分辨率、抽帧、OCR 和答案格式影响。先确认它测的是哪一类输入，再谈分数能不能比。</p>
-<a class="sec-link" href="/en/evals/guides/multimodal-eval.html">读指南 →</a>
+<div class="sec-card-top"><span class="sec-tag">Guide</span></div>
+<h3><a href="/en/evals/guides/multimodal-eval.html">Reading multimodal evals: images, video and documents are different tasks</a></h3>
+<p>Images, video and documents add extraction and grounding failure modes; check the task, not just the average score.</p>
+<a class="sec-link" href="/en/evals/guides/multimodal-eval.html">Read guide →</a>
 </article></div>
 </div>
 </main>

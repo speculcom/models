@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -23,7 +24,7 @@
 <link href="/brand.css" rel="stylesheet"/>
 <link href="/site.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Ornith 1.5 | Models","description":"The model cards list MIT; both sizes have GGUF coverage. See the tables for individual files and versions.","url":"https://models.specul.com/en/series/ornith-1-5/","isAccessibleForFree":true,"temporalCoverage":"2026-10-30"}</script>
-<meta content="Ornith 1.5 | Models" name="twitter:title"/><meta content="The model cards list MIT; both sizes have GGUF coverage. See the tables for individual files and versions." name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Ornith 1.5 | Models" name="twitter:title"/><meta content="The model cards list MIT; both sizes have GGUF coverage. See the tables for individual files and versions." name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/series/ornith-1-5/" hreflang="en" rel="alternate"/><link href="https://models.specul.com/series/ornith-1-5/" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/series/ornith-1-5/" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -100,7 +101,7 @@
 <div class="container">
 <nav class="crumbs"><a href="https://models.specul.com/en/">← All series</a></nav>
 <header class="page-head">
-<p class="eyebrow">Ornith AI　·　released 2026-08-18</p>
+<p class="eyebrow">Ornith AI released 2026-08-18</p>
 <h1>Ornith 1.5</h1>
 <p class="lede">The model cards list MIT; both sizes have GGUF coverage. See the tables for individual files and versions.</p>
 <ul class="pos"><li>General chat</li><li>MIT licence</li><li>Sparse MoE</li></ul>
@@ -109,22 +110,22 @@
 <section class="fam-sec cn-sec">
 <h2>China availability <small>domestic / direct access / CAC filing · snapshot 2026-10-20</small></h2>
 <ul class="fam-claims cn-rows">
-<li><b>Origin</b>　foreign-made　Made by DeepReinforce (the Ornith team) — the official HF org page says "We're the DeepReinforce team"; the team's jurisdiction is not officially stated, treated as foreign.</li>
-<li><b>Direct access</b>　direct OK　ModelScope carries the official ornith-ai org mirror (measured 200); Hugging Face direct unreachable.　·　<a href="https://www.modelscope.cn/models/ornith-ai/Ornith-1.5-35B-A3B" rel="noopener" target="_blank">domestic mirror</a></li>
-<li><b>CAC filing</b>　not in filing list：No Ornith / DeepReinforce entry found in the public registry (searched 2026-10-20).</li>
+<li><b>Origin</b>foreign-made Made by DeepReinforce (the Ornith team) — the official HF org page says "We're the DeepReinforce team"; the team's jurisdiction is not officially stated, treated as foreign.</li>
+<li><b>Direct access</b>direct OK ModelScope carries the official ornith-ai org mirror (measured 200); Hugging Face direct unreachable.<a href="https://www.modelscope.cn/models/ornith-ai/Ornith-1.5-35B-A3B" rel="noopener" target="_blank">domestic mirror</a></li>
+<li><b>CAC filing</b>not in filing list No Ornith / DeepReinforce entry found in the public registry (searched 2026-10-20).</li>
 </ul>
 <p class="fam-claims-note">Filing status is quoted from the CAC public registry by number. "Direct access" means the page opened once from a mainland network — not a vendor promise.</p>
 <ul class="fam-src-list cn-srcs"><li>CAC · filed generative-AI service information (rolling announcement page, 13 batch attachment PDFs, full download &amp; search on 2026-10-20): <a href="https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm" rel="noopener" target="_blank">https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm</a></li><li>Ornith official Hugging Face org page: <a href="https://huggingface.co/ornith-ai" rel="noopener" target="_blank">https://huggingface.co/ornith-ai</a></li><li>ModelScope mirror under the ornith-ai org, Ornith-1.5-35B-A3B (200 verified on 2026-10-20): <a href="https://www.modelscope.cn/models/ornith-ai/Ornith-1.5-35B-A3B" rel="noopener" target="_blank">https://www.modelscope.cn/models/ornith-ai/Ornith-1.5-35B-A3B</a></li></ul>
 </section>
 <section class="member" id="m0">
 <h3><span class="member-idx">Member 1</span>Ornith 1.5 35B-A3B (MoE)</h3>
-<p class="member-meta">35.95B total params (MoE, activation count not disclosed)　·　Flagship general　·　10 quant sources</p>
+<p class="member-meta">35.95B total params (MoE, activation count not disclosed Flagship general 10 quant sources</p>
 <div class="block" id="a0">
 <h4><span class="blk">A</span>Base model card <small>specs · licence · access · parameter count cross-checked across three sources</small></h4>
 <table class="kv">
-<tr><th>Official release page</th><td><a href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B" rel="noopener" target="_blank">ornith-ai/Ornith-1.5-35B-A3B ↗</a><br/><span class="muted small"></span></td></tr>
+<tr><th>Official release page</th><td><a href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B" rel="noopener" target="_blank">ornith-ai/Ornith-1.5-35B-A3B ↗</a><br/></td></tr>
 <tr><th>Licence</th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" rel="noopener" target="_blank">mit</a> <a class="lic-src" href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B/blob/main/LICENSE" rel="noopener" target="_blank">licence text ↗</a></td></tr>
-<tr><th>Access</th><td>✅ Public download　<span class="muted">no application needed</span></td></tr>
+<tr><th>Access</th><td>✅ Public download<span class="muted">no application needed</span></td></tr>
 <tr><th>Scale</th><td><table class="kv kv-nested">
 <tbody>
 <tr><th>Vendor states</th><td><b>35.95B total params (MoE, activation count not disclosed)</b></td></tr>
@@ -141,7 +142,7 @@
 <tr><th>Tool calling</th><td><b>✓ Supported</b> <a class="lic-src" href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B" rel="noopener" target="_blank">source ↗</a> <span class="muted small">model card · 2026-10-28</span><br/><span class="muted small">Card: explicitly strong at tool-calling and agentic coding; OpenAI-compatible endpoint with tool calling out of the box.</span></td></tr>
 <tr><th>Role</th><td>Flagship general</td></tr>
 <tr><th>Tags</th><td><span class="muted">—</span></td></tr>
-<tr><th>Downloads</th><td><b>269k</b>　<span class="muted">likes 764</span></td></tr>
+<tr><th>Downloads</th><td><b>269k</b><span class="muted">likes 764</span></td></tr>
 <tr><th>Released</th><td><span class="muted">—</span></td></tr>
 <tr><th>Last updated</th><td>2026-08-23</td></tr>
 <tr><th>Release-page size</th><td><span class="muted">—</span></td></tr>
@@ -169,40 +170,33 @@
 <tr>
 <th>12 GB illustrative capacity</th>
 <td>
-<b>IQ2_XXS</b>（10 GB · Extreme compression）
-            
-            <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
+<b>IQ2_XXS</b>10 GB · Extreme compression<br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>16 GB illustrative capacity</th>
 <td>
-<b>IQ2_XXS</b>（10 GB · Extreme compression）
-            
-            <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
+<b>IQ2_XXS</b>10 GB · Extreme compression<br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>24 GB illustrative capacity</th>
 <td>
-<b>IQ4_NL</b>（20 GB · Balanced）
-            <br/><span class="muted">Smaller: Q4_0 20 GB / IQ4_XS 18 GB</span>
+<b>IQ4_NL</b>20 GB · Balanced<br/><span class="muted">Smaller: Q4_0 20 GB / IQ4_XS 18 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>48 GB illustrative capacity</th>
 <td>
-<b>Q8_0</b>（37 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
+<b>Q8_0</b>37 GB · Near lossless<br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>80 GB illustrative capacity</th>
 <td>
-<b>Q8_0</b>（37 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
+<b>Q8_0</b>37 GB · Near lossless<br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
@@ -216,43 +210,37 @@
 <tr>
 <th>64 GB aggregate-capacity example</th>
 <td>
-<b>Q8_0</b>（37 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
+<b>Q8_0</b>37 GB · Near lossless<br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
 <br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
 </td>
 </tr>
 <tr>
 <th>128 GB aggregate-capacity example</th>
 <td>
-<b>Q8_0</b>（37 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
+<b>Q8_0</b>37 GB · Near lossless<br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
 <br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
 </td>
 </tr>
 <tr>
 <th>256 GB aggregate-capacity example</th>
 <td>
-<b>Q8_0</b>（37 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
+<b>Q8_0</b>37 GB · Near lossless<br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
 <br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
 </td>
 </tr>
 <tr>
 <th>640 GB aggregate-capacity example</th>
 <td>
-<b>Q8_0</b>（37 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
+<b>Q8_0</b>37 GB · Near lossless<br/><span class="muted">Smaller: Q6_K 29 GB / Q5_K 26 GB</span>
 <br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="muted small">Tier sizes in this series span 10 GB → 71 GB.</p>
-        跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。
-<details class="all-quants">
-<summary>Expand: published file sizes（29 tiers）</summary>
+<p class="muted small">Tier sizes in this series span 10 GB → 71 GB.</p><details class="all-quants">
+<summary>Expand: published file sizes 29 tiers</summary>
 <table class="quant-list">
-<thead><tr><th>Quant</th><th>Min size</th><th>bpw</th><th>Tier</th><th>What this tier means</th><th>Files in tier / size range</th><th>最小体积来源</th></tr></thead>
+<thead><tr><th>Quant</th><th>Min size</th><th>bpw</th><th>Tier</th><th>What this tier means</th><th>Files in tier / size range</th><th></th></tr></thead>
 <tbody>
 <tr>
 <td><code>IQ2_XXS</code></td>
@@ -518,11 +506,7 @@
 </tbody>
 </table>
 <p class="muted small">Bits per weight is derived from the filename by llama.cpp’s published naming convention; the real value varies slightly between models at the same tier. This is <b>grade-B derived</b> — not a measured value.</p>
-<p class="muted small"><b>On "smallest size" and "variants":</b>同名档位下可能有多个不同文件
-          （不同量化者的实现差异，或带 <code>-AD-</code> 混合精度、<code>-PLEQ4_0</code> 上下文扩展、
-          <code>-DENSE</code> 等后缀的特殊变体）。上表取的是该档<b>最省的可行体积</b>，
-          「体积跨度」列给出该档实际的体积范围——跨度大说明该档内部差异明显，
-          选具体文件时请以跨度上界为准。</p>
+<p class="muted small"><b>On "smallest size" and "variants":</b><code>-AD-</code><code>-PLEQ4_0</code><code>-DENSE</code></p>
 </details>
 </div>
 <div class="block" id="c0">
@@ -692,7 +676,6 @@
 <label class="vf-f"><span class="vh">Quantiser</span><select class="vsel" data-dim="q"><option value="">All</option><option value="AtomicChat">AtomicChat</option><option value="LemesoftNostalgic">LemesoftNostalgic</option><option value="NANI-Nithin">NANI-Nithin</option><option value="Ninnix96">Ninnix96</option><option value="SandLogicTechnologies">SandLogicTechnologies</option><option value="bartowski">bartowski</option><option value="mradermacher">mradermacher</option><option value="na0x2c6">na0x2c6</option><option value="ornith-ai">ornith-ai</option><option value="vultr">vultr</option></select></label>
 <label class="vf-f"><span class="vh">Includes tier</span><select class="vsel" data-dim="tier"><option value="">All</option><option value="保守档">Conservative</option><option value="平衡档">Balanced</option><option value="极限压缩">Extreme compression</option><option value="近似无损">Near lossless</option><option value="长上下文优先">Long context first</option></select></label>
 <label class="vf-f"><span class="vh">Licence</span><select class="vsel" data-dim="lic"><option value="">All</option><option value="apache-2.0">apache-2.0</option><option value="mit">mit</option></select></label>
-<span aria-live="polite" class="vcount"></span>
 </div>
 <article class="vcard vcard-off" data-blob="ornith-ai ornith-ai/ornith-1.5-35b-a3b-gguf mit" data-lic="mit" data-q="ornith-ai" data-tier="2" data-tiers="平衡档 保守档 近似无损">
 <header class="vcard-h">
@@ -703,7 +686,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>ornith-ai/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>5</b> GGUF tiers totalling 172 GB. <b>Published by the model authors themselves</b>, not a third party.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Quantised by the model author; third parties are only worth considering for tiers this does not cover；No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；Total weight bytes 185.1 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Quantised by the model author; third parties are only worth considering for tiers this does not cover No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens Total weight bytes 185.1 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, <code>na0x2c6</code> 6 tiers, <code>NANI-Nithin</code> 12 tiers, among others). This repo has 5 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Published by the model author, allowing its release notes and provenance to be checked. Official status does not establish quality, speed or compatibility for every task.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Published by the model author; consult its release notes for support scope<br/>· Snapshot downloads: 3.9M; not a count of unique users, successful runs or quality validations<br/>· Rule-based candidate: <code>Q4_K_M</code> (22 GB), not a performance finding</span></div>
@@ -719,7 +702,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/bartowski/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>bartowski/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>26</b> GGUF tiers totalling 543 GB. Published by <code>bartowski</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/models_out/Ornith-1.5-35B-A3B-GGUF/Ornith-1.5-35B-A3B-imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 583.2 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/models_out/Ornith-1.5-35B-A3B-GGUF/Ornith-1.5-35B-A3B-imatrix.gguf</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 583.2 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 10 tiers, <code>na0x2c6</code> 6 tiers, <code>NANI-Nithin</code> 12 tiers, among others). This repo has 26 tiers — the broadest coverage coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_1. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· The snapshot identifies 26 tiers; filter by size and runtime support<br/>· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_1</code> (22 GB), not a performance finding</span></div>
@@ -735,7 +718,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>AtomicChat/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>10</b> GGUF tiers totalling 276 GB. Published by <code>AtomicChat</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/imatrix/imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 295.9 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/imatrix/imatrix.gguf</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 295.9 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 26 tiers, <code>na0x2c6</code> 6 tiers, <code>NANI-Nithin</code> 12 tiers, among others). This repo has 10 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K</code> (22 GB), not a performance finding</span></div>
@@ -751,7 +734,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/na0x2c6/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>na0x2c6/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>6</b> GGUF tiers totalling 182 GB. Published by <code>na0x2c6</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/home/nao/opt/llm/models/Ornith-1.5-35B-A3B-GGUF/imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 195.0 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/home/nao/opt/llm/models/Ornith-1.5-35B-A3B-GGUF/imatrix.gguf</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 195.0 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, <code>NANI-Nithin</code> 12 tiers, among others). This repo has 6 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K_M</code> (22 GB), not a performance finding</span></div>
@@ -767,7 +750,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/NANI-Nithin/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>NANI-Nithin/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>12</b> GGUF tiers totalling 248 GB. Published by <code>NANI-Nithin</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 266.1 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 266.1 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, <code>na0x2c6</code> 6 tiers, among others). This repo has 12 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_1. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_1</code> (22 GB), not a performance finding</span></div>
@@ -783,7 +766,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/mradermacher/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>mradermacher/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>11</b> GGUF tiers totalling 226 GB. Published by <code>mradermacher</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 242.9 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 242.9 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, <code>na0x2c6</code> 6 tiers, among others). This repo has 11 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_K_M</code> (22 GB), not a performance finding</span></div>
@@ -799,7 +782,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/vultr/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>vultr/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>4</b> GGUF tiers totalling 78 GB. Published by <code>vultr</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 84.2 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 84.2 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, <code>na0x2c6</code> 6 tiers, among others). This repo has 4 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_K_M</code> (23 GB), not a performance finding</span></div>
@@ -815,7 +798,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/SandLogicTechnologies/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>SandLogicTechnologies/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>3</b> GGUF tiers totalling 52 GB. Published by <code>SandLogicTechnologies</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 55.6 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 55.6 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, <code>na0x2c6</code> 6 tiers, among others). This repo has 3 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as IQ4_NL. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>IQ4_NL</code> (20 GB), not a performance finding</span></div>
@@ -832,7 +815,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/LemesoftNostalgic/Ornith-1.5-35B-A3B-GGUF" rel="noopener" target="_blank"><code>LemesoftNostalgic/Ornith-1.5-35B-A3B-GGUF</code> ↗</a>, providing <b>1</b> GGUF tiers totalling 17 GB. Published by <code>LemesoftNostalgic</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>ornith.imatrix</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 18.2 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>ornith.imatrix</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 18.2 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, <code>na0x2c6</code> 6 tiers, among others). This repo has 1 tiers — the narrowest coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as IQ4_XS. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>IQ4_XS</code> (18 GB), not a performance finding</span></div>
@@ -848,7 +831,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/Ninnix96/Ornith-1.5-35B-A3B-gguf" rel="noopener" target="_blank"><code>Ninnix96/Ornith-1.5-35B-A3B-gguf</code> ↗</a>, providing <b>1</b> GGUF tiers totalling 13 GB. Published by <code>Ninnix96</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/home/nicolo/hack/antirez_recipe/work/imatrix/Ornith-1.5-35B-A3B.imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35moe</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-35B-A3B</code>；Total weight bytes 14.2 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/home/nicolo/hack/antirez_recipe/work/imatrix/Ornith-1.5-35B-A3B.imatrix.gguf</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35moe</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-35B-A3B</code>Total weight bytes 14.2 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 26 tiers, <code>AtomicChat</code> 10 tiers, <code>na0x2c6</code> 6 tiers, among others). This repo has 1 tiers — the narrowest coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as IQ2_XXS. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>IQ2_XXS</code> (14 GB), not a performance finding</span></div>
@@ -994,18 +977,18 @@
 <span class="muted">updated 26 tiers · with imatrix</span>
 </li>
 </ul>
-<p class="muted small">Base model <code>ornith-ai/Ornith-1.5-35B-A3B</code> last updated: 2026-08-23　·　data as of: 2026-10-30</p>
+<p class="muted small">Base model <code>ornith-ai/Ornith-1.5-35B-A3B</code>last updated: 2026-08-23 data as of: 2026-10-30</p>
 </div>
 </section>
 <section class="member" id="m1">
 <h3><span class="member-idx">Member 2</span>Ornith 1.5 9B (Dense)</h3>
-<p class="member-meta">9.65B dense　·　Single-GPU　·　10 quant sources</p>
+<p class="member-meta">9.65B dense Single-GPU 10 quant sources</p>
 <div class="block" id="a1">
 <h4><span class="blk">A</span>Base model card <small>specs · licence · access · parameter count cross-checked across three sources</small></h4>
 <table class="kv">
-<tr><th>Official release page</th><td><a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B" rel="noopener" target="_blank">ornith-ai/Ornith-1.5-9B ↗</a><br/><span class="muted small"></span></td></tr>
+<tr><th>Official release page</th><td><a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B" rel="noopener" target="_blank">ornith-ai/Ornith-1.5-9B ↗</a><br/></td></tr>
 <tr><th>Licence</th><td><a class="lic lic-loose" href="https://huggingface.co/search?license=mit" rel="noopener" target="_blank">mit</a> <a class="lic-src" href="https://huggingface.co/ornith-ai/Ornith-1.5-9B/blob/main/LICENSE" rel="noopener" target="_blank">licence text ↗</a></td></tr>
-<tr><th>Access</th><td>✅ Public download　<span class="muted">no application needed</span></td></tr>
+<tr><th>Access</th><td>✅ Public download<span class="muted">no application needed</span></td></tr>
 <tr><th>Scale</th><td><table class="kv kv-nested">
 <tbody>
 <tr><th>Vendor states</th><td><b>9.65B dense</b></td></tr>
@@ -1022,7 +1005,7 @@
 <tr><th>Tool calling</th><td><b>✓ Supported</b> <a class="lic-src" href="https://huggingface.co/ornith-ai/Ornith-1.5-9B" rel="noopener" target="_blank">source ↗</a> <span class="muted small">model card · 2026-10-28</span><br/><span class="muted small">Card: OpenAI-compatible endpoint with tool calling, paired with qwen3_xml/qwen3_coder parsers.</span></td></tr>
 <tr><th>Role</th><td>Single-GPU</td></tr>
 <tr><th>Tags</th><td><span class="muted">—</span></td></tr>
-<tr><th>Downloads</th><td><b>463k</b>　<span class="muted">likes 401</span></td></tr>
+<tr><th>Downloads</th><td><b>463k</b><span class="muted">likes 401</span></td></tr>
 <tr><th>Released</th><td><span class="muted">—</span></td></tr>
 <tr><th>Last updated</th><td>2026-08-23</td></tr>
 <tr><th>Release-page size</th><td><span class="muted">—</span></td></tr>
@@ -1049,48 +1032,42 @@
 <tr>
 <th>8 GB illustrative capacity</th>
 <td>
-<b>Q5_K_S</b>（6.3 GB · Conservative）
-            <br/><span class="muted">Smaller: Q3_K_XL 6.0 GB / Q4_K 5.9 GB</span>
+<b>Q5_K_S</b>6.3 GB · Conservative<br/><span class="muted">Smaller: Q3_K_XL 6.0 GB / Q4_K 5.9 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>12 GB illustrative capacity</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>16 GB illustrative capacity</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>24 GB illustrative capacity</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>48 GB illustrative capacity</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
 <tr>
 <th>80 GB illustrative capacity</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative capacity; not a hardware recommendation. Budget cache/runtime separately.</span>
 </td>
 </tr>
@@ -1104,43 +1081,37 @@
 <tr>
 <th>64 GB aggregate-capacity example</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
 </td>
 </tr>
 <tr>
 <th>128 GB aggregate-capacity example</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
 </td>
 </tr>
 <tr>
 <th>256 GB aggregate-capacity example</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
 </td>
 </tr>
 <tr>
 <th>640 GB aggregate-capacity example</th>
 <td>
-<b>Q8_0</b>（9.5 GB · Near lossless）
-            <br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
+<b>Q8_0</b>9.5 GB · Near lossless<br/><span class="muted">Smaller: Q5_1_L 7.6 GB / Q5_K_L 7.4 GB</span>
 <br/><span class="muted">Illustrative aggregate capacity, not process-available memory. Multiple devices/RAM are not one VRAM pool.</span>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="muted small">Tier sizes in this series span 2.8 GB → 18 GB.</p>
-        跨度过大说明同一系列的量化选择空间很宽，这正是量化选型的主要收益所在。
-<details class="all-quants">
-<summary>Expand: published file sizes（34 tiers）</summary>
+<p class="muted small">Tier sizes in this series span 2.8 GB → 18 GB.</p><details class="all-quants">
+<summary>Expand: published file sizes 34 tiers</summary>
 <table class="quant-list">
-<thead><tr><th>Quant</th><th>Min size</th><th>bpw</th><th>Tier</th><th>What this tier means</th><th>Files in tier / size range</th><th>最小体积来源</th></tr></thead>
+<thead><tr><th>Quant</th><th>Min size</th><th>bpw</th><th>Tier</th><th>What this tier means</th><th>Files in tier / size range</th><th></th></tr></thead>
 <tbody>
 <tr>
 <td><code>IQ1_M</code></td>
@@ -1451,11 +1422,7 @@
 </tbody>
 </table>
 <p class="muted small">Bits per weight is derived from the filename by llama.cpp’s published naming convention; the real value varies slightly between models at the same tier. This is <b>grade-B derived</b> — not a measured value.</p>
-<p class="muted small"><b>On "smallest size" and "variants":</b>同名档位下可能有多个不同文件
-          （不同量化者的实现差异，或带 <code>-AD-</code> 混合精度、<code>-PLEQ4_0</code> 上下文扩展、
-          <code>-DENSE</code> 等后缀的特殊变体）。上表取的是该档<b>最省的可行体积</b>，
-          「体积跨度」列给出该档实际的体积范围——跨度大说明该档内部差异明显，
-          选具体文件时请以跨度上界为准。</p>
+<p class="muted small"><b>On "smallest size" and "variants":</b><code>-AD-</code><code>-PLEQ4_0</code><code>-DENSE</code></p>
 </details>
 </div>
 <div class="block" id="c1">
@@ -1624,7 +1591,6 @@
 <label class="vf-f"><span class="vh">Quantiser</span><select class="vsel" data-dim="q"><option value="">All</option><option value="AtomicChat">AtomicChat</option><option value="Mungert">Mungert</option><option value="NANI-Nithin">NANI-Nithin</option><option value="bartowski">bartowski</option><option value="gguf">gguf</option><option value="kizzlah">kizzlah</option><option value="mradermacher">mradermacher</option><option value="ornith-ai">ornith-ai</option><option value="prithivMLmods">prithivMLmods</option><option value="vultr">vultr</option></select></label>
 <label class="vf-f"><span class="vh">Includes tier</span><select class="vsel" data-dim="tier"><option value="">All</option><option value="保守档">Conservative</option><option value="平衡档">Balanced</option><option value="极限压缩">Extreme compression</option><option value="近似无损">Near lossless</option><option value="长上下文优先">Long context first</option></select></label>
 <label class="vf-f"><span class="vh">Licence</span><select class="vsel" data-dim="lic"><option value="">All</option><option value="apache-2.0">apache-2.0</option><option value="mit">mit</option></select></label>
-<span aria-live="polite" class="vcount"></span>
 </div>
 <article class="vcard vcard-off" data-blob="ornith-ai ornith-ai/ornith-1.5-9b-gguf mit" data-lic="mit" data-q="ornith-ai" data-tier="2" data-tiers="平衡档 保守档 近似无损">
 <header class="vcard-h">
@@ -1635,7 +1601,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>ornith-ai/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>5</b> GGUF tiers totalling 45 GB. <b>Published by the model authors themselves</b>, not a third party.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Quantised by the model author; third parties are only worth considering for tiers this does not cover；No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；Total weight bytes 48.2 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Quantised by the model author; third parties are only worth considering for tiers this does not cover No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens Total weight bytes 48.2 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>AtomicChat</code> 11 tiers, <code>bartowski</code> 23 tiers, <code>Mungert</code> 26 tiers, <code>mradermacher</code> 12 tiers, among others). This repo has 5 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Published by the model author, allowing its release notes and provenance to be checked. Official status does not establish quality, speed or compatibility for every task.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Published by the model author; consult its release notes for support scope<br/>· Snapshot downloads: 5.3M; not a count of unique users, successful runs or quality validations<br/>· Rule-based candidate: <code>Q4_K_M</code> (5.8 GB), not a performance finding</span></div>
@@ -1651,7 +1617,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/AtomicChat/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>AtomicChat/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>11</b> GGUF tiers totalling 85 GB. Published by <code>AtomicChat</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/imatrix/imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-9B</code>；Total weight bytes 90.8 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/imatrix/imatrix.gguf</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-9B</code>Total weight bytes 90.8 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>bartowski</code> 23 tiers, <code>Mungert</code> 26 tiers, <code>mradermacher</code> 12 tiers, among others). This repo has 11 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K</code> (5.9 GB), not a performance finding</span></div>
@@ -1667,7 +1633,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/bartowski/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>bartowski/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>23</b> GGUF tiers totalling 141 GB. Published by <code>bartowski</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-9B</code>；Total weight bytes 151.7 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-9B</code>Total weight bytes 151.7 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 11 tiers, <code>Mungert</code> 26 tiers, <code>mradermacher</code> 12 tiers, among others). This repo has 23 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_L. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· The snapshot identifies 23 tiers; filter by size and runtime support<br/>· Rule-based candidate: <code>Q4_K_L</code> (6.7 GB), not a performance finding</span></div>
@@ -1683,7 +1649,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/Mungert/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>Mungert/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>26</b> GGUF tiers totalling 262 GB. Published by <code>Mungert</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/home/mahadeva/code/models/Ornith-1.5-9B/Ornith-1.5-9B-imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；Total weight bytes 281.7 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/home/mahadeva/code/models/Ornith-1.5-9B/Ornith-1.5-9B-imatrix.gguf</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens Total weight bytes 281.7 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 11 tiers, <code>bartowski</code> 23 tiers, <code>mradermacher</code> 12 tiers, among others). This repo has 26 tiers — the broadest coverage coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· The snapshot identifies 26 tiers; filter by size and runtime support<br/>· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K</code> (13 GB), not a performance finding</span></div>
@@ -1699,7 +1665,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/mradermacher/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>mradermacher/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>12</b> GGUF tiers totalling 76 GB. Published by <code>mradermacher</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-9B</code>；Total weight bytes 81.4 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-9B</code>Total weight bytes 81.4 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 11 tiers, <code>bartowski</code> 23 tiers, <code>Mungert</code> 26 tiers, among others). This repo has 12 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_K_M</code> (5.6 GB), not a performance finding</span></div>
@@ -1715,7 +1681,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/NANI-Nithin/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>NANI-Nithin/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>19</b> GGUF tiers totalling 108 GB. Published by <code>NANI-Nithin</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-9B</code>；Total weight bytes 115.4 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-9B</code>Total weight bytes 115.4 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 11 tiers, <code>bartowski</code> 23 tiers, <code>Mungert</code> 26 tiers, among others). This repo has 19 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_1. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_1</code> (6.0 GB), not a performance finding</span></div>
@@ -1731,7 +1697,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/prithivMLmods/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>prithivMLmods/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>12</b> GGUF tiers totalling 95 GB. Published by <code>prithivMLmods</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-9B</code>；Total weight bytes 101.9 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-9B</code>Total weight bytes 101.9 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 11 tiers, <code>bartowski</code> 23 tiers, <code>Mungert</code> 26 tiers, among others). This repo has 12 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_K_M</code> (5.6 GB), not a performance finding</span></div>
@@ -1747,7 +1713,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/vultr/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>vultr/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>4</b> GGUF tiers totalling 21 GB. Published by <code>vultr</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-9B</code>；Total weight bytes 22.9 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">No importance matrix (imatrix); this is pure weight quantisation Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-9B</code>Total weight bytes 22.9 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 11 tiers, <code>bartowski</code> 23 tiers, <code>Mungert</code> 26 tiers, among others). This repo has 4 tiers — the narrowest coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Rule-based candidate: <code>Q4_K_M</code> (6.1 GB), not a performance finding</span></div>
@@ -1764,7 +1730,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/gguf/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>gguf/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>6</b> GGUF tiers totalling 36 GB. Published by <code>gguf</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/models_out/Ornith-1.5-9B-GGUF/Ornith-1.5-9B-imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；Total weight bytes 39.0 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/models_out/Ornith-1.5-9B-GGUF/Ornith-1.5-9B-imatrix.gguf</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens Total weight bytes 39.0 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 11 tiers, <code>bartowski</code> 23 tiers, <code>Mungert</code> 26 tiers, among others). This repo has 6 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K_M. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K_M</code> (5.9 GB), not a performance finding</span></div>
@@ -1780,7 +1746,7 @@
 </div>
 </header>
 <div class="vf"><span class="vf-k">What it is</span><span class="vf-v"><a href="https://huggingface.co/kizzlah/Ornith-1.5-9B-GGUF" rel="noopener" target="_blank"><code>kizzlah/Ornith-1.5-9B-GGUF</code> ↗</a>, providing <b>11</b> GGUF tiers totalling 85 GB. Published by <code>kizzlah</code>.</span></div>
-<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/imatrix/imatrix.gguf</code>) — quantises after scoring each layer by activation statistics, usually steadier than plain RTN；Declares <code>qwen35</code>; check support in your runtime version；Declared context 262,144 tokens；The release page traces this back to <code>ornith-ai/Ornith-1.5-9B</code>；Total weight bytes 90.8 GB (the release page's <code>gguf.total</code> field)。</span></div>
+<div class="vf"><span class="vf-k">What the quantiser did</span><span class="vf-v">Ships an importance matrix (imatrix: <code>/imatrix/imatrix.gguf</code>— quantises after scoring each layer by activation statistics, usually steadier than plain RTN Declares<code>qwen35</code>check support in your runtime version Declared context 262,144 tokens The release page traces this back to<code>ornith-ai/Ornith-1.5-9B</code>Total weight bytes 90.8 GB (the release page's<code>gguf.total</code>field</span></div>
 <div class="vf"><span class="vf-k">How it differs from other variants in this series</span><span class="vf-v">The series has 9 other quantisation sources (<code>ornith-ai</code> 5 tiers, <code>AtomicChat</code> 11 tiers, <code>bartowski</code> 23 tiers, <code>Mungert</code> 26 tiers, among others). This repo has 11 tiers — middling coverage in this series.</span></div>
 <div class="vf"><span class="vf-k">Why it exists</span><span class="vf-v">Provides quantisation candidates such as Q4_K. Check base version, method, checksums and runtime support; third-party status alone does not determine quality.</span></div>
 <div class="vf"><span class="vf-k">Strengths</span><span class="vf-v">· Metadata records an imatrix; quality still requires calibration details and task evaluation<br/>· Rule-based candidate: <code>Q4_K</code> (5.9 GB), not a performance finding</span></div>
@@ -1926,7 +1892,7 @@
 <span class="muted">updated 23 tiers</span>
 </li>
 </ul>
-<p class="muted small">Base model <code>ornith-ai/Ornith-1.5-9B</code> last updated: 2026-08-23　·　data as of: 2026-10-30</p>
+<p class="muted small">Base model <code>ornith-ai/Ornith-1.5-9B</code>last updated: 2026-08-23 data as of: 2026-10-30</p>
 </div>
 </section>
 <section class="companion">
@@ -1967,7 +1933,7 @@
 <p>Model names are trademarks of their respective owners and are used here only descriptively. This site is not affiliated with or endorsed by any of the vendors above.</p>
 </section>
 </div>
-<!-- B2：量化仓筛选（脚本在 site-filter.js，读 .vwrap 作用域） -->
+B2 site-filter.js .vwrap
 <script>/* 挑对量化版 · 本地部署模型图谱 · 客户端筛选（B2，2026-10-09）
  *
  * 为什么单独一个文件而不是塞进 build.mjs 的模板字符串：

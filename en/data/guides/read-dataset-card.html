@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>How to read a dataset card | Models</title>
-<meta content="15T token、3T token、30T token 。token tokenizer ； ； 。 ， ， “ / ”。" name="description"/>
+<meta content="A dataset card is not an advertisement. Read the licence, scale definition, languages and access method first, then ask what task it fits. If one of the four is" name="description"/>
 <link href="https://models.specul.com/en/data/guides/read-dataset-card.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How to read a dataset card | Models","description":"15T token、3T token、30T token 。token tokenizer ； ； 。 ， ， “ / ”。","url":"https://models.specul.com/en/data/guides/read-dataset-card.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/data/guides/read-dataset-card.html"}}</script>
-<meta content="How to read a dataset card | Models" name="twitter:title"/><meta content="15T token、3T token、30T token 。token tokenizer ； ； 。 ， ， “ / ”。" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="How to read a dataset card | Models" name="twitter:title"/><meta content="15T token、3T token、30T token 。token tokenizer ； ； 。 ， ， “ / ”。" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/data/guides/read-dataset-card.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/data/guides/read-dataset-card.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/data/guides/read-dataset-card.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -94,23 +95,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container">
-<header class="sec-detail">
-<p class="eyebrow">Models · Data · Guide</p>
-<h1>How to read a dataset card</h1>
-<p class="sub">数据集卡不是广告页。先看许可、规模口径、语言与获取方式，再看它适合什么任务；四件事缺一件，就不要直接拿来做训练。</p>
-</header>
-<div class="sec-nav"><a href="../index.html">← 全部数据</a><a href="../../index.html">模型站</a></div>
-<div class="sec-body">
-<h2>先看许可，不要先看下载量</h2><p>许可决定你能不能用、能不能改、能不能商用、改了之后要不要同样开放。CC-BY 系列通常要署名；CC-BY-SA 有传染性；ODC-BY 也要署名；Apache-2.0 和 MIT 相对宽松，但仍要看数据集打包许可与原始内容许可是不是两件事。</p><p>如果卡片只写“研究用途”或“见原站”，就把它当成未核许可。不要用“别人都在训”来替代许可判断。</p>
-<h2>再看规模口径：token、样本、还是原始网页</h2><p>15T token、3T token、30T 原始 token 不是同一口径。token 数受 tokenizer 影响；样本数受去重影响；原始网页量不等于清洗后可训练量。跨数据集比较时，先统一到同一口径，至少写清“清洗前 / 清洗后”。</p><p>如果一个数据集只给压缩包大小，不给 token 数，就把它当成规模未知，不要按文件大小推算训练量。</p>
-<h2>语言、格式与获取方式决定清洗成本</h2><p>语言覆盖不均会直接改变模型行为。多语言数据集里英文占比高，直接混训会让小语种欠拟合；需要按语言分层采样。格式决定清洗管线：JSONL 比 Parquet 更容易流式处理，URL 元数据要先回源下载。</p><p>gated 数据集要接受条件、可能需要账号；不能把“能下载”当成“能重新分发”。</p>
-<h2>最后看任务适配与偏差说明</h2><p>预训练语料、SFT 数据、偏好数据、评测集、RAG 文档不是同一类东西。把评测集混进 SFT 会污染分数；把偏好数据当 SFT 会学到排序格式而不是回答。</p><p>卡片里的“质量”多是作者自述。找独立复现、去重记录、语言分布和敏感内容过滤说明；找不到就自己在小样本上抽检。</p>
-</div>
-<div class="sec-sources">参考：<a href="https://huggingface.co/datasets/HuggingFaceFW/fineweb" rel="noopener" target="_blank">FineWeb 数据集卡</a> · <a href="https://huggingface.co/datasets/allenai/dolma" rel="noopener" target="_blank">Dolma 数据集卡</a> · <a href="https://creativecommons.org/licenses/" rel="noopener" target="_blank">Creative Commons 许可说明</a></div>
-</div>
-</main>
+<main id="main"><div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>How to read a dataset card</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">A dataset card is not an advertisement. Read the licence, scale definition, languages and access method first, then ask what task it fits. If one of the four is missing, do not train on it directly.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>Licence before download count</h2><p>The licence decides whether you can use, modify, commercialise and redistribute the data, and whether modifications must stay open. CC-BY variants usually require attribution; CC-BY-SA is share-alike; ODC-BY requires attribution; Apache-2.0 and MIT are more permissive but the package licence and the original-content licence are still two different things.</p><h2>Scale: tokens, samples or raw web pages</h2><p>15T tokens, 3T tokens and 30T raw tokens are not the same unit. Token counts depend on the tokenizer; sample counts depend on deduplication; raw web volume is not cleaned training volume. When comparing datasets, normalise to one unit and state “before / after cleaning”.</p><h2>Languages, format and access</h2><p>Uneven language coverage changes model behaviour. A multilingual dataset dominated by English can underfit smaller languages unless you sample by language. Format determines the cleaning pipeline: JSONL streams more easily than Parquet; URL metadata may require downloading the source. A gated dataset may require accepting terms; “can download” is not “can redistribute”.</p><h2>Task fit and bias notes</h2><p>Pretraining corpora, SFT data, preference data, evaluation sets and RAG corpora are different products. Check what the card says about collection, consent, filtering, known bias and prohibited uses. Then run a small sample through your own cleaning and training pipeline before committing to the full set.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">

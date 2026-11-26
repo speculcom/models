@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Evaluating agents and tool calls: environment, tools…</title>
-<meta content="Evaluating agents and tool calls: environment, tools, steps, scoring" name="description"/>
+<meta content="An agent score is not “can the model use tools”. It is “can the task be completed under a given environment, tool set, step limit and scorer”. Missing any one o" name="description"/>
 <link href="https://models.specul.com/en/evals/guides/agent-eval.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Evaluating agents and tool calls: environment, tools…","description":"Evaluating agents and tool calls: environment, tools, steps, scoring","url":"https://models.specul.com/en/evals/guides/agent-eval.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/evals/guides/agent-eval.html"}}</script>
-<meta content="Evaluating agents and tool calls: environment, tools…" name="twitter:title"/><meta content="Evaluating agents and tool calls: environment, tools, steps, scoring" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Evaluating agents and tool calls: environment, tools…" name="twitter:title"/><meta content="Evaluating agents and tool calls: environment, tools, steps, scoring" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/evals/guides/agent-eval.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/evals/guides/agent-eval.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/evals/guides/agent-eval.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -94,24 +95,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container">
-<header class="sec-detail">
-<p class="eyebrow">Models · Evals · Guide</p>
-<h1>Evaluating agents and tool calls: environment, tools, steps, scoring</h1>
-<p class="sub">Agent 分数不是“模型会不会用工具”，而是“在给定环境、工具集、步数上限和评分器下，任务能不能完成”。四件事缺一件，分数就不可比。</p>
-</header>
-<div class="sec-nav"><a href="../index.html">← 全部评测</a><a href="../../index.html">模型站</a></div>
-<div class="sec-body">
-<h2>先固定环境与工具集</h2><p>同一个任务，在真实网站、复刻环境、Mock API 里难度完全不同。评测卡要写清：环境镜像/版本、起始状态、可用工具、权限边界。</p><p>工具集变了，分数就不能直接比。把工具名、参数 schema、最大调用次数和错误返回都记录下来。</p>
-<h2>步数与成本要一起报</h2><p>只报成功率不报步数，会掩盖“靠大量试错堆出来”的 agent。至少报：平均步数、token 成本、工具调用次数、超时率。</p><p>pass^k 适合看稳定性：同一任务跑 k 次，k 次全对的概率。它比单次 pass@1 更能暴露随机性。</p>
-<h2>评分器决定你测的是什么</h2><p>精确匹配、状态检查、单元测试、LLM judge 是四种不同的尺子。状态检查最硬，但覆盖窄；LLM judge 覆盖宽，但有偏差。</p><p>把失败分类：规划错、工具选错、参数错、环境错、评分错。只看总分，不知道下一步该改什么。</p>
-<h2>一个可复现的最小实验</h2><p>选 20 个任务，固定环境镜像、工具 schema 与步数上限；每个任务跑 3 次，记录 pass@1、pass^3、平均步数、token 成本和工具调用数。验收不是「分数更高」，而是「换模型后同一任务的成功/失败分布能解释」。</p><p>如果 pass@1 高但 pass^3 低，说明它靠运气；如果步数暴涨而成功率只升一点，说明在试错。把这两条写进验收表，再谈模型好坏。</p>
-<h2>失败分类与验收口径</h2><p>把失败分五类：规划错、工具选错、参数错、环境错、评分错；每类至少留 3 个样本，并附原始轨迹。验收时要求「新增失败样本能归因到具体一层」，否则总分再高也不可行动。</p><p>跨模型比较只比同一环境、同一工具集、同一步数上限下的结果；任何一项变了，就当作新实验，不把旧分数直接贴上来。</p>
-</div>
-<div class="sec-sources">参考：<a href="https://github.com/THUDM/AgentBench" rel="noopener" target="_blank">AgentBench</a> · <a href="https://github.com/sierra-research/tau-bench" rel="noopener" target="_blank">τ-bench</a> · <a href="https://os-world.github.io/" rel="noopener" target="_blank">OSWorld</a></div>
-</div>
-</main>
+<main id="main"><div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>Evaluating agents and tool calls: environment, tools, steps, scoring</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">An agent score is not “can the model use tools”. It is “can the task be completed under a given environment, tool set, step limit and scorer”. Missing any one of the four makes scores incomparable.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>Fix the environment and tool set</h2><p>The same task is harder on a live website than in a replica or a mock API. The evaluation card must state the environment image and version, starting state, available tools and permission boundary. If the tool set changes, scores cannot be compared directly; record tool names, parameter schemas, maximum calls and error returns.</p><h2>Report steps and cost together</h2><p>A success rate without step count hides agents that succeed by trial and error. Report average steps, token cost, tool calls and timeout rate. pass^k measures stability: the probability that all k runs of the same task succeed. It exposes randomness better than a single pass@1.</p><h2>The scorer defines what you measure</h2><p>Exact match, state check, unit test and LLM judge are four different rulers. A state check is hard but narrow; an LLM judge is broad but biased. Classify failures: planning, tool selection, parameters, environment or scorer. A total score alone does not tell you what to fix.</p><h2>A minimal reproducible experiment</h2><p>Pick 20 tasks, fix the environment image, tool schema and step limit; run each task three times and record pass@1, pass^3, average steps, token cost and tool calls. Acceptance is not “a higher score”; it is “when the model changes, the success and failure distribution on the same tasks can be explained”.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">

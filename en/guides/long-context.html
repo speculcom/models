@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Long context: window size, effective use and cost…</title>
-<meta content="“Supports 128K” is an upper bound, not a guarantee that information in the middle will be found. Long-context selection must consider position…" name="description"/>
+<meta content="“Supports 128K” is an upper bound, not a guarantee that information in the middle will be found. Long-context selection must consider position robustness, atten" name="description"/>
 <link href="https://models.specul.com/en/guides/long-context.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -23,7 +24,7 @@
 <link href="/brand.css" rel="stylesheet"/>
 <link href="/site.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Long context: window size, effective use and cost","description":"“Supports 128K” is an upper bound, not a guarantee that information in the middle will be found. Long-context selection must consider position…","url":"https://models.specul.com/en/guides/long-context.html","dateModified":"2026-11-17"}</script>
-<meta content="Long context: window size, effective use and cost…" name="twitter:title"/><meta content="“Supports 128K” is an upper bound, not a guarantee that information in the middle will be found. Long-context selection must consider position…" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Long context: window size, effective use and cost…" name="twitter:title"/><meta content="“Supports 128K” is an upper bound, not a guarantee that information in the middle will be found. Long-context selection must consider position…" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/guides/long-context.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/guides/long-context.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/guides/long-context.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -96,73 +97,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container guide-body">
+<main id="main"><div class="container guide-body">
 <nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
-<header class="page-head">
-<p class="eyebrow">How models are made　<span class="t-tag">training pipeline · stage 6</span></p>
-<h1>Long context: window size, effective use and cost<span class="sub">practitioner-perspective methodology · key facts carry official sources</span></h1>
-<p class="lede">“Supports 128K” is an upper bound, not a guarantee that information in the middle will be found. Long-context selection must consider position robustness, attention cost, KV-cache memory and task-level acceptance.</p>
-</header>
-<nav aria-label="Article contents" class="fam-sec"><p>On this page</p><ul><li><a href="#guide-section-1">A window is not effective use</a></li><li><a href="#guide-section-2">Position encoding decides extrapolation</a></li><li><a href="#guide-section-3">Attention cost and prefill</a></li><li><a href="#guide-section-4">The KV-cache bill</a></li><li><a href="#guide-section-5">Long context or RAG</a></li><li><a href="#guide-section-6">How to accept it</a></li></ul></nav>
-<section class="fam-sec" id="guide-section-0">
-<h2></h2>
-<ul>
-</ul>
-</section>
-<section class="fam-sec" id="guide-section-1">
-<h2>A window is not effective use</h2>
-<p>Lost in the Middle 的实验很直接。相关内容放开头或结尾，模型表现最好。模型表现最好。<br/>放到中间，性能显著下降，即使模型宣称支持长上下文。<br/>所以「窗口多大」只是准入条件，「中间能不能找到」要在你的任务上单独测。</p>
-</section>
-<section class="fam-sec" id="guide-section-2">
-<h2>Position encoding decides extrapolation</h2>
-<p>主流模型用 RoPE：把绝对位置写成旋转矩阵，同时在注意力里保留相对位置依赖。<br/>RoPE 的序列长度灵活性是外推的基础，但超出训练长度仍会退化；<br/>常见做法是位置插值、频率缩放或在更长数据上继续训练。</p>
-<p>看到「支持 1M」时，先问训练长度是多少、用了哪种外推方法、在什么任务上验证过。</p>
-</section>
-<section class="fam-sec" id="guide-section-3">
-<h2>Attention cost and prefill</h2>
-<p>标准注意力的计算随序列长度呈二次增长，长输入的预填充阶段最贵。<br/>解码阶段每生成一个 token 都要读历史 KV，长上下文会把带宽压力放大。</p>
-<p>工程上会用分块预填充、FlashAttention、前缀缓存来摊薄。但这些优化不改变「中间信息难找」这个模型问题。</p>
-</section>
-<section class="fam-sec" id="guide-section-4">
-<h2>The KV-cache bill</h2>
-<p>KV cache 随一串因子增长。包括层数、头数、头维度、序列长度、批量和字节。<br/>上下文翻倍，KV cache 也大致翻倍；这往往比权重更早撞墙。<br/>估算顺序：先算权重，再算目标上下文与批量下的 KV cache，最后留运行时余量。</p>
-<p>长上下文服务要按「并发 × 长度」定价，而不是按单次请求定价。</p>
-</section>
-<section class="fam-sec" id="guide-section-5">
-<h2>Long context or RAG</h2>
-<p><b>依据：</b> 资料总量小、需要整体推理、且能接受预填充成本时，长上下文更简单。<br/>资料量大、更新频繁、需要引用定位时，RAG 更可控。<br/>两者可以叠加：先用检索把候选缩到几十 K，再让模型在窗口内做跨段推理。</p>
-</section>
-<section class="fam-sec" id="guide-section-6">
-<h2>How to accept it</h2>
-<ul>
-<li>位置测试：同一关键信息放开头、中间、结尾，各测 20 次，记录命中率。</li>
-<li>干扰测试：加入大量相似但无关的段落，看是否被带偏。</li>
-<li>成本测试：目标长度与并发下的首字延迟、吞吐、显存峰值。</li>
-<li>任务测试：用真实合同、日志或代码库，不用「大海捞针」一根针代替全部能力。</li>
-</ul>
-<p><b>边界</b></p>
-<p>论文结论来自特定模型与任务。不同模型、不同外推方法与不同推理框架的表现不能直接移植。</p>
-<p><b>先补概念</b></p>
-<p><a href="https://learn.specul.com/en/term/%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3/" rel="noopener" target="_blank">上下文窗口</a> 与 <a href="https://learn.specul.com/en/term/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="noopener" target="_blank">长上下文</a> 是学 AI 站的相关科普。</p>
-</section>
-<nav aria-label="Next steps" class="fam-sec">
-<h2>What to do next</h2>
-<ul><li><a href="/en/guides/gpu-cost-math.html#capacity-workbench">Budget context and concurrency</a></li>
-<li><a href="https://learn.specul.com/en/guide/%E6%80%8E%E4%B9%88%E9%AA%8C%E8%AF%81%20AI%20%E7%9A%84%E8%BE%93%E5%87%BA/">Verify evidence for the output</a></li>
-<li><a href="https://tools.specul.com/en/mcp/guides/failure-library.html#by-symptom">Troubleshoot by symptom</a></li></ul>
-</nav>
-<section class="fam-sec fam-sources">
-<h2>Sources</h2>
-<ul class="fam-src-list">
-<li>Lost in the Middle（arXiv 2307.03172，相关信息位于中部时性能下降，2026-11-17 直抓摘要页）：<a href="https://arxiv.org/abs/2307.03172" rel="noopener" target="_blank">https://arxiv.org/abs/2307.03172</a></li>
-<li>RoFormer / RoPE（arXiv 2104.09864，旋转位置编码与外推性质，2026-11-17 直抓摘要页）：<a href="https://arxiv.org/abs/2104.09864" rel="noopener" target="_blank">https://arxiv.org/abs/2104.09864</a></li>
-<li>Mixtral of Experts（arXiv 2401.04088，32K 训练上下文，2026-11-17 直抓摘要页）：<a href="https://arxiv.org/abs/2401.04088" rel="noopener" target="_blank">https://arxiv.org/abs/2401.04088</a></li>
-</ul>
-<p class="fam-foot">Base source snapshot: 2026-11-17; item-specific additions and check scope appear in the text and source labels. Check original specifications, methods and conditions.</p>
-</section>
-</div>
-</main>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>Long context: window size, effective use and cost</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">“Supports 128K” is an upper bound, not a guarantee that information in the middle will be found. Long-context selection must consider position robustness, attention cost, KV-cache memory and task-level acceptance.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>A window is not effective use</h2><p>Needle-in-a-haystack tests show retrieval at one position; real tasks require reasoning across many passages. Test multi-fact questions, conflicting sources and middle-position evidence. Report accuracy by position bucket, not one aggregate score.</p><h2>Position encoding decides extrapolation</h2><p>Models trained at 8K may advertise 128K through rope scaling or YaRN. Extrapolation can preserve fluency while losing precision. Check the model card for the training length, the extension method and whether the extension was fine-tuned or applied at inference only.</p><h2>Attention cost and prefill</h2><p>Long prompts increase prefill time and KV-cache memory. Estimate memory as a function of layers, KV heads, head dimension, sequence length and batch size. For agent workloads, repeated calls with the same prefix can be cached; without caching, the same long context is paid again and again.</p><h2>The KV cache is the hidden bill</h2><p>Serving many long-context users multiplies KV-cache memory. Quantised KV caches and paged attention reduce the footprint but can change quality. Measure concurrent sessions at your target context length; a model that serves one 128K request may not serve ten.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">

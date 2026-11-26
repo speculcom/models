@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Checking benchmark contamination: dataset dates, then…</title>
-<meta content="Checking benchmark contamination: dataset dates, then retrieval" name="description"/>
+<meta content="A high benchmark score can mean capability, or it can mean the model has seen the questions. Contamination checking is not a sentence saying “we deduplicated”; " name="description"/>
 <link href="https://models.specul.com/en/evals/guides/eval-contamination.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Checking benchmark contamination: dataset dates, then…","description":"Checking benchmark contamination: dataset dates, then retrieval","url":"https://models.specul.com/en/evals/guides/eval-contamination.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/evals/guides/eval-contamination.html"}}</script>
-<meta content="Checking benchmark contamination: dataset dates, then…" name="twitter:title"/><meta content="Checking benchmark contamination: dataset dates, then retrieval" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Checking benchmark contamination: dataset dates, then…" name="twitter:title"/><meta content="Checking benchmark contamination: dataset dates, then retrieval" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/evals/guides/eval-contamination.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/evals/guides/eval-contamination.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/evals/guides/eval-contamination.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -94,22 +95,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container">
-<header class="sec-detail">
-<p class="eyebrow">Models · Evals · Guide</p>
-<h1>Checking benchmark contamination: dataset dates, then retrieval</h1>
-<p class="sub">模型分数高，不一定是能力强，可能是题目见过。污染检查不是一句“我们做了去重”，而是可复现的题集时间线 + 检索证据。</p>
-</header>
-<div class="sec-nav"><a href="../index.html">← 全部评测</a><a href="../../index.html">模型站</a></div>
-<div class="sec-body">
-<h2>先建题集时间线</h2><p>记录题集首次公开日期、当前版本、训练语料截止日期。训练截止晚于题集公开，就有污染可能；训练截止早于题集公开，也不能完全排除，因为模型可能见过转述或泄漏版本。</p><p>把题集拆成“公开题 / 隐藏题 / 新出题”三类；只有隐藏题或新题才能比较干净地测能力。公开题分数要标注“可能污染”。</p>
-<h2>再做三种检索检查</h2><p>精确匹配：把题面做规范化（去标点、统一大小写、去空白），在训练语料里查完全相同的 n-gram。命中率高，说明题面直接进过训练。</p><p>近似匹配：用 MinHash / SimHash 或嵌入检索找改写版本；注意代码题要按 token 而不是按行匹配。</p><p>答案匹配：有些题面没进训练，但答案与解析进了；把答案、选项和解析一起查。</p>
-<h2>最后看分数是否“异常整齐”</h2><p>同一模型在公开集上明显高于隐藏集，或不同模板下分数波动异常小，都值得怀疑。把 prompt 模板、few-shot 数、选项顺序换一遍；如果分数几乎不变，可能不是能力而是记忆。</p><p>污染检查结果要写进评测卡：查了什么、命中多少、剩余风险是什么。不要只写“已检查”。</p>
-</div>
-<div class="sec-sources">参考：<a href="https://crfm.stanford.edu/helm/" rel="noopener" target="_blank">HELM 评测框架</a> · <a href="https://livebench.ai/" rel="noopener" target="_blank">LiveBench（防污染设计）</a> · <a href="https://arxiv.org/abs/2303.08774" rel="noopener" target="_blank">GPT-4 技术报告（污染讨论）</a></div>
-</div>
-</main>
+<main id="main"><div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>Checking benchmark contamination: dataset dates, then retrieval</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">A high benchmark score can mean capability, or it can mean the model has seen the questions. Contamination checking is not a sentence saying “we deduplicated”; it is a reproducible timeline plus retrieval evidence.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>Build a benchmark timeline</h2><p>Record the benchmark’s first public date, current version and the model’s training-data cutoff. If training data extends past the benchmark release, contamination is possible; even an earlier cutoff does not fully exclude paraphrases or leaked versions. Split the benchmark into public, hidden and newly written items; only hidden or new items measure capability relatively cleanly.</p><h2>Three retrieval checks</h2><p>Exact match: normalise the prompt (punctuation, case, whitespace) and search the training corpus for identical n-grams. A high hit rate means the prompt entered training. Near-duplicate: use MinHash, SimHash or embedding search for paraphrases; for code, compare tokens rather than lines. Answer match: some prompts are absent but answers and explanations are present; search answers, options and rationales too.</p><h2>Look for suspiciously smooth scores</h2><p>A model that scores much higher on the public set than on the hidden set, or whose scores barely move across prompt templates, is worth suspecting. Change the prompt template, few-shot count and option order. If the score hardly moves, the model may be remembering rather than reasoning.</p><h2>Write the result into the eval card</h2><p>State what was checked, how many matches were found and what residual risk remains. “Checked” alone is not evidence. Keep the scripts, corpus version and date so another team can reproduce the check.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">

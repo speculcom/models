@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Reading multimodal evals: images, video and documents are…</title>
-<meta content="Reading multimodal evals: images, video and documents are three different things" name="description"/>
+<meta content="Multimodal scores depend on resolution, frame sampling, OCR and answer format. First confirm which input family is measured, then ask whether the score is compa" name="description"/>
 <link href="https://models.specul.com/en/evals/guides/multimodal-eval.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Reading multimodal evals: images, video and documents are…","description":"Reading multimodal evals: images, video and documents are three different things","url":"https://models.specul.com/en/evals/guides/multimodal-eval.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/evals/guides/multimodal-eval.html"}}</script>
-<meta content="Reading multimodal evals: images, video and documents are…" name="twitter:title"/><meta content="Reading multimodal evals: images, video and documents are three different things" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Reading multimodal evals: images, video and documents are…" name="twitter:title"/><meta content="Reading multimodal evals: images, video and documents are three different things" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/evals/guides/multimodal-eval.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/evals/guides/multimodal-eval.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/evals/guides/multimodal-eval.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -94,24 +95,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container">
-<header class="sec-detail">
-<p class="eyebrow">Models · Evals · Guide</p>
-<h1>Reading multimodal evals: images, video and documents are three different things</h1>
-<p class="sub">多模态分数受分辨率、抽帧、OCR 和答案格式影响。先确认它测的是哪一类输入，再谈分数能不能比。</p>
-</header>
-<div class="sec-nav"><a href="../index.html">← 全部评测</a><a href="../../index.html">模型站</a></div>
-<div class="sec-body">
-<h2>图像：分辨率与 OCR 是隐藏变量</h2><p>同一张图，缩到 512 和原图 2048，OCR 与细节题分数会差很多。评测卡要写图像长边、压缩方式、是否切图。</p><p>图表题还要看单位、刻度和图例；模型答对数字但读错单位，不能算对。</p>
-<h2>视频：抽帧数与时间戳决定上限</h2><p>视频理解不是“抽几帧给模型看”。抽帧数、采样策略、是否带字幕、是否保留时间戳，都会改变结果。长视频还要看模型能不能定位到具体片段。</p><p>把“视频问答”和“视频生成”分开；前者测理解，后者测生成，分数不能混。</p>
-<h2>文档：ANLS 与精确匹配不是一回事</h2><p>DocVQA 常用 ANLS（归一化编辑距离），对 OCR 小错更宽容；精确匹配更严。报分数时要写指标，不要只写“准确率”。</p><p>文档版面、表格合并单元格、手写体是三个不同难点；抽检时分开看。</p>
-<h2>先做输入口径表</h2><p>同一道题至少跑三种输入：原图、长边 1024、长边 512；视频固定 8/16/32 帧并保留时间戳；文档保留版面与表格结构。把每种输入的分数并列，差值超过 5 分就说明结论依赖预处理，不能只报最高分。</p><p>输入口径表要写清长边、压缩格式、抽帧策略、是否 OCR、是否切图；这些不是实验细节，而是分数的一部分。</p>
-<h2>抽检与失败模式</h2><p>每个模态抽 30 题人工复核：OCR 错、单位错、时间定位错、生成内容与问题无关各留样本。验收要求「指标 + 输入口径 + 失败类型」三件齐全，缺一项就不与其他模型横比。</p><p>视频题额外看时间戳定位：模型答对内容但指向错片段，仍算定位失败；文档题额外看合并单元格与手写体，不能用一个总准确率盖住两类错误。</p>
-</div>
-<div class="sec-sources">参考：<a href="https://mmmu-benchmark.github.io/" rel="noopener" target="_blank">MMMU</a> · <a href="https://video-mme.github.io/" rel="noopener" target="_blank">Video-MME</a> · <a href="https://www.docvqa.org/" rel="noopener" target="_blank">DocVQA</a></div>
-</div>
-</main>
+<main id="main"><div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>Reading multimodal evals: images, video and documents are three different things</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">Multimodal scores depend on resolution, frame sampling, OCR and answer format. First confirm which input family is measured, then ask whether the score is comparable.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>Images: resolution and OCR are hidden variables</h2><p>The same image downscaled to 512 or kept at 2048 produces very different OCR and detail scores. The eval card should state the long-edge size, compression and whether tiling was used. For charts, check units, axes and legends; a model that reads the right number with the wrong unit is not correct.</p><h2>Video: frame count and timestamps set the ceiling</h2><p>Video understanding is not “sample a few frames”. Frame count, sampling strategy, subtitles and timestamps all change results. For long video, check whether the model can locate a specific segment. Keep video question answering and video generation separate; they measure different capabilities.</p><h2>Documents: ANLS and exact match are different</h2><p>DocVQA often uses ANLS (normalised edit distance), which tolerates small OCR errors; exact match is stricter. State the metric, not just “accuracy”. Layout, merged table cells and handwriting are three different difficulties; inspect them separately.</p><h2>Build an input-recipe table</h2><p>Run at least three inputs per task: original, long edge 1024 and long edge 512; for video, fix 8/16/32 frames and keep timestamps; for documents, preserve layout and table structure. Put the scores side by side. If the gap exceeds about 5 points, the conclusion depends on preprocessing and the highest score is not the headline.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">

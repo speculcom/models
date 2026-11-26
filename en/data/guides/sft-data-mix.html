@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Mixing SFT data: define behaviour before volume | Models</title>
-<meta content="Mixing SFT data: define behaviour before volume" name="description"/>
+<meta content="SFT is not “mix every instruction dataset you can find”. Define the behaviours the model should learn, stratify the mix by behaviour, and use a held-out set to " name="description"/>
 <link href="https://models.specul.com/en/data/guides/sft-data-mix.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Mixing SFT data: define behaviour before volume | Models","description":"Mixing SFT data: define behaviour before volume","url":"https://models.specul.com/en/data/guides/sft-data-mix.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/data/guides/sft-data-mix.html"}}</script>
-<meta content="Mixing SFT data: define behaviour before volume | Models" name="twitter:title"/><meta content="Mixing SFT data: define behaviour before volume" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Mixing SFT data: define behaviour before volume | Models" name="twitter:title"/><meta content="Mixing SFT data: define behaviour before volume" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/data/guides/sft-data-mix.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/data/guides/sft-data-mix.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/data/guides/sft-data-mix.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -94,23 +95,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container">
-<header class="sec-detail">
-<p class="eyebrow">Models · Data · Guide</p>
-<h1>Mixing SFT data: define behaviour before volume</h1>
-<p class="sub">SFT 不是把能找到的指令数据全混在一起。先定你要模型学会哪几种行为，再按行为分层配比，最后用留出集检查有没有学偏。</p>
-</header>
-<div class="sec-nav"><a href="../index.html">← 全部数据</a><a href="../../index.html">模型站</a></div>
-<div class="sec-body">
-<h2>先列行为清单</h2><p>把目标行为写成可检查的条目：按格式回答、引用来源、承认不知道、拒绝越权、分步骤执行、使用工具前先确认。每条行为对应一类样本，不要用“通用对话”一锅端。</p><p>行为清单要和评测集对应。没有对应评测的行为，先不要放进首批训练目标。</p>
-<h2>配比按“行为覆盖”而不是“数据来源”</h2><p>常见错误是按来源配比：30% Dolly、30% OASST、40% 合成。应该按行为配比：格式类多少、引用类多少、拒答类多少、工具类多少。来源只作为实现手段。</p><p>合成数据可以补长尾，但不要超过总样本的一半；合成数据的风格会放大，必须有真实或人工样本压住。</p>
-<h2>去重、去模板、去污染</h2><p>先做近重复去重与模板去重，再把评测集从训练集里剔除。把 MMLU、GSM8K 之类评测题混进 SFT，会让分数虚高，且很难事后发现。</p><p>对多轮对话，按“整段对话”去重，不要只按单条消息去重；否则同一段对话换个顺序又进来了。</p>
-<h2>留出集与回归</h2><p>留出集要覆盖每个行为，且不能和训练集同源。每次改数据配比都跑同一套留出集，记录版本、样本数、通过率与失败样本。</p><p>如果某个行为在留出集上变差，先查这类样本的配比与模板，不要先调模型超参。数据问题通常比超参更贵。</p>
-</div>
-<div class="sec-sources">参考：<a href="https://huggingface.co/datasets/OpenAssistant/oasst1" rel="noopener" target="_blank">OpenAssistant OASST1</a> · <a href="https://huggingface.co/datasets/databricks/databricks-dolly-15k" rel="noopener" target="_blank">Databricks Dolly 15k</a> · <a href="https://huggingface.co/datasets/HuggingFaceH4/ultrachat_200k" rel="noopener" target="_blank">UltraChat 200k</a></div>
-</div>
-</main>
+<main id="main"><div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>Mixing SFT data: define behaviour before volume</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">SFT is not “mix every instruction dataset you can find”. Define the behaviours the model should learn, stratify the mix by behaviour, and use a held-out set to check for drift.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>List behaviours first</h2><p>Write target behaviours as checkable items: answer in a required format, cite sources, admit uncertainty, refuse overreach, execute step by step, confirm before using a tool. Each behaviour maps to a sample family; do not lump everything under “general conversation”.</p><h2>Mix by behaviour coverage, not source</h2><p>A common mistake is mixing by source: 30% Dolly, 30% OASST, 40% synthetic. Mix by behaviour instead: format, citation, refusal, tool use. Source is only an implementation detail. Synthetic data can fill long-tail cases but should not exceed about half the mix; its style will amplify without real or human-written anchors.</p><h2>Deduplicate, remove templates, remove contamination</h2><p>Run near-duplicate and template deduplication, then remove evaluation sets from training. Mixing MMLU or GSM8K items into SFT inflates scores and is hard to detect later. For multi-turn data, deduplicate whole conversations, not individual messages.</p><h2>Holdout and regression</h2><p>The held-out set must cover every behaviour and must not share sources with training. Run the same held-out set after every mix change; record version, sample count, pass rate and failure examples. If one behaviour regresses, inspect its share and templates before tuning hyperparameters; data problems are usually more expensive than hyperparameter noise.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">

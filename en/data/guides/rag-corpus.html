@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Choosing a RAG corpus: define the question before the…</title>
-<meta content="Choosing a RAG corpus: define the question before the documents" name="description"/>
+<meta content="A RAG corpus is not “the more the better”. Write down what users will ask, which document family should answer, and whether the documents change, before decidin" name="description"/>
 <link href="https://models.specul.com/en/data/guides/rag-corpus.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Choosing a RAG corpus: define the question before the…","description":"Choosing a RAG corpus: define the question before the documents","url":"https://models.specul.com/en/data/guides/rag-corpus.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/data/guides/rag-corpus.html"}}</script>
-<meta content="Choosing a RAG corpus: define the question before the…" name="twitter:title"/><meta content="Choosing a RAG corpus: define the question before the documents" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Choosing a RAG corpus: define the question before the…" name="twitter:title"/><meta content="Choosing a RAG corpus: define the question before the documents" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/data/guides/rag-corpus.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/data/guides/rag-corpus.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/data/guides/rag-corpus.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -94,23 +95,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container">
-<header class="sec-detail">
-<p class="eyebrow">Models · Data · Guide</p>
-<h1>Choosing a RAG corpus: define the question before the documents</h1>
-<p class="sub">RAG 的语料不是“越多越好”。先写清用户会问什么、答案应该来自哪类文档、文档会不会更新，再决定收什么、切多大、怎么评。</p>
-</header>
-<div class="sec-nav"><a href="../index.html">← 全部数据</a><a href="../../index.html">模型站</a></div>
-<div class="sec-body">
-<h2>先写 20 个真实问题</h2><p>从用户真正会问的问题开始，不要从“我有哪些文档”开始。每个问题标注：答案在哪类文档、是否需要多跳、是否有时效、是否涉及权限。</p><p>如果 20 个问题里有 15 个答案在同一个文档集，就先做这个小集；不要为了覆盖长尾把整个站点抓下来。</p>
-<h2>文档质量比切分参数更重要</h2><p>重复、过时、互相矛盾的文档，会让检索看起来召回很高、答案却互相打架。先做去重、版本标记、失效标记和权限标记，再调 chunk size。</p><p>切分要保留标题层级与表格结构；把一张表切成几段，模型很难拼回关系。对合同、法规、手册这类文档，按节切比按固定字数切更稳。</p>
-<h2>检索与生成分开评</h2><p>检索评召回与排序：正确段落有没有进前 k、排在第几。生成评忠实度与完整性：答案是否只用检索到的内容、有没有漏掉关键条件。</p><p>不要用一个“回答好不好”的总分代替两项。检索错、生成对，是运气；检索对、生成错，是提示或模型问题。分开记，才知道该改哪。</p>
-<h2>更新与权限要进设计</h2><p>文档会更新，索引要能按文档版本重建；删除的文档要从索引里删掉，不能只覆盖页面。权限要在检索层做过滤，不能靠提示词“请不要回答”。</p><p>如果文档含个人信息或客户数据，先做脱敏与访问控制；RAG 不是把数据关进模型里就安全了。</p>
-</div>
-<div class="sec-sources">参考：<a href="https://huggingface.co/datasets/google-research-datasets/natural_questions" rel="noopener" target="_blank">Natural Questions</a> · <a href="https://huggingface.co/datasets/BeIR/beir" rel="noopener" target="_blank">BEIR</a> · <a href="https://docs.ragas.io/" rel="noopener" target="_blank">RAGAS 文档</a></div>
-</div>
-</main>
+<main id="main"><div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>Choosing a RAG corpus: define the question before the documents</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">A RAG corpus is not “the more the better”. Write down what users will ask, which document family should answer, and whether the documents change, before deciding what to collect, how to chunk and how to evaluate.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>Write 20 real questions first</h2><p>Start from questions users actually ask, not from the documents you happen to have. For each question, mark the document family, whether it needs multiple hops, whether it is time-sensitive and whether permissions apply. If 15 of 20 answers live in one small set, build that set first.</p><h2>Document quality beats chunk size</h2><p>Duplicate, stale and contradictory documents make retrieval look good while answers conflict. Deduplicate, mark versions, mark invalid documents and mark permissions before tuning chunk size. Preserve heading hierarchy and table structure; splitting a table into fragments makes relations hard to recover.</p><h2>Evaluate retrieval and generation separately</h2><p>Retrieval is measured by recall and ranking: did the right passage enter the top k, and at what rank? Generation is measured by faithfulness and completeness: did the answer use only retrieved content, and did it miss a key condition? Do not replace both with one “answer quality” score.</p><h2>Updates and permissions belong in the design</h2><p>Documents change; the index must be rebuildable by document version. Deleted documents must be removed from the index, not just hidden. Permission filtering belongs in retrieval, not in a prompt that says “please do not answer”. If the corpus contains personal or customer data, redact and control access before indexing.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">

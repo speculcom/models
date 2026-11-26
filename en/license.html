@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -25,14 +26,7 @@
 <style>:root { --accent: #8b7cf8; }</style>
 <link href="/license.css" rel="stylesheet"/><script defer="" src="/license.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Model licence quick reference: commercial use, attribution, MAU and distillation","url":"https://models.specul.com/en/license.html","dateModified":"2026-11-25","description":"33 licence records for model weights and tools, with commercial use, attribution, user thresholds and derivation terms."}</script>
-<meta content="Model licence quick reference: commercial use, attribution, MAU and distillation" name="twitter:title"/><meta content="33 licence records for model weights and tools, with commercial use, attribution, user thresholds and derivation terms." name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
-<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
-     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
-     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
-     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
-     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
-     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
-     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<meta content="Model licence quick reference: commercial use, attribution, MAU and distillation" name="twitter:title"/><meta content="33 licence records for model weights and tools, with commercial use, attribution, user thresholds and derivation terms." name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/license.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/license.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/license.html" hreflang="x-default" rel="alternate"/></head>
 <body class="brand-ambient has-tabbar has-tabbar-1row">
 <a class="t-skip" href="#main">Skip to main content</a>
 <header class="site-header">
@@ -56,19 +50,11 @@
 <a href="https://chain.specul.com/en/">Chain</a>
 <a href="https://nav.specul.com/en/">AI Directory</a>
 </nav>
-<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
-           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
-           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
-           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
 <span class="nav-tools">
 <a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
 <button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
-<a aria-label="切换到中文" class="icon-btn" href="/license.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+<a aria-label="切换到中文" class="icon-btn" href="/license.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文"></a>
 </span>
-<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
-           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
-           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
-           「导航被藏进一个点了没反应的按钮」。 -->
 <button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
 <i></i><i></i><i></i>
 </button>
@@ -101,47 +87,47 @@
 <main id="main">
 <section class="decision-hero">
 <div class="container">
-<p class="kicker">许可证速查</p>
-<h1>开源 ≠ 随便用：先看四个问题</h1>
-<p class="lede">这份速查把模型权重与常用工具的许可拆成四栏：能不能商用、要不要署名、有没有用户规模门槛、允不允许蒸馏/衍生。只做字段翻译与原文摘录，不替你做法律判断。</p>
-<div class="decision-meta"><span><b>33</b> 条许可记录</span><span>核验 <b>2026-11-25</b></span><span class="meta-warn">不是法律意见</span></div>
+<p class="kicker">Licence quick reference</p>
+<h1>Open source is not free-for-all: four questions first</h1>
+<p class="lede">This quick reference splits model-weight and tool licences into four questions: commercial use, attribution, user-scale thresholds, and distillation/derivatives. It translates fields and quotes the original; it does not make a legal judgment.</p>
+<div class="decision-meta"><span>33 licence records</span><span>Verified 2026-11-25</span><span class="meta-warn">Not legal advice</span></div>
 </div>
 </section>
 <section class="section">
 <div class="container">
-<p class="kicker">先看这四个问题</p>
-<h2>“商用”只是第一关</h2>
+<p class="kicker">Start with four questions</p>
+<h2>“Commercial use” is only the first gate</h2>
 <div class="license-grid">
-<article class="license-help"><h3>1. 能不能商用</h3><p>Apache/MIT 通常允许；AGPL 允许但有开源义务；厂商自定义许可（other/OpenMDW）必须读原文。</p></article>
-<article class="license-help"><h3>2. 要不要署名</h3><p>MIT/Apache 要保留版权与许可声明；有的厂商还要求用户文档署名。删掉声明再商用，是最常见的坑。</p></article>
-<article class="license-help"><h3>3. 有没有用户规模门槛</h3><p>有些“开放”许可在超过 MAU/收入门槛后要另签商业许可。本页没看到门槛的，写“未见”，不写“没有”。</p></article>
-<article class="license-help"><h3>4. 能不能蒸馏/衍生</h3><p>许可允许改代码，不等于允许用输出训练另一个模型。蒸馏条款要单独读；本页不替厂商扩大许可。</p></article>
+<article class="license-help"><h3>1. Can it be used commercially?</h3><p>Apache and MIT usually allow it; AGPL allows it but adds an open-source obligation; vendor-specific licences (other/OpenMDW) must be read in full.</p></article>
+<article class="license-help"><h3>2. Is attribution required?</h3><p>MIT and Apache require keeping the copyright and licence notices; some vendors also require attribution in user documentation. Removing notices before commercial use is the most common mistake.</p></article>
+<article class="license-help"><h3>3. Is there a user-scale threshold?</h3><p>Some “open” licences require a separate commercial licence above a MAU or revenue threshold. Where no threshold is found, this page says “not found”, not “none”.</p></article>
+<article class="license-help"><h3>4. Is distillation or derivation allowed?</h3><p>Permission to modify code does not automatically permit using outputs to train another model. Distillation clauses must be read separately; this page does not expand a vendor licence.</p></article>
 </div>
 </div>
 </section>
 <section class="section section-inset">
 <div class="container">
-<p class="kicker">筛选</p>
-<h2>按你的用法收窄</h2>
+<p class="kicker">Filter</p>
+<h2>Narrow by how you use it</h2>
 <div class="license-filters">
-<label for="lic-search">搜索</label>
-<input autocomplete="off" id="lic-search" placeholder="模型/厂商/许可名" type="search"/>
-<label for="lic-usage">用法</label>
+<label for="lic-search">Search</label>
+<input autocomplete="off" id="lic-search" placeholder="Model / vendor / licence" type="search"/>
+<label for="lic-usage">Use</label>
 <select id="lic-usage">
-<option value="any">不限</option>
-<option value="internal">公司内部使用</option>
-<option value="client">交付给客户</option>
-<option value="redistribute">再分发/对外开源</option>
-<option value="saas">SaaS / 对外服务</option>
+<option value="any">Any</option>
+<option value="internal">Internal company use</option>
+<option value="client">Deliver to customers</option>
+<option value="redistribute">Redistribute / open-source</option>
+<option value="saas">SaaS / public service</option>
 </select>
-<label for="lic-type">类型</label>
-<select id="lic-type"><option value="all">全部</option><option value="model">模型权重</option><option value="tool">工具/服务</option></select>
-<label class="lic-check"><input id="lic-strict" type="checkbox"/> 只看“明确允许商用”</label>
+<label for="lic-type">Type</label>
+<select id="lic-type"><option value="all">All</option><option value="model">Model weights</option><option value="tool">Tool / service</option></select>
+<label class="lic-check">Only “commercial use explicitly allowed”</label>
 </div>
 <div class="license-usage-note">
-<p><b>四种用法看不同条款：</b>内部使用看商用与数据留存；交付客户看再分发与责任；对外开源看署名与开源义务；SaaS 对外服务还要看 MAU 门槛、备案与内容安全。筛不到就放宽一个条件，别把“未知”当“允许”。</p>
+<p>Different uses trigger different clauses: internal use looks at commercial rights and data retention; delivery to customers looks at redistribution and liability; open-sourcing looks at attribution and open-source obligations; public SaaS also looks at MAU thresholds, filing and content safety. If nothing matches, relax one condition; do not treat “unknown” as “allowed”.</p>
 </div>
-<p class="section-desc" id="lic-count">共 33 条。筛选不会改变排序；未知的许可保留在结果里并标“需确认”，不替你删掉。</p>
+<p class="section-desc" id="lic-count">33 records. Filtering does not change the order; unknown licences stay in the results marked “needs confirmation” and are not removed for you.</p>
 </div>
 </section>
 <section class="section">
@@ -149,710 +135,710 @@
 <div class="license-card-grid" id="license-grid">
 <article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="千问 3.8 · qwen3.8 27b（密集） 阿里 · 通义千问 apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
-<h3>千问 3.8 · Qwen3.8 27B（密集）</h3>
-<p class="license-vendor">阿里 · 通义千问 · <span class="license-id">Apache-2.0</span></p>
+<h3>Qwen 3.8 · Qwen3.8 27B (Dense)</h3>
+<p class="license-vendor">Alibaba ·  Qwen ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/Qwen/Qwen3.8-27B" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/qwen3-8/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/Qwen/Qwen3.8-27B" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/qwen3-8/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="千问 3.8 · qwen3.8 flash-next 阿里 · 通义千问 厂商自定义许可（other）" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
-<h3>千问 3.8 · Qwen3.8 Flash-Next</h3>
-<p class="license-vendor">阿里 · 通义千问 · <span class="license-id">厂商自定义许可（other）</span></p>
+<h3>Qwen 3.8 · Qwen3.8 Flash-Next</h3>
+<p class="license-vendor">Alibaba ·  Qwen ·  Vendor-specific licence (other)</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">模型卡标注 other；本次没有逐条读完原文，不能替你判断商用/蒸馏。</blockquote>
+<blockquote class="license-quote">The model card says “other”; the full text was not read line by line, so this page cannot decide commercial-use or distillation rights for you.</blockquote>
 <div class="license-links">
-<a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/qwen3-8/">本站档案</a>
+<a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" rel="noopener" target="_blank">Source ↗</a>
+<a href="https://models.specul.com/en/series/qwen3-8/">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="gemma 4 · gemma 4 26b-a4b（moe） google apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
-<h3>Gemma 4 · Gemma 4 26B-A4B（MoE）</h3>
-<p class="license-vendor">Google · <span class="license-id">Apache-2.0</span></p>
+<h3>Gemma 4 · Gemma 4 26B-A4B (MoE)</h3>
+<p class="license-vendor">Google ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/google/gemma-4-26B-A4B-it" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/gemma-4/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/google/gemma-4-26B-A4B-it" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/gemma-4/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="gemma 4 · gemma 4 31b（密集） google apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
-<h3>Gemma 4 · Gemma 4 31B（密集）</h3>
-<p class="license-vendor">Google · <span class="license-id">Apache-2.0</span></p>
+<h3>Gemma 4 · Gemma 4 31B (Dense)</h3>
+<p class="license-vendor">Google ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/google/gemma-4-31B-it" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/gemma-4/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/google/gemma-4-31B-it" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/gemma-4/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="gemma 4 · gemma 4 e4b（高效） google apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
-<h3>Gemma 4 · Gemma 4 E4B（高效）</h3>
-<p class="license-vendor">Google · <span class="license-id">Apache-2.0</span></p>
+<h3>Gemma 4 · Gemma 4 E4B (Efficient)</h3>
+<p class="license-vendor">Google ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/google/gemma-4-E4B-it" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/gemma-4/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/google/gemma-4-E4B-it" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/gemma-4/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="glm 5 · glm 5.3（完整版） 智谱 ai 厂商自定义许可（other）" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
-<h3>GLM 5 · GLM 5.3（完整版）</h3>
-<p class="license-vendor">智谱 AI · <span class="license-id">厂商自定义许可（other）</span></p>
+<h3>GLM 5 · GLM 5.3 (Full version)</h3>
+<p class="license-vendor">Zhipu AI ·  Vendor-specific licence (other)</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">模型卡标注 other；本次没有逐条读完原文，不能替你判断商用/蒸馏。</blockquote>
+<blockquote class="license-quote">The model card says “other”; the full text was not read line by line, so this page cannot decide commercial-use or distillation rights for you.</blockquote>
 <div class="license-links">
-<a href="https://huggingface.co/zai-org/GLM-5.3" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/glm-5/">本站档案</a>
+<a href="https://huggingface.co/zai-org/GLM-5.3" rel="noopener" target="_blank">Source ↗</a>
+<a href="https://models.specul.com/en/series/glm-5/">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="glm 5 · glm 5.3 flash 智谱 ai mit" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>GLM 5 · GLM 5.3 Flash</h3>
-<p class="license-vendor">智谱 AI · <span class="license-id">MIT</span></p>
+<p class="license-vendor">Zhipu AI ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/zai-org/GLM-5.3-Flash" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/glm-5/">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/zai-org/GLM-5.3-Flash" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/glm-5/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="deepseek v4 · deepseek v4.1 flash deepseek mit" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>DeepSeek V4 · DeepSeek V4.1 Flash</h3>
-<p class="license-vendor">DeepSeek · <span class="license-id">MIT</span></p>
+<p class="license-vendor">DeepSeek ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/deepseek-v4/">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/deepseek-v4/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="gpt-oss · gpt-oss 20b openai apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>gpt-oss · gpt-oss 20B</h3>
-<p class="license-vendor">OpenAI · <span class="license-id">Apache-2.0</span></p>
+<p class="license-vendor">OpenAI ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/openai/gpt-oss-20b" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/gpt-oss/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/openai/gpt-oss-20b" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/gpt-oss/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="kimi k3 · kimi k3 月之暗面 厂商自定义许可（other）" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
 <h3>Kimi K3 · Kimi K3</h3>
-<p class="license-vendor">月之暗面 · <span class="license-id">厂商自定义许可（other）</span></p>
+<p class="license-vendor">Moonshot AI ·  Vendor-specific licence (other)</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">模型卡标注 other；本次没有逐条读完原文，不能替你判断商用/蒸馏。</blockquote>
+<blockquote class="license-quote">The model card says “other”; the full text was not read line by line, so this page cannot decide commercial-use or distillation rights for you.</blockquote>
 <div class="license-links">
-<a href="https://huggingface.co/moonshotai/Kimi-K3" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/kimi-k3/">本站档案</a>
+<a href="https://huggingface.co/moonshotai/Kimi-K3" rel="noopener" target="_blank">Source ↗</a>
+<a href="https://models.specul.com/en/series/kimi-k3/">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="minicpm 5 · minicpm5 2b 面壁智能 · openbmb apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>MiniCPM 5 · MiniCPM5 2B</h3>
-<p class="license-vendor">面壁智能 · OpenBMB · <span class="license-id">Apache-2.0</span></p>
+<p class="license-vendor">ModelBest ·  OpenBMB ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/openbmb/MiniCPM5-2B" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/minicpm5/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/openbmb/MiniCPM5-2B" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/minicpm5/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="ornith 1.5 · ornith 1.5 35b-a3b（moe） ornith ai mit" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
-<h3>Ornith 1.5 · Ornith 1.5 35B-A3B（MoE）</h3>
-<p class="license-vendor">Ornith AI · <span class="license-id">MIT</span></p>
+<h3>Ornith 1.5 · Ornith 1.5 35B-A3B (MoE)</h3>
+<p class="license-vendor">Ornith AI ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/ornith-1-5/">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/ornith-1-5/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="ornith 1.5 · ornith 1.5 9b（密集） ornith ai mit" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
-<h3>Ornith 1.5 · Ornith 1.5 9B（密集）</h3>
-<p class="license-vendor">Ornith AI · <span class="license-id">MIT</span></p>
+<h3>Ornith 1.5 · Ornith 1.5 9B (Dense)</h3>
+<p class="license-vendor">Ornith AI ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/ornith-1-5/">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/ornith-1-5/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="muse glimmer · muse glimmer 30b meta apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>Muse Glimmer · Muse Glimmer 30B</h3>
-<p class="license-vendor">Meta · <span class="license-id">Apache-2.0</span></p>
+<p class="license-vendor">Meta ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/muse-glimmer/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/muse-glimmer/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="kat coder v2.5 · kat coder v2.5 dev kwaipilot apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>KAT Coder V2.5 · KAT Coder V2.5 Dev</h3>
-<p class="license-vendor">Kwaipilot · <span class="license-id">Apache-2.0</span></p>
+<p class="license-vendor">Kwaipilot ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/Kwaipilot/KAT-Coder-V2.5-Dev" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/kat-coder/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/Kwaipilot/KAT-Coder-V2.5-Dev" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/kat-coder/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="laguna 2.1 · laguna xs 2.1 poolside apache-2.0" data-type="model">
 <div class="license-top">
-<span class="license-type">模型权重</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Model weights</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>Laguna 2.1 · Laguna XS 2.1</h3>
-<p class="license-vendor">Poolside · <span class="license-id">Apache-2.0</span></p>
+<p class="license-vendor">Poolside ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://huggingface.co/poolside/Laguna-XS-2.1" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://models.specul.com/en/series/laguna/">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://huggingface.co/poolside/Laguna-XS-2.1" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://models.specul.com/en/series/laguna/">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="whisper openai（开源） mit" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>Whisper</h3>
-<p class="license-vendor">OpenAI（开源） · <span class="license-id">MIT</span></p>
+<p class="license-vendor">OpenAI (open source) ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://github.com/openai/whisper" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/audio/whisper.html">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://github.com/openai/whisper" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/audio/whisper.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="ollama ollama inc. mit" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>Ollama</h3>
-<p class="license-vendor">Ollama Inc. · <span class="license-id">MIT</span></p>
+<p class="license-vendor">Ollama Inc. ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://ollama.com" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/runner/ollama.html">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://ollama.com" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/runner/ollama.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="llama.cpp ggml-org mit" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>llama.cpp</h3>
-<p class="license-vendor">ggml-org · <span class="license-id">MIT</span></p>
+<p class="license-vendor">ggml-org ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://github.com/ggml-org/llama.cpp" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/runner/llama-cpp.html">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://github.com/ggml-org/llama.cpp" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/runner/llama-cpp.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="vllm vllm 项目（pytorch 基金会） apache-2.0" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>vLLM</h3>
-<p class="license-vendor">vLLM 项目（PyTorch 基金会） · <span class="license-id">Apache-2.0</span></p>
+<p class="license-vendor">vLLM project (PyTorch Foundation) ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://docs.vllm.ai" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/runner/vllm.html">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://docs.vllm.ai" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/runner/vllm.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="sglang lmsys / sgl-project apache-2.0" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>SGLang</h3>
-<p class="license-vendor">LMSYS / sgl-project · <span class="license-id">Apache-2.0</span></p>
+<p class="license-vendor">LMSYS / sgl-project ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://docs.sglang.ai" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/runner/sglang.html">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://docs.sglang.ai" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/runner/sglang.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="jan menlo research apache-2.0" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>Jan</h3>
-<p class="license-vendor">Menlo Research · <span class="license-id">Apache-2.0</span></p>
+<p class="license-vendor">Menlo Research ·  Apache-2.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.</blockquote>
 <div class="license-links">
-<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">许可原文</a>
-<a href="https://www.jan.ai" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/runner/jan.html">本站档案</a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://www.jan.ai" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/runner/jan.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="unknown" data-obligations="署名 开源义务 蒸馏待核" data-text="koboldcpp lostruins（koboldai 社区） agpl-3.0" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">可商用，但有开源义务</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use allowed, with an open-source obligation</span>
 </div>
 <h3>KoboldCpp</h3>
-<p class="license-vendor">LostRuins（KoboldAI 社区） · <span class="license-id">AGPL-3.0</span></p>
+<p class="license-vendor">LostRuins (KoboldAI community) ·  AGPL-3.0</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>可商用，但有开源义务</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span> <span class="license-obligation">开源义务</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Commercial use allowed, with an open-source obligation</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution; open-source obligation; distillation to check</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">AGPL 允许商用，但通过网络提供服务时通常要公开对应源码；改代码前让法务读原文。</blockquote>
+<blockquote class="license-quote">AGPL allows commercial use, but network service usually triggers a source-disclosure obligation; have legal read the original before modifying code.</blockquote>
 <div class="license-links">
-<a href="https://www.gnu.org/licenses/agpl-3.0.html" rel="noopener" target="_blank">许可原文</a>
-<a href="https://github.com/LostRuins/koboldcpp" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/runner/koboldcpp.html">本站档案</a>
+<a href="https://www.gnu.org/licenses/agpl-3.0.html" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://github.com/LostRuins/koboldcpp" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/runner/koboldcpp.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="localai mudler t.（mudler） mit" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
 <h3>LocalAI</h3>
-<p class="license-vendor">Mudler T.（mudler） · <span class="license-id">MIT</span></p>
+<p class="license-vendor">Mudler T.（mudler） ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://localai.io" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/runner/localai.html">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://localai.io" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/runner/localai.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="yes" data-commercial="yes" data-distill="allowed" data-obligations="署名" data-text="mlx（mlx-lm） apple mit" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-ok">明确允许商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-ok">Commercial use explicitly allowed</span>
 </div>
-<h3>MLX（mlx-lm）</h3>
-<p class="license-vendor">Apple · <span class="license-id">MIT</span></p>
+<h3>MLX (mlx-lm)</h3>
+<p class="license-vendor">Apple ·  MIT</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确允许商用</dd>
-<dt>署名</dt><dd>需要署名/保留声明</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">署名</span></dd>
-<dt>MAU 门槛</dt><dd>未见用户规模门槛</dd>
-<dt>蒸馏/衍生</dt><dd>许可允许衍生（仍受署名等条款）</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly allowed</dd>
+<dt>Attribution</dt><dd>Attribution / notices required</dd>
+<dt>Obligation tags</dt><dd>Attribution</dd>
+<dt>MAU threshold</dt><dd>No user-scale threshold found</dd>
+<dt>Distillation / derivatives</dt><dd>Derivatives allowed (attribution and other terms still apply)</dd>
 </dl>
 <blockquote class="license-quote">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...</blockquote>
 <div class="license-links">
-<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">许可原文</a>
-<a href="https://ml-explore.github.io/mlx/build/html/index.html" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/runner/mlx.html">本站档案</a>
+<a href="https://opensource.org/license/mit" rel="noopener" target="_blank">Licence text ↗</a>
+<a href="https://ml-explore.github.io/mlx/build/html/index.html" rel="noopener" target="_blank">Model card ↗</a>
+<a href="https://tools.specul.com/en/runner/mlx.html">Model page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="no" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="kagi kagi kagi 服务条款（前端非商业）" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-no">明确禁止商用</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-no">Commercial use explicitly prohibited</span>
 </div>
 <h3>Kagi</h3>
-<p class="license-vendor">Kagi · <span class="license-id">Kagi 服务条款（前端非商业）</span></p>
+<p class="license-vendor">Kagi ·  Kagi terms (front-end non-commercial)</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>明确禁止商用</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Commercial use explicitly prohibited</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">工具档案写明：前端产品默认非商业使用，商业使用仅限 API 产品；以官方条款原文为准。</blockquote>
+<blockquote class="license-quote">The tool profile states that the front-end product is non-commercial by default; commercial use is limited to the API product. The official terms control.</blockquote>
 <div class="license-links">
-<a href="https://kagi.com/pricing" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/research/kagi.html">本站档案</a>
+<a href="https://kagi.com/pricing" rel="noopener" target="_blank">Pricing / terms ↗</a>
+<a href="https://tools.specul.com/en/research/kagi.html">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="cursor anysphere 厂商专有条款" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
 <h3>Cursor</h3>
-<p class="license-vendor">Anysphere · <span class="license-id">厂商专有条款</span></p>
+<p class="license-vendor">Anysphere ·  Proprietary terms</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">产品条款不是开源许可；商用/转售/自动化访问要按条款逐条确认。</blockquote>
+<blockquote class="license-quote">Product terms are not an open-source licence; commercial use, resale and automated access must be checked clause by clause.</blockquote>
 <div class="license-links">
-<a href="https://cursor.com" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/coding/cursor.html">本站档案</a>
+<a href="https://cursor.com" rel="noopener" target="_blank">Pricing / terms ↗</a>
+<a href="https://tools.specul.com/en/coding/cursor.html">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="github copilot github / microsoft 厂商专有条款" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
 <h3>GitHub Copilot</h3>
-<p class="license-vendor">GitHub / Microsoft · <span class="license-id">厂商专有条款</span></p>
+<p class="license-vendor">GitHub / Microsoft ·  Proprietary terms</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">产品条款不是开源许可；商用/转售/自动化访问要按条款逐条确认。</blockquote>
+<blockquote class="license-quote">Product terms are not an open-source licence; commercial use, resale and automated access must be checked clause by clause.</blockquote>
 <div class="license-links">
-<a href="https://github.com/features/copilot" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/coding/copilot.html">本站档案</a>
+<a href="https://github.com/features/copilot" rel="noopener" target="_blank">Pricing / terms ↗</a>
+<a href="https://tools.specul.com/en/coding/copilot.html">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="claude code ide 扩展 anthropic 厂商专有条款" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
-<h3>Claude Code IDE 扩展</h3>
-<p class="license-vendor">Anthropic · <span class="license-id">厂商专有条款</span></p>
+<h3>Claude Code IDE extension</h3>
+<p class="license-vendor">Anthropic ·  Proprietary terms</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">产品条款不是开源许可；商用/转售/自动化访问要按条款逐条确认。</blockquote>
+<blockquote class="license-quote">Product terms are not an open-source licence; commercial use, resale and automated access must be checked clause by clause.</blockquote>
 <div class="license-links">
-<a href="https://code.claude.com/docs/en/overview" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/coding/claude-code.html">本站档案</a>
+<a href="https://code.claude.com/docs/en/overview" rel="noopener" target="_blank">Pricing / terms ↗</a>
+<a href="https://tools.specul.com/en/coding/claude-code.html">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="perplexity perplexity ai 厂商专有条款" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
 <h3>Perplexity</h3>
-<p class="license-vendor">Perplexity AI · <span class="license-id">厂商专有条款</span></p>
+<p class="license-vendor">Perplexity AI ·  Proprietary terms</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">产品条款不是开源许可；商用/转售/自动化访问要按条款逐条确认。</blockquote>
+<blockquote class="license-quote">Product terms are not an open-source licence; commercial use, resale and automated access must be checked clause by clause.</blockquote>
 <div class="license-links">
-<a href="https://www.perplexity.ai" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/research/perplexity.html">本站档案</a>
+<a href="https://www.perplexity.ai" rel="noopener" target="_blank">Pricing / terms ↗</a>
+<a href="https://tools.specul.com/en/research/perplexity.html">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="otter.ai otter.ai 厂商专有条款" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
 <h3>Otter.ai</h3>
-<p class="license-vendor">Otter.ai · <span class="license-id">厂商专有条款</span></p>
+<p class="license-vendor">Otter.ai ·  Proprietary terms</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">产品条款不是开源许可；商用/转售/自动化访问要按条款逐条确认。</blockquote>
+<blockquote class="license-quote">Product terms are not an open-source licence; commercial use, resale and automated access must be checked clause by clause.</blockquote>
 <div class="license-links">
-<a href="https://otter.ai" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/audio/otter.html">本站档案</a>
+<a href="https://otter.ai" rel="noopener" target="_blank">Pricing / terms ↗</a>
+<a href="https://tools.specul.com/en/audio/otter.html">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="fireflies.ai fireflies.ai 厂商专有条款" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
 <h3>Fireflies.ai</h3>
-<p class="license-vendor">Fireflies.ai · <span class="license-id">厂商专有条款</span></p>
+<p class="license-vendor">Fireflies.ai ·  Proprietary terms</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">产品条款不是开源许可；商用/转售/自动化访问要按条款逐条确认。</blockquote>
+<blockquote class="license-quote">Product terms are not an open-source licence; commercial use, resale and automated access must be checked clause by clause.</blockquote>
 <div class="license-links">
-<a href="https://fireflies.ai/" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/office/fireflies-ai.html">本站档案</a>
+<a href="https://fireflies.ai/" rel="noopener" target="_blank">Pricing / terms ↗</a>
+<a href="https://tools.specul.com/en/office/fireflies-ai.html">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article><article class="license-card" data-attribution="unknown" data-commercial="unknown" data-distill="unknown" data-obligations="MAU 门槛 蒸馏待核" data-text="飞书智能伙伴 飞书 厂商专有条款" data-type="tool">
 <div class="license-top">
-<span class="license-type">工具/服务</span>
-<span class="license-status status-warn">未说明 / 需读原文</span>
+<span class="license-type">Tool / service</span>
+<span class="license-status status-warn">Not stated / read the original</span>
 </div>
-<h3>飞书智能伙伴</h3>
-<p class="license-vendor">飞书 · <span class="license-id">厂商专有条款</span></p>
+<h3>Feishu Smart Partner</h3>
+<p class="license-vendor">Feishu ·  proprietary terms</p>
 <dl class="license-facts">
-<dt>商用</dt><dd>未说明 / 需读原文</dd>
-<dt>署名</dt><dd>署名要求未核验</dd>
-<dt>义务标签</dt><dd><span class="license-obligation">MAU 门槛</span> <span class="license-obligation">蒸馏待核</span></dd>
-<dt>MAU 门槛</dt><dd>未核验</dd>
-<dt>蒸馏/衍生</dt><dd>未核验，先读原文</dd>
+<dt>Commercial use</dt><dd>Not stated / read the original</dd>
+<dt>Attribution</dt><dd>Attribution not verified</dd>
+<dt>Obligation tags</dt><dd>MAU threshold; distillation to check</dd>
+<dt>MAU threshold</dt><dd>Not verified</dd>
+<dt>Distillation / derivatives</dt><dd>Not verified; read the original</dd>
 </dl>
-<blockquote class="license-quote">产品条款不是开源许可；商用/转售/自动化访问要按条款逐条确认。</blockquote>
+<blockquote class="license-quote">Product terms are not an open-source licence; commercial use, resale and automated access must be checked clause by clause.</blockquote>
 <div class="license-links">
-<a href="https://www.feishu.cn/product/ai" rel="noopener" target="_blank">发布页/来源</a>
-<a href="https://tools.specul.com/en/office/feishu-ai.html">本站档案</a>
+<a href="https://www.feishu.cn/product/ai" rel="noopener" target="_blank">Pricing / terms ↗</a>
+<a href="https://tools.specul.com/en/office/feishu-ai.html">Tool page →</a>
 </div>
-<p class="license-checked">核验 2026-11-25</p>
+<p class="license-checked">Verified 2026-11-25</p>
 </article>
 </div>
 </div>
 </section>
 <section class="section section-inset">
 <div class="container">
-<p class="kicker">三条边界</p>
-<h2>别把三件事混成一件</h2>
+<p class="kicker">Three boundaries</p>
+<h2>Do not conflate three different things</h2>
 <div class="next-grid">
-<article class="next-card"><h3>权重许可 ≠ 服务条款</h3><p>下载权重看模型卡许可；调用厂商 API/网页产品看服务条款。两者可以完全不同。</p></article>
-<article class="next-card"><h3>基座许可 ≠ 量化仓许可</h3><p>第三方 GGUF 量化仓通常继承基座许可，但量化者可能加自己的声明；发布页要一起看。</p></article>
-<article class="next-card"><h3>许可允许 ≠ 境内合规</h3><p>模型能商用，不代表能在境内公开提供生成服务；备案、安全评估、内容标识是另一套要求。</p></article>
+<article class="next-card"><h3>Weight licence ≠ service terms</h3><p>Downloading weights is governed by the model-card licence; calling a vendor API or web product is governed by the service terms. The two can differ completely.</p></article>
+<article class="next-card"><h3>Base licence ≠ quantised-repo licence</h3><p>Third-party GGUF quantisation repos usually inherit the base licence, but the quantiser may add its own notice. Read the release page together with the base licence.</p></article>
+<article class="next-card"><h3>Licence permission ≠ local compliance</h3><p>A model being commercially licensed does not mean it can be offered as a public generative service in a given jurisdiction. Filing, safety assessment and content labelling are separate requirements.</p></article>
 </div>
-<p class="decision-disclaimer">本页不是法律意见。关键商用/再分发/蒸馏决定，请让法务读许可原文与合同；本页只帮你把问题问对。</p>
+<p class="decision-disclaimer">This page is not legal advice. For material commercial, redistribution or distillation decisions, have legal counsel read the licence text and the contract; this page only helps you ask the right questions.</p>
 </div>
 </section>
 <section class="section">
 <div class="container">
-<p class="kicker">继续查</p>
-<h2>把许可放回模型选型里</h2>
+<p class="kicker">Keep checking</p>
+<h2>Put the licence back into model selection</h2>
 <ul class="reading-actions">
-<li><a href="/en/matrix.html">回 20 个开放权重家族横向矩阵</a></li>
-<li><a href="https://tools.specul.com/en/finder/">用选型器按任务/预算/本地筛</a></li>
-<li><a href="https://tools.specul.com/en/costs/">看成本总表：许可之外的账单</a></li>
+<li><a href="/en/matrix.html">Back to the 20 open-weight family matrix</a></li>
+<li><a href="https://tools.specul.com/en/finder/">Use the selector by task, budget and local hardware</a></li>
+<li><a href="https://tools.specul.com/en/costs/">See the total cost table: the bill beyond the licence</a></li>
 </ul>
 </div>
 </section>

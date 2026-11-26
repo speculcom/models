@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html data-lang="en" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Dataset licences and commercial use: separate three layers…</title>
-<meta content="Dataset licences and commercial use: separate three layers of rights" name="description"/>
+<meta content="Dataset licence, original-content licence and model-output licence are three different layers. A dataset card that says “Apache-2.0” does not mean the images, c" name="description"/>
 <link href="https://models.specul.com/en/data/guides/license-commercial.html" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Models" property="og:site_name"/>
@@ -21,7 +22,7 @@
 <link href="/site.css" rel="stylesheet"/>
 <link href="/sections.css" rel="stylesheet"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Dataset licences and commercial use: separate three layers…","description":"Dataset licences and commercial use: separate three layers of rights","url":"https://models.specul.com/en/data/guides/license-commercial.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://models.specul.com/en/data/guides/license-commercial.html"}}</script>
-<meta content="Dataset licences and commercial use: separate three layers…" name="twitter:title"/><meta content="Dataset licences and commercial use: separate three layers of rights" name="twitter:description"/><meta content="noindex,follow" name="robots"/></head>
+<meta content="Dataset licences and commercial use: separate three layers…" name="twitter:title"/><meta content="Dataset licences and commercial use: separate three layers of rights" name="twitter:description"/><meta content="index,follow" name="robots"/><link href="https://models.specul.com/en/data/guides/license-commercial.html" hreflang="en" rel="alternate"/><link href="https://models.specul.com/data/guides/license-commercial.html" hreflang="zh-CN" rel="alternate"/><link href="https://models.specul.com/data/guides/license-commercial.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -94,23 +95,13 @@
 <nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
 </div>
 </aside>
-<main id="main">
-<div class="container">
-<header class="sec-detail">
-<p class="eyebrow">Models · Data · Guide</p>
-<h1>Dataset licences and commercial use: separate three layers of rights</h1>
-<p class="sub">数据集许可、原始内容许可、模型产出许可，是三层不同的权利。数据集卡写“Apache-2.0”不代表里面的图片、代码、网页文本都能商用。</p>
-</header>
-<div class="sec-nav"><a href="../index.html">← 全部数据</a><a href="../../index.html">模型站</a></div>
-<div class="sec-body">
-<h2>第一层：数据集打包许可</h2><p>打包许可管的是“这份数据集文件怎么用”。MIT、Apache-2.0 通常允许商用与修改；CC-BY 要署名；CC-BY-SA 要求衍生作品同样开放；ODC-BY 要署名；CC-BY-NC 禁止商业使用。</p><p>打包许可不自动覆盖原始内容。The Stack 的打包许可是 MIT，但里面每个代码仓库的许可各不相同；LAION 的元数据是 CC-BY，但图像版权随源站。</p>
-<h2>第二层：原始内容许可</h2><p>网页文本、代码、图片、论文各有自己的许可。要逐类核对：代码看仓库 LICENSE，图片看源站，论文看出版方或 arXiv 许可，网页看站点条款与 robots。</p><p>找不到许可的内容，默认按“不可商用、不可再分发”处理。不要因为它在公开互联网上就当成公有领域。</p>
-<h2>第三层：模型产出许可</h2><p>用数据训练出来的模型，其许可由模型卡和训练数据许可共同影响。有些代码模型会继承生成代码的许可证；有些图像模型会要求标注训练数据来源。商用前要把“数据许可—模型许可—产出许可”三层写成一张表。</p><p>这张表要能被法务或客户读懂：数据名、版本、许可、证据链接、核验日、用途、限制。缺一项就不要签“可商用”的结论。</p>
-<h2>一张最小核对表</h2><p>数据名 / 版本 / 来源 URL / 打包许可 / 原始内容许可 / 商用是否允许 / 是否要求署名或同样开放 / 获取方式 / 核验日 / 用途。</p><p>如果是混合数据集，按来源分层写，不要只写一个总许可。混合数据的限制通常由最严的那一层决定。</p>
-</div>
-<div class="sec-sources">参考：<a href="https://huggingface.co/datasets/bigcode/the-stack" rel="noopener" target="_blank">The Stack 数据集卡</a> · <a href="https://laion.ai/blog/laion-5b/" rel="noopener" target="_blank">LAION-5B 说明</a> · <a href="https://spdx.org/licenses/" rel="noopener" target="_blank">SPDX License List</a></div>
-</div>
-</main>
+<main id="main"><div class="container guide-body">
+<nav class="crumbs"><a href="https://models.specul.com/en/">← Back to the open-weight map</a></nav>
+<header class="page-head"><p class="eyebrow">Models · English edition</p><h1>Dataset licences and commercial use: separate three layers of rights</h1><p class="sub">Practitioner methodology · key facts carry official sources</p><p class="lede">Dataset licence, original-content licence and model-output licence are three different layers. A dataset card that says “Apache-2.0” does not mean the images, code or web text inside can all be used commercially.</p></header>
+<nav class="sec-nav"><a href="../index.html">← Section index</a><a href="../../index.html">Models home</a></nav>
+<div class="sec-body"><h2>Layer 1: the dataset package licence</h2><p>The package licence governs how the dataset files may be used. MIT and Apache-2.0 usually allow commercial use and modification; CC-BY requires attribution; CC-BY-SA requires derivative works to stay open; ODC-BY requires attribution; CC-BY-NC prohibits commercial use.</p><h2>Layer 2: the original content licence</h2><p>Web text, code, images and papers each carry their own licence. Check the repository LICENSE for code, the source site for images, the publisher or arXiv terms for papers, and the site terms plus robots for web text. If no licence is found, treat it as “no commercial use, no redistribution” by default.</p><h2>Layer 3: the model-output licence</h2><p>A model trained on the data is affected by both its model card and the data licences. Some code models inherit the licence of generated code; some image models require training-data attribution. Before commercial use, put data licence, model licence and output licence in one table.</p><h2>A minimum clearance table</h2><p>Record dataset name, version, licence, evidence link, verification date, intended use and restrictions. If any field is missing, do not sign off “commercially usable”. This is a procurement checklist, not legal advice; have counsel review the actual contracts.</p></div>
+<div class="sec-sources">English edition. Figures and vendor claims are snapshots; verify the linked primary sources before making a decision.</div>
+</div></main>
 <footer class="site-footer foot-single">
 <div class="container foot-line">
 <div class="foot-brand">
